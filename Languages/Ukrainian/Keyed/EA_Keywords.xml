@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <!-- EA Action Keywords (English) -->
+  <!-- Format: <EA_KW_{actionId}>keyword1, keyword2, ...</EA_KW_{actionId}> -->
+  <!-- Movement -->
+  <EA_KW_move_to>переміщатися, іти, ходити</EA_KW_move_to>
+  <EA_KW_stop>зупинитися, припинити</EA_KW_stop>
+  <EA_KW_wait>чекати, залишатися, стояти</EA_KW_wait>
+  <EA_KW_follow>слідувати</EA_KW_follow>
+  <EA_KW_flee>тікати, бігти, утікати</EA_KW_flee>
+  <!-- Combat -->
+  <EA_KW_draft_set>озброїтися, скасувати озброєння</EA_KW_draft_set>
+  <EA_KW_attack_melee>атакувати, битися врукопаш, бити, завдавати ударів</EA_KW_attack_melee>
+  <EA_KW_attack_ranged>стріляти, вести дальній бій, відкривати вогонь</EA_KW_attack_ranged>
+  <EA_KW_arrest>заарештувати</EA_KW_arrest>
+  <EA_KW_drop_weapon>викинути зброю, обеззброїти</EA_KW_drop_weapon>
+  <EA_KW_mental_break_start>психічний зрив, злам, шал</EA_KW_mental_break_start>
+  <!-- Medical -->
+  <EA_KW_rescue>рятувати, визволяти, нести</EA_KW_rescue>
+  <EA_KW_tend>доглядати, лікувати, надавати допомогу</EA_KW_tend>
+  <EA_KW_feed_patient>годувати, їжа, пацієнт</EA_KW_feed_patient>
+  <EA_KW_force_sleep>спати, дрімати, відпочивати</EA_KW_force_sleep>
+  <!-- Social -->
+  <EA_KW_recruit>вербувати, переконувати</EA_KW_recruit>
+  <EA_KW_romance_set>романтичні стосунки, коханець, розрив</EA_KW_romance_set>
+  <EA_KW_thought_add>думка, спогад, настрій</EA_KW_thought_add>
+  <EA_KW_relation_set>стосунки, друг, ворог</EA_KW_relation_set>
+  <EA_KW_give_inspiration>натхнення, надихати</EA_KW_give_inspiration>
+  <EA_KW_visit_sick>відвідувати, хворий, нездужати</EA_KW_visit_sick>
+  <EA_KW_social_fight>битися, бійка, соціальна бійка</EA_KW_social_fight>
+  <EA_KW_lovin>кохання</EA_KW_lovin>
+  <EA_KW_insult>ображати, глузувати</EA_KW_insult>
+  <EA_KW_marry>одружуватися, весілля, шлюб</EA_KW_marry>
+  <EA_KW_spectate>спостерігати, дивитися, стежити</EA_KW_spectate>
+  <!-- Item -->
+  <EA_KW_drop_item>скинути</EA_KW_drop_item>
+  <EA_KW_give_item>дати, передати</EA_KW_give_item>
+  <EA_KW_equip>екіпірувати, носити</EA_KW_equip>
+  <EA_KW_force_eat>їсти, їжа</EA_KW_force_eat>
+  <!-- Job -->
+  <EA_KW_job_start>робота, завдання</EA_KW_job_start>
+  <EA_KW_job_queue_front>черга</EA_KW_job_queue_front>
+  <EA_KW_job_end>завершити завдання, скасувати</EA_KW_job_end>
+  <!-- Prisoner -->
+  <EA_KW_capture>полонити, полонений</EA_KW_capture>
+  <EA_KW_release_prisoner>звільнити, відпустити</EA_KW_release_prisoner>
+  <EA_KW_recruit_prisoner>завербувати полоненого</EA_KW_recruit_prisoner>
+  <EA_KW_execute>стратити, убити полоненого</EA_KW_execute>
+  <EA_KW_escort_to_bed>супроводжувати, ліжко</EA_KW_escort_to_bed>
+  <EA_KW_strip>роздягнути, роздягтися</EA_KW_strip>
+  <!-- Animal -->
+  <EA_KW_tame>приручити, одомашнити</EA_KW_tame>
+  <EA_KW_train>дресирувати</EA_KW_train>
+  <EA_KW_hunt>полювати</EA_KW_hunt>
+  <EA_KW_slaughter>забити, обробити тушу</EA_KW_slaughter>
+  <EA_KW_milk>доїти</EA_KW_milk>
+  <EA_KW_shear>стригти, вовна</EA_KW_shear>
+  <!-- Production -->
+  <EA_KW_haul>переносити, тягати</EA_KW_haul>
+  <EA_KW_mine>добувати, копати</EA_KW_mine>
+  <EA_KW_cut_plant>рубати, різати, саджати</EA_KW_cut_plant>
+  <EA_KW_clean>прибирати, підмітати</EA_KW_clean>
+  <EA_KW_repair>ремонтувати, лагодити</EA_KW_repair>
+  <EA_KW_deconstruct>розбирати, зносити</EA_KW_deconstruct>
+  <EA_KW_sow>сіяти, саджати, засівати</EA_KW_sow>
+  <EA_KW_harvest>збирати врожай, жати</EA_KW_harvest>
+  <EA_KW_research>досліджувати, вивчати</EA_KW_research>
+  <EA_KW_craft>майструвати, виготовляти, будувати</EA_KW_craft>
+  <EA_KW_smooth_floor>згладжувати, підлога</EA_KW_smooth_floor>
+  <EA_KW_build_roof>дах, накривати</EA_KW_build_roof>
+  <EA_KW_remove_roof>знімати дах</EA_KW_remove_roof>
+  <EA_KW_uninstall>демонтувати, видаляти</EA_KW_uninstall>
+  <EA_KW_fix_broken>полагодити, зламаний</EA_KW_fix_broken>
+  <EA_KW_refuel>заправити, паливо</EA_KW_refuel>
+  <EA_KW_flick>увімкнути, вимикач, перемикач</EA_KW_flick>
+  <!-- Recreation -->
+  <EA_KW_stargaze>спостерігати за зорями, зорі, небо</EA_KW_stargaze>
+  <EA_KW_go_for_walk>ходити, прогулюватися, блукати</EA_KW_go_for_walk>
+  <EA_KW_play_music>музика, грати, інструмент</EA_KW_play_music>
+  <EA_KW_use_drug>наркотик, курити, пити</EA_KW_use_drug>
+  <EA_KW_view_art>мистецтво, скульптура, живопис</EA_KW_view_art>
+  <!-- Facility -->
+  <EA_KW_use_comms>зв’язок, спілкуватися, радіо</EA_KW_use_comms>
+  <EA_KW_trade>торгувати, купувати, продавати</EA_KW_trade>
+  <EA_KW_enter_cryptosleep>криптосон, капсула, перебувати в сплячці</EA_KW_enter_cryptosleep>
+  <EA_KW_reload>перезарядити, боєприпаси</EA_KW_reload>
+  <EA_KW_open_container>відкрити, контейнер</EA_KW_open_container>
+  <!-- Funeral -->
+  <EA_KW_bury>поховати, могила, похорон</EA_KW_bury>
+  <EA_KW_cremate>кремувати, спалити</EA_KW_cremate>
+  <!-- FallbackConversion: Movement Verbs -->
+  <EA_MovementVerbs>йти до, прямувати до, іти до, переміщатися до</EA_MovementVerbs>
+  <!-- FallbackConversion: Target Noun Keywords (noun=actionId mapping) -->
+  <EA_TargetNoun_mine>добувати руду, копати</EA_TargetNoun_mine>
+  <EA_TargetNoun_cut_plant>добувати деревину, рубати</EA_TargetNoun_cut_plant>
+  <EA_TargetNoun_sow>займатися фермерством</EA_TargetNoun_sow>
+  <EA_TargetNoun_research>досліджувати</EA_TargetNoun_research>
+  <EA_TargetNoun_clean>прибирати</EA_TargetNoun_clean>
+  <EA_TargetNoun_hunt>полювати</EA_TargetNoun_hunt>
+  <EA_TargetNoun_repair>ремонтувати</EA_TargetNoun_repair>
+  <EA_TargetNoun_craft>будувати</EA_TargetNoun_craft>
+</LanguageData>

@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <!-- Mod Settings -->
+  <EA_ModName>Розгорнути дії</EA_ModName>
+  <EA_Settings_Title>Налаштування розгортання дій</EA_Settings_Title>
+  <EA_Settings_Enabled>Увімкнути розгортання дій</EA_Settings_Enabled>
+  <EA_Settings_Enabled_Desc>Головний перемикач функцій розгортання дій</EA_Settings_Enabled_Desc>
+  <EA_Settings_DebugMode>Режим налагодження</EA_Settings_DebugMode>
+  <EA_Settings_DebugMode_Desc>Показувати докладні журнали й бульбашки виконання</EA_Settings_DebugMode_Desc>
+  <EA_Settings_ShowBubbles>Показувати бульбашки виконання</EA_Settings_ShowBubbles>
+  <EA_Settings_ShowBubbles_Desc>Показувати стан виконання дій над персонажами</EA_Settings_ShowBubbles_Desc>
+  <EA_Settings_BehaviorControl>Керування поведінкою</EA_Settings_BehaviorControl>
+  <EA_Settings_SkipWorkTime>Пропускати персонажів із розкладом роботи</EA_Settings_SkipWorkTime>
+  <EA_Settings_SkipWorkTime_Desc>Якщо ввімкнено, персонажі з розкладом «Робота» не виконуватимуть дії розгортання — діалог триватиме без змін поведінки</EA_Settings_SkipWorkTime_Desc>
+  <EA_Settings_SkipDrafted>Пропускати персонажів, відданих наказам</EA_Settings_SkipDrafted>
+  <EA_Settings_SkipDrafted_Desc>Якщо ввімкнено, персонажі, віддані наказам, не виконуватимуть дії EA — діалог продовжиться без змін у поведінці</EA_Settings_SkipDrafted_Desc>
+  <EA_Settings_LLMSection>Налаштування LLM</EA_Settings_LLMSection>
+  <EA_Settings_UseSecondaryLLM>Використовувати вторинну LLM</EA_Settings_UseSecondaryLLM>
+  <EA_Settings_UseSecondaryLLM_Desc>Використовувати LLM для перетворення поведінки на дії (повільніше, але розумніше). Якщо вимкнено, використовується зіставлення шаблонів (швидше).</EA_Settings_UseSecondaryLLM_Desc>
+  <EA_Settings_LLMTimeout>Час очікування вторинної LLM (секунди)</EA_Settings_LLMTimeout>
+  <EA_Settings_MaxActions>Максимум дій за розмову</EA_Settings_MaxActions>
+  <EA_Settings_JobWhitelist>Власний список дозволених завдань</EA_Settings_JobWhitelist>
+  <EA_Settings_JobWhitelist_Desc>Додаткові JobDef, які дозволено використовувати (по одному в рядку)</EA_Settings_JobWhitelist_Desc>
+  <EA_Settings_ActionConfig>Налаштування дій</EA_Settings_ActionConfig>
+  <EA_Settings_ResetDesc>Відновити типові значення</EA_Settings_ResetDesc>
+  <!-- Categories -->
+  <EA_Category_Movement>Переміщення</EA_Category_Movement>
+  <EA_Category_Combat>Бій</EA_Category_Combat>
+  <EA_Category_Medical>Медицина</EA_Category_Medical>
+  <EA_Category_Social>Соціальне</EA_Category_Social>
+  <EA_Category_Item>Предмет</EA_Category_Item>
+  <EA_Category_Job>Керування завданнями</EA_Category_Job>
+  <EA_Category_State>Стан</EA_Category_State>
+  <EA_Category_RJW>RJW</EA_Category_RJW>
+  <!-- Movement Actions -->
+  <EA_Action_move_to>Перемістити до</EA_Action_move_to>
+  <EA_Action_move_to_Desc>Переміститися до цільового місця</EA_Action_move_to_Desc>
+  <EA_Action_stop>Зупинити</EA_Action_stop>
+  <EA_Action_stop_Desc>Негайно припинити поточну дію</EA_Action_stop_Desc>
+  <EA_Action_wait>Почекати</EA_Action_wait>
+  <EA_Action_wait_Desc>Почекати в поточному місці</EA_Action_wait_Desc>
+  <EA_Action_follow>Слідувати</EA_Action_follow>
+  <EA_Action_follow_Desc>Слідувати за цільовим персонажем</EA_Action_follow_Desc>
+  <EA_Action_flee>Тікати</EA_Action_flee>
+  <EA_Action_flee_Desc>Тікати від небезпеки</EA_Action_flee_Desc>
+  <!-- Combat Actions -->
+  <EA_Action_draft_set>Взяти в загін/Вивести із загону</EA_Action_draft_set>
+  <EA_Action_draft_set_Desc>Установити статус персонажа в загоні</EA_Action_draft_set_Desc>
+  <EA_Action_attack_melee>Атакувати в ближньому бою</EA_Action_attack_melee>
+  <EA_Action_attack_melee_Desc>Атакувати ціль зброєю ближнього бою</EA_Action_attack_melee_Desc>
+  <EA_Action_attack_ranged>Атака на відстані</EA_Action_attack_ranged>
+  <EA_Action_attack_ranged_Desc>Атакувати ціль зброєю дальнього бою</EA_Action_attack_ranged_Desc>
+  <EA_Action_arrest>Заарештувати</EA_Action_arrest>
+  <EA_Action_arrest_Desc>Спробувати заарештувати ціль</EA_Action_arrest_Desc>
+  <EA_Action_drop_weapon>Кинути зброю</EA_Action_drop_weapon>
+  <EA_Action_drop_weapon_Desc>Кинути поточно споряджену зброю</EA_Action_drop_weapon_Desc>
+  <EA_Action_mental_break_start>Психічний зрив</EA_Action_mental_break_start>
+  <EA_Action_mental_break_start_Desc>Викликати психічний стан (зі списку дозволених)</EA_Action_mental_break_start_Desc>
+  <!-- Medical Actions -->
+  <EA_Action_rescue>Врятувати</EA_Action_rescue>
+  <EA_Action_rescue_Desc>Врятувати непритомного персонажа</EA_Action_rescue_Desc>
+  <EA_Action_tend>Надати допомогу</EA_Action_tend>
+  <EA_Action_tend_Desc>Надати допомогу пораненому персонажу</EA_Action_tend_Desc>
+  <EA_Action_feed_patient>Годувати пацієнта</EA_Action_feed_patient>
+  <EA_Action_feed_patient_Desc>Годувати лежачого пацієнта</EA_Action_feed_patient_Desc>
+  <EA_Action_force_sleep>Примусово приспати</EA_Action_force_sleep>
+  <EA_Action_force_sleep_Desc>Змусити персонажа відпочити</EA_Action_force_sleep_Desc>
+  <!-- Social Actions -->
+  <EA_Action_recruit>Завербувати</EA_Action_recruit>
+  <EA_Action_recruit_Desc>Спробувати завербувати в’язня</EA_Action_recruit_Desc>
+  <EA_Action_romance_set>Романтичні стосунки</EA_Action_romance_set>
+  <EA_Action_romance_set_Desc>Установити романтичні стосунки</EA_Action_romance_set_Desc>
+  <EA_Action_thought_add>Додати думку</EA_Action_thought_add>
+  <EA_Action_thought_add_Desc>Додати персонажу спогад-думку</EA_Action_thought_add_Desc>
+  <EA_Action_relation_set>Установити стосунки</EA_Action_relation_set>
+  <EA_Action_relation_set_Desc>Змінити стосунки персонажа</EA_Action_relation_set_Desc>
+  <EA_Action_give_inspiration>Надати натхнення</EA_Action_give_inspiration>
+  <EA_Action_give_inspiration_Desc>Надати персонажу натхнення</EA_Action_give_inspiration_Desc>
+  <!-- Item Actions -->
+  <EA_Action_drop_item>Викинути предмет</EA_Action_drop_item>
+  <EA_Action_drop_item_Desc>Викинути предмет у руках</EA_Action_drop_item_Desc>
+  <EA_Action_give_item>Дати предмет</EA_Action_give_item>
+  <EA_Action_give_item_Desc>Дати предмет цілі</EA_Action_give_item_Desc>
+  <EA_Action_equip>Екіпірувати</EA_Action_equip>
+  <EA_Action_equip_Desc>Екіпірувати зброю або одяг</EA_Action_equip_Desc>
+  <EA_Action_force_eat>Змусити їсти</EA_Action_force_eat>
+  <EA_Action_force_eat_Desc>Змусити персонажа їсти</EA_Action_force_eat_Desc>
+  <!-- Job Actions -->
+  <EA_Action_job_start>Почати роботу</EA_Action_job_start>
+  <EA_Action_job_start_Desc>Почати певну роботу</EA_Action_job_start_Desc>
+  <EA_Action_job_queue_front>Додати роботу в чергу</EA_Action_job_queue_front>
+  <EA_Action_job_queue_front_Desc>Додати роботу на початок черги</EA_Action_job_queue_front_Desc>
+  <EA_Action_job_end>Завершити роботу</EA_Action_job_end>
+  <EA_Action_job_end_Desc>Завершити поточну роботу</EA_Action_job_end_Desc>
+  <!-- New Categories -->
+  <EA_Category_Prisoner>В'язень</EA_Category_Prisoner>
+  <EA_Category_Animal>Тварина</EA_Category_Animal>
+  <EA_Category_Production>Виробництво</EA_Category_Production>
+  <EA_Category_Recreation>Відпочинок</EA_Category_Recreation>
+  <EA_Category_Facility>Об'єкт</EA_Category_Facility>
+  <EA_Category_Funeral>Поховання</EA_Category_Funeral>
+  <EA_Category_DLC>DLC</EA_Category_DLC>
+  <!-- Extension Module Names -->
+  <EA_Module_Royalty>Вельможність</EA_Module_Royalty>
+  <EA_Module_Ideology>Ідеологія</EA_Module_Ideology>
+  <EA_Module_Biotech>Біотехнологія</EA_Module_Biotech>
+  <EA_Module_Anomaly>Аномалія</EA_Module_Anomaly>
+  <EA_Module_RJW>RJW</EA_Module_RJW>
+  <!-- DLC Actions: Royalty -->
+  <EA_Action_meditate>Медитувати</EA_Action_meditate>
+  <EA_Action_meditate_Desc>Медитувати в місці для медитації або на троні</EA_Action_meditate_Desc>
+  <EA_Action_psycast>Псі-здібність</EA_Action_psycast>
+  <EA_Action_psycast_Desc>Використати псі-здібність на цілі</EA_Action_psycast_Desc>
+  <EA_Action_reign>Правління</EA_Action_reign>
+  <EA_Action_reign_Desc>Сісти на трон, щоб виконати обов'язок правителя</EA_Action_reign_Desc>
+  <!-- DLC Actions: Ideology -->
+  <EA_Action_ritual>Ритуал</EA_Action_ritual>
+  <EA_Action_ritual_Desc>Почати ритуал</EA_Action_ritual_Desc>
+  <EA_Action_convert>Навернути</EA_Action_convert>
+  <EA_Action_convert_Desc>Спробувати навернути ціль до вашої ідеології</EA_Action_convert_Desc>
+  <!-- DLC Actions: Biotech -->
+  <EA_Action_command_mechanoid>Керувати механоїдом</EA_Action_command_mechanoid>
+  <EA_Action_command_mechanoid_Desc>Наказати механоїду виконати дію</EA_Action_command_mechanoid_Desc>
+  <EA_Action_enter_biosculpter>Увійти до біоскульптора</EA_Action_enter_biosculpter>
+  <EA_Action_enter_biosculpter_Desc>Увійти до капсули біоскульптора для вдосконалення</EA_Action_enter_biosculpter_Desc>
+  <!-- DLC Actions: Anomaly -->
+  <EA_Action_study_entity>Дослідити сутність</EA_Action_study_entity>
+  <EA_Action_study_entity_Desc>Дослідити аномальну сутність</EA_Action_study_entity_Desc>
+  <EA_Action_suppress_entity>Придушити сутність</EA_Action_suppress_entity>
+  <EA_Action_suppress_entity_Desc>Придушити аномальну сутність</EA_Action_suppress_entity_Desc>
+  <!-- Prisoner Actions -->
+  <EA_Action_capture>Полонити</EA_Action_capture>
+  <EA_Action_capture_Desc>Полонити непритомного персонажа</EA_Action_capture_Desc>
+  <EA_Action_release_prisoner>Звільнити в’язня</EA_Action_release_prisoner>
+  <EA_Action_release_prisoner_Desc>Звільнити в’язня</EA_Action_release_prisoner_Desc>
+  <EA_Action_recruit_prisoner>Завербувати в’язня</EA_Action_recruit_prisoner>
+  <EA_Action_recruit_prisoner_Desc>Спробувати завербувати в’язня</EA_Action_recruit_prisoner_Desc>
+  <EA_Action_execute>Виконати</EA_Action_execute>
+  <EA_Action_execute_Desc>Стратити в’язня</EA_Action_execute_Desc>
+  <EA_Action_escort_to_bed>Відвести до ліжка</EA_Action_escort_to_bed>
+  <EA_Action_escort_to_bed_Desc>Відвести в’язня до ліжка</EA_Action_escort_to_bed_Desc>
+  <EA_Action_strip>Роздягнути</EA_Action_strip>
+  <EA_Action_strip_Desc>Зняти одяг із цілі</EA_Action_strip_Desc>
+  <!-- Animal Actions -->
+  <EA_Action_tame>Приручити</EA_Action_tame>
+  <EA_Action_tame_Desc>Спробувати приручити тварину</EA_Action_tame_Desc>
+  <EA_Action_train>Дресирувати</EA_Action_train>
+  <EA_Action_train_Desc>Дресирувати тварину</EA_Action_train_Desc>
+  <EA_Action_hunt>Полювати</EA_Action_hunt>
+  <EA_Action_hunt_Desc>Полювати на тварину</EA_Action_hunt_Desc>
+  <EA_Action_slaughter>Забити</EA_Action_slaughter>
+  <EA_Action_slaughter_Desc>Забити тварину</EA_Action_slaughter_Desc>
+  <EA_Action_milk>Доïти</EA_Action_milk>
+  <EA_Action_milk_Desc>Доїти тварину</EA_Action_milk_Desc>
+  <EA_Action_shear>Стригти</EA_Action_shear>
+  <EA_Action_shear_Desc>Стригти тварину</EA_Action_shear_Desc>
+  <!-- Production Actions -->
+  <EA_Action_haul>Переносити</EA_Action_haul>
+  <EA_Action_haul_Desc>Перенести предмет до складу</EA_Action_haul_Desc>
+  <EA_Action_mine>Добувати</EA_Action_mine>
+  <EA_Action_mine_Desc>Добувати камінь або мінерал</EA_Action_mine_Desc>
+  <EA_Action_cut_plant>Зрізати рослину</EA_Action_cut_plant>
+  <EA_Action_cut_plant_Desc>Зрізати рослину</EA_Action_cut_plant_Desc>
+  <EA_Action_clean>Прибирати</EA_Action_clean>
+  <EA_Action_clean_Desc>Прибирати територію</EA_Action_clean_Desc>
+  <EA_Action_repair>Ремонтувати</EA_Action_repair>
+  <EA_Action_repair_Desc>Ремонтувати будівлю або споруду</EA_Action_repair_Desc>
+  <EA_Action_deconstruct>Демонтувати</EA_Action_deconstruct>
+  <EA_Action_deconstruct_Desc>Демонтувати будівлю</EA_Action_deconstruct_Desc>
+  <EA_Action_sow>Сіяти</EA_Action_sow>
+  <EA_Action_sow_Desc>Сіяти насіння в зоні вирощування</EA_Action_sow_Desc>
+  <EA_Action_harvest>Збирати врожай</EA_Action_harvest>
+  <EA_Action_harvest_Desc>Збирати стиглі рослини</EA_Action_harvest_Desc>
+  <EA_Action_research>Досліджувати</EA_Action_research>
+  <EA_Action_research_Desc>Досліджувати за дослідницьким столом</EA_Action_research_Desc>
+  <EA_Action_craft>Виготовляти</EA_Action_craft>
+  <EA_Action_craft_Desc>Працювати за столом виготовлення</EA_Action_craft_Desc>
+  <EA_Action_smooth_floor>Вирівнювати підлогу</EA_Action_smooth_floor>
+  <EA_Action_smooth_floor_Desc>Вирівняти нерівну підлогу</EA_Action_smooth_floor_Desc>
+  <EA_Action_build_roof>Будувати дах</EA_Action_build_roof>
+  <EA_Action_build_roof_Desc>Побудувати дах у зоні</EA_Action_build_roof_Desc>
+  <EA_Action_remove_roof>Прибирати дах</EA_Action_remove_roof>
+  <EA_Action_remove_roof_Desc>Прибрати дах із зони</EA_Action_remove_roof_Desc>
+  <EA_Action_uninstall>Демонтувати</EA_Action_uninstall>
+  <EA_Action_uninstall_Desc>Демонтувати будівлю або меблі</EA_Action_uninstall_Desc>
+  <EA_Action_fix_broken>Полагодити зламане</EA_Action_fix_broken>
+  <EA_Action_fix_broken_Desc>Полагодити зламану будівлю</EA_Action_fix_broken_Desc>
+  <EA_Action_refuel>Заправити паливо</EA_Action_refuel>
+  <EA_Action_refuel_Desc>Заправити будівлю</EA_Action_refuel_Desc>
+  <EA_Action_flick>Увімкнути</EA_Action_flick>
+  <EA_Action_flick_Desc>Перемкнути вимикач живлення будівлі</EA_Action_flick_Desc>
+  <!-- Social Actions (New) -->
+  <EA_Action_visit_sick>Відвідати хворого</EA_Action_visit_sick>
+  <EA_Action_visit_sick_Desc>Відвідати хворого або прикутих до ліжка персонажа</EA_Action_visit_sick_Desc>
+  <EA_Action_social_fight>Соціальна бійка</EA_Action_social_fight>
+  <EA_Action_social_fight_Desc>Розпочати соціальну бійку з ціллю</EA_Action_social_fight_Desc>
+  <EA_Action_lovin>Кохання</EA_Action_lovin>
+  <EA_Action_lovin_Desc>Кохатися з партнером у ліжку</EA_Action_lovin_Desc>
+  <EA_Action_insult>Образити</EA_Action_insult>
+  <EA_Action_insult_Desc>Образити персонажа-ціль</EA_Action_insult_Desc>
+  <EA_Action_marry>Одружитися</EA_Action_marry>
+  <EA_Action_marry_Desc>Одружити персонажа-ціль (церемонія)</EA_Action_marry_Desc>
+  <EA_Action_spectate>Спостерігати</EA_Action_spectate>
+  <EA_Action_spectate_Desc>Дивитися видовище або подію</EA_Action_spectate_Desc>
+  <!-- Recreation Actions -->
+  <EA_Action_stargaze>Спостерігати за зорями</EA_Action_stargaze>
+  <EA_Action_stargaze_Desc>Вийти надвір спостерігати за зорями</EA_Action_stargaze_Desc>
+  <EA_Action_go_for_walk>Прогулятися</EA_Action_go_for_walk>
+  <EA_Action_go_for_walk_Desc>Неквапливо прогулятися</EA_Action_go_for_walk_Desc>
+  <EA_Action_play_music>Грати музику</EA_Action_play_music>
+  <EA_Action_play_music_Desc>Грати на музичному інструменті</EA_Action_play_music_Desc>
+  <EA_Action_use_drug>Вжити речовину</EA_Action_use_drug>
+  <EA_Action_use_drug_Desc>Вжити речовину або витратний предмет</EA_Action_use_drug_Desc>
+  <EA_Action_view_art>Розглядати мистецтво</EA_Action_view_art>
+  <EA_Action_view_art_Desc>Розглядати витвір мистецтва для задоволення</EA_Action_view_art_Desc>
+  <!-- Facility Actions -->
+  <EA_Action_use_comms>Скористатися зв’язком</EA_Action_use_comms>
+  <EA_Action_use_comms_Desc>Використати комунікаційну консоль</EA_Action_use_comms_Desc>
+  <EA_Action_trade>Торгувати</EA_Action_trade>
+  <EA_Action_trade_Desc>Торгувати з відвідувачем або караваном</EA_Action_trade_Desc>
+  <EA_Action_enter_cryptosleep>Увійти в криптосон</EA_Action_enter_cryptosleep>
+  <EA_Action_enter_cryptosleep_Desc>Увійти в криптосонну капсулу</EA_Action_enter_cryptosleep_Desc>
+  <EA_Action_reload>Перезарядити</EA_Action_reload>
+  <EA_Action_reload_Desc>Перезарядити зброю або турель</EA_Action_reload_Desc>
+  <EA_Action_open_container>Відкрити контейнер</EA_Action_open_container>
+  <EA_Action_open_container_Desc>Відкрити контейнер або капсулу</EA_Action_open_container_Desc>
+  <!-- Funeral Actions -->
+  <EA_Action_bury>Поховати</EA_Action_bury>
+  <EA_Action_bury_Desc>Поховати тіло в могилі</EA_Action_bury_Desc>
+  <EA_Action_cremate>Кремувати</EA_Action_cremate>
+  <EA_Action_cremate_Desc>Кремувати тіло в крематорії</EA_Action_cremate_Desc>
+  <!-- RJW Actions (conditional) -->
+  <EA_Action_rjw_masturbate>Мастурбувати</EA_Action_rjw_masturbate>
+  <EA_Action_rjw_masturbate_Desc>Персонаж мастурбує</EA_Action_rjw_masturbate_Desc>
+  <EA_Action_rjw_quickie>Швидкий секс</EA_Action_rjw_quickie>
+  <EA_Action_rjw_quickie_Desc>Швидкий секс із ціллю</EA_Action_rjw_quickie_Desc>
+  <EA_Action_rjw_join_in_bed>Приєднатися до ліжка</EA_Action_rjw_join_in_bed>
+  <EA_Action_rjw_join_in_bed_Desc>Приєднатися до цілі в ліжку для інтиму</EA_Action_rjw_join_in_bed_Desc>
+  <!-- Settings: Keyword Editing -->
+  <EA_Settings_KeywordEnabled>Увімкнути ключові слова</EA_Settings_KeywordEnabled>
+  <EA_Settings_KeywordEnabled_Desc>Якщо вимкнено, ця дія не братиме участі у зіставленні ключових слів або впровадженні промптів</EA_Settings_KeywordEnabled_Desc>
+  <EA_Settings_KeywordOverride>Власні ключові слова</EA_Settings_KeywordOverride>
+  <EA_Settings_KeywordReset>Скинути ключові слова</EA_Settings_KeywordReset>
+  <!-- Settings: Keyword Pre-Filter -->
+  <EA_Settings_KeywordSection>Попередня фільтрація за ключовими словами</EA_Settings_KeywordSection>
+  <EA_Settings_KeywordPreFilter>Увімкнути попередню фільтрацію за ключовими словами</EA_Settings_KeywordPreFilter>
+  <EA_Settings_KeywordPreFilter_Desc>Фільтрувати дії за ключовими словами в діалогах, щоб зменшити використання токенів LLM. Якщо вимкнено, впроваджуватимуться всі дії.</EA_Settings_KeywordPreFilter_Desc>
+  <!-- Settings: Cooldown -->
+  <EA_Settings_CooldownSection>Затримка відновлення дії</EA_Settings_CooldownSection>
+  <EA_Settings_Cooldown>Увімкнути затримку відновлення дій</EA_Settings_Cooldown>
+  <EA_Settings_Cooldown_Desc>Запобігати повторному виконанню тієї самої дії протягом періоду затримки відновлення в різних розмовах.</EA_Settings_Cooldown_Desc>
+  <EA_Settings_DefaultCooldown>Стандартна затримка відновлення</EA_Settings_DefaultCooldown>
+  <EA_Settings_MovementCooldown>Затримка відновлення руху/відпочинку</EA_Settings_MovementCooldown>
+  <EA_Settings_CombatCooldown>Затримка відновлення бою</EA_Settings_CombatCooldown>
+  <EA_Settings_SocialCooldown>Затримка відновлення спілкування</EA_Settings_SocialCooldown>
+  <!-- Undesignated Targets -->
+  <EA_Settings_AllowUndesignated>Дозволити не позначені цілі</EA_Settings_AllowUndesignated>
+  <EA_Settings_AllowUndesignated_Desc>Якщо вимкнено (типово), автоматично знаходяться лише цілі, уже позначені гравцем (наприклад, дерева, позначені для рубання, або камені, позначені для видобутку). Якщо ввімкнено, EA може працювати з будь-якою придатною ціллю, навіть якщо гравець її не позначив.</EA_Settings_AllowUndesignated_Desc>
+  <!-- Job Protection -->
+  <EA_Settings_JobProtection>Вікно захисту завдань</EA_Settings_JobProtection>
+  <EA_Settings_JobProtection_Desc>Час захисту після призначення завдання EA. Упродовж цього часу нові дії EA додаються в чергу, а не замінюють попередні. Запобігає тому, щоб часті діалоги постійно скидали поведінку персонажа. 0 = вимкнено (завжди замінювати).</EA_Settings_JobProtection_Desc>
+  <!-- Action Effort Level -->
+  <EA_Settings_ActionEffort>Рівень зусиль для дій</EA_Settings_ActionEffort>
+  <EA_Settings_ActionEffort_Desc>Керує частотою, з якою LLM виводить ea_observed: низький = лише за потреби, середній = помірна частота, високий = у кожній відповіді</EA_Settings_ActionEffort_Desc>
+  <EA_Settings_EffortLow>Низька</EA_Settings_EffortLow>
+  <EA_Settings_EffortMedium>Середня</EA_Settings_EffortMedium>
+  <EA_Settings_EffortHigh>Висока</EA_Settings_EffortHigh>
+  <!-- Execution Messages -->
+  <EA_Exec_Success>Дію виконано: {0}</EA_Exec_Success>
+  <EA_Exec_Failed>Не вдалося виконати дію: {0} — {1}</EA_Exec_Failed>
+  <EA_Exec_Skipped>Дію пропущено: {0}</EA_Exec_Skipped>
+  <!-- Error Messages -->
+  <EA_Error_ActorNotFound>Актора не знайдено: {0}</EA_Error_ActorNotFound>
+  <EA_Error_TargetNotFound>Ціль не знайдено: {0}</EA_Error_TargetNotFound>
+  <EA_Error_ActionDisabled>Дію вимкнено: {0}</EA_Error_ActionDisabled>
+  <EA_Error_JobNotWhitelisted>Завдання не в білому списку: {0}</EA_Error_JobNotWhitelisted>
+</LanguageData>

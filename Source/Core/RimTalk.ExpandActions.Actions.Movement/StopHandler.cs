@@ -16,7 +16,6 @@ public class StopHandler : IActionHandler
 			return ExecutionResult.Succeeded(context);
 		}
 		resolvedActor.jobs.EndCurrentJob(JobCondition.InterruptForced);
-		resolvedActor.pather?.StopDead();
 		return ExecutionResult.Succeeded(context);
 	}
 }

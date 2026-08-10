@@ -10,6 +10,7 @@
     <OutputPath>$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimTalk-ExpandActions-Core\bin\Release\</OutputPath>
     <RimWorldDir Condition="'$(RimWorldDir)' == ''">D:\Strg\Steam\steamapps\common\RimWorld</RimWorldDir>
     <RimWorldWorkshopDir Condition="'$(RimWorldWorkshopDir)' == ''">D:\Strg\Steam\steamapps\workshop\content\294100</RimWorldWorkshopDir>
+    <ReconstructionReferenceDir Condition="'$(ReconstructionReferenceDir)' == ''">$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimTalk-ExpandActions-Core\reconstruction-refs</ReconstructionReferenceDir>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp" HintPath="$(RimWorldDir)\RimWorldWin64_Data\Managed\Assembly-CSharp.dll" Private="false" />
@@ -17,6 +18,6 @@
     <Reference Include="UnityEngine.IMGUIModule" HintPath="$(RimWorldDir)\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll" Private="false" />
     <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(RimWorldDir)\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll" Private="false" />
     <Reference Include="0Harmony" HintPath="$(RimWorldWorkshopDir)\2009463077\Current\Assemblies\0Harmony.dll" Private="false" />
-    <Reference Include="Newtonsoft.Json" HintPath="$(RimWorldWorkshopDir)\3661055729\1.6\Assemblies\Newtonsoft.Json.dll" Private="false" />
+    <Reference Include="Newtonsoft.Json" HintPath="$(ReconstructionReferenceDir)\Newtonsoft.Json.dll" Private="false" />
   </ItemGroup>
 </Project>

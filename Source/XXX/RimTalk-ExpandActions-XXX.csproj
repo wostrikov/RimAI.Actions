@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>RimTalk-ExpandActions-XXX</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>12.0</LangVersion>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimTalk-ExpandActions-Core\bin\Release\</OutputPath>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">D:\Strg\Steam\steamapps\common\RimWorld</RimWorldDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\RimTalk-ExpandActions.csproj" />
+    <Reference Include="Assembly-CSharp" HintPath="$(RimWorldDir)\RimWorldWin64_Data\Managed\Assembly-CSharp.dll" Private="false" />
+  </ItemGroup>
+</Project>

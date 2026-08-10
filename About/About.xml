@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>RimTalk - Expand Actions Core</name>
+    <author>ZRui-C</author>
+    <url>https://discord.gg/9pGD8Ayx</url>
+    <packageId>zruic.expand.action</packageId>
+    <supportedVersions>
+        <li>1.6</li>
+    </supportedVersions>
+    <modDependencies>
+        <li>
+            <packageId>brrainz.harmony</packageId>
+            <displayName>Harmony</displayName>
+        </li>
+        <li>
+            <packageId>cj.RimTalk</packageId>
+            <displayName>RimTalk</displayName>
+        </li>
+    </modDependencies>
+    <loadAfter>
+        <li>brrainz.harmony</li>
+        <li>cj.RimTalk</li>
+        <li>rimtalk.expand.memory</li>
+    </loadAfter>
+    <description>[h1]RimTalk - Expand Actions Core / 行为扩展[/h1]
+[i]让对话驱动行为——小人说什么就做什么 / Let dialogue drive behavior - when pawns say it, they do it.[/i]
+
+[h2]中文说明[/h2]
+
+行为扩展 (EA) 让对话驱动行为——小人说什么就做什么。
+
+[h3]功能[/h3]
+- [b]对话转行为[/b]：LLM 输出自动转换为游戏动作，支持中英文关键词
+- [b]行为队列[/b]：同一小人按序执行，不同小人并行
+- [b]智能物品匹配[/b]：100+ 模糊关键词，武器/食物/药品/服装等
+- [b]上下文感知[/b]：征召中/工作中的小人自动跳过
+- [b]50+ 动作[/b]：移动、战斗、医疗、社交、物品、生产、动物、DLC 等
+- [b]安全控制[/b]：逐个动作开关、任务白名单、精神状态白名单
+- [b]可扩展[/b]：插件模块系统，支持第三方行为包
+
+另外支持 XXX（如果你知道我说的是啥）。
+
+[h3]自动提示词注入[/h3]
+EA 会自动将行为格式说明注入到 RimTalk 的提示词系统中，无需手动配置。
+你可以在 RimTalk 的提示词编辑器中查看、禁用或删除 "EA Action Schema" 条目。删除后不会重新添加。
+
+---
+
+[h2]English[/h2]
+
+Expand Actions bridges LLM dialogue and in-game pawn behavior. When a character says "I'll go chop some wood", EA makes them actually do it.
+
+[h3]Features[/h3]
+- [b]Dialogue → Action[/b]: LLM text automatically converted to game actions via pattern matching (CN/EN)
+- [b]Action Queue[/b]: Multiple actions execute in order; different pawns run in parallel
+- [b]Smart Item Matching[/b]: 100+ fuzzy keywords for weapons, food, medicine, apparel, etc.
+- [b]Context-Aware Prompts[/b]: Template variables auto-disable for drafted/working pawns
+- [b]50+ Actions[/b]: Movement, combat, medical, social, items, production, animals, DLC, and more
+- [b]Safety Controls[/b]: Per-action toggles, job whitelist, mental state whitelist
+- [b]Extensible[/b]: Plugin module system for third-party action packs
+
+And support XXX(if you know what I mean).
+
+[h3]Auto Prompt Injection[/h3]
+EA automatically injects its action schema into RimTalk's prompt system — no manual configuration needed.
+You can view, disable, or delete the injected entry "EA Action Schema" in RimTalk's Prompt Editor. Deleted entries will not be re-added.
+
+---
+
+[h2]更新日志 / Changelog[/h2]
+[b]0.3.0-beta.1[/b]
+- Fix: 精简 ea_observed schema 提示词，移除冗余指令减少 token 消耗
+
+[b]0.3.0-beta.0[/b]
+- Beta release / Beta 发布：EA 行为扩展核心模块（对话 → 物理动作）
+- i18n keywords / 多语言关键词：支持中/英文关键词 + 多语言关键词配置（含英文回退注入）
+- Auto prompt injection / 自动提示词注入：RimTalk PromptEntry: "EA Action Schema"
+- Optional dependency / 可选依赖：Expand Memory 推荐用于行为记录
+
+[h3]推荐 API / Recommended API[/h3]
+推荐使用硅基流动 (SiliconFlow) 的 DeepSeek V3.2 模型，效果好价格便宜：
+https://cloud.siliconflow.cn/i/w2BnqakO
+
+[h3]Requirements / 依赖[/h3]
+- Harmony
+- RimTalk v4.0+
+- (Optional) RimTalk - Expand Memory (behavior recording / 行为记录)
+
+[h3]Discord[/h3]
+https://discord.gg/9pGD8Ayx</description>
+    <modVersion>0.3.0-beta.2</modVersion>
+</ModMetaData>

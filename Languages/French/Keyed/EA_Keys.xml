@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- Mod Settings / Paramètres du mod -->
+    <EA_ModName>Actions étendues</EA_ModName>
+    <EA_Settings_Title>Paramètres des Actions étendues</EA_Settings_Title>
+    <EA_Settings_Enabled>Activer les Actions étendues</EA_Settings_Enabled>
+    <EA_Settings_Enabled_Desc>Interrupteur principal pour la fonctionnalité EA</EA_Settings_Enabled_Desc>
+    <EA_Settings_DebugMode>Mode débogage</EA_Settings_DebugMode>
+    <EA_Settings_DebugMode_Desc>Afficher les journaux détaillés et les bulles d'exécution</EA_Settings_DebugMode_Desc>
+    <EA_Settings_ShowBubbles>Afficher les bulles d'exécution</EA_Settings_ShowBubbles>
+    <EA_Settings_ShowBubbles_Desc>Afficher l'état d'exécution des actions au-dessus des colons</EA_Settings_ShowBubbles_Desc>
+    <EA_Settings_BehaviorControl>Contrôle du comportement</EA_Settings_BehaviorControl>
+    <EA_Settings_SkipWorkTime>Ignorer les colons en horaire de travail</EA_Settings_SkipWorkTime>
+    <EA_Settings_SkipWorkTime_Desc>Si activé, les colons en horaire "Travail" n'exécuteront pas les actions EA - le dialogue continue sans changement de comportement</EA_Settings_SkipWorkTime_Desc>
+    <EA_Settings_SkipDrafted>Ignorer les colons mobilisés</EA_Settings_SkipDrafted>
+    <EA_Settings_SkipDrafted_Desc>Si activé, les colons mobilisés n'exécuteront pas les actions EA - le dialogue continue sans changement de comportement</EA_Settings_SkipDrafted_Desc>
+    <EA_Settings_LLMSection>Paramètres LLM</EA_Settings_LLMSection>
+    <EA_Settings_UseSecondaryLLM>Utiliser un LLM secondaire</EA_Settings_UseSecondaryLLM>
+    <EA_Settings_UseSecondaryLLM_Desc>Utiliser un LLM pour convertir les comportements en actions (plus lent mais plus intelligent). Si désactivé, utilise la correspondance de motifs (plus rapide).</EA_Settings_UseSecondaryLLM_Desc>
+    <EA_Settings_LLMTimeout>Délai d'expiration du LLM secondaire (secondes)</EA_Settings_LLMTimeout>
+    <EA_Settings_MaxActions>Actions max par conversation</EA_Settings_MaxActions>
+    <EA_Settings_JobWhitelist>Liste blanche de travaux personnalisée</EA_Settings_JobWhitelist>
+    <EA_Settings_JobWhitelist_Desc>JobDefs supplémentaires à autoriser (un par ligne)</EA_Settings_JobWhitelist_Desc>
+    <EA_Settings_ActionConfig>Configuration des actions</EA_Settings_ActionConfig>
+    <EA_Settings_ResetDesc>Réinitialiser par défaut</EA_Settings_ResetDesc>
+
+    <!-- Categories / Catégories -->
+    <EA_Category_Movement>Mouvement</EA_Category_Movement>
+    <EA_Category_Combat>Combat</EA_Category_Combat>
+    <EA_Category_Medical>Médical</EA_Category_Medical>
+    <EA_Category_Social>Social</EA_Category_Social>
+    <EA_Category_Item>Objet</EA_Category_Item>
+    <EA_Category_Job>Contrôle des travaux</EA_Category_Job>
+    <EA_Category_State>État</EA_Category_State>
+    <EA_Category_RJW>RJW</EA_Category_RJW>
+
+    <!-- Movement Actions / Actions de mouvement -->
+    <EA_Action_move_to>Se déplacer vers</EA_Action_move_to>
+    <EA_Action_move_to_Desc>Se déplacer vers un lieu cible</EA_Action_move_to_Desc>
+    <EA_Action_stop>Arrêter</EA_Action_stop>
+    <EA_Action_stop_Desc>Arrêter immédiatement l'action en cours</EA_Action_stop_Desc>
+    <EA_Action_wait>Attendre</EA_Action_wait>
+    <EA_Action_wait_Desc>Attendre à l'emplacement actuel</EA_Action_wait_Desc>
+    <EA_Action_follow>Suivre</EA_Action_follow>
+    <EA_Action_follow_Desc>Suivre le colon cible</EA_Action_follow_Desc>
+    <EA_Action_flee>Fuir</EA_Action_flee>
+    <EA_Action_flee_Desc>Fuir le danger</EA_Action_flee_Desc>
+
+    <!-- Combat Actions / Actions de combat -->
+    <EA_Action_draft_set>Mobiliser/Démobiliser</EA_Action_draft_set>
+    <EA_Action_draft_set_Desc>Définir l'état de mobilisation du colon</EA_Action_draft_set_Desc>
+    <EA_Action_attack_melee>Attaque de mêlée</EA_Action_attack_melee>
+    <EA_Action_attack_melee_Desc>Attaquer la cible au corps-à-corps</EA_Action_attack_melee_Desc>
+    <EA_Action_attack_ranged>Attaque à distance</EA_Action_attack_ranged>
+    <EA_Action_attack_ranged_Desc>Attaquer la cible avec une arme à distance</EA_Action_attack_ranged_Desc>
+    <EA_Action_arrest>Arrêter</EA_Action_arrest>
+    <EA_Action_arrest_Desc>Tenter d'arrêter la cible</EA_Action_arrest_Desc>
+    <EA_Action_drop_weapon>Lâcher l'arme</EA_Action_drop_weapon>
+    <EA_Action_drop_weapon_Desc>Lâcher l'arme actuellement équipée</EA_Action_drop_weapon_Desc>
+    <EA_Action_mental_break_start>Crise mentale</EA_Action_mental_break_start>
+    <EA_Action_mental_break_start_Desc>Déclencher un état mental (liste blanche)</EA_Action_mental_break_start_Desc>
+
+    <!-- Medical Actions / Actions médicales -->
+    <EA_Action_rescue>Secourir</EA_Action_rescue>
+    <EA_Action_rescue_Desc>Secourir un colon à terre</EA_Action_rescue_Desc>
+    <EA_Action_tend>Soigner</EA_Action_tend>
+    <EA_Action_tend_Desc>Soigner un colon blessé</EA_Action_tend_Desc>
+    <EA_Action_feed_patient>Nourrir le patient</EA_Action_feed_patient>
+    <EA_Action_feed_patient_Desc>Nourrir un patient alité</EA_Action_feed_patient_Desc>
+    <EA_Action_force_sleep>Forcer le repos</EA_Action_force_sleep>
+    <EA_Action_force_sleep_Desc>Forcer le colon à se reposer</EA_Action_force_sleep_Desc>
+
+    <!-- Social Actions / Actions sociales -->
+    <EA_Action_recruit>Recruter</EA_Action_recruit>
+    <EA_Action_recruit_Desc>Tenter de recruter un prisonnier</EA_Action_recruit_Desc>
+    <EA_Action_romance_set>Romance</EA_Action_romance_set>
+    <EA_Action_romance_set_Desc>Définir une relation amoureuse</EA_Action_romance_set_Desc>
+    <EA_Action_thought_add>Ajouter une pensée</EA_Action_thought_add>
+    <EA_Action_thought_add_Desc>Ajouter un souvenir au colon</EA_Action_thought_add_Desc>
+    <EA_Action_relation_set>Définir une relation</EA_Action_relation_set>
+    <EA_Action_relation_set_Desc>Modifier la relation du colon</EA_Action_relation_set_Desc>
+    <EA_Action_give_inspiration>Donner l'inspiration</EA_Action_give_inspiration>
+    <EA_Action_give_inspiration_Desc>Accorder une inspiration au colon</EA_Action_give_inspiration_Desc>
+
+    <!-- Item Actions / Actions d'objet -->
+    <EA_Action_drop_item>Lâcher l'objet</EA_Action_drop_item>
+    <EA_Action_drop_item_Desc>Lâcher l'objet tenu</EA_Action_drop_item_Desc>
+    <EA_Action_give_item>Donner un objet</EA_Action_give_item>
+    <EA_Action_give_item_Desc>Donner un objet à la cible</EA_Action_give_item_Desc>
+    <EA_Action_equip>Équiper</EA_Action_equip>
+    <EA_Action_equip_Desc>Équiper une arme ou un vêtement</EA_Action_equip_Desc>
+    <EA_Action_force_eat>Forcer à manger</EA_Action_force_eat>
+    <EA_Action_force_eat_Desc>Forcer le colon à manger</EA_Action_force_eat_Desc>
+
+    <!-- Job Actions / Actions de travail -->
+    <EA_Action_job_start>Commencer un travail</EA_Action_job_start>
+    <EA_Action_job_start_Desc>Commencer un travail spécifique</EA_Action_job_start_Desc>
+    <EA_Action_job_queue_front>Mettre en file</EA_Action_job_queue_front>
+    <EA_Action_job_queue_front_Desc>Mettre un travail en tête de file</EA_Action_job_queue_front_Desc>
+    <EA_Action_job_end>Terminer le travail</EA_Action_job_end>
+    <EA_Action_job_end_Desc>Terminer le travail en cours</EA_Action_job_end_Desc>
+
+    <!-- New Categories / Nouvelles catégories -->
+    <EA_Category_Prisoner>Prisonnier</EA_Category_Prisoner>
+    <EA_Category_Animal>Animal</EA_Category_Animal>
+    <EA_Category_Production>Production</EA_Category_Production>
+    <EA_Category_Recreation>Loisirs</EA_Category_Recreation>
+    <EA_Category_Facility>Installation</EA_Category_Facility>
+    <EA_Category_Funeral>Funérailles</EA_Category_Funeral>
+    <EA_Category_DLC>DLC</EA_Category_DLC>
+
+    <!-- Extension Module Names / Noms des modules d'extension -->
+    <EA_Module_Royalty>Royalty</EA_Module_Royalty>
+    <EA_Module_Ideology>Ideology</EA_Module_Ideology>
+    <EA_Module_Biotech>Biotech</EA_Module_Biotech>
+    <EA_Module_Anomaly>Anomaly</EA_Module_Anomaly>
+    <EA_Module_RJW>RJW</EA_Module_RJW>
+
+    <!-- DLC Actions: Royalty -->
+    <EA_Action_meditate>Méditer</EA_Action_meditate>
+    <EA_Action_meditate_Desc>Méditer au lieu de méditation ou au trône</EA_Action_meditate_Desc>
+    <EA_Action_psycast>Pouvoir psychique</EA_Action_psycast>
+    <EA_Action_psycast_Desc>Utiliser un pouvoir psychique sur la cible</EA_Action_psycast_Desc>
+    <EA_Action_reign>Régner</EA_Action_reign>
+    <EA_Action_reign_Desc>S'asseoir sur le trône pour remplir le devoir de règne</EA_Action_reign_Desc>
+
+    <!-- DLC Actions: Ideology -->
+    <EA_Action_ritual>Rituel</EA_Action_ritual>
+    <EA_Action_ritual_Desc>Commencer un rituel</EA_Action_ritual_Desc>
+    <EA_Action_convert>Convertir</EA_Action_convert>
+    <EA_Action_convert_Desc>Tenter de convertir la cible à votre idéologie</EA_Action_convert_Desc>
+
+    <!-- DLC Actions: Biotech -->
+    <EA_Action_command_mechanoid>Commander un mécanoïde</EA_Action_command_mechanoid>
+    <EA_Action_command_mechanoid_Desc>Commander un mécanoïde pour effectuer une action</EA_Action_command_mechanoid_Desc>
+    <EA_Action_enter_biosculpter>Entrer dans le biosculpteur</EA_Action_enter_biosculpter>
+    <EA_Action_enter_biosculpter_Desc>Entrer dans la capsule de biosculptage pour une amélioration</EA_Action_enter_biosculpter_Desc>
+
+    <!-- DLC Actions: Anomaly -->
+    <EA_Action_study_entity>Étudier une entité</EA_Action_study_entity>
+    <EA_Action_study_entity_Desc>Étudier une entité anormale</EA_Action_study_entity_Desc>
+    <EA_Action_suppress_entity>Réprimer une entité</EA_Action_suppress_entity>
+    <EA_Action_suppress_entity_Desc>Réprimer une entité anormale</EA_Action_suppress_entity_Desc>
+
+    <!-- Prisoner Actions / Actions de prisonnier -->
+    <EA_Action_capture>Capturer</EA_Action_capture>
+    <EA_Action_capture_Desc>Capturer un colon à terre comme prisonnier</EA_Action_capture_Desc>
+    <EA_Action_release_prisoner>Libérer le prisonnier</EA_Action_release_prisoner>
+    <EA_Action_release_prisoner_Desc>Libérer le prisonnier</EA_Action_release_prisoner_Desc>
+    <EA_Action_recruit_prisoner>Recruter le prisonnier</EA_Action_recruit_prisoner>
+    <EA_Action_recruit_prisoner_Desc>Tenter de recruter le prisonnier</EA_Action_recruit_prisoner_Desc>
+    <EA_Action_execute>Exécuter</EA_Action_execute>
+    <EA_Action_execute_Desc>Exécuter le prisonnier</EA_Action_execute_Desc>
+    <EA_Action_escort_to_bed>Escorter au lit</EA_Action_escort_to_bed>
+    <EA_Action_escort_to_bed_Desc>Escorter le prisonnier au lit</EA_Action_escort_to_bed_Desc>
+    <EA_Action_strip>Déshabiller</EA_Action_strip>
+    <EA_Action_strip_Desc>Retirer les vêtements de la cible</EA_Action_strip_Desc>
+
+    <!-- Animal Actions / Actions animales -->
+    <EA_Action_tame>Apprivoiser</EA_Action_tame>
+    <EA_Action_tame_Desc>Tenter d'apprivoiser un animal</EA_Action_tame_Desc>
+    <EA_Action_train>Dresser</EA_Action_train>
+    <EA_Action_train_Desc>Dresser un animal</EA_Action_train_Desc>
+    <EA_Action_hunt>Chasser</EA_Action_hunt>
+    <EA_Action_hunt_Desc>Chasser un animal</EA_Action_hunt_Desc>
+    <EA_Action_slaughter>Abattre</EA_Action_slaughter>
+    <EA_Action_slaughter_Desc>Abattre un animal</EA_Action_slaughter_Desc>
+    <EA_Action_milk>Traire</EA_Action_milk>
+    <EA_Action_milk_Desc>Traire un animal</EA_Action_milk_Desc>
+    <EA_Action_shear>Tondre</EA_Action_shear>
+    <EA_Action_shear_Desc>Tondre un animal</EA_Action_shear_Desc>
+
+    <!-- Production Actions / Actions de production -->
+    <EA_Action_haul>Transporter</EA_Action_haul>
+    <EA_Action_haul_Desc>Transporter un objet vers le stockage</EA_Action_haul_Desc>
+    <EA_Action_mine>Miner</EA_Action_mine>
+    <EA_Action_mine_Desc>Miner de la roche ou du minerai</EA_Action_mine_Desc>
+    <EA_Action_cut_plant>Couper les plantes</EA_Action_cut_plant>
+    <EA_Action_cut_plant_Desc>Couper une plante</EA_Action_cut_plant_Desc>
+    <EA_Action_clean>Nettoyer</EA_Action_clean>
+    <EA_Action_clean_Desc>Nettoyer une zone</EA_Action_clean_Desc>
+    <EA_Action_repair>Réparer</EA_Action_repair>
+    <EA_Action_repair_Desc>Réparer un bâtiment ou une structure</EA_Action_repair_Desc>
+    <EA_Action_deconstruct>Démolir</EA_Action_deconstruct>
+    <EA_Action_deconstruct_Desc>Démolir un bâtiment</EA_Action_deconstruct_Desc>
+    <EA_Action_sow>Semer</EA_Action_sow>
+    <EA_Action_sow_Desc>Semer des graines dans une zone de culture</EA_Action_sow_Desc>
+    <EA_Action_harvest>Récolter</EA_Action_harvest>
+    <EA_Action_harvest_Desc>Récolter une plante mature</EA_Action_harvest_Desc>
+    <EA_Action_research>Rechercher</EA_Action_research>
+    <EA_Action_research_Desc>Rechercher au banc de recherche</EA_Action_research_Desc>
+    <EA_Action_craft>Fabriquer</EA_Action_craft>
+    <EA_Action_craft_Desc>Travailler au poste d'artisanat</EA_Action_craft_Desc>
+    <EA_Action_smooth_floor>Aplanir le sol</EA_Action_smooth_floor>
+    <EA_Action_smooth_floor_Desc>Aplanir un sol en pierre brute</EA_Action_smooth_floor_Desc>
+    <EA_Action_build_roof>Construire un toit</EA_Action_build_roof>
+    <EA_Action_build_roof_Desc>Construire un toit dans une zone</EA_Action_build_roof_Desc>
+    <EA_Action_remove_roof>Retirer le toit</EA_Action_remove_roof>
+    <EA_Action_remove_roof_Desc>Retirer le toit d'une zone</EA_Action_remove_roof_Desc>
+    <EA_Action_uninstall>Désinstaller</EA_Action_uninstall>
+    <EA_Action_uninstall_Desc>Désinstaller un bâtiment ou un meuble</EA_Action_uninstall_Desc>
+    <EA_Action_fix_broken>Réparer la panne</EA_Action_fix_broken>
+    <EA_Action_fix_broken_Desc>Réparer un bâtiment hors d'usage</EA_Action_fix_broken_Desc>
+    <EA_Action_refuel>Ravitailler</EA_Action_refuel>
+    <EA_Action_refuel_Desc>Ravitailler un bâtiment en carburant</EA_Action_refuel_Desc>
+    <EA_Action_flick>Actionner</EA_Action_flick>
+    <EA_Action_flick_Desc>Basculer l'interrupteur d'un bâtiment</EA_Action_flick_Desc>
+
+    <!-- Social Actions (New) / Actions sociales (nouvelles) -->
+    <EA_Action_visit_sick>Visiter un malade</EA_Action_visit_sick>
+    <EA_Action_visit_sick_Desc>Visiter un colon malade ou alité</EA_Action_visit_sick_Desc>
+    <EA_Action_social_fight>Bagarre</EA_Action_social_fight>
+    <EA_Action_social_fight_Desc>Déclencher une bagarre avec la cible</EA_Action_social_fight_Desc>
+    <EA_Action_lovin>Câlin</EA_Action_lovin>
+    <EA_Action_lovin_Desc>Câlin avec le partenaire au lit</EA_Action_lovin_Desc>
+    <EA_Action_insult>Insulter</EA_Action_insult>
+    <EA_Action_insult_Desc>Insulter le colon cible</EA_Action_insult_Desc>
+    <EA_Action_marry>Se marier</EA_Action_marry>
+    <EA_Action_marry_Desc>Épouser le colon cible (cérémonie)</EA_Action_marry_Desc>
+    <EA_Action_spectate>Observer</EA_Action_spectate>
+    <EA_Action_spectate_Desc>Regarder un spectacle ou un événement</EA_Action_spectate_Desc>
+
+    <!-- Recreation Actions / Actions de loisirs -->
+    <EA_Action_stargaze>Contempler les étoiles</EA_Action_stargaze>
+    <EA_Action_stargaze_Desc>Admirer les étoiles en extérieur</EA_Action_stargaze_Desc>
+    <EA_Action_go_for_walk>Se balader</EA_Action_go_for_walk>
+    <EA_Action_go_for_walk_Desc>Faire une promenade tranquille</EA_Action_go_for_walk_Desc>
+    <EA_Action_play_music>Jouer de la musique</EA_Action_play_music>
+    <EA_Action_play_music_Desc>Jouer d'un instrument de musique</EA_Action_play_music_Desc>
+    <EA_Action_use_drug>Prendre une drogue</EA_Action_use_drug>
+    <EA_Action_use_drug_Desc>Consommer une drogue ou un produit</EA_Action_use_drug_Desc>
+    <EA_Action_view_art>Contempler l'art</EA_Action_view_art>
+    <EA_Action_view_art_Desc>Contempler une oeuvre d'art pour le plaisir</EA_Action_view_art_Desc>
+
+    <!-- Facility Actions / Actions d'installation -->
+    <EA_Action_use_comms>Utiliser les comms</EA_Action_use_comms>
+    <EA_Action_use_comms_Desc>Utiliser la console de communication</EA_Action_use_comms_Desc>
+    <EA_Action_trade>Commercer</EA_Action_trade>
+    <EA_Action_trade_Desc>Commercer avec un visiteur ou une caravane</EA_Action_trade_Desc>
+    <EA_Action_enter_cryptosleep>Entrer en hypersommeil</EA_Action_enter_cryptosleep>
+    <EA_Action_enter_cryptosleep_Desc>Entrer dans le caisson d'hypersommeil</EA_Action_enter_cryptosleep_Desc>
+    <EA_Action_reload>Recharger</EA_Action_reload>
+    <EA_Action_reload_Desc>Recharger une arme ou une tourelle</EA_Action_reload_Desc>
+    <EA_Action_open_container>Ouvrir un conteneur</EA_Action_open_container>
+    <EA_Action_open_container_Desc>Ouvrir un conteneur ou un caisson</EA_Action_open_container_Desc>
+
+    <!-- Funeral Actions / Actions funéraires -->
+    <EA_Action_bury>Enterrer</EA_Action_bury>
+    <EA_Action_bury_Desc>Enterrer un corps dans une tombe</EA_Action_bury_Desc>
+    <EA_Action_cremate>Incinérer</EA_Action_cremate>
+    <EA_Action_cremate_Desc>Incinérer un corps au four crématoire</EA_Action_cremate_Desc>
+
+    <!-- RJW Actions (conditional) / Actions RJW (conditionnelles) -->
+    <EA_Action_rjw_masturbate>Se masturber</EA_Action_rjw_masturbate>
+    <EA_Action_rjw_masturbate_Desc>Le colon se masturbe</EA_Action_rjw_masturbate_Desc>
+    <EA_Action_rjw_quickie>Coup rapide</EA_Action_rjw_quickie>
+    <EA_Action_rjw_quickie_Desc>Rapport rapide avec la cible</EA_Action_rjw_quickie_Desc>
+    <EA_Action_rjw_join_in_bed>Rejoindre au lit</EA_Action_rjw_join_in_bed>
+    <EA_Action_rjw_join_in_bed_Desc>Rejoindre la cible au lit pour un moment intime</EA_Action_rjw_join_in_bed_Desc>
+
+    <!-- Settings: Keyword Editing / Paramètres : Édition des mots-clés -->
+    <EA_Settings_KeywordEnabled>Activer les mots-clés</EA_Settings_KeywordEnabled>
+    <EA_Settings_KeywordEnabled_Desc>Si désactivé, cette action ne participera pas à la correspondance de mots-clés ni à l'injection de prompt</EA_Settings_KeywordEnabled_Desc>
+    <EA_Settings_KeywordOverride>Mots-clés personnalisés</EA_Settings_KeywordOverride>
+    <EA_Settings_KeywordReset>Réinitialiser les mots-clés</EA_Settings_KeywordReset>
+
+    <!-- Settings: Keyword Pre-Filter / Paramètres : Pré-filtre de mots-clés -->
+    <EA_Settings_KeywordSection>Pré-filtre de mots-clés</EA_Settings_KeywordSection>
+    <EA_Settings_KeywordPreFilter>Activer le pré-filtre de mots-clés</EA_Settings_KeywordPreFilter>
+    <EA_Settings_KeywordPreFilter_Desc>Filtrer les actions par mots-clés du dialogue pour réduire l'utilisation de tokens du LLM. Si désactivé, toutes les actions sont injectées.</EA_Settings_KeywordPreFilter_Desc>
+
+    <!-- Settings: Cooldown / Paramètres : Temps de recharge -->
+    <EA_Settings_CooldownSection>Temps de recharge des actions</EA_Settings_CooldownSection>
+    <EA_Settings_Cooldown>Activer le temps de recharge</EA_Settings_Cooldown>
+    <EA_Settings_Cooldown_Desc>Empêcher l'exécution répétée d'une même action pendant une période de recharge entre les conversations.</EA_Settings_Cooldown_Desc>
+    <EA_Settings_DefaultCooldown>Temps de recharge par défaut</EA_Settings_DefaultCooldown>
+    <EA_Settings_MovementCooldown>Temps de recharge mouvement/loisirs</EA_Settings_MovementCooldown>
+    <EA_Settings_CombatCooldown>Temps de recharge combat</EA_Settings_CombatCooldown>
+    <EA_Settings_SocialCooldown>Temps de recharge social</EA_Settings_SocialCooldown>
+
+    <!-- Undesignated Targets / Cibles non désignées -->
+    <EA_Settings_AllowUndesignated>Autoriser les cibles non désignées</EA_Settings_AllowUndesignated>
+    <EA_Settings_AllowUndesignated_Desc>Si désactivé (par défaut), recherche uniquement les cibles déjà désignées par le joueur (ex : arbres marqués pour la coupe, roches marquées pour le minage). Si activé, EA peut agir sur toute cible valide même si elle n'est pas désignée par le joueur.</EA_Settings_AllowUndesignated_Desc>
+
+    <!-- Job Protection / Protection des travaux -->
+    <EA_Settings_JobProtection>Fenêtre de protection des travaux</EA_Settings_JobProtection>
+    <EA_Settings_JobProtection_Desc>Temps de protection après qu'EA a assigné un travail. Pendant cette fenêtre, les nouvelles actions EA sont mises en file au lieu de remplacer. Empêche les dialogues fréquents de réinitialiser constamment le comportement du colon. 0=désactivé (toujours remplacer).</EA_Settings_JobProtection_Desc>
+
+    <!-- Action Effort Level / Niveau d'effort des actions -->
+    <EA_Settings_ActionEffort>Niveau d'effort des actions</EA_Settings_ActionEffort>
+    <EA_Settings_ActionEffort_Desc>Contrôle la fréquence à laquelle le LLM produit ea_observed : Bas=seulement si nécessaire, Moyen=modéré, Haut=à chaque réponse</EA_Settings_ActionEffort_Desc>
+    <EA_Settings_EffortLow>Bas</EA_Settings_EffortLow>
+    <EA_Settings_EffortMedium>Moyen</EA_Settings_EffortMedium>
+    <EA_Settings_EffortHigh>Haut</EA_Settings_EffortHigh>
+
+    <!-- Execution Messages / Messages d'exécution -->
+    <EA_Exec_Success>Action exécutée : {0}</EA_Exec_Success>
+    <EA_Exec_Failed>Action échouée : {0} - {1}</EA_Exec_Failed>
+    <EA_Exec_Skipped>Action ignorée : {0}</EA_Exec_Skipped>
+
+    <!-- Error Messages / Messages d'erreur -->
+    <EA_Error_ActorNotFound>Acteur introuvable : {0}</EA_Error_ActorNotFound>
+    <EA_Error_TargetNotFound>Cible introuvable : {0}</EA_Error_TargetNotFound>
+    <EA_Error_ActionDisabled>Action désactivée : {0}</EA_Error_ActionDisabled>
+    <EA_Error_JobNotWhitelisted>Travail absent de la liste blanche : {0}</EA_Error_JobNotWhitelisted>
+</LanguageData>

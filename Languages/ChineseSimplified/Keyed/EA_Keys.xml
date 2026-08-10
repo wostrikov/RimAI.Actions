@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- Mod Settings -->
+    <EA_ModName>行为扩展</EA_ModName>
+    <EA_Settings_Title>行为扩展设置</EA_Settings_Title>
+    <EA_Settings_Enabled>启用行为扩展</EA_Settings_Enabled>
+    <EA_Settings_Enabled_Desc>EA 功能总开关</EA_Settings_Enabled_Desc>
+    <EA_Settings_DebugMode>调试模式</EA_Settings_DebugMode>
+    <EA_Settings_DebugMode_Desc>显示详细日志和执行气泡</EA_Settings_DebugMode_Desc>
+    <EA_Settings_ShowBubbles>显示执行气泡</EA_Settings_ShowBubbles>
+    <EA_Settings_ShowBubbles_Desc>在小人头上显示行为执行状态</EA_Settings_ShowBubbles_Desc>
+    <EA_Settings_BehaviorControl>行为控制</EA_Settings_BehaviorControl>
+    <EA_Settings_SkipWorkTime>跳过工作时间小人</EA_Settings_SkipWorkTime>
+    <EA_Settings_SkipWorkTime_Desc>启用后，处于"工作"时间表的小人不会执行EA行为——对话照常进行，但不改变小人行为</EA_Settings_SkipWorkTime_Desc>
+    <EA_Settings_SkipDrafted>跳过被征召小人</EA_Settings_SkipDrafted>
+    <EA_Settings_SkipDrafted_Desc>启用后，被征召的小人不会执行EA行为——对话照常进行，但不改变小人行为</EA_Settings_SkipDrafted_Desc>
+    <EA_Settings_LLMSection>LLM 设置</EA_Settings_LLMSection>
+    <EA_Settings_UseSecondaryLLM>使用二次 LLM 调用</EA_Settings_UseSecondaryLLM>
+    <EA_Settings_UseSecondaryLLM_Desc>使用 LLM 将行为转换为动作（更智能但更慢）。禁用时使用模式匹配（更快）。</EA_Settings_UseSecondaryLLM_Desc>
+    <EA_Settings_LLMTimeout>二次LLM调用超时（秒）</EA_Settings_LLMTimeout>
+    <EA_Settings_MaxActions>每对话最大动作数</EA_Settings_MaxActions>
+    <EA_Settings_JobWhitelist>自定义任务白名单</EA_Settings_JobWhitelist>
+    <EA_Settings_JobWhitelist_Desc>允许的额外 JobDef（每行一个）</EA_Settings_JobWhitelist_Desc>
+    <EA_Settings_ActionConfig>动作配置</EA_Settings_ActionConfig>
+    <EA_Settings_ResetDesc>重置为默认</EA_Settings_ResetDesc>
+
+    <!-- Categories -->
+    <EA_Category_Movement>移动</EA_Category_Movement>
+    <EA_Category_Combat>战斗</EA_Category_Combat>
+    <EA_Category_Medical>医疗</EA_Category_Medical>
+    <EA_Category_Social>社交</EA_Category_Social>
+    <EA_Category_Item>物品</EA_Category_Item>
+    <EA_Category_Job>任务控制</EA_Category_Job>
+    <EA_Category_State>状态</EA_Category_State>
+    <EA_Category_RJW>RJW</EA_Category_RJW>
+
+    <!-- Movement Actions -->
+    <EA_Action_move_to>移动至</EA_Action_move_to>
+    <EA_Action_move_to_Desc>移动到目标位置</EA_Action_move_to_Desc>
+    <EA_Action_stop>停止</EA_Action_stop>
+    <EA_Action_stop_Desc>立即停止当前动作</EA_Action_stop_Desc>
+    <EA_Action_wait>等待</EA_Action_wait>
+    <EA_Action_wait_Desc>在当前位置等待</EA_Action_wait_Desc>
+    <EA_Action_follow>跟随</EA_Action_follow>
+    <EA_Action_follow_Desc>跟随目标小人</EA_Action_follow_Desc>
+    <EA_Action_flee>逃跑</EA_Action_flee>
+    <EA_Action_flee_Desc>逃离危险</EA_Action_flee_Desc>
+
+    <!-- Combat Actions -->
+    <EA_Action_draft_set>征召/解除</EA_Action_draft_set>
+    <EA_Action_draft_set_Desc>设置小人征召状态</EA_Action_draft_set_Desc>
+    <EA_Action_attack_melee>近战攻击</EA_Action_attack_melee>
+    <EA_Action_attack_melee_Desc>使用近战武器攻击目标</EA_Action_attack_melee_Desc>
+    <EA_Action_attack_ranged>远程攻击</EA_Action_attack_ranged>
+    <EA_Action_attack_ranged_Desc>使用远程武器攻击目标</EA_Action_attack_ranged_Desc>
+    <EA_Action_arrest>逮捕</EA_Action_arrest>
+    <EA_Action_arrest_Desc>尝试逮捕目标</EA_Action_arrest_Desc>
+    <EA_Action_drop_weapon>丢弃武器</EA_Action_drop_weapon>
+    <EA_Action_drop_weapon_Desc>丢弃当前装备的武器</EA_Action_drop_weapon_Desc>
+    <EA_Action_mental_break_start>精神崩溃</EA_Action_mental_break_start>
+    <EA_Action_mental_break_start_Desc>触发精神状态（白名单）</EA_Action_mental_break_start_Desc>
+
+    <!-- Medical Actions -->
+    <EA_Action_rescue>救援</EA_Action_rescue>
+    <EA_Action_rescue_Desc>救援倒地的小人</EA_Action_rescue_Desc>
+    <EA_Action_tend>治疗</EA_Action_tend>
+    <EA_Action_tend_Desc>治疗受伤的小人</EA_Action_tend_Desc>
+    <EA_Action_feed_patient>喂食病人</EA_Action_feed_patient>
+    <EA_Action_feed_patient_Desc>喂食卧床的病人</EA_Action_feed_patient_Desc>
+    <EA_Action_force_sleep>强制休息</EA_Action_force_sleep>
+    <EA_Action_force_sleep_Desc>强制小人休息</EA_Action_force_sleep_Desc>
+
+    <!-- Social Actions -->
+    <EA_Action_recruit>招募</EA_Action_recruit>
+    <EA_Action_recruit_Desc>尝试招募囚犯</EA_Action_recruit_Desc>
+    <EA_Action_romance_set>恋爱</EA_Action_romance_set>
+    <EA_Action_romance_set_Desc>设置恋爱关系</EA_Action_romance_set_Desc>
+    <EA_Action_thought_add>添加思绪</EA_Action_thought_add>
+    <EA_Action_thought_add_Desc>给小人添加记忆思绪</EA_Action_thought_add_Desc>
+    <EA_Action_relation_set>设置关系</EA_Action_relation_set>
+    <EA_Action_relation_set_Desc>修改小人之间的关系</EA_Action_relation_set_Desc>
+    <EA_Action_give_inspiration>给予灵感</EA_Action_give_inspiration>
+    <EA_Action_give_inspiration_Desc>赋予小人灵感</EA_Action_give_inspiration_Desc>
+
+    <!-- Item Actions -->
+    <EA_Action_drop_item>丢弃物品</EA_Action_drop_item>
+    <EA_Action_drop_item_Desc>丢弃手持物品</EA_Action_drop_item_Desc>
+    <EA_Action_give_item>赠送物品</EA_Action_give_item>
+    <EA_Action_give_item_Desc>将物品给予目标</EA_Action_give_item_Desc>
+    <EA_Action_equip>装备</EA_Action_equip>
+    <EA_Action_equip_Desc>装备武器或服装</EA_Action_equip_Desc>
+    <EA_Action_force_eat>强制进食</EA_Action_force_eat>
+    <EA_Action_force_eat_Desc>强制小人进食</EA_Action_force_eat_Desc>
+
+    <!-- Job Actions -->
+    <EA_Action_job_start>开始任务</EA_Action_job_start>
+    <EA_Action_job_start_Desc>开始指定任务</EA_Action_job_start_Desc>
+    <EA_Action_job_queue_front>队列任务</EA_Action_job_queue_front>
+    <EA_Action_job_queue_front_Desc>将任务加入队列前端</EA_Action_job_queue_front_Desc>
+    <EA_Action_job_end>结束任务</EA_Action_job_end>
+    <EA_Action_job_end_Desc>结束当前任务</EA_Action_job_end_Desc>
+
+    <!-- New Categories -->
+    <EA_Category_Prisoner>囚犯</EA_Category_Prisoner>
+    <EA_Category_Animal>动物</EA_Category_Animal>
+    <EA_Category_Production>生产</EA_Category_Production>
+    <EA_Category_Recreation>娱乐</EA_Category_Recreation>
+    <EA_Category_Facility>设施</EA_Category_Facility>
+    <EA_Category_Funeral>葬礼</EA_Category_Funeral>
+    <EA_Category_DLC>DLC</EA_Category_DLC>
+
+    <!-- Extension Module Names -->
+    <EA_Module_Royalty>皇权</EA_Module_Royalty>
+    <EA_Module_Ideology>文化</EA_Module_Ideology>
+    <EA_Module_Biotech>生物科技</EA_Module_Biotech>
+    <EA_Module_Anomaly>异常</EA_Module_Anomaly>
+    <EA_Module_RJW>RJW</EA_Module_RJW>
+
+    <!-- DLC Actions: Royalty -->
+    <EA_Action_meditate>冥想</EA_Action_meditate>
+    <EA_Action_meditate_Desc>在冥想点或王座前冥想</EA_Action_meditate_Desc>
+    <EA_Action_psycast>灵能</EA_Action_psycast>
+    <EA_Action_psycast_Desc>对目标使用灵能</EA_Action_psycast_Desc>
+    <EA_Action_reign>统治</EA_Action_reign>
+    <EA_Action_reign_Desc>坐在王座上履行统治职责</EA_Action_reign_Desc>
+
+    <!-- DLC Actions: Ideology -->
+    <EA_Action_ritual>仪式</EA_Action_ritual>
+    <EA_Action_ritual_Desc>发起仪式</EA_Action_ritual_Desc>
+    <EA_Action_convert>转化</EA_Action_convert>
+    <EA_Action_convert_Desc>尝试将目标转化为自己的信仰</EA_Action_convert_Desc>
+
+    <!-- DLC Actions: Biotech -->
+    <EA_Action_command_mechanoid>命令机械体</EA_Action_command_mechanoid>
+    <EA_Action_command_mechanoid_Desc>命令机械体执行动作</EA_Action_command_mechanoid_Desc>
+    <EA_Action_enter_biosculpter>进入生物塑型舱</EA_Action_enter_biosculpter>
+    <EA_Action_enter_biosculpter_Desc>进入生物塑型舱进行强化</EA_Action_enter_biosculpter_Desc>
+
+    <!-- DLC Actions: Anomaly -->
+    <EA_Action_study_entity>研究实体</EA_Action_study_entity>
+    <EA_Action_study_entity_Desc>研究异常实体</EA_Action_study_entity_Desc>
+    <EA_Action_suppress_entity>压制实体</EA_Action_suppress_entity>
+    <EA_Action_suppress_entity_Desc>压制异常实体防止逃脱</EA_Action_suppress_entity_Desc>
+
+    <!-- Prisoner Actions -->
+    <EA_Action_capture>俘虏</EA_Action_capture>
+    <EA_Action_capture_Desc>将倒地的小人俘虏</EA_Action_capture_Desc>
+    <EA_Action_release_prisoner>释放囚犯</EA_Action_release_prisoner>
+    <EA_Action_release_prisoner_Desc>释放囚犯</EA_Action_release_prisoner_Desc>
+    <EA_Action_recruit_prisoner>招募囚犯</EA_Action_recruit_prisoner>
+    <EA_Action_recruit_prisoner_Desc>尝试招募囚犯</EA_Action_recruit_prisoner_Desc>
+    <EA_Action_execute>处决</EA_Action_execute>
+    <EA_Action_execute_Desc>处决囚犯</EA_Action_execute_Desc>
+    <EA_Action_escort_to_bed>押送至床位</EA_Action_escort_to_bed>
+    <EA_Action_escort_to_bed_Desc>将囚犯押送至床位</EA_Action_escort_to_bed_Desc>
+    <EA_Action_strip>剥取</EA_Action_strip>
+    <EA_Action_strip_Desc>剥取目标的服装</EA_Action_strip_Desc>
+
+    <!-- Animal Actions -->
+    <EA_Action_tame>驯服</EA_Action_tame>
+    <EA_Action_tame_Desc>尝试驯服动物</EA_Action_tame_Desc>
+    <EA_Action_train>训练</EA_Action_train>
+    <EA_Action_train_Desc>训练动物</EA_Action_train_Desc>
+    <EA_Action_hunt>狩猎</EA_Action_hunt>
+    <EA_Action_hunt_Desc>狩猎动物</EA_Action_hunt_Desc>
+    <EA_Action_slaughter>屠宰</EA_Action_slaughter>
+    <EA_Action_slaughter_Desc>屠宰动物</EA_Action_slaughter_Desc>
+    <EA_Action_milk>挤奶</EA_Action_milk>
+    <EA_Action_milk_Desc>给动物挤奶</EA_Action_milk_Desc>
+    <EA_Action_shear>剪毛</EA_Action_shear>
+    <EA_Action_shear_Desc>给动物剪毛</EA_Action_shear_Desc>
+
+    <!-- Production Actions -->
+    <EA_Action_haul>搬运</EA_Action_haul>
+    <EA_Action_haul_Desc>将物品搬运到仓储区</EA_Action_haul_Desc>
+    <EA_Action_mine>采矿</EA_Action_mine>
+    <EA_Action_mine_Desc>开采岩石或矿物</EA_Action_mine_Desc>
+    <EA_Action_cut_plant>砍伐植物</EA_Action_cut_plant>
+    <EA_Action_cut_plant_Desc>砍伐植物</EA_Action_cut_plant_Desc>
+    <EA_Action_clean>清洁</EA_Action_clean>
+    <EA_Action_clean_Desc>清洁区域</EA_Action_clean_Desc>
+    <EA_Action_repair>修理</EA_Action_repair>
+    <EA_Action_repair_Desc>修理建筑或设施</EA_Action_repair_Desc>
+    <EA_Action_deconstruct>拆除</EA_Action_deconstruct>
+    <EA_Action_deconstruct_Desc>拆除建筑</EA_Action_deconstruct_Desc>
+    <EA_Action_sow>播种</EA_Action_sow>
+    <EA_Action_sow_Desc>在种植区播种</EA_Action_sow_Desc>
+    <EA_Action_harvest>收割</EA_Action_harvest>
+    <EA_Action_harvest_Desc>收割成熟的作物</EA_Action_harvest_Desc>
+    <EA_Action_research>研究</EA_Action_research>
+    <EA_Action_research_Desc>在研究台进行研究</EA_Action_research_Desc>
+    <EA_Action_craft>制作</EA_Action_craft>
+    <EA_Action_craft_Desc>在工作台进行制作</EA_Action_craft_Desc>
+    <EA_Action_smooth_floor>抛光地面</EA_Action_smooth_floor>
+    <EA_Action_smooth_floor_Desc>抛光粗糙的地面</EA_Action_smooth_floor_Desc>
+    <EA_Action_build_roof>建造屋顶</EA_Action_build_roof>
+    <EA_Action_build_roof_Desc>在区域建造屋顶</EA_Action_build_roof_Desc>
+    <EA_Action_remove_roof>拆除屋顶</EA_Action_remove_roof>
+    <EA_Action_remove_roof_Desc>拆除区域的屋顶</EA_Action_remove_roof_Desc>
+    <EA_Action_uninstall>卸载</EA_Action_uninstall>
+    <EA_Action_uninstall_Desc>卸载建筑或家具</EA_Action_uninstall_Desc>
+    <EA_Action_fix_broken>修复故障</EA_Action_fix_broken>
+    <EA_Action_fix_broken_Desc>修复故障的建筑</EA_Action_fix_broken_Desc>
+    <EA_Action_refuel>加油</EA_Action_refuel>
+    <EA_Action_refuel_Desc>给建筑加油</EA_Action_refuel_Desc>
+    <EA_Action_flick>开关</EA_Action_flick>
+    <EA_Action_flick_Desc>切换建筑的电源开关</EA_Action_flick_Desc>
+
+    <!-- Social Actions (New) -->
+    <EA_Action_visit_sick>探病</EA_Action_visit_sick>
+    <EA_Action_visit_sick_Desc>探望生病或卧床的小人</EA_Action_visit_sick_Desc>
+    <EA_Action_social_fight>社交打架</EA_Action_social_fight>
+    <EA_Action_social_fight_Desc>与目标发生社交冲突</EA_Action_social_fight_Desc>
+    <EA_Action_lovin>亲热</EA_Action_lovin>
+    <EA_Action_lovin_Desc>与伴侣在床上亲热</EA_Action_lovin_Desc>
+    <EA_Action_insult>侮辱</EA_Action_insult>
+    <EA_Action_insult_Desc>侮辱目标小人</EA_Action_insult_Desc>
+    <EA_Action_marry>结婚</EA_Action_marry>
+    <EA_Action_marry_Desc>与目标小人举行婚礼</EA_Action_marry_Desc>
+    <EA_Action_spectate>观看</EA_Action_spectate>
+    <EA_Action_spectate_Desc>观看景象或事件</EA_Action_spectate_Desc>
+
+    <!-- Recreation Actions -->
+    <EA_Action_stargaze>观星</EA_Action_stargaze>
+    <EA_Action_stargaze_Desc>在户外观星</EA_Action_stargaze_Desc>
+    <EA_Action_go_for_walk>散步</EA_Action_go_for_walk>
+    <EA_Action_go_for_walk_Desc>悠闲地散步</EA_Action_go_for_walk_Desc>
+    <EA_Action_play_music>演奏音乐</EA_Action_play_music>
+    <EA_Action_play_music_Desc>演奏乐器</EA_Action_play_music_Desc>
+    <EA_Action_use_drug>使用药物</EA_Action_use_drug>
+    <EA_Action_use_drug_Desc>使用药物或消耗品</EA_Action_use_drug_Desc>
+    <EA_Action_view_art>欣赏艺术</EA_Action_view_art>
+    <EA_Action_view_art_Desc>欣赏艺术品获得愉悦</EA_Action_view_art_Desc>
+
+    <!-- Facility Actions -->
+    <EA_Action_use_comms>使用通讯台</EA_Action_use_comms>
+    <EA_Action_use_comms_Desc>使用通讯控制台</EA_Action_use_comms_Desc>
+    <EA_Action_trade>交易</EA_Action_trade>
+    <EA_Action_trade_Desc>与来访者或商队交易</EA_Action_trade_Desc>
+    <EA_Action_enter_cryptosleep>进入低温休眠</EA_Action_enter_cryptosleep>
+    <EA_Action_enter_cryptosleep_Desc>进入低温休眠舱</EA_Action_enter_cryptosleep_Desc>
+    <EA_Action_reload>装填</EA_Action_reload>
+    <EA_Action_reload_Desc>给武器或炮塔装填</EA_Action_reload_Desc>
+    <EA_Action_open_container>打开容器</EA_Action_open_container>
+    <EA_Action_open_container_Desc>打开容器或棺材</EA_Action_open_container_Desc>
+
+    <!-- Funeral Actions -->
+    <EA_Action_bury>埋葬</EA_Action_bury>
+    <EA_Action_bury_Desc>将尸体埋入坟墓</EA_Action_bury_Desc>
+    <EA_Action_cremate>火化</EA_Action_cremate>
+    <EA_Action_cremate_Desc>在火化场火化尸体</EA_Action_cremate_Desc>
+
+    <!-- RJW Actions (conditional) -->
+    <EA_Action_rjw_masturbate>自慰</EA_Action_rjw_masturbate>
+    <EA_Action_rjw_masturbate_Desc>小人自慰</EA_Action_rjw_masturbate_Desc>
+    <EA_Action_rjw_quickie>快速交合</EA_Action_rjw_quickie>
+    <EA_Action_rjw_quickie_Desc>与目标快速交合</EA_Action_rjw_quickie_Desc>
+    <EA_Action_rjw_join_in_bed>同床</EA_Action_rjw_join_in_bed>
+    <EA_Action_rjw_join_in_bed_Desc>与目标同床亲密</EA_Action_rjw_join_in_bed_Desc>
+
+    <!-- 设置：关键词编辑 -->
+    <EA_Settings_KeywordEnabled>启用关键词</EA_Settings_KeywordEnabled>
+    <EA_Settings_KeywordEnabled_Desc>禁用后，此行为不参与关键词匹配和 Prompt 注入</EA_Settings_KeywordEnabled_Desc>
+    <EA_Settings_KeywordOverride>自定义关键词</EA_Settings_KeywordOverride>
+    <EA_Settings_KeywordReset>重置关键词</EA_Settings_KeywordReset>
+
+    <!-- 设置：关键词预过滤 -->
+    <EA_Settings_KeywordSection>关键词预过滤</EA_Settings_KeywordSection>
+    <EA_Settings_KeywordPreFilter>启用关键词预过滤</EA_Settings_KeywordPreFilter>
+    <EA_Settings_KeywordPreFilter_Desc>根据对话关键词过滤可用行为，减少 LLM Token 消耗。关闭后将注入所有行为。</EA_Settings_KeywordPreFilter_Desc>
+
+    <!-- 设置：行为冷却 -->
+    <EA_Settings_CooldownSection>行为冷却</EA_Settings_CooldownSection>
+    <EA_Settings_Cooldown>启用行为冷却</EA_Settings_Cooldown>
+    <EA_Settings_Cooldown_Desc>防止跨对话重复执行相同行为。</EA_Settings_Cooldown_Desc>
+    <EA_Settings_DefaultCooldown>默认冷却时间</EA_Settings_DefaultCooldown>
+    <EA_Settings_MovementCooldown>移动/娱乐冷却时间</EA_Settings_MovementCooldown>
+    <EA_Settings_CombatCooldown>战斗冷却时间</EA_Settings_CombatCooldown>
+    <EA_Settings_SocialCooldown>社交冷却时间</EA_Settings_SocialCooldown>
+
+    <!-- 未标记目标 -->
+    <EA_Settings_AllowUndesignated>允许操作未标记目标</EA_Settings_AllowUndesignated>
+    <EA_Settings_AllowUndesignated_Desc>关闭时（默认），自动寻找目标仅限玩家已标记的（如已标记砍伐的树、已标记开采的矿）。开启后，EA可操作任何有效目标，即使玩家未标记。</EA_Settings_AllowUndesignated_Desc>
+
+    <!-- 行为保护窗口 -->
+    <EA_Settings_JobProtection>行为保护窗口</EA_Settings_JobProtection>
+    <EA_Settings_JobProtection_Desc>EA分配行为后的保护时间。保护期内新的EA行为排队而非覆盖，防止频繁对话打断正在执行的行为。0=禁用（总是覆盖）。</EA_Settings_JobProtection_Desc>
+
+    <!-- 行为输出强度 -->
+    <EA_Settings_ActionEffort>行为输出强度</EA_Settings_ActionEffort>
+    <EA_Settings_ActionEffort_Desc>控制 LLM 输出 ea_observed 的频率: 低=仅必要时, 中=适当输出, 高=每句必须</EA_Settings_ActionEffort_Desc>
+    <EA_Settings_EffortLow>低</EA_Settings_EffortLow>
+    <EA_Settings_EffortMedium>中</EA_Settings_EffortMedium>
+    <EA_Settings_EffortHigh>高</EA_Settings_EffortHigh>
+
+    <!-- Execution Messages -->
+    <EA_Exec_Success>行为已执行: {0}</EA_Exec_Success>
+    <EA_Exec_Failed>行为失败: {0} - {1}</EA_Exec_Failed>
+    <EA_Exec_Skipped>行为跳过: {0}</EA_Exec_Skipped>
+
+    <!-- Error Messages -->
+    <EA_Error_ActorNotFound>找不到执行者: {0}</EA_Error_ActorNotFound>
+    <EA_Error_TargetNotFound>找不到目标: {0}</EA_Error_TargetNotFound>
+    <EA_Error_ActionDisabled>行为已禁用: {0}</EA_Error_ActionDisabled>
+    <EA_Error_JobNotWhitelisted>任务不在白名单中: {0}</EA_Error_JobNotWhitelisted>
+</LanguageData>

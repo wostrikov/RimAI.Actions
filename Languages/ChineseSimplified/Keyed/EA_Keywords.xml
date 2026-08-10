@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- EA 行为关键词 (简体中文) -->
+    <!-- 格式: <EA_KW_{actionId}>关键词1, 关键词2, ...</EA_KW_{actionId}> -->
+
+    <!-- 移动 -->
+    <EA_KW_move_to>走, 移动, 前往, 过去</EA_KW_move_to>
+    <EA_KW_stop>停, 停止, 停下</EA_KW_stop>
+    <EA_KW_wait>等, 等待, 待命, 站立, 站</EA_KW_wait>
+    <EA_KW_follow>跟随, 跟着, 跟上</EA_KW_follow>
+    <EA_KW_flee>逃, 逃跑, 逃离</EA_KW_flee>
+
+    <!-- 战斗 -->
+    <EA_KW_draft_set>征召, 解除征召, 备战</EA_KW_draft_set>
+    <EA_KW_attack_melee>近战, 攻击, 打</EA_KW_attack_melee>
+    <EA_KW_attack_ranged>射击, 远程, 开枪, 射</EA_KW_attack_ranged>
+    <EA_KW_arrest>逮捕, 抓捕</EA_KW_arrest>
+    <EA_KW_drop_weapon>丢弃武器, 放下武器</EA_KW_drop_weapon>
+    <EA_KW_mental_break_start>精神崩溃, 发狂</EA_KW_mental_break_start>
+
+    <!-- 医疗 -->
+    <EA_KW_rescue>救援, 营救, 搬运</EA_KW_rescue>
+    <EA_KW_tend>治疗, 包扎, 医治</EA_KW_tend>
+    <EA_KW_feed_patient>喂食, 喂饭, 病人</EA_KW_feed_patient>
+    <EA_KW_force_sleep>睡觉, 睡, 躺下, 休息, 歇</EA_KW_force_sleep>
+
+    <!-- 社交 -->
+    <EA_KW_recruit>招募, 说服</EA_KW_recruit>
+    <EA_KW_romance_set>恋爱, 分手, 告白</EA_KW_romance_set>
+    <EA_KW_thought_add>思绪, 心情, 记忆</EA_KW_thought_add>
+    <EA_KW_relation_set>关系, 朋友, 敌人</EA_KW_relation_set>
+    <EA_KW_give_inspiration>灵感, 激励</EA_KW_give_inspiration>
+    <EA_KW_visit_sick>探病, 看望, 探望</EA_KW_visit_sick>
+    <EA_KW_social_fight>打架, 吵架, 斗殴</EA_KW_social_fight>
+    <EA_KW_lovin>亲热, 恩爱</EA_KW_lovin>
+    <EA_KW_insult>侮辱, 嘲笑, 骂</EA_KW_insult>
+    <EA_KW_marry>结婚, 婚礼</EA_KW_marry>
+    <EA_KW_spectate>观看, 观赏</EA_KW_spectate>
+
+    <!-- 物品 -->
+    <EA_KW_drop_item>丢弃, 放下, 丢</EA_KW_drop_item>
+    <EA_KW_give_item>赠送, 给, 递给</EA_KW_give_item>
+    <EA_KW_equip>装备, 穿上, 武装</EA_KW_equip>
+    <EA_KW_force_eat>吃, 进食, 吃饭, 用餐</EA_KW_force_eat>
+
+    <!-- 任务 -->
+    <EA_KW_job_start>任务, 工作</EA_KW_job_start>
+    <EA_KW_job_queue_front>排队, 队列</EA_KW_job_queue_front>
+    <EA_KW_job_end>结束任务, 取消</EA_KW_job_end>
+
+    <!-- 囚犯 -->
+    <EA_KW_capture>抓住, 俘虏, 抓获</EA_KW_capture>
+    <EA_KW_release_prisoner>释放, 放走</EA_KW_release_prisoner>
+    <EA_KW_recruit_prisoner>招募囚犯, 说服囚犯</EA_KW_recruit_prisoner>
+    <EA_KW_execute>处决, 处刑</EA_KW_execute>
+    <EA_KW_escort_to_bed>押送, 带回</EA_KW_escort_to_bed>
+    <EA_KW_strip>剥取, 脱衣</EA_KW_strip>
+
+    <!-- 动物 -->
+    <EA_KW_tame>驯服, 驯化</EA_KW_tame>
+    <EA_KW_train>训练, 教导</EA_KW_train>
+    <EA_KW_hunt>狩猎, 猎杀, 打猎</EA_KW_hunt>
+    <EA_KW_slaughter>屠宰, 宰杀</EA_KW_slaughter>
+    <EA_KW_milk>挤奶</EA_KW_milk>
+    <EA_KW_shear>剪毛</EA_KW_shear>
+
+    <!-- 生产 -->
+    <EA_KW_haul>搬运, 搬, 运输, 运, 扛</EA_KW_haul>
+    <EA_KW_mine>采矿, 挖矿, 挖</EA_KW_mine>
+    <EA_KW_cut_plant>砍, 砍伐, 植物</EA_KW_cut_plant>
+    <EA_KW_clean>清洁, 打扫, 扫地</EA_KW_clean>
+    <EA_KW_repair>修理, 修复</EA_KW_repair>
+    <EA_KW_deconstruct>拆除, 拆</EA_KW_deconstruct>
+    <EA_KW_sow>播种, 种植</EA_KW_sow>
+    <EA_KW_harvest>收割, 收获</EA_KW_harvest>
+    <EA_KW_research>研究, 科研</EA_KW_research>
+    <EA_KW_craft>制作, 制造, 打造</EA_KW_craft>
+    <EA_KW_smooth_floor>抛光, 地面</EA_KW_smooth_floor>
+    <EA_KW_build_roof>屋顶, 建造屋顶</EA_KW_build_roof>
+    <EA_KW_remove_roof>拆除屋顶</EA_KW_remove_roof>
+    <EA_KW_uninstall>卸载, 拆卸</EA_KW_uninstall>
+    <EA_KW_fix_broken>修复, 故障</EA_KW_fix_broken>
+    <EA_KW_refuel>加油, 燃料</EA_KW_refuel>
+    <EA_KW_flick>开关, 切换</EA_KW_flick>
+
+    <!-- 娱乐 -->
+    <EA_KW_stargaze>观星, 看星星</EA_KW_stargaze>
+    <EA_KW_go_for_walk>散步, 闲逛, 逛, 溜达</EA_KW_go_for_walk>
+    <EA_KW_play_music>音乐, 演奏, 乐器</EA_KW_play_music>
+    <EA_KW_use_drug>药物, 毒品, 嗑药</EA_KW_use_drug>
+    <EA_KW_view_art>艺术, 雕塑, 欣赏</EA_KW_view_art>
+
+    <!-- 设施 -->
+    <EA_KW_use_comms>通讯, 联络</EA_KW_use_comms>
+    <EA_KW_trade>交易, 买卖, 贸易</EA_KW_trade>
+    <EA_KW_enter_cryptosleep>低温休眠, 冬眠</EA_KW_enter_cryptosleep>
+    <EA_KW_reload>装填, 弹药</EA_KW_reload>
+    <EA_KW_open_container>打开, 容器</EA_KW_open_container>
+
+    <!-- 葬礼 -->
+    <EA_KW_bury>埋葬, 坟墓, 葬礼</EA_KW_bury>
+    <EA_KW_cremate>火化, 焚烧</EA_KW_cremate>
+
+    <!-- FallbackConversion: 移动动词 -->
+    <EA_MovementVerbs>前往, 去, 走向, 到</EA_MovementVerbs>
+
+    <!-- FallbackConversion: 目标名词关键词 -->
+    <EA_TargetNoun_mine>矿, 采矿</EA_TargetNoun_mine>
+    <EA_TargetNoun_cut_plant>树, 砍, 伐</EA_TargetNoun_cut_plant>
+    <EA_TargetNoun_sow>田, 种, 播</EA_TargetNoun_sow>
+    <EA_TargetNoun_research>研究, 实验</EA_TargetNoun_research>
+    <EA_TargetNoun_clean>清洁, 扫, 洁</EA_TargetNoun_clean>
+    <EA_TargetNoun_hunt>猎, 狩</EA_TargetNoun_hunt>
+    <EA_TargetNoun_repair>修, 补</EA_TargetNoun_repair>
+    <EA_TargetNoun_craft>建, 造</EA_TargetNoun_craft>
+</LanguageData>

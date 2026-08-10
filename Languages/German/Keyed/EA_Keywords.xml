@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- EA Action Keywords (German) -->
+    <!-- Format: <EA_KW_{actionId}>keyword1, keyword2, ...</EA_KW_{actionId}> -->
+
+    <!-- Movement / Bewegung -->
+    <EA_KW_move_to>bewegen, gehen, laufen</EA_KW_move_to>
+    <EA_KW_stop>stoppen, anhalten, aufhören</EA_KW_stop>
+    <EA_KW_wait>warten, bleiben, stehen</EA_KW_wait>
+    <EA_KW_follow>folgen</EA_KW_follow>
+    <EA_KW_flee>fliehen, rennen, entkommen</EA_KW_flee>
+
+    <!-- Combat / Kampf -->
+    <EA_KW_draft_set>Kampfmodus, einziehen</EA_KW_draft_set>
+    <EA_KW_attack_melee>angreifen, Nahkampf, schlagen, prügeln</EA_KW_attack_melee>
+    <EA_KW_attack_ranged>schießen, Fernkampf, feuern</EA_KW_attack_ranged>
+    <EA_KW_arrest>inhaftieren, verhaften</EA_KW_arrest>
+    <EA_KW_drop_weapon>Waffe fallen lassen, entwaffnen</EA_KW_drop_weapon>
+    <EA_KW_mental_break_start>mental, Zusammenbruch, Amoklauf</EA_KW_mental_break_start>
+
+    <!-- Medical / Medizinisch -->
+    <EA_KW_rescue>retten, bergen, tragen</EA_KW_rescue>
+    <EA_KW_tend>behandeln, heilen, versorgen</EA_KW_tend>
+    <EA_KW_feed_patient>füttern, Nahrung, Patient</EA_KW_feed_patient>
+    <EA_KW_force_sleep>schlafen, Nickerchen, ausruhen</EA_KW_force_sleep>
+
+    <!-- Social / Sozial -->
+    <EA_KW_recruit>rekrutieren, anwerben</EA_KW_recruit>
+    <EA_KW_romance_set>Romanze, Liebhaber, Trennung</EA_KW_romance_set>
+    <EA_KW_thought_add>Gedanke, Erinnerung, Stimmung</EA_KW_thought_add>
+    <EA_KW_relation_set>Beziehung, Freund, Feind</EA_KW_relation_set>
+    <EA_KW_give_inspiration>Inspiration, inspirieren</EA_KW_give_inspiration>
+    <EA_KW_visit_sick>besuchen, krank, leidend</EA_KW_visit_sick>
+    <EA_KW_social_fight>Prügelei, Schlägerei, Streit</EA_KW_social_fight>
+    <EA_KW_lovin>Lovin</EA_KW_lovin>
+    <EA_KW_insult>beleidigen, verspotten</EA_KW_insult>
+    <EA_KW_marry>heiraten, Hochzeit, Ehe</EA_KW_marry>
+    <EA_KW_spectate>zuschauen, beobachten, zusehen</EA_KW_spectate>
+
+    <!-- Item / Gegenstand -->
+    <EA_KW_drop_item>ablegen</EA_KW_drop_item>
+    <EA_KW_give_item>geben, überreichen</EA_KW_give_item>
+    <EA_KW_equip>ausrüsten, anlegen</EA_KW_equip>
+    <EA_KW_force_eat>essen, Nahrung</EA_KW_force_eat>
+
+    <!-- Job / Auftrag -->
+    <EA_KW_job_start>Auftrag, arbeiten, Aufgabe</EA_KW_job_start>
+    <EA_KW_job_queue_front>einreihen</EA_KW_job_queue_front>
+    <EA_KW_job_end>Auftrag beenden, abbrechen</EA_KW_job_end>
+
+    <!-- Prisoner / Gefangene -->
+    <EA_KW_capture>einfangen, Gefangener</EA_KW_capture>
+    <EA_KW_release_prisoner>freilassen, befreien</EA_KW_release_prisoner>
+    <EA_KW_recruit_prisoner>Gefangenen rekrutieren</EA_KW_recruit_prisoner>
+    <EA_KW_execute>hinrichten, Gefangenen töten</EA_KW_execute>
+    <EA_KW_escort_to_bed>eskortieren, Bett</EA_KW_escort_to_bed>
+    <EA_KW_strip>entkleiden, ausziehen</EA_KW_strip>
+
+    <!-- Animal / Tier -->
+    <EA_KW_tame>zähmen, domestizieren</EA_KW_tame>
+    <EA_KW_train>trainieren</EA_KW_train>
+    <EA_KW_hunt>jagen</EA_KW_hunt>
+    <EA_KW_slaughter>schlachten, metzeln</EA_KW_slaughter>
+    <EA_KW_milk>melken</EA_KW_milk>
+    <EA_KW_shear>scheren, Wolle</EA_KW_shear>
+
+    <!-- Production / Produktion -->
+    <EA_KW_haul>tragen, transportieren</EA_KW_haul>
+    <EA_KW_mine>abbauen, graben</EA_KW_mine>
+    <EA_KW_cut_plant>fällen, entfernen, Pflanze</EA_KW_cut_plant>
+    <EA_KW_clean>reinigen, säubern</EA_KW_clean>
+    <EA_KW_repair>reparieren, flicken</EA_KW_repair>
+    <EA_KW_deconstruct>abreißen, abbauen</EA_KW_deconstruct>
+    <EA_KW_sow>säen, anpflanzen, Saat</EA_KW_sow>
+    <EA_KW_harvest>ernten, einbringen</EA_KW_harvest>
+    <EA_KW_research>forschen, studieren</EA_KW_research>
+    <EA_KW_craft>herstellen, bauen, anfertigen</EA_KW_craft>
+    <EA_KW_smooth_floor>glätten, Boden</EA_KW_smooth_floor>
+    <EA_KW_build_roof>Dach, bedecken</EA_KW_build_roof>
+    <EA_KW_remove_roof>Dach abreißen</EA_KW_remove_roof>
+    <EA_KW_uninstall>demontieren, entfernen</EA_KW_uninstall>
+    <EA_KW_fix_broken>reparieren, kaputt</EA_KW_fix_broken>
+    <EA_KW_refuel>auftanken, Brennstoff</EA_KW_refuel>
+    <EA_KW_flick>umschalten, Schalter, wechseln</EA_KW_flick>
+
+    <!-- Recreation / Erholung -->
+    <EA_KW_stargaze>Sterne, Sternenhimmel, Himmel</EA_KW_stargaze>
+    <EA_KW_go_for_walk>spazieren, schlendern, wandern</EA_KW_go_for_walk>
+    <EA_KW_play_music>Musik, spielen, Instrument</EA_KW_play_music>
+    <EA_KW_use_drug>Droge, rauchen, trinken</EA_KW_use_drug>
+    <EA_KW_view_art>Kunst, Skulptur, Gemälde</EA_KW_view_art>
+
+    <!-- Facility / Einrichtung -->
+    <EA_KW_use_comms>Funk, kommunizieren, Funkstation</EA_KW_use_comms>
+    <EA_KW_trade>handeln, kaufen, verkaufen</EA_KW_trade>
+    <EA_KW_enter_cryptosleep>Kryptoschlaf, Kapsel, Winterschlaf</EA_KW_enter_cryptosleep>
+    <EA_KW_reload>nachladen, Munition</EA_KW_reload>
+    <EA_KW_open_container>öffnen, Behälter</EA_KW_open_container>
+
+    <!-- Funeral / Bestattung -->
+    <EA_KW_bury>beerdigen, Grab, Beerdigung</EA_KW_bury>
+    <EA_KW_cremate>einäschern, verbrennen</EA_KW_cremate>
+
+    <!-- FallbackConversion: Movement Verbs / Bewegungsverben -->
+    <EA_MovementVerbs>geh zu, gehe zu, lauf zu, beweg dich zu</EA_MovementVerbs>
+
+    <!-- FallbackConversion: Target Noun Keywords (noun=actionId mapping) -->
+    <EA_TargetNoun_mine>Gestein, graben</EA_TargetNoun_mine>
+    <EA_TargetNoun_cut_plant>Holz, hacken</EA_TargetNoun_cut_plant>
+    <EA_TargetNoun_sow>Feld</EA_TargetNoun_sow>
+    <EA_TargetNoun_research>Forschung</EA_TargetNoun_research>
+    <EA_TargetNoun_clean>Reinigung</EA_TargetNoun_clean>
+    <EA_TargetNoun_hunt>Jagd</EA_TargetNoun_hunt>
+    <EA_TargetNoun_repair>Reparatur</EA_TargetNoun_repair>
+    <EA_TargetNoun_craft>Werkstatt</EA_TargetNoun_craft>
+</LanguageData>

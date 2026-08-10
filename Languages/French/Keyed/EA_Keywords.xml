@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- EA Action Keywords (French) -->
+    <!-- Format: <EA_KW_{actionId}>keyword1, keyword2, ...</EA_KW_{actionId}> -->
+
+    <!-- Movement / Mouvement -->
+    <EA_KW_move_to>aller, bouger, marcher, déplacer</EA_KW_move_to>
+    <EA_KW_stop>arrêter, stop, cesser</EA_KW_stop>
+    <EA_KW_wait>attendre, rester, patienter</EA_KW_wait>
+    <EA_KW_follow>suivre</EA_KW_follow>
+    <EA_KW_flee>fuir, courir, échapper</EA_KW_flee>
+
+    <!-- Combat -->
+    <EA_KW_draft_set>mobiliser, démobiliser</EA_KW_draft_set>
+    <EA_KW_attack_melee>attaquer, mêlée, frapper, cogner</EA_KW_attack_melee>
+    <EA_KW_attack_ranged>tirer, distance, feu</EA_KW_attack_ranged>
+    <EA_KW_arrest>arrêter, arrestation</EA_KW_arrest>
+    <EA_KW_drop_weapon>lâcher arme, désarmer</EA_KW_drop_weapon>
+    <EA_KW_mental_break_start>mental, crise, berserk</EA_KW_mental_break_start>
+
+    <!-- Medical / Médical -->
+    <EA_KW_rescue>secourir, sauver, porter</EA_KW_rescue>
+    <EA_KW_tend>soigner, guérir, traiter</EA_KW_tend>
+    <EA_KW_feed_patient>nourrir, nourriture, patient</EA_KW_feed_patient>
+    <EA_KW_force_sleep>dormir, sieste, repos</EA_KW_force_sleep>
+
+    <!-- Social -->
+    <EA_KW_recruit>recruter, persuader</EA_KW_recruit>
+    <EA_KW_romance_set>romance, amant, rupture</EA_KW_romance_set>
+    <EA_KW_thought_add>pensée, souvenir, humeur</EA_KW_thought_add>
+    <EA_KW_relation_set>relation, ami, ennemi</EA_KW_relation_set>
+    <EA_KW_give_inspiration>inspiration, inspirer</EA_KW_give_inspiration>
+    <EA_KW_visit_sick>visiter, malade, souffrant</EA_KW_visit_sick>
+    <EA_KW_social_fight>bagarre, rixe, combat social</EA_KW_social_fight>
+    <EA_KW_lovin>câlin</EA_KW_lovin>
+    <EA_KW_insult>insulter, moquer</EA_KW_insult>
+    <EA_KW_marry>marier, mariage, noces</EA_KW_marry>
+    <EA_KW_spectate>regarder, observer, assister</EA_KW_spectate>
+
+    <!-- Item / Objet -->
+    <EA_KW_drop_item>lâcher</EA_KW_drop_item>
+    <EA_KW_give_item>donner, remettre</EA_KW_give_item>
+    <EA_KW_equip>équiper, porter</EA_KW_equip>
+    <EA_KW_force_eat>manger, nourriture</EA_KW_force_eat>
+
+    <!-- Job / Travail -->
+    <EA_KW_job_start>travail, travailler, tâche</EA_KW_job_start>
+    <EA_KW_job_queue_front>file</EA_KW_job_queue_front>
+    <EA_KW_job_end>fin travail, annuler</EA_KW_job_end>
+
+    <!-- Prisoner / Prisonnier -->
+    <EA_KW_capture>capturer, prisonnier</EA_KW_capture>
+    <EA_KW_release_prisoner>libérer, relâcher</EA_KW_release_prisoner>
+    <EA_KW_recruit_prisoner>recruter prisonnier</EA_KW_recruit_prisoner>
+    <EA_KW_execute>exécuter, tuer prisonnier</EA_KW_execute>
+    <EA_KW_escort_to_bed>escorter, lit</EA_KW_escort_to_bed>
+    <EA_KW_strip>déshabiller, dévêtir</EA_KW_strip>
+
+    <!-- Animal -->
+    <EA_KW_tame>apprivoiser, domestiquer</EA_KW_tame>
+    <EA_KW_train>dresser</EA_KW_train>
+    <EA_KW_hunt>chasser</EA_KW_hunt>
+    <EA_KW_slaughter>abattre, dépecer</EA_KW_slaughter>
+    <EA_KW_milk>traire</EA_KW_milk>
+    <EA_KW_shear>tondre, laine</EA_KW_shear>
+
+    <!-- Production -->
+    <EA_KW_haul>transporter, porter</EA_KW_haul>
+    <EA_KW_mine>miner, creuser</EA_KW_mine>
+    <EA_KW_cut_plant>couper, abattre, plante</EA_KW_cut_plant>
+    <EA_KW_clean>nettoyer, balayer</EA_KW_clean>
+    <EA_KW_repair>réparer, restaurer</EA_KW_repair>
+    <EA_KW_deconstruct>démolir, déconstruire</EA_KW_deconstruct>
+    <EA_KW_sow>semer, planter, graine</EA_KW_sow>
+    <EA_KW_harvest>récolter, moissonner</EA_KW_harvest>
+    <EA_KW_research>recherche, étudier</EA_KW_research>
+    <EA_KW_craft>fabriquer, artisanat, construire</EA_KW_craft>
+    <EA_KW_smooth_floor>aplanir, sol</EA_KW_smooth_floor>
+    <EA_KW_build_roof>toit, couvrir</EA_KW_build_roof>
+    <EA_KW_remove_roof>retirer toit</EA_KW_remove_roof>
+    <EA_KW_uninstall>désinstaller, retirer</EA_KW_uninstall>
+    <EA_KW_fix_broken>réparer, panne</EA_KW_fix_broken>
+    <EA_KW_refuel>ravitailler, carburant</EA_KW_refuel>
+    <EA_KW_flick>interrupteur, basculer, commuter</EA_KW_flick>
+
+    <!-- Recreation / Loisirs -->
+    <EA_KW_stargaze>étoiles, ciel, contempler</EA_KW_stargaze>
+    <EA_KW_go_for_walk>balader, promener, flâner</EA_KW_go_for_walk>
+    <EA_KW_play_music>musique, jouer, instrument</EA_KW_play_music>
+    <EA_KW_use_drug>drogue, fumer, boire</EA_KW_use_drug>
+    <EA_KW_view_art>art, sculpture, peinture</EA_KW_view_art>
+
+    <!-- Facility / Installation -->
+    <EA_KW_use_comms>comms, communiquer, radio</EA_KW_use_comms>
+    <EA_KW_trade>commercer, acheter, vendre</EA_KW_trade>
+    <EA_KW_enter_cryptosleep>hypersommeil, caisson, hiberner</EA_KW_enter_cryptosleep>
+    <EA_KW_reload>recharger, munitions</EA_KW_reload>
+    <EA_KW_open_container>ouvrir, conteneur</EA_KW_open_container>
+
+    <!-- Funeral / Funérailles -->
+    <EA_KW_bury>enterrer, tombe, funérailles</EA_KW_bury>
+    <EA_KW_cremate>incinérer, brûler</EA_KW_cremate>
+
+    <!-- FallbackConversion: Movement Verbs / Verbes de mouvement -->
+    <EA_MovementVerbs>aller à, se rendre à, marcher vers, se déplacer vers</EA_MovementVerbs>
+
+    <!-- FallbackConversion: Target Noun Keywords (noun=actionId mapping) -->
+    <EA_TargetNoun_mine>mine, creuser</EA_TargetNoun_mine>
+    <EA_TargetNoun_cut_plant>bois, couper</EA_TargetNoun_cut_plant>
+    <EA_TargetNoun_sow>ferme</EA_TargetNoun_sow>
+    <EA_TargetNoun_research>recherche</EA_TargetNoun_research>
+    <EA_TargetNoun_clean>nettoyer</EA_TargetNoun_clean>
+    <EA_TargetNoun_hunt>chasse</EA_TargetNoun_hunt>
+    <EA_TargetNoun_repair>réparation</EA_TargetNoun_repair>
+    <EA_TargetNoun_craft>construire</EA_TargetNoun_craft>
+</LanguageData>

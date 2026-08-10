@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- Mod Settings -->
+    <EA_ModName>Expand Actions</EA_ModName>
+    <EA_Settings_Title>Expand Actions Settings</EA_Settings_Title>
+    <EA_Settings_Enabled>Enable Expand Actions</EA_Settings_Enabled>
+    <EA_Settings_Enabled_Desc>Master switch for EA functionality</EA_Settings_Enabled_Desc>
+    <EA_Settings_DebugMode>Debug Mode</EA_Settings_DebugMode>
+    <EA_Settings_DebugMode_Desc>Show detailed logs and execution bubbles</EA_Settings_DebugMode_Desc>
+    <EA_Settings_ShowBubbles>Show Execution Bubbles</EA_Settings_ShowBubbles>
+    <EA_Settings_ShowBubbles_Desc>Display action execution status above pawns</EA_Settings_ShowBubbles_Desc>
+    <EA_Settings_BehaviorControl>Behavior Control</EA_Settings_BehaviorControl>
+    <EA_Settings_SkipWorkTime>Skip Work Schedule Pawns</EA_Settings_SkipWorkTime>
+    <EA_Settings_SkipWorkTime_Desc>When enabled, pawns on "Work" schedule will not execute EA actions - dialogue continues without behavior changes</EA_Settings_SkipWorkTime_Desc>
+    <EA_Settings_SkipDrafted>Skip Drafted Pawns</EA_Settings_SkipDrafted>
+    <EA_Settings_SkipDrafted_Desc>When enabled, drafted pawns will not execute EA actions - dialogue continues without behavior changes</EA_Settings_SkipDrafted_Desc>
+    <EA_Settings_LLMSection>LLM Settings</EA_Settings_LLMSection>
+    <EA_Settings_UseSecondaryLLM>Use Secondary LLM</EA_Settings_UseSecondaryLLM>
+    <EA_Settings_UseSecondaryLLM_Desc>Use LLM to convert behaviors to actions (slower but smarter). When disabled, uses pattern matching (faster).</EA_Settings_UseSecondaryLLM_Desc>
+    <EA_Settings_LLMTimeout>Secondary LLM Timeout (seconds)</EA_Settings_LLMTimeout>
+    <EA_Settings_MaxActions>Max Actions Per Conversation</EA_Settings_MaxActions>
+    <EA_Settings_JobWhitelist>Custom Job Whitelist</EA_Settings_JobWhitelist>
+    <EA_Settings_JobWhitelist_Desc>Additional JobDefs to allow (one per line)</EA_Settings_JobWhitelist_Desc>
+    <EA_Settings_ActionConfig>Action Configuration</EA_Settings_ActionConfig>
+    <EA_Settings_ResetDesc>Reset to Default</EA_Settings_ResetDesc>
+
+    <!-- Categories -->
+    <EA_Category_Movement>Movement</EA_Category_Movement>
+    <EA_Category_Combat>Combat</EA_Category_Combat>
+    <EA_Category_Medical>Medical</EA_Category_Medical>
+    <EA_Category_Social>Social</EA_Category_Social>
+    <EA_Category_Item>Item</EA_Category_Item>
+    <EA_Category_Job>Job Control</EA_Category_Job>
+    <EA_Category_State>State</EA_Category_State>
+    <EA_Category_RJW>RJW</EA_Category_RJW>
+
+    <!-- Movement Actions -->
+    <EA_Action_move_to>Move To</EA_Action_move_to>
+    <EA_Action_move_to_Desc>Move to target location</EA_Action_move_to_Desc>
+    <EA_Action_stop>Stop</EA_Action_stop>
+    <EA_Action_stop_Desc>Immediately stop current action</EA_Action_stop_Desc>
+    <EA_Action_wait>Wait</EA_Action_wait>
+    <EA_Action_wait_Desc>Wait at current location</EA_Action_wait_Desc>
+    <EA_Action_follow>Follow</EA_Action_follow>
+    <EA_Action_follow_Desc>Follow target pawn</EA_Action_follow_Desc>
+    <EA_Action_flee>Flee</EA_Action_flee>
+    <EA_Action_flee_Desc>Flee from danger</EA_Action_flee_Desc>
+
+    <!-- Combat Actions -->
+    <EA_Action_draft_set>Draft/Undraft</EA_Action_draft_set>
+    <EA_Action_draft_set_Desc>Set pawn draft status</EA_Action_draft_set_Desc>
+    <EA_Action_attack_melee>Melee Attack</EA_Action_attack_melee>
+    <EA_Action_attack_melee_Desc>Attack target with melee weapon</EA_Action_attack_melee_Desc>
+    <EA_Action_attack_ranged>Ranged Attack</EA_Action_attack_ranged>
+    <EA_Action_attack_ranged_Desc>Attack target with ranged weapon</EA_Action_attack_ranged_Desc>
+    <EA_Action_arrest>Arrest</EA_Action_arrest>
+    <EA_Action_arrest_Desc>Attempt to arrest target</EA_Action_arrest_Desc>
+    <EA_Action_drop_weapon>Drop Weapon</EA_Action_drop_weapon>
+    <EA_Action_drop_weapon_Desc>Drop currently equipped weapon</EA_Action_drop_weapon_Desc>
+    <EA_Action_mental_break_start>Mental Break</EA_Action_mental_break_start>
+    <EA_Action_mental_break_start_Desc>Trigger mental state (whitelisted)</EA_Action_mental_break_start_Desc>
+
+    <!-- Medical Actions -->
+    <EA_Action_rescue>Rescue</EA_Action_rescue>
+    <EA_Action_rescue_Desc>Rescue downed pawn</EA_Action_rescue_Desc>
+    <EA_Action_tend>Tend</EA_Action_tend>
+    <EA_Action_tend_Desc>Tend to injured pawn</EA_Action_tend_Desc>
+    <EA_Action_feed_patient>Feed Patient</EA_Action_feed_patient>
+    <EA_Action_feed_patient_Desc>Feed bedridden patient</EA_Action_feed_patient_Desc>
+    <EA_Action_force_sleep>Force Sleep</EA_Action_force_sleep>
+    <EA_Action_force_sleep_Desc>Force pawn to rest</EA_Action_force_sleep_Desc>
+
+    <!-- Social Actions -->
+    <EA_Action_recruit>Recruit</EA_Action_recruit>
+    <EA_Action_recruit_Desc>Attempt to recruit prisoner</EA_Action_recruit_Desc>
+    <EA_Action_romance_set>Romance</EA_Action_romance_set>
+    <EA_Action_romance_set_Desc>Set romantic relationship</EA_Action_romance_set_Desc>
+    <EA_Action_thought_add>Add Thought</EA_Action_thought_add>
+    <EA_Action_thought_add_Desc>Add memory thought to pawn</EA_Action_thought_add_Desc>
+    <EA_Action_relation_set>Set Relation</EA_Action_relation_set>
+    <EA_Action_relation_set_Desc>Modify pawn relationship</EA_Action_relation_set_Desc>
+    <EA_Action_give_inspiration>Give Inspiration</EA_Action_give_inspiration>
+    <EA_Action_give_inspiration_Desc>Grant inspiration to pawn</EA_Action_give_inspiration_Desc>
+
+    <!-- Item Actions -->
+    <EA_Action_drop_item>Drop Item</EA_Action_drop_item>
+    <EA_Action_drop_item_Desc>Drop held item</EA_Action_drop_item_Desc>
+    <EA_Action_give_item>Give Item</EA_Action_give_item>
+    <EA_Action_give_item_Desc>Give item to target</EA_Action_give_item_Desc>
+    <EA_Action_equip>Equip</EA_Action_equip>
+    <EA_Action_equip_Desc>Equip weapon or apparel</EA_Action_equip_Desc>
+    <EA_Action_force_eat>Force Eat</EA_Action_force_eat>
+    <EA_Action_force_eat_Desc>Force pawn to eat</EA_Action_force_eat_Desc>
+
+    <!-- Job Actions -->
+    <EA_Action_job_start>Start Job</EA_Action_job_start>
+    <EA_Action_job_start_Desc>Start a specific job</EA_Action_job_start_Desc>
+    <EA_Action_job_queue_front>Queue Job</EA_Action_job_queue_front>
+    <EA_Action_job_queue_front_Desc>Queue job at front</EA_Action_job_queue_front_Desc>
+    <EA_Action_job_end>End Job</EA_Action_job_end>
+    <EA_Action_job_end_Desc>End current job</EA_Action_job_end_Desc>
+
+    <!-- New Categories -->
+    <EA_Category_Prisoner>Prisoner</EA_Category_Prisoner>
+    <EA_Category_Animal>Animal</EA_Category_Animal>
+    <EA_Category_Production>Production</EA_Category_Production>
+    <EA_Category_Recreation>Recreation</EA_Category_Recreation>
+    <EA_Category_Facility>Facility</EA_Category_Facility>
+    <EA_Category_Funeral>Funeral</EA_Category_Funeral>
+    <EA_Category_DLC>DLC</EA_Category_DLC>
+
+    <!-- Extension Module Names -->
+    <EA_Module_Royalty>Royalty</EA_Module_Royalty>
+    <EA_Module_Ideology>Ideology</EA_Module_Ideology>
+    <EA_Module_Biotech>Biotech</EA_Module_Biotech>
+    <EA_Module_Anomaly>Anomaly</EA_Module_Anomaly>
+    <EA_Module_RJW>RJW</EA_Module_RJW>
+
+    <!-- DLC Actions: Royalty -->
+    <EA_Action_meditate>Meditate</EA_Action_meditate>
+    <EA_Action_meditate_Desc>Meditate at meditation spot or throne</EA_Action_meditate_Desc>
+    <EA_Action_psycast>Psycast</EA_Action_psycast>
+    <EA_Action_psycast_Desc>Use psycast ability on target</EA_Action_psycast_Desc>
+    <EA_Action_reign>Reign</EA_Action_reign>
+    <EA_Action_reign_Desc>Sit on throne to fulfill reign duty</EA_Action_reign_Desc>
+
+    <!-- DLC Actions: Ideology -->
+    <EA_Action_ritual>Ritual</EA_Action_ritual>
+    <EA_Action_ritual_Desc>Start a ritual</EA_Action_ritual_Desc>
+    <EA_Action_convert>Convert</EA_Action_convert>
+    <EA_Action_convert_Desc>Attempt to convert target to your ideology</EA_Action_convert_Desc>
+
+    <!-- DLC Actions: Biotech -->
+    <EA_Action_command_mechanoid>Command Mechanoid</EA_Action_command_mechanoid>
+    <EA_Action_command_mechanoid_Desc>Command mechanoid to perform action</EA_Action_command_mechanoid_Desc>
+    <EA_Action_enter_biosculpter>Enter Biosculpter</EA_Action_enter_biosculpter>
+    <EA_Action_enter_biosculpter_Desc>Enter biosculpter pod for enhancement</EA_Action_enter_biosculpter_Desc>
+
+    <!-- DLC Actions: Anomaly -->
+    <EA_Action_study_entity>Study Entity</EA_Action_study_entity>
+    <EA_Action_study_entity_Desc>Study anomalous entity</EA_Action_study_entity_Desc>
+    <EA_Action_suppress_entity>Suppress Entity</EA_Action_suppress_entity>
+    <EA_Action_suppress_entity_Desc>Suppress anomalous entity</EA_Action_suppress_entity_Desc>
+
+    <!-- Prisoner Actions -->
+    <EA_Action_capture>Capture</EA_Action_capture>
+    <EA_Action_capture_Desc>Capture downed pawn as prisoner</EA_Action_capture_Desc>
+    <EA_Action_release_prisoner>Release Prisoner</EA_Action_release_prisoner>
+    <EA_Action_release_prisoner_Desc>Release prisoner</EA_Action_release_prisoner_Desc>
+    <EA_Action_recruit_prisoner>Recruit Prisoner</EA_Action_recruit_prisoner>
+    <EA_Action_recruit_prisoner_Desc>Attempt to recruit prisoner</EA_Action_recruit_prisoner_Desc>
+    <EA_Action_execute>Execute</EA_Action_execute>
+    <EA_Action_execute_Desc>Execute prisoner</EA_Action_execute_Desc>
+    <EA_Action_escort_to_bed>Escort to Bed</EA_Action_escort_to_bed>
+    <EA_Action_escort_to_bed_Desc>Escort prisoner to bed</EA_Action_escort_to_bed_Desc>
+    <EA_Action_strip>Strip</EA_Action_strip>
+    <EA_Action_strip_Desc>Strip apparel from target</EA_Action_strip_Desc>
+
+    <!-- Animal Actions -->
+    <EA_Action_tame>Tame</EA_Action_tame>
+    <EA_Action_tame_Desc>Attempt to tame animal</EA_Action_tame_Desc>
+    <EA_Action_train>Train</EA_Action_train>
+    <EA_Action_train_Desc>Train animal</EA_Action_train_Desc>
+    <EA_Action_hunt>Hunt</EA_Action_hunt>
+    <EA_Action_hunt_Desc>Hunt animal</EA_Action_hunt_Desc>
+    <EA_Action_slaughter>Slaughter</EA_Action_slaughter>
+    <EA_Action_slaughter_Desc>Slaughter animal</EA_Action_slaughter_Desc>
+    <EA_Action_milk>Milk</EA_Action_milk>
+    <EA_Action_milk_Desc>Milk animal</EA_Action_milk_Desc>
+    <EA_Action_shear>Shear</EA_Action_shear>
+    <EA_Action_shear_Desc>Shear animal</EA_Action_shear_Desc>
+
+    <!-- Production Actions -->
+    <EA_Action_haul>Haul</EA_Action_haul>
+    <EA_Action_haul_Desc>Haul item to stockpile</EA_Action_haul_Desc>
+    <EA_Action_mine>Mine</EA_Action_mine>
+    <EA_Action_mine_Desc>Mine rock or mineral</EA_Action_mine_Desc>
+    <EA_Action_cut_plant>Cut Plant</EA_Action_cut_plant>
+    <EA_Action_cut_plant_Desc>Cut plant</EA_Action_cut_plant_Desc>
+    <EA_Action_clean>Clean</EA_Action_clean>
+    <EA_Action_clean_Desc>Clean area</EA_Action_clean_Desc>
+    <EA_Action_repair>Repair</EA_Action_repair>
+    <EA_Action_repair_Desc>Repair building or structure</EA_Action_repair_Desc>
+    <EA_Action_deconstruct>Deconstruct</EA_Action_deconstruct>
+    <EA_Action_deconstruct_Desc>Deconstruct building</EA_Action_deconstruct_Desc>
+    <EA_Action_sow>Sow</EA_Action_sow>
+    <EA_Action_sow_Desc>Sow seeds in growing zone</EA_Action_sow_Desc>
+    <EA_Action_harvest>Harvest</EA_Action_harvest>
+    <EA_Action_harvest_Desc>Harvest mature plant</EA_Action_harvest_Desc>
+    <EA_Action_research>Research</EA_Action_research>
+    <EA_Action_research_Desc>Research at research bench</EA_Action_research_Desc>
+    <EA_Action_craft>Craft</EA_Action_craft>
+    <EA_Action_craft_Desc>Work at crafting bench</EA_Action_craft_Desc>
+    <EA_Action_smooth_floor>Smooth Floor</EA_Action_smooth_floor>
+    <EA_Action_smooth_floor_Desc>Smooth rough floor</EA_Action_smooth_floor_Desc>
+    <EA_Action_build_roof>Build Roof</EA_Action_build_roof>
+    <EA_Action_build_roof_Desc>Build roof in area</EA_Action_build_roof_Desc>
+    <EA_Action_remove_roof>Remove Roof</EA_Action_remove_roof>
+    <EA_Action_remove_roof_Desc>Remove roof from area</EA_Action_remove_roof_Desc>
+    <EA_Action_uninstall>Uninstall</EA_Action_uninstall>
+    <EA_Action_uninstall_Desc>Uninstall building or furniture</EA_Action_uninstall_Desc>
+    <EA_Action_fix_broken>Fix Broken</EA_Action_fix_broken>
+    <EA_Action_fix_broken_Desc>Fix broken-down building</EA_Action_fix_broken_Desc>
+    <EA_Action_refuel>Refuel</EA_Action_refuel>
+    <EA_Action_refuel_Desc>Refuel building</EA_Action_refuel_Desc>
+    <EA_Action_flick>Flick</EA_Action_flick>
+    <EA_Action_flick_Desc>Toggle power switch on building</EA_Action_flick_Desc>
+
+    <!-- Social Actions (New) -->
+    <EA_Action_visit_sick>Visit Sick</EA_Action_visit_sick>
+    <EA_Action_visit_sick_Desc>Visit sick or bedridden pawn</EA_Action_visit_sick_Desc>
+    <EA_Action_social_fight>Social Fight</EA_Action_social_fight>
+    <EA_Action_social_fight_Desc>Start a social fight with target</EA_Action_social_fight_Desc>
+    <EA_Action_lovin>Lovin'</EA_Action_lovin>
+    <EA_Action_lovin_Desc>Lovin' with partner in bed</EA_Action_lovin_Desc>
+    <EA_Action_insult>Insult</EA_Action_insult>
+    <EA_Action_insult_Desc>Insult target pawn</EA_Action_insult_Desc>
+    <EA_Action_marry>Marry</EA_Action_marry>
+    <EA_Action_marry_Desc>Marry target pawn (ceremony)</EA_Action_marry_Desc>
+    <EA_Action_spectate>Spectate</EA_Action_spectate>
+    <EA_Action_spectate_Desc>Watch spectacle or event</EA_Action_spectate_Desc>
+
+    <!-- Recreation Actions -->
+    <EA_Action_stargaze>Stargaze</EA_Action_stargaze>
+    <EA_Action_stargaze_Desc>Go stargazing outdoors</EA_Action_stargaze_Desc>
+    <EA_Action_go_for_walk>Go for Walk</EA_Action_go_for_walk>
+    <EA_Action_go_for_walk_Desc>Take a leisurely walk</EA_Action_go_for_walk_Desc>
+    <EA_Action_play_music>Play Music</EA_Action_play_music>
+    <EA_Action_play_music_Desc>Play musical instrument</EA_Action_play_music_Desc>
+    <EA_Action_use_drug>Use Drug</EA_Action_use_drug>
+    <EA_Action_use_drug_Desc>Use drug or consumable</EA_Action_use_drug_Desc>
+    <EA_Action_view_art>View Art</EA_Action_view_art>
+    <EA_Action_view_art_Desc>View art piece for joy</EA_Action_view_art_Desc>
+
+    <!-- Facility Actions -->
+    <EA_Action_use_comms>Use Comms</EA_Action_use_comms>
+    <EA_Action_use_comms_Desc>Use communications console</EA_Action_use_comms_Desc>
+    <EA_Action_trade>Trade</EA_Action_trade>
+    <EA_Action_trade_Desc>Trade with visitor or caravan</EA_Action_trade_Desc>
+    <EA_Action_enter_cryptosleep>Enter Cryptosleep</EA_Action_enter_cryptosleep>
+    <EA_Action_enter_cryptosleep_Desc>Enter cryptosleep casket</EA_Action_enter_cryptosleep_Desc>
+    <EA_Action_reload>Reload</EA_Action_reload>
+    <EA_Action_reload_Desc>Reload weapon or turret</EA_Action_reload_Desc>
+    <EA_Action_open_container>Open Container</EA_Action_open_container>
+    <EA_Action_open_container_Desc>Open container or casket</EA_Action_open_container_Desc>
+
+    <!-- Funeral Actions -->
+    <EA_Action_bury>Bury</EA_Action_bury>
+    <EA_Action_bury_Desc>Bury corpse in grave</EA_Action_bury_Desc>
+    <EA_Action_cremate>Cremate</EA_Action_cremate>
+    <EA_Action_cremate_Desc>Cremate corpse at crematorium</EA_Action_cremate_Desc>
+
+    <!-- RJW Actions (conditional) -->
+    <EA_Action_rjw_masturbate>Masturbate</EA_Action_rjw_masturbate>
+    <EA_Action_rjw_masturbate_Desc>Pawn masturbates</EA_Action_rjw_masturbate_Desc>
+    <EA_Action_rjw_quickie>Quickie</EA_Action_rjw_quickie>
+    <EA_Action_rjw_quickie_Desc>Quick sex with target</EA_Action_rjw_quickie_Desc>
+    <EA_Action_rjw_join_in_bed>Join In Bed</EA_Action_rjw_join_in_bed>
+    <EA_Action_rjw_join_in_bed_Desc>Join target in bed for intimacy</EA_Action_rjw_join_in_bed_Desc>
+
+    <!-- Settings: Keyword Editing -->
+    <EA_Settings_KeywordEnabled>Enable Keywords</EA_Settings_KeywordEnabled>
+    <EA_Settings_KeywordEnabled_Desc>When disabled, this action will not participate in keyword matching or prompt injection</EA_Settings_KeywordEnabled_Desc>
+    <EA_Settings_KeywordOverride>Custom Keywords</EA_Settings_KeywordOverride>
+    <EA_Settings_KeywordReset>Reset Keywords</EA_Settings_KeywordReset>
+
+    <!-- Settings: Keyword Pre-Filter -->
+    <EA_Settings_KeywordSection>Keyword Pre-Filter</EA_Settings_KeywordSection>
+    <EA_Settings_KeywordPreFilter>Enable Keyword Pre-Filter</EA_Settings_KeywordPreFilter>
+    <EA_Settings_KeywordPreFilter_Desc>Filter actions by dialogue keywords to reduce LLM token usage. When disabled, all actions are injected.</EA_Settings_KeywordPreFilter_Desc>
+
+    <!-- Settings: Cooldown -->
+    <EA_Settings_CooldownSection>Action Cooldown</EA_Settings_CooldownSection>
+    <EA_Settings_Cooldown>Enable Action Cooldown</EA_Settings_Cooldown>
+    <EA_Settings_Cooldown_Desc>Prevent repeated execution of the same action within a cooldown period across conversations.</EA_Settings_Cooldown_Desc>
+    <EA_Settings_DefaultCooldown>Default Cooldown</EA_Settings_DefaultCooldown>
+    <EA_Settings_MovementCooldown>Movement/Recreation Cooldown</EA_Settings_MovementCooldown>
+    <EA_Settings_CombatCooldown>Combat Cooldown</EA_Settings_CombatCooldown>
+    <EA_Settings_SocialCooldown>Social Cooldown</EA_Settings_SocialCooldown>
+
+    <!-- Undesignated Targets -->
+    <EA_Settings_AllowUndesignated>Allow Undesignated Targets</EA_Settings_AllowUndesignated>
+    <EA_Settings_AllowUndesignated_Desc>When off (default), auto-find only targets already designated by the player (e.g., trees marked for cutting, rocks marked for mining). When on, EA can operate on any valid target even if not player-designated.</EA_Settings_AllowUndesignated_Desc>
+
+    <!-- Job Protection -->
+    <EA_Settings_JobProtection>Job Protection Window</EA_Settings_JobProtection>
+    <EA_Settings_JobProtection_Desc>Protection time after EA assigns a job. During this window, new EA actions enqueue instead of overriding. Prevents frequent dialogues from constantly resetting pawn behavior. 0=disabled (always override).</EA_Settings_JobProtection_Desc>
+
+    <!-- Action Effort Level -->
+    <EA_Settings_ActionEffort>Action Effort Level</EA_Settings_ActionEffort>
+    <EA_Settings_ActionEffort_Desc>Controls how often LLM outputs ea_observed: Low=only when necessary, Medium=moderate, High=every response</EA_Settings_ActionEffort_Desc>
+    <EA_Settings_EffortLow>Low</EA_Settings_EffortLow>
+    <EA_Settings_EffortMedium>Medium</EA_Settings_EffortMedium>
+    <EA_Settings_EffortHigh>High</EA_Settings_EffortHigh>
+
+    <!-- Execution Messages -->
+    <EA_Exec_Success>Action executed: {0}</EA_Exec_Success>
+    <EA_Exec_Failed>Action failed: {0} - {1}</EA_Exec_Failed>
+    <EA_Exec_Skipped>Action skipped: {0}</EA_Exec_Skipped>
+
+    <!-- Error Messages -->
+    <EA_Error_ActorNotFound>Actor not found: {0}</EA_Error_ActorNotFound>
+    <EA_Error_TargetNotFound>Target not found: {0}</EA_Error_TargetNotFound>
+    <EA_Error_ActionDisabled>Action disabled: {0}</EA_Error_ActionDisabled>
+    <EA_Error_JobNotWhitelisted>Job not in whitelist: {0}</EA_Error_JobNotWhitelisted>
+</LanguageData>

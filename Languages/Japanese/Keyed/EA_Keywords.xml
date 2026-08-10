@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- EA Action Keywords (Japanese) -->
+    <!-- Format: <EA_KW_{actionId}>keyword1, keyword2, ...</EA_KW_{actionId}> -->
+
+    <!-- Movement -->
+    <EA_KW_move_to>移動, 行く, 歩く</EA_KW_move_to>
+    <EA_KW_stop>止まる, 停止, やめる</EA_KW_stop>
+    <EA_KW_wait>待つ, 待機, 立つ</EA_KW_wait>
+    <EA_KW_follow>ついていく, 追う</EA_KW_follow>
+    <EA_KW_flee>逃げる, 走る, 逃走</EA_KW_flee>
+
+    <!-- Combat -->
+    <EA_KW_draft_set>徴兵, 徴兵終了</EA_KW_draft_set>
+    <EA_KW_attack_melee>攻撃, 近接攻撃, 殴る, 叩く</EA_KW_attack_melee>
+    <EA_KW_attack_ranged>射撃, 遠距離攻撃, 撃つ</EA_KW_attack_ranged>
+    <EA_KW_arrest>逮捕</EA_KW_arrest>
+    <EA_KW_drop_weapon>武器を捨てる, 武装解除</EA_KW_drop_weapon>
+    <EA_KW_mental_break_start>精神崩壊, 精神, 狂暴</EA_KW_mental_break_start>
+
+    <!-- Medical -->
+    <EA_KW_rescue>救助, 助ける, 運ぶ</EA_KW_rescue>
+    <EA_KW_tend>看護, 治療, 手当て</EA_KW_tend>
+    <EA_KW_feed_patient>食事, 食べさせる, 患者</EA_KW_feed_patient>
+    <EA_KW_force_sleep>睡眠, 寝る, 休む</EA_KW_force_sleep>
+
+    <!-- Social -->
+    <EA_KW_recruit>勧誘, 説得</EA_KW_recruit>
+    <EA_KW_romance_set>恋愛, 恋人, 別れる</EA_KW_romance_set>
+    <EA_KW_thought_add>思い, 記憶, 気分</EA_KW_thought_add>
+    <EA_KW_relation_set>関係, 友人, 敵</EA_KW_relation_set>
+    <EA_KW_give_inspiration>インスピレーション, 閃き</EA_KW_give_inspiration>
+    <EA_KW_visit_sick>見舞い, 病人, 看病</EA_KW_visit_sick>
+    <EA_KW_social_fight>喧嘩, 殴り合い, 口論</EA_KW_social_fight>
+    <EA_KW_lovin>ラブラブ</EA_KW_lovin>
+    <EA_KW_insult>侮辱, 罵る</EA_KW_insult>
+    <EA_KW_marry>結婚, 婚礼, 挙式</EA_KW_marry>
+    <EA_KW_spectate>観覧, 見る, 観察</EA_KW_spectate>
+
+    <!-- Item -->
+    <EA_KW_drop_item>落とす</EA_KW_drop_item>
+    <EA_KW_give_item>渡す, あげる</EA_KW_give_item>
+    <EA_KW_equip>装備, 着る</EA_KW_equip>
+    <EA_KW_force_eat>食べる, 食事</EA_KW_force_eat>
+
+    <!-- Job -->
+    <EA_KW_job_start>仕事, 作業, 働く</EA_KW_job_start>
+    <EA_KW_job_queue_front>予約</EA_KW_job_queue_front>
+    <EA_KW_job_end>作業中止, キャンセル</EA_KW_job_end>
+
+    <!-- Prisoner -->
+    <EA_KW_capture>捕獲, 囚人</EA_KW_capture>
+    <EA_KW_release_prisoner>解放, 釈放</EA_KW_release_prisoner>
+    <EA_KW_recruit_prisoner>囚人勧誘</EA_KW_recruit_prisoner>
+    <EA_KW_execute>処刑, 囚人を殺す</EA_KW_execute>
+    <EA_KW_escort_to_bed>護送, ベッド</EA_KW_escort_to_bed>
+    <EA_KW_strip>剥ぐ, 脱がせる</EA_KW_strip>
+
+    <!-- Animal -->
+    <EA_KW_tame>手懐ける, 調教</EA_KW_tame>
+    <EA_KW_train>訓練</EA_KW_train>
+    <EA_KW_hunt>狩猟</EA_KW_hunt>
+    <EA_KW_slaughter>屠殺, 解体</EA_KW_slaughter>
+    <EA_KW_milk>搾乳</EA_KW_milk>
+    <EA_KW_shear>毛刈り, 羊毛</EA_KW_shear>
+
+    <!-- Production -->
+    <EA_KW_haul>運搬, 運ぶ</EA_KW_haul>
+    <EA_KW_mine>採掘, 掘る</EA_KW_mine>
+    <EA_KW_cut_plant>刈り取り, 伐採, 植物</EA_KW_cut_plant>
+    <EA_KW_clean>清掃, 掃除</EA_KW_clean>
+    <EA_KW_repair>修理, 直す</EA_KW_repair>
+    <EA_KW_deconstruct>解体, 取り壊し</EA_KW_deconstruct>
+    <EA_KW_sow>種蒔き, 植える, 栽培</EA_KW_sow>
+    <EA_KW_harvest>収穫, 刈る</EA_KW_harvest>
+    <EA_KW_research>研究, 調べる</EA_KW_research>
+    <EA_KW_craft>工芸, 製作, 建築</EA_KW_craft>
+    <EA_KW_smooth_floor>磨く, 床</EA_KW_smooth_floor>
+    <EA_KW_build_roof>屋根, 覆う</EA_KW_build_roof>
+    <EA_KW_remove_roof>屋根取り外し</EA_KW_remove_roof>
+    <EA_KW_uninstall>撤去, 取り外し</EA_KW_uninstall>
+    <EA_KW_fix_broken>修理, 故障</EA_KW_fix_broken>
+    <EA_KW_refuel>給油, 燃料</EA_KW_refuel>
+    <EA_KW_flick>スイッチ, 切り替え, 操作</EA_KW_flick>
+
+    <!-- Recreation -->
+    <EA_KW_stargaze>天体観測, 星, 空</EA_KW_stargaze>
+    <EA_KW_go_for_walk>散歩, ぶらぶら, 歩き回る</EA_KW_go_for_walk>
+    <EA_KW_play_music>音楽, 演奏, 楽器</EA_KW_play_music>
+    <EA_KW_use_drug>ドラッグ, 喫煙, 飲酒</EA_KW_use_drug>
+    <EA_KW_view_art>芸術, 彫刻, 絵画</EA_KW_view_art>
+
+    <!-- Facility -->
+    <EA_KW_use_comms>通信, 連絡, 無線</EA_KW_use_comms>
+    <EA_KW_trade>トレード, 売買, 貿易</EA_KW_trade>
+    <EA_KW_enter_cryptosleep>冬眠カプセル, 冬眠, 冷凍睡眠</EA_KW_enter_cryptosleep>
+    <EA_KW_reload>再装填, 弾薬</EA_KW_reload>
+    <EA_KW_open_container>開ける, 容器</EA_KW_open_container>
+
+    <!-- Funeral -->
+    <EA_KW_bury>埋葬, 墓, 葬儀</EA_KW_bury>
+    <EA_KW_cremate>火葬, 焼く</EA_KW_cremate>
+
+    <!-- FallbackConversion: Movement Verbs -->
+    <EA_MovementVerbs>に行く, に向かう, まで歩く, に移動する</EA_MovementVerbs>
+
+    <!-- FallbackConversion: Target Noun Keywords (noun=actionId mapping) -->
+    <EA_TargetNoun_mine>採掘, 掘る</EA_TargetNoun_mine>
+    <EA_TargetNoun_cut_plant>木材, 伐採</EA_TargetNoun_cut_plant>
+    <EA_TargetNoun_sow>農業</EA_TargetNoun_sow>
+    <EA_TargetNoun_research>研究</EA_TargetNoun_research>
+    <EA_TargetNoun_clean>掃除</EA_TargetNoun_clean>
+    <EA_TargetNoun_hunt>狩り</EA_TargetNoun_hunt>
+    <EA_TargetNoun_repair>修理</EA_TargetNoun_repair>
+    <EA_TargetNoun_craft>建築</EA_TargetNoun_craft>
+</LanguageData>

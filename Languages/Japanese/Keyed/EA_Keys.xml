@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- Mod Settings -->
+    <EA_ModName>拡張アクション</EA_ModName>
+    <EA_Settings_Title>拡張アクション設定</EA_Settings_Title>
+    <EA_Settings_Enabled>拡張アクションを有効にする</EA_Settings_Enabled>
+    <EA_Settings_Enabled_Desc>EA機能のマスタースイッチ</EA_Settings_Enabled_Desc>
+    <EA_Settings_DebugMode>デバッグモード</EA_Settings_DebugMode>
+    <EA_Settings_DebugMode_Desc>詳細ログと実行バブルを表示します</EA_Settings_DebugMode_Desc>
+    <EA_Settings_ShowBubbles>実行バブルを表示</EA_Settings_ShowBubbles>
+    <EA_Settings_ShowBubbles_Desc>入植者の頭上にアクション実行状態を表示します</EA_Settings_ShowBubbles_Desc>
+    <EA_Settings_BehaviorControl>行動制御</EA_Settings_BehaviorControl>
+    <EA_Settings_SkipWorkTime>作業スケジュールの入植者をスキップ</EA_Settings_SkipWorkTime>
+    <EA_Settings_SkipWorkTime_Desc>有効にすると「作業」スケジュール中の入植者はEAアクションを実行しません。対話は行動変更なしで継続します。</EA_Settings_SkipWorkTime_Desc>
+    <EA_Settings_SkipDrafted>徴兵中の入植者をスキップ</EA_Settings_SkipDrafted>
+    <EA_Settings_SkipDrafted_Desc>有効にすると徴兵中の入植者はEAアクションを実行しません。対話は行動変更なしで継続します。</EA_Settings_SkipDrafted_Desc>
+    <EA_Settings_LLMSection>LLM設定</EA_Settings_LLMSection>
+    <EA_Settings_UseSecondaryLLM>セカンダリLLMを使用</EA_Settings_UseSecondaryLLM>
+    <EA_Settings_UseSecondaryLLM_Desc>LLMを使用して行動をアクションに変換します（低速だがより正確）。無効にするとパターンマッチング（高速）を使用します。</EA_Settings_UseSecondaryLLM_Desc>
+    <EA_Settings_LLMTimeout>セカンダリLLMタイムアウト（秒）</EA_Settings_LLMTimeout>
+    <EA_Settings_MaxActions>会話あたりの最大アクション数</EA_Settings_MaxActions>
+    <EA_Settings_JobWhitelist>カスタムジョブホワイトリスト</EA_Settings_JobWhitelist>
+    <EA_Settings_JobWhitelist_Desc>追加で許可するJobDef（1行につき1つ）</EA_Settings_JobWhitelist_Desc>
+    <EA_Settings_ActionConfig>アクション設定</EA_Settings_ActionConfig>
+    <EA_Settings_ResetDesc>デフォルトにリセット</EA_Settings_ResetDesc>
+
+    <!-- Categories -->
+    <EA_Category_Movement>移動</EA_Category_Movement>
+    <EA_Category_Combat>戦闘</EA_Category_Combat>
+    <EA_Category_Medical>医療</EA_Category_Medical>
+    <EA_Category_Social>社交</EA_Category_Social>
+    <EA_Category_Item>アイテム</EA_Category_Item>
+    <EA_Category_Job>作業管理</EA_Category_Job>
+    <EA_Category_State>状態</EA_Category_State>
+    <EA_Category_RJW>RJW</EA_Category_RJW>
+
+    <!-- Movement Actions -->
+    <EA_Action_move_to>移動</EA_Action_move_to>
+    <EA_Action_move_to_Desc>対象の場所に移動する</EA_Action_move_to_Desc>
+    <EA_Action_stop>停止</EA_Action_stop>
+    <EA_Action_stop_Desc>現在のアクションを即座に中止する</EA_Action_stop_Desc>
+    <EA_Action_wait>待機</EA_Action_wait>
+    <EA_Action_wait_Desc>現在の場所で待機する</EA_Action_wait_Desc>
+    <EA_Action_follow>追従</EA_Action_follow>
+    <EA_Action_follow_Desc>対象の入植者についていく</EA_Action_follow_Desc>
+    <EA_Action_flee>逃走</EA_Action_flee>
+    <EA_Action_flee_Desc>危険から逃げる</EA_Action_flee_Desc>
+
+    <!-- Combat Actions -->
+    <EA_Action_draft_set>徴兵/徴兵終了</EA_Action_draft_set>
+    <EA_Action_draft_set_Desc>入植者の徴兵状態を設定する</EA_Action_draft_set_Desc>
+    <EA_Action_attack_melee>近接攻撃</EA_Action_attack_melee>
+    <EA_Action_attack_melee_Desc>近接武器で対象を攻撃する</EA_Action_attack_melee_Desc>
+    <EA_Action_attack_ranged>遠距離攻撃</EA_Action_attack_ranged>
+    <EA_Action_attack_ranged_Desc>遠距離武器で対象を攻撃する</EA_Action_attack_ranged_Desc>
+    <EA_Action_arrest>逮捕</EA_Action_arrest>
+    <EA_Action_arrest_Desc>対象の逮捕を試みる</EA_Action_arrest_Desc>
+    <EA_Action_drop_weapon>武器を捨てる</EA_Action_drop_weapon>
+    <EA_Action_drop_weapon_Desc>現在装備中の武器を捨てる</EA_Action_drop_weapon_Desc>
+    <EA_Action_mental_break_start>精神崩壊</EA_Action_mental_break_start>
+    <EA_Action_mental_break_start_Desc>精神状態を発動させる（ホワイトリスト内）</EA_Action_mental_break_start_Desc>
+
+    <!-- Medical Actions -->
+    <EA_Action_rescue>救助</EA_Action_rescue>
+    <EA_Action_rescue_Desc>倒れた入植者を救助する</EA_Action_rescue_Desc>
+    <EA_Action_tend>看護</EA_Action_tend>
+    <EA_Action_tend_Desc>負傷した入植者を看護する</EA_Action_tend_Desc>
+    <EA_Action_feed_patient>患者に食事</EA_Action_feed_patient>
+    <EA_Action_feed_patient_Desc>寝たきりの患者に食事を与える</EA_Action_feed_patient_Desc>
+    <EA_Action_force_sleep>強制睡眠</EA_Action_force_sleep>
+    <EA_Action_force_sleep_Desc>入植者を強制的に休ませる</EA_Action_force_sleep_Desc>
+
+    <!-- Social Actions -->
+    <EA_Action_recruit>勧誘</EA_Action_recruit>
+    <EA_Action_recruit_Desc>囚人の勧誘を試みる</EA_Action_recruit_Desc>
+    <EA_Action_romance_set>恋愛関係</EA_Action_romance_set>
+    <EA_Action_romance_set_Desc>恋愛関係を設定する</EA_Action_romance_set_Desc>
+    <EA_Action_thought_add>思いを追加</EA_Action_thought_add>
+    <EA_Action_thought_add_Desc>入植者に記憶を追加する</EA_Action_thought_add_Desc>
+    <EA_Action_relation_set>関係を設定</EA_Action_relation_set>
+    <EA_Action_relation_set_Desc>入植者の関係を変更する</EA_Action_relation_set_Desc>
+    <EA_Action_give_inspiration>インスピレーション付与</EA_Action_give_inspiration>
+    <EA_Action_give_inspiration_Desc>入植者にインスピレーションを与える</EA_Action_give_inspiration_Desc>
+
+    <!-- Item Actions -->
+    <EA_Action_drop_item>アイテムを落とす</EA_Action_drop_item>
+    <EA_Action_drop_item_Desc>持っているアイテムを落とす</EA_Action_drop_item_Desc>
+    <EA_Action_give_item>アイテムを渡す</EA_Action_give_item>
+    <EA_Action_give_item_Desc>対象にアイテムを渡す</EA_Action_give_item_Desc>
+    <EA_Action_equip>装備</EA_Action_equip>
+    <EA_Action_equip_Desc>武器や衣服を装備する</EA_Action_equip_Desc>
+    <EA_Action_force_eat>強制食事</EA_Action_force_eat>
+    <EA_Action_force_eat_Desc>入植者に強制的に食事をさせる</EA_Action_force_eat_Desc>
+
+    <!-- Job Actions -->
+    <EA_Action_job_start>作業開始</EA_Action_job_start>
+    <EA_Action_job_start_Desc>特定の作業を開始する</EA_Action_job_start_Desc>
+    <EA_Action_job_queue_front>作業予約</EA_Action_job_queue_front>
+    <EA_Action_job_queue_front_Desc>作業を優先的にキューに追加する</EA_Action_job_queue_front_Desc>
+    <EA_Action_job_end>作業終了</EA_Action_job_end>
+    <EA_Action_job_end_Desc>現在の作業を終了する</EA_Action_job_end_Desc>
+
+    <!-- New Categories -->
+    <EA_Category_Prisoner>囚人</EA_Category_Prisoner>
+    <EA_Category_Animal>動物</EA_Category_Animal>
+    <EA_Category_Production>生産</EA_Category_Production>
+    <EA_Category_Recreation>娯楽</EA_Category_Recreation>
+    <EA_Category_Facility>施設</EA_Category_Facility>
+    <EA_Category_Funeral>葬儀</EA_Category_Funeral>
+    <EA_Category_DLC>DLC</EA_Category_DLC>
+
+    <!-- Extension Module Names -->
+    <EA_Module_Royalty>ロイヤルティ</EA_Module_Royalty>
+    <EA_Module_Ideology>イデオロギー</EA_Module_Ideology>
+    <EA_Module_Biotech>バイオテック</EA_Module_Biotech>
+    <EA_Module_Anomaly>アノマリー</EA_Module_Anomaly>
+    <EA_Module_RJW>RJW</EA_Module_RJW>
+
+    <!-- DLC Actions: Royalty -->
+    <EA_Action_meditate>瞑想</EA_Action_meditate>
+    <EA_Action_meditate_Desc>瞑想スポットまたは玉座で瞑想する</EA_Action_meditate_Desc>
+    <EA_Action_psycast>超能力</EA_Action_psycast>
+    <EA_Action_psycast_Desc>対象に超能力を使用する</EA_Action_psycast_Desc>
+    <EA_Action_reign>統治</EA_Action_reign>
+    <EA_Action_reign_Desc>玉座に座り統治の義務を果たす</EA_Action_reign_Desc>
+
+    <!-- DLC Actions: Ideology -->
+    <EA_Action_ritual>儀式</EA_Action_ritual>
+    <EA_Action_ritual_Desc>儀式を開始する</EA_Action_ritual_Desc>
+    <EA_Action_convert>改宗</EA_Action_convert>
+    <EA_Action_convert_Desc>対象を自分の思想に改宗させる</EA_Action_convert_Desc>
+
+    <!-- DLC Actions: Biotech -->
+    <EA_Action_command_mechanoid>メカノイド指揮</EA_Action_command_mechanoid>
+    <EA_Action_command_mechanoid_Desc>メカノイドにアクションを実行させる</EA_Action_command_mechanoid_Desc>
+    <EA_Action_enter_biosculpter>生体改造ポッドに入る</EA_Action_enter_biosculpter>
+    <EA_Action_enter_biosculpter_Desc>生体改造ポッドに入り強化を受ける</EA_Action_enter_biosculpter_Desc>
+
+    <!-- DLC Actions: Anomaly -->
+    <EA_Action_study_entity>「存在」を調査</EA_Action_study_entity>
+    <EA_Action_study_entity_Desc>異常な「存在」を調査する</EA_Action_study_entity_Desc>
+    <EA_Action_suppress_entity>「存在」を抑制</EA_Action_suppress_entity>
+    <EA_Action_suppress_entity_Desc>異常な「存在」を抑制する</EA_Action_suppress_entity_Desc>
+
+    <!-- Prisoner Actions -->
+    <EA_Action_capture>捕獲</EA_Action_capture>
+    <EA_Action_capture_Desc>倒れた相手を囚人として捕獲する</EA_Action_capture_Desc>
+    <EA_Action_release_prisoner>囚人解放</EA_Action_release_prisoner>
+    <EA_Action_release_prisoner_Desc>囚人を解放する</EA_Action_release_prisoner_Desc>
+    <EA_Action_recruit_prisoner>囚人勧誘</EA_Action_recruit_prisoner>
+    <EA_Action_recruit_prisoner_Desc>囚人の勧誘を試みる</EA_Action_recruit_prisoner_Desc>
+    <EA_Action_execute>処刑</EA_Action_execute>
+    <EA_Action_execute_Desc>囚人を処刑する</EA_Action_execute_Desc>
+    <EA_Action_escort_to_bed>ベッドへ護送</EA_Action_escort_to_bed>
+    <EA_Action_escort_to_bed_Desc>囚人をベッドへ護送する</EA_Action_escort_to_bed_Desc>
+    <EA_Action_strip>剥ぐ</EA_Action_strip>
+    <EA_Action_strip_Desc>対象の衣服を剥ぎ取る</EA_Action_strip_Desc>
+
+    <!-- Animal Actions -->
+    <EA_Action_tame>手懐ける</EA_Action_tame>
+    <EA_Action_tame_Desc>動物の手懐けを試みる</EA_Action_tame_Desc>
+    <EA_Action_train>訓練</EA_Action_train>
+    <EA_Action_train_Desc>動物を訓練する</EA_Action_train_Desc>
+    <EA_Action_hunt>狩猟</EA_Action_hunt>
+    <EA_Action_hunt_Desc>動物を狩る</EA_Action_hunt_Desc>
+    <EA_Action_slaughter>屠殺</EA_Action_slaughter>
+    <EA_Action_slaughter_Desc>動物を屠殺する</EA_Action_slaughter_Desc>
+    <EA_Action_milk>搾乳</EA_Action_milk>
+    <EA_Action_milk_Desc>動物から搾乳する</EA_Action_milk_Desc>
+    <EA_Action_shear>毛刈り</EA_Action_shear>
+    <EA_Action_shear_Desc>動物の毛を刈る</EA_Action_shear_Desc>
+
+    <!-- Production Actions -->
+    <EA_Action_haul>運搬</EA_Action_haul>
+    <EA_Action_haul_Desc>アイテムを備蓄ゾーンに運ぶ</EA_Action_haul_Desc>
+    <EA_Action_mine>採掘</EA_Action_mine>
+    <EA_Action_mine_Desc>岩石や鉱物を採掘する</EA_Action_mine_Desc>
+    <EA_Action_cut_plant>刈り取り</EA_Action_cut_plant>
+    <EA_Action_cut_plant_Desc>植物を刈り取る</EA_Action_cut_plant_Desc>
+    <EA_Action_clean>清掃</EA_Action_clean>
+    <EA_Action_clean_Desc>エリアを清掃する</EA_Action_clean_Desc>
+    <EA_Action_repair>修理</EA_Action_repair>
+    <EA_Action_repair_Desc>建物や構造物を修理する</EA_Action_repair_Desc>
+    <EA_Action_deconstruct>解体</EA_Action_deconstruct>
+    <EA_Action_deconstruct_Desc>建物を解体する</EA_Action_deconstruct_Desc>
+    <EA_Action_sow>種蒔き</EA_Action_sow>
+    <EA_Action_sow_Desc>農業ゾーンに種を蒔く</EA_Action_sow_Desc>
+    <EA_Action_harvest>収穫</EA_Action_harvest>
+    <EA_Action_harvest_Desc>成熟した作物を収穫する</EA_Action_harvest_Desc>
+    <EA_Action_research>研究</EA_Action_research>
+    <EA_Action_research_Desc>研究卓で研究を行う</EA_Action_research_Desc>
+    <EA_Action_craft>製作</EA_Action_craft>
+    <EA_Action_craft_Desc>作業台で製作する</EA_Action_craft_Desc>
+    <EA_Action_smooth_floor>床を磨く</EA_Action_smooth_floor>
+    <EA_Action_smooth_floor_Desc>荒削りの床を滑らかにする</EA_Action_smooth_floor_Desc>
+    <EA_Action_build_roof>屋根を張る</EA_Action_build_roof>
+    <EA_Action_build_roof_Desc>エリアに屋根を張る</EA_Action_build_roof_Desc>
+    <EA_Action_remove_roof>屋根を取り外す</EA_Action_remove_roof>
+    <EA_Action_remove_roof_Desc>エリアの屋根を取り外す</EA_Action_remove_roof_Desc>
+    <EA_Action_uninstall>撤去</EA_Action_uninstall>
+    <EA_Action_uninstall_Desc>建物や家具を撤去する</EA_Action_uninstall_Desc>
+    <EA_Action_fix_broken>故障修理</EA_Action_fix_broken>
+    <EA_Action_fix_broken_Desc>故障した建物を修理する</EA_Action_fix_broken_Desc>
+    <EA_Action_refuel>給油</EA_Action_refuel>
+    <EA_Action_refuel_Desc>建物に燃料を補給する</EA_Action_refuel_Desc>
+    <EA_Action_flick>スイッチ操作</EA_Action_flick>
+    <EA_Action_flick_Desc>建物の電源スイッチを切り替える</EA_Action_flick_Desc>
+
+    <!-- Social Actions (New) -->
+    <EA_Action_visit_sick>見舞い</EA_Action_visit_sick>
+    <EA_Action_visit_sick_Desc>病気や寝たきりの入植者を見舞う</EA_Action_visit_sick_Desc>
+    <EA_Action_social_fight>喧嘩</EA_Action_social_fight>
+    <EA_Action_social_fight_Desc>対象と口論から殴り合いを始める</EA_Action_social_fight_Desc>
+    <EA_Action_lovin>ラブラブ</EA_Action_lovin>
+    <EA_Action_lovin_Desc>パートナーとベッドでラブラブする</EA_Action_lovin_Desc>
+    <EA_Action_insult>侮辱</EA_Action_insult>
+    <EA_Action_insult_Desc>対象の入植者を侮辱する</EA_Action_insult_Desc>
+    <EA_Action_marry>結婚</EA_Action_marry>
+    <EA_Action_marry_Desc>対象の入植者と結婚する（式典）</EA_Action_marry_Desc>
+    <EA_Action_spectate>観覧</EA_Action_spectate>
+    <EA_Action_spectate_Desc>催し物やイベントを観覧する</EA_Action_spectate_Desc>
+
+    <!-- Recreation Actions -->
+    <EA_Action_stargaze>天体観測</EA_Action_stargaze>
+    <EA_Action_stargaze_Desc>屋外で天体観測をする</EA_Action_stargaze_Desc>
+    <EA_Action_go_for_walk>散歩</EA_Action_go_for_walk>
+    <EA_Action_go_for_walk_Desc>のんびりと散歩する</EA_Action_go_for_walk_Desc>
+    <EA_Action_play_music>音楽演奏</EA_Action_play_music>
+    <EA_Action_play_music_Desc>楽器を演奏する</EA_Action_play_music_Desc>
+    <EA_Action_use_drug>ドラッグ使用</EA_Action_use_drug>
+    <EA_Action_use_drug_Desc>ドラッグや嗜好品を使用する</EA_Action_use_drug_Desc>
+    <EA_Action_view_art>芸術鑑賞</EA_Action_view_art>
+    <EA_Action_view_art_Desc>芸術作品を鑑賞して娯楽を得る</EA_Action_view_art_Desc>
+
+    <!-- Facility Actions -->
+    <EA_Action_use_comms>通信機使用</EA_Action_use_comms>
+    <EA_Action_use_comms_Desc>通信機を使用する</EA_Action_use_comms_Desc>
+    <EA_Action_trade>トレード</EA_Action_trade>
+    <EA_Action_trade_Desc>訪問者やキャラバンと取引する</EA_Action_trade_Desc>
+    <EA_Action_enter_cryptosleep>冬眠カプセルに入る</EA_Action_enter_cryptosleep>
+    <EA_Action_enter_cryptosleep_Desc>冬眠カプセルに入る</EA_Action_enter_cryptosleep_Desc>
+    <EA_Action_reload>再装填</EA_Action_reload>
+    <EA_Action_reload_Desc>武器やタレットに再装填する</EA_Action_reload_Desc>
+    <EA_Action_open_container>容器を開ける</EA_Action_open_container>
+    <EA_Action_open_container_Desc>容器やカプセルを開ける</EA_Action_open_container_Desc>
+
+    <!-- Funeral Actions -->
+    <EA_Action_bury>埋葬</EA_Action_bury>
+    <EA_Action_bury_Desc>死体を墓に埋葬する</EA_Action_bury_Desc>
+    <EA_Action_cremate>火葬</EA_Action_cremate>
+    <EA_Action_cremate_Desc>火葬場で死体を火葬する</EA_Action_cremate_Desc>
+
+    <!-- RJW Actions (conditional) -->
+    <EA_Action_rjw_masturbate>自慰</EA_Action_rjw_masturbate>
+    <EA_Action_rjw_masturbate_Desc>入植者が自慰を行う</EA_Action_rjw_masturbate_Desc>
+    <EA_Action_rjw_quickie>手早い行為</EA_Action_rjw_quickie>
+    <EA_Action_rjw_quickie_Desc>対象と素早い性行為を行う</EA_Action_rjw_quickie_Desc>
+    <EA_Action_rjw_join_in_bed>ベッドに誘う</EA_Action_rjw_join_in_bed>
+    <EA_Action_rjw_join_in_bed_Desc>対象をベッドに誘い親密な行為を行う</EA_Action_rjw_join_in_bed_Desc>
+
+    <!-- Settings: Keyword Editing -->
+    <EA_Settings_KeywordEnabled>キーワードを有効にする</EA_Settings_KeywordEnabled>
+    <EA_Settings_KeywordEnabled_Desc>無効にするとこのアクションはキーワードマッチングやプロンプト注入に参加しなくなります</EA_Settings_KeywordEnabled_Desc>
+    <EA_Settings_KeywordOverride>カスタムキーワード</EA_Settings_KeywordOverride>
+    <EA_Settings_KeywordReset>キーワードをリセット</EA_Settings_KeywordReset>
+
+    <!-- Settings: Keyword Pre-Filter -->
+    <EA_Settings_KeywordSection>キーワードプレフィルター</EA_Settings_KeywordSection>
+    <EA_Settings_KeywordPreFilter>キーワードプレフィルターを有効にする</EA_Settings_KeywordPreFilter>
+    <EA_Settings_KeywordPreFilter_Desc>対話のキーワードでアクションをフィルタリングし、LLMのトークン使用量を削減します。無効にするとすべてのアクションが注入されます。</EA_Settings_KeywordPreFilter_Desc>
+
+    <!-- Settings: Cooldown -->
+    <EA_Settings_CooldownSection>アクションクールダウン</EA_Settings_CooldownSection>
+    <EA_Settings_Cooldown>アクションクールダウンを有効にする</EA_Settings_Cooldown>
+    <EA_Settings_Cooldown_Desc>会話をまたいで同じアクションの連続実行を防止します。クールダウン期間中は同じアクションを実行できません。</EA_Settings_Cooldown_Desc>
+    <EA_Settings_DefaultCooldown>デフォルトクールダウン</EA_Settings_DefaultCooldown>
+    <EA_Settings_MovementCooldown>移動/娯楽クールダウン</EA_Settings_MovementCooldown>
+    <EA_Settings_CombatCooldown>戦闘クールダウン</EA_Settings_CombatCooldown>
+    <EA_Settings_SocialCooldown>社交クールダウン</EA_Settings_SocialCooldown>
+
+    <!-- Undesignated Targets -->
+    <EA_Settings_AllowUndesignated>未指定の対象を許可</EA_Settings_AllowUndesignated>
+    <EA_Settings_AllowUndesignated_Desc>オフ（デフォルト）の場合、プレイヤーが指定済みの対象のみ自動検索します（例：伐採指定された木、採掘指定された岩）。オンの場合、プレイヤーが指定していない有効な対象にも操作できます。</EA_Settings_AllowUndesignated_Desc>
+
+    <!-- Job Protection -->
+    <EA_Settings_JobProtection>作業保護期間</EA_Settings_JobProtection>
+    <EA_Settings_JobProtection_Desc>EAが作業を割り当てた後の保護時間です。この期間中、新しいEAアクションは上書きではなくキューに追加されます。頻繁な対話による入植者の行動リセットを防止します。0=無効（常に上書き）。</EA_Settings_JobProtection_Desc>
+
+    <!-- Action Effort Level -->
+    <EA_Settings_ActionEffort>アクション出力レベル</EA_Settings_ActionEffort>
+    <EA_Settings_ActionEffort_Desc>LLMがea_observedを出力する頻度を制御します: 低=必要な時のみ、中=適度、高=毎回</EA_Settings_ActionEffort_Desc>
+    <EA_Settings_EffortLow>低</EA_Settings_EffortLow>
+    <EA_Settings_EffortMedium>中</EA_Settings_EffortMedium>
+    <EA_Settings_EffortHigh>高</EA_Settings_EffortHigh>
+
+    <!-- Execution Messages -->
+    <EA_Exec_Success>アクション実行: {0}</EA_Exec_Success>
+    <EA_Exec_Failed>アクション失敗: {0} - {1}</EA_Exec_Failed>
+    <EA_Exec_Skipped>アクションスキップ: {0}</EA_Exec_Skipped>
+
+    <!-- Error Messages -->
+    <EA_Error_ActorNotFound>実行者が見つかりません: {0}</EA_Error_ActorNotFound>
+    <EA_Error_TargetNotFound>対象が見つかりません: {0}</EA_Error_TargetNotFound>
+    <EA_Error_ActionDisabled>アクションが無効です: {0}</EA_Error_ActionDisabled>
+    <EA_Error_JobNotWhitelisted>ホワイトリストにないジョブです: {0}</EA_Error_JobNotWhitelisted>
+</LanguageData>

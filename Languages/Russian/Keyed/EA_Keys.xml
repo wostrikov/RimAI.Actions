@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- Mod Settings / Настройки мода -->
+    <EA_ModName>Расширенные действия</EA_ModName>
+    <EA_Settings_Title>Настройки расширенных действий</EA_Settings_Title>
+    <EA_Settings_Enabled>Включить расширенные действия</EA_Settings_Enabled>
+    <EA_Settings_Enabled_Desc>Главный переключатель функциональности EA</EA_Settings_Enabled_Desc>
+    <EA_Settings_DebugMode>Режим отладки</EA_Settings_DebugMode>
+    <EA_Settings_DebugMode_Desc>Показывать подробные логи и всплывающие сообщения о выполнении</EA_Settings_DebugMode_Desc>
+    <EA_Settings_ShowBubbles>Показывать всплывающие сообщения</EA_Settings_ShowBubbles>
+    <EA_Settings_ShowBubbles_Desc>Отображать статус выполнения действий над пешками</EA_Settings_ShowBubbles_Desc>
+    <EA_Settings_BehaviorControl>Управление поведением</EA_Settings_BehaviorControl>
+    <EA_Settings_SkipWorkTime>Пропускать пешек в рабочем расписании</EA_Settings_SkipWorkTime>
+    <EA_Settings_SkipWorkTime_Desc>Если включено, пешки в расписании "Работа" не будут выполнять действия EA — диалог продолжится без изменения поведения</EA_Settings_SkipWorkTime_Desc>
+    <EA_Settings_SkipDrafted>Пропускать призванных пешек</EA_Settings_SkipDrafted>
+    <EA_Settings_SkipDrafted_Desc>Если включено, призванные пешки не будут выполнять действия EA — диалог продолжится без изменения поведения</EA_Settings_SkipDrafted_Desc>
+    <EA_Settings_LLMSection>Настройки LLM</EA_Settings_LLMSection>
+    <EA_Settings_UseSecondaryLLM>Использовать вторичную LLM</EA_Settings_UseSecondaryLLM>
+    <EA_Settings_UseSecondaryLLM_Desc>Использовать LLM для преобразования поведения в действия (медленнее, но умнее). Если отключено, используется сопоставление по шаблонам (быстрее).</EA_Settings_UseSecondaryLLM_Desc>
+    <EA_Settings_LLMTimeout>Таймаут вторичной LLM (секунды)</EA_Settings_LLMTimeout>
+    <EA_Settings_MaxActions>Макс. действий за разговор</EA_Settings_MaxActions>
+    <EA_Settings_JobWhitelist>Пользовательский белый список заданий</EA_Settings_JobWhitelist>
+    <EA_Settings_JobWhitelist_Desc>Дополнительные JobDef, которые разрешены (по одному на строку)</EA_Settings_JobWhitelist_Desc>
+    <EA_Settings_ActionConfig>Настройка действий</EA_Settings_ActionConfig>
+    <EA_Settings_ResetDesc>Сбросить по умолчанию</EA_Settings_ResetDesc>
+
+    <!-- Categories / Категории -->
+    <EA_Category_Movement>Перемещение</EA_Category_Movement>
+    <EA_Category_Combat>Бой</EA_Category_Combat>
+    <EA_Category_Medical>Медицина</EA_Category_Medical>
+    <EA_Category_Social>Социальные</EA_Category_Social>
+    <EA_Category_Item>Предметы</EA_Category_Item>
+    <EA_Category_Job>Управление заданиями</EA_Category_Job>
+    <EA_Category_State>Состояние</EA_Category_State>
+    <EA_Category_RJW>RJW</EA_Category_RJW>
+
+    <!-- Movement Actions / Действия: Перемещение -->
+    <EA_Action_move_to>Идти к</EA_Action_move_to>
+    <EA_Action_move_to_Desc>Перейти к указанному месту</EA_Action_move_to_Desc>
+    <EA_Action_stop>Остановиться</EA_Action_stop>
+    <EA_Action_stop_Desc>Немедленно прекратить текущее действие</EA_Action_stop_Desc>
+    <EA_Action_wait>Ждать</EA_Action_wait>
+    <EA_Action_wait_Desc>Ожидать на текущем месте</EA_Action_wait_Desc>
+    <EA_Action_follow>Следовать</EA_Action_follow>
+    <EA_Action_follow_Desc>Следовать за целевой пешкой</EA_Action_follow_Desc>
+    <EA_Action_flee>Бежать</EA_Action_flee>
+    <EA_Action_flee_Desc>Убежать от опасности</EA_Action_flee_Desc>
+
+    <!-- Combat Actions / Действия: Бой -->
+    <EA_Action_draft_set>Призыв/Роспуск</EA_Action_draft_set>
+    <EA_Action_draft_set_Desc>Переключить боевой режим пешки</EA_Action_draft_set_Desc>
+    <EA_Action_attack_melee>Ближний бой</EA_Action_attack_melee>
+    <EA_Action_attack_melee_Desc>Атаковать цель оружием ближнего боя</EA_Action_attack_melee_Desc>
+    <EA_Action_attack_ranged>Стрельба</EA_Action_attack_ranged>
+    <EA_Action_attack_ranged_Desc>Атаковать цель оружием дальнего боя</EA_Action_attack_ranged_Desc>
+    <EA_Action_arrest>Арест</EA_Action_arrest>
+    <EA_Action_arrest_Desc>Попытаться арестовать цель</EA_Action_arrest_Desc>
+    <EA_Action_drop_weapon>Бросить оружие</EA_Action_drop_weapon>
+    <EA_Action_drop_weapon_Desc>Бросить текущее оружие</EA_Action_drop_weapon_Desc>
+    <EA_Action_mental_break_start>Психический срыв</EA_Action_mental_break_start>
+    <EA_Action_mental_break_start_Desc>Вызвать психическое состояние (из белого списка)</EA_Action_mental_break_start_Desc>
+
+    <!-- Medical Actions / Действия: Медицина -->
+    <EA_Action_rescue>Спасение</EA_Action_rescue>
+    <EA_Action_rescue_Desc>Спасти упавшую пешку</EA_Action_rescue_Desc>
+    <EA_Action_tend>Лечение</EA_Action_tend>
+    <EA_Action_tend_Desc>Оказать помощь раненой пешке</EA_Action_tend_Desc>
+    <EA_Action_feed_patient>Покормить пациента</EA_Action_feed_patient>
+    <EA_Action_feed_patient_Desc>Накормить лежачего пациента</EA_Action_feed_patient_Desc>
+    <EA_Action_force_sleep>Уложить спать</EA_Action_force_sleep>
+    <EA_Action_force_sleep_Desc>Заставить пешку отдыхать</EA_Action_force_sleep_Desc>
+
+    <!-- Social Actions / Действия: Социальные -->
+    <EA_Action_recruit>Вербовка</EA_Action_recruit>
+    <EA_Action_recruit_Desc>Попытаться завербовать пленника</EA_Action_recruit_Desc>
+    <EA_Action_romance_set>Роман</EA_Action_romance_set>
+    <EA_Action_romance_set_Desc>Установить романтические отношения</EA_Action_romance_set_Desc>
+    <EA_Action_thought_add>Добавить мысль</EA_Action_thought_add>
+    <EA_Action_thought_add_Desc>Добавить воспоминание пешке</EA_Action_thought_add_Desc>
+    <EA_Action_relation_set>Задать отношение</EA_Action_relation_set>
+    <EA_Action_relation_set_Desc>Изменить отношения между пешками</EA_Action_relation_set_Desc>
+    <EA_Action_give_inspiration>Вдохновить</EA_Action_give_inspiration>
+    <EA_Action_give_inspiration_Desc>Дать воодушевление пешке</EA_Action_give_inspiration_Desc>
+
+    <!-- Item Actions / Действия: Предметы -->
+    <EA_Action_drop_item>Бросить предмет</EA_Action_drop_item>
+    <EA_Action_drop_item_Desc>Бросить предмет в руках</EA_Action_drop_item_Desc>
+    <EA_Action_give_item>Передать предмет</EA_Action_give_item>
+    <EA_Action_give_item_Desc>Передать предмет цели</EA_Action_give_item_Desc>
+    <EA_Action_equip>Экипировать</EA_Action_equip>
+    <EA_Action_equip_Desc>Надеть оружие или одежду</EA_Action_equip_Desc>
+    <EA_Action_force_eat>Заставить есть</EA_Action_force_eat>
+    <EA_Action_force_eat_Desc>Заставить пешку поесть</EA_Action_force_eat_Desc>
+
+    <!-- Job Actions / Действия: Задания -->
+    <EA_Action_job_start>Начать задание</EA_Action_job_start>
+    <EA_Action_job_start_Desc>Начать конкретное задание</EA_Action_job_start_Desc>
+    <EA_Action_job_queue_front>Поставить в очередь</EA_Action_job_queue_front>
+    <EA_Action_job_queue_front_Desc>Поставить задание первым в очередь</EA_Action_job_queue_front_Desc>
+    <EA_Action_job_end>Завершить задание</EA_Action_job_end>
+    <EA_Action_job_end_Desc>Прервать текущее задание</EA_Action_job_end_Desc>
+
+    <!-- New Categories / Новые категории -->
+    <EA_Category_Prisoner>Пленники</EA_Category_Prisoner>
+    <EA_Category_Animal>Животные</EA_Category_Animal>
+    <EA_Category_Production>Производство</EA_Category_Production>
+    <EA_Category_Recreation>Отдых</EA_Category_Recreation>
+    <EA_Category_Facility>Сооружения</EA_Category_Facility>
+    <EA_Category_Funeral>Похороны</EA_Category_Funeral>
+    <EA_Category_DLC>DLC</EA_Category_DLC>
+
+    <!-- Extension Module Names / Названия модулей расширения -->
+    <EA_Module_Royalty>Royalty</EA_Module_Royalty>
+    <EA_Module_Ideology>Ideology</EA_Module_Ideology>
+    <EA_Module_Biotech>Biotech</EA_Module_Biotech>
+    <EA_Module_Anomaly>Anomaly</EA_Module_Anomaly>
+    <EA_Module_RJW>RJW</EA_Module_RJW>
+
+    <!-- DLC Actions: Royalty -->
+    <EA_Action_meditate>Медитация</EA_Action_meditate>
+    <EA_Action_meditate_Desc>Медитировать у места медитации или трона</EA_Action_meditate_Desc>
+    <EA_Action_psycast>Пси-способность</EA_Action_psycast>
+    <EA_Action_psycast_Desc>Применить пси-способность на цель</EA_Action_psycast_Desc>
+    <EA_Action_reign>Правление</EA_Action_reign>
+    <EA_Action_reign_Desc>Восседать на троне, выполняя обязанности правителя</EA_Action_reign_Desc>
+
+    <!-- DLC Actions: Ideology -->
+    <EA_Action_ritual>Ритуал</EA_Action_ritual>
+    <EA_Action_ritual_Desc>Начать ритуал</EA_Action_ritual_Desc>
+    <EA_Action_convert>Обращение</EA_Action_convert>
+    <EA_Action_convert_Desc>Попытаться обратить цель в свою идеолигию</EA_Action_convert_Desc>
+
+    <!-- DLC Actions: Biotech -->
+    <EA_Action_command_mechanoid>Команда механоиду</EA_Action_command_mechanoid>
+    <EA_Action_command_mechanoid_Desc>Приказать механоиду выполнить действие</EA_Action_command_mechanoid_Desc>
+    <EA_Action_enter_biosculpter>Войти в биоскульптор</EA_Action_enter_biosculpter>
+    <EA_Action_enter_biosculpter_Desc>Войти в капсулу биоскульптора для улучшения</EA_Action_enter_biosculpter_Desc>
+
+    <!-- DLC Actions: Anomaly -->
+    <EA_Action_study_entity>Изучить сущность</EA_Action_study_entity>
+    <EA_Action_study_entity_Desc>Изучить аномальную сущность</EA_Action_study_entity_Desc>
+    <EA_Action_suppress_entity>Подавить сущность</EA_Action_suppress_entity>
+    <EA_Action_suppress_entity_Desc>Подавить аномальную сущность</EA_Action_suppress_entity_Desc>
+
+    <!-- Prisoner Actions / Действия: Пленники -->
+    <EA_Action_capture>Захватить</EA_Action_capture>
+    <EA_Action_capture_Desc>Захватить упавшую пешку в качестве пленника</EA_Action_capture_Desc>
+    <EA_Action_release_prisoner>Освободить пленника</EA_Action_release_prisoner>
+    <EA_Action_release_prisoner_Desc>Освободить пленника</EA_Action_release_prisoner_Desc>
+    <EA_Action_recruit_prisoner>Завербовать пленника</EA_Action_recruit_prisoner>
+    <EA_Action_recruit_prisoner_Desc>Попытаться завербовать пленника</EA_Action_recruit_prisoner_Desc>
+    <EA_Action_execute>Казнить</EA_Action_execute>
+    <EA_Action_execute_Desc>Казнить пленника</EA_Action_execute_Desc>
+    <EA_Action_escort_to_bed>Отвести к кровати</EA_Action_escort_to_bed>
+    <EA_Action_escort_to_bed_Desc>Отвести пленника к кровати</EA_Action_escort_to_bed_Desc>
+    <EA_Action_strip>Раздеть</EA_Action_strip>
+    <EA_Action_strip_Desc>Снять одежду с цели</EA_Action_strip_Desc>
+
+    <!-- Animal Actions / Действия: Животные -->
+    <EA_Action_tame>Приручить</EA_Action_tame>
+    <EA_Action_tame_Desc>Попытаться приручить животное</EA_Action_tame_Desc>
+    <EA_Action_train>Тренировать</EA_Action_train>
+    <EA_Action_train_Desc>Тренировать животное</EA_Action_train_Desc>
+    <EA_Action_hunt>Охотиться</EA_Action_hunt>
+    <EA_Action_hunt_Desc>Охотиться на животное</EA_Action_hunt_Desc>
+    <EA_Action_slaughter>Забить</EA_Action_slaughter>
+    <EA_Action_slaughter_Desc>Забить животное</EA_Action_slaughter_Desc>
+    <EA_Action_milk>Доить</EA_Action_milk>
+    <EA_Action_milk_Desc>Подоить животное</EA_Action_milk_Desc>
+    <EA_Action_shear>Стричь</EA_Action_shear>
+    <EA_Action_shear_Desc>Остричь животное</EA_Action_shear_Desc>
+
+    <!-- Production Actions / Действия: Производство -->
+    <EA_Action_haul>Перенести</EA_Action_haul>
+    <EA_Action_haul_Desc>Перенести предмет на склад</EA_Action_haul_Desc>
+    <EA_Action_mine>Копать</EA_Action_mine>
+    <EA_Action_mine_Desc>Добывать породу или минералы</EA_Action_mine_Desc>
+    <EA_Action_cut_plant>Срубить</EA_Action_cut_plant>
+    <EA_Action_cut_plant_Desc>Срубить растение</EA_Action_cut_plant_Desc>
+    <EA_Action_clean>Убрать</EA_Action_clean>
+    <EA_Action_clean_Desc>Убрать территорию</EA_Action_clean_Desc>
+    <EA_Action_repair>Починить</EA_Action_repair>
+    <EA_Action_repair_Desc>Починить здание или сооружение</EA_Action_repair_Desc>
+    <EA_Action_deconstruct>Разобрать</EA_Action_deconstruct>
+    <EA_Action_deconstruct_Desc>Разобрать здание</EA_Action_deconstruct_Desc>
+    <EA_Action_sow>Посеять</EA_Action_sow>
+    <EA_Action_sow_Desc>Посеять семена в зоне выращивания</EA_Action_sow_Desc>
+    <EA_Action_harvest>Собрать урожай</EA_Action_harvest>
+    <EA_Action_harvest_Desc>Собрать созревшие растения</EA_Action_harvest_Desc>
+    <EA_Action_research>Исследовать</EA_Action_research>
+    <EA_Action_research_Desc>Исследовать за исследовательским столом</EA_Action_research_Desc>
+    <EA_Action_craft>Создать</EA_Action_craft>
+    <EA_Action_craft_Desc>Работать за верстаком</EA_Action_craft_Desc>
+    <EA_Action_smooth_floor>Выровнять пол</EA_Action_smooth_floor>
+    <EA_Action_smooth_floor_Desc>Выровнять каменный пол</EA_Action_smooth_floor_Desc>
+    <EA_Action_build_roof>Построить крышу</EA_Action_build_roof>
+    <EA_Action_build_roof_Desc>Построить крышу в области</EA_Action_build_roof_Desc>
+    <EA_Action_remove_roof>Убрать крышу</EA_Action_remove_roof>
+    <EA_Action_remove_roof_Desc>Убрать крышу в области</EA_Action_remove_roof_Desc>
+    <EA_Action_uninstall>Демонтировать</EA_Action_uninstall>
+    <EA_Action_uninstall_Desc>Демонтировать здание или мебель</EA_Action_uninstall_Desc>
+    <EA_Action_fix_broken>Починить поломку</EA_Action_fix_broken>
+    <EA_Action_fix_broken_Desc>Починить сломанное здание</EA_Action_fix_broken_Desc>
+    <EA_Action_refuel>Заправить</EA_Action_refuel>
+    <EA_Action_refuel_Desc>Заправить здание топливом</EA_Action_refuel_Desc>
+    <EA_Action_flick>Переключить</EA_Action_flick>
+    <EA_Action_flick_Desc>Переключить выключатель питания здания</EA_Action_flick_Desc>
+
+    <!-- Social Actions (New) / Действия: Социальные (новые) -->
+    <EA_Action_visit_sick>Навестить больного</EA_Action_visit_sick>
+    <EA_Action_visit_sick_Desc>Навестить больную или лежачую пешку</EA_Action_visit_sick_Desc>
+    <EA_Action_social_fight>Драка</EA_Action_social_fight>
+    <EA_Action_social_fight_Desc>Начать социальную драку с целью</EA_Action_social_fight_Desc>
+    <EA_Action_lovin>Любовь</EA_Action_lovin>
+    <EA_Action_lovin_Desc>Близость с партнёром в кровати</EA_Action_lovin_Desc>
+    <EA_Action_insult>Оскорбить</EA_Action_insult>
+    <EA_Action_insult_Desc>Оскорбить целевую пешку</EA_Action_insult_Desc>
+    <EA_Action_marry>Жениться</EA_Action_marry>
+    <EA_Action_marry_Desc>Жениться на целевой пешке (церемония)</EA_Action_marry_Desc>
+    <EA_Action_spectate>Наблюдать</EA_Action_spectate>
+    <EA_Action_spectate_Desc>Наблюдать за зрелищем или событием</EA_Action_spectate_Desc>
+
+    <!-- Recreation Actions / Действия: Отдых -->
+    <EA_Action_stargaze>Наблюдать за звёздами</EA_Action_stargaze>
+    <EA_Action_stargaze_Desc>Наблюдать за звёздами на улице</EA_Action_stargaze_Desc>
+    <EA_Action_go_for_walk>Прогуляться</EA_Action_go_for_walk>
+    <EA_Action_go_for_walk_Desc>Совершить неспешную прогулку</EA_Action_go_for_walk_Desc>
+    <EA_Action_play_music>Играть музыку</EA_Action_play_music>
+    <EA_Action_play_music_Desc>Играть на музыкальном инструменте</EA_Action_play_music_Desc>
+    <EA_Action_use_drug>Принять наркотик</EA_Action_use_drug>
+    <EA_Action_use_drug_Desc>Принять наркотик или препарат</EA_Action_use_drug_Desc>
+    <EA_Action_view_art>Любоваться искусством</EA_Action_view_art>
+    <EA_Action_view_art_Desc>Посмотреть на произведение искусства для удовольствия</EA_Action_view_art_Desc>
+
+    <!-- Facility Actions / Действия: Сооружения -->
+    <EA_Action_use_comms>Связь</EA_Action_use_comms>
+    <EA_Action_use_comms_Desc>Использовать пульт связи</EA_Action_use_comms_Desc>
+    <EA_Action_trade>Торговля</EA_Action_trade>
+    <EA_Action_trade_Desc>Торговать с посетителем или караваном</EA_Action_trade_Desc>
+    <EA_Action_enter_cryptosleep>Лечь в криптосон</EA_Action_enter_cryptosleep>
+    <EA_Action_enter_cryptosleep_Desc>Лечь в саркофаг криптосна</EA_Action_enter_cryptosleep_Desc>
+    <EA_Action_reload>Перезарядить</EA_Action_reload>
+    <EA_Action_reload_Desc>Перезарядить оружие или турель</EA_Action_reload_Desc>
+    <EA_Action_open_container>Открыть контейнер</EA_Action_open_container>
+    <EA_Action_open_container_Desc>Открыть контейнер или саркофаг</EA_Action_open_container_Desc>
+
+    <!-- Funeral Actions / Действия: Похороны -->
+    <EA_Action_bury>Похоронить</EA_Action_bury>
+    <EA_Action_bury_Desc>Похоронить тело в могиле</EA_Action_bury_Desc>
+    <EA_Action_cremate>Кремировать</EA_Action_cremate>
+    <EA_Action_cremate_Desc>Кремировать тело в крематории</EA_Action_cremate_Desc>
+
+    <!-- RJW Actions (conditional) / Действия: RJW (условные) -->
+    <EA_Action_rjw_masturbate>Мастурбация</EA_Action_rjw_masturbate>
+    <EA_Action_rjw_masturbate_Desc>Пешка мастурбирует</EA_Action_rjw_masturbate_Desc>
+    <EA_Action_rjw_quickie>Перепих</EA_Action_rjw_quickie>
+    <EA_Action_rjw_quickie_Desc>Быстрый секс с целью</EA_Action_rjw_quickie_Desc>
+    <EA_Action_rjw_join_in_bed>Присоединиться в кровати</EA_Action_rjw_join_in_bed>
+    <EA_Action_rjw_join_in_bed_Desc>Присоединиться к цели в кровати для близости</EA_Action_rjw_join_in_bed_Desc>
+
+    <!-- Settings: Keyword Editing / Настройки: Редактирование ключевых слов -->
+    <EA_Settings_KeywordEnabled>Включить ключевые слова</EA_Settings_KeywordEnabled>
+    <EA_Settings_KeywordEnabled_Desc>Если отключено, это действие не будет участвовать в сопоставлении по ключевым словам или инжекции промпта</EA_Settings_KeywordEnabled_Desc>
+    <EA_Settings_KeywordOverride>Пользовательские ключевые слова</EA_Settings_KeywordOverride>
+    <EA_Settings_KeywordReset>Сбросить ключевые слова</EA_Settings_KeywordReset>
+
+    <!-- Settings: Keyword Pre-Filter / Настройки: Пре-фильтр ключевых слов -->
+    <EA_Settings_KeywordSection>Пре-фильтр ключевых слов</EA_Settings_KeywordSection>
+    <EA_Settings_KeywordPreFilter>Включить пре-фильтр ключевых слов</EA_Settings_KeywordPreFilter>
+    <EA_Settings_KeywordPreFilter_Desc>Фильтровать действия по ключевым словам диалога для уменьшения расхода токенов LLM. Если отключено, все действия инжектируются.</EA_Settings_KeywordPreFilter_Desc>
+
+    <!-- Settings: Cooldown / Настройки: Перезарядка -->
+    <EA_Settings_CooldownSection>Перезарядка действий</EA_Settings_CooldownSection>
+    <EA_Settings_Cooldown>Включить перезарядку действий</EA_Settings_Cooldown>
+    <EA_Settings_Cooldown_Desc>Запретить повторное выполнение одного и того же действия в течение периода перезарядки между разговорами.</EA_Settings_Cooldown_Desc>
+    <EA_Settings_DefaultCooldown>Стандартная перезарядка</EA_Settings_DefaultCooldown>
+    <EA_Settings_MovementCooldown>Перезарядка перемещения/отдыха</EA_Settings_MovementCooldown>
+    <EA_Settings_CombatCooldown>Перезарядка боя</EA_Settings_CombatCooldown>
+    <EA_Settings_SocialCooldown>Перезарядка социальных действий</EA_Settings_SocialCooldown>
+
+    <!-- Undesignated Targets / Неназначенные цели -->
+    <EA_Settings_AllowUndesignated>Разрешить неназначенные цели</EA_Settings_AllowUndesignated>
+    <EA_Settings_AllowUndesignated_Desc>Если выключено (по умолчанию), автоматически ищутся только цели, уже назначенные игроком (например, деревья, отмеченные для рубки, или породы для добычи). Если включено, EA может действовать на любые допустимые цели, даже если они не назначены игроком.</EA_Settings_AllowUndesignated_Desc>
+
+    <!-- Job Protection / Защита заданий -->
+    <EA_Settings_JobProtection>Окно защиты заданий</EA_Settings_JobProtection>
+    <EA_Settings_JobProtection_Desc>Время защиты после назначения задания через EA. В это время новые действия EA ставятся в очередь вместо перезаписи. Предотвращает постоянный сброс поведения пешки при частых диалогах. 0=отключено (всегда перезаписывать).</EA_Settings_JobProtection_Desc>
+
+    <!-- Action Effort Level / Уровень усилий действий -->
+    <EA_Settings_ActionEffort>Уровень усилий действий</EA_Settings_ActionEffort>
+    <EA_Settings_ActionEffort_Desc>Управляет тем, как часто LLM выводит ea_observed: Низкий=только при необходимости, Средний=умеренно, Высокий=каждый ответ</EA_Settings_ActionEffort_Desc>
+    <EA_Settings_EffortLow>Низкий</EA_Settings_EffortLow>
+    <EA_Settings_EffortMedium>Средний</EA_Settings_EffortMedium>
+    <EA_Settings_EffortHigh>Высокий</EA_Settings_EffortHigh>
+
+    <!-- Execution Messages / Сообщения о выполнении -->
+    <EA_Exec_Success>Действие выполнено: {0}</EA_Exec_Success>
+    <EA_Exec_Failed>Действие провалено: {0} - {1}</EA_Exec_Failed>
+    <EA_Exec_Skipped>Действие пропущено: {0}</EA_Exec_Skipped>
+
+    <!-- Error Messages / Сообщения об ошибках -->
+    <EA_Error_ActorNotFound>Исполнитель не найден: {0}</EA_Error_ActorNotFound>
+    <EA_Error_TargetNotFound>Цель не найдена: {0}</EA_Error_TargetNotFound>
+    <EA_Error_ActionDisabled>Действие отключено: {0}</EA_Error_ActionDisabled>
+    <EA_Error_JobNotWhitelisted>Задание не в белом списке: {0}</EA_Error_JobNotWhitelisted>
+</LanguageData>

@@ -24,7 +24,7 @@ public static class RimTalkIntegration
 
 	public static string BuildEaObservedSchema()
 	{
-		return "When describing actions in your response, you may include an 'ea_observed' field with a list of observable behaviors.\nIMPORTANT: ea_observed is for PHYSICAL ACTIONS only (move, follow, attack, sex, work, etc.)\nDo NOT put dialogue actions like 'Chat' or 'Flirt' in ea_observed — those belong in the 'act' field.\n\nFormat:\n{\n  \"name\": \"...\",\n  \"text\": \"...\",\n  \"act\": \"...\",\n  \"target\": \"...\",\n  \"ea_observed\": [\n    \"ActorName keyword TargetName\",\n    \"张三 follow 李四\",\n    \"张三 attack 敌人\"\n  ]\n}\n\nBehavior format: \"ActorName keyword [TargetName]\"\nUse action keywords from the list below (NOT dialogue acts like Chat/Flirt).\n\n{{ ea_keywords }}\n\nRules:\n1. Use exact pawn names as actors\n2. Use action_id or keywords from the supported list above\n3. Include PHYSICAL actions only (movement, work, combat, sex/intimacy, etc.)\n4. Do NOT include: thoughts, emotions, hypothetical actions, or dialogue acts (Chat, Flirt, etc.)\n\n{{ ea_act_effort }}";
+		return "Описуючи дії у відповіді, можна додати поле 'ea_observed' зі списком спостережуваної поведінки.\nВАЖЛИВО: ea_observed призначене лише для ФІЗИЧНИХ ДІЙ (рух, слідування, напад, секс, робота тощо).\nНЕ додавай до ea_observed діалогові дії на кшталт 'Chat' або 'Flirt' — вони належать до поля 'act'.\n\nФормат:\n{\n  \"name\": \"...\",\n  \"text\": \"...\",\n  \"act\": \"...\",\n  \"target\": \"...\",\n  \"ea_observed\": [\n    \"ActorName keyword TargetName\",\n    \"Іван follow Олена\",\n    \"Іван attack Ворог\"\n  ]\n}\n\nФормат поведінки: \"ActorName keyword [TargetName]\"\nВикористовуй ключові слова дій зі списку нижче (НЕ діалогові дії на кшталт Chat/Flirt).\n\n{{ ea_keywords }}\n\nПравила:\n1. Використовуй точні імена персонажів як виконавців\n2. Використовуй action_id або ключові слова з підтримуваного списку вище\n3. Додавай лише ФІЗИЧНІ дії (рух, роботу, бій, секс/інтимність тощо)\n4. НЕ додавай думки, емоції, гіпотетичні дії або діалогові дії (Chat, Flirt тощо)\n\n{{ ea_act_effort }}";
 	}
 
 	public static void Initialize()
@@ -73,9 +73,10 @@ public static class RimTalkIntegration
 			Type type2 = AccessTools.TypeByName("RimTalk.Prompt.PromptRole");
 			object obj = ((type2 != null) ? Enum.Parse(type2, "User") : null);
 			RemoveLegacyEntryFromList("EA Action Schema");
+			RemoveLegacyEntryFromList("Схема дій EA");
 			object obj2 = Activator.CreateInstance(type);
 			SetProperty(obj2, "SourceModId", "rimtalk.expand.actions");
-			SetProperty(obj2, "Name", "EA Action Schema");
+			SetProperty(obj2, "Name", "Схема дій EA");
 			SetField(obj2, "Content", BuildEaObservedSchema());
 			SetField(obj2, "Enabled", true);
 			if (obj != null)
@@ -170,11 +171,11 @@ public static class RimTalkIntegration
 		{
 			if (_registerContextVariableMethod != null)
 			{
-				TryRegisterContextVariable("rimtalk.expand.actions", "ea_keywords", () => EAVariableProvider.GetKeywords(), "EA supported keywords", checkPawnStatus: true);
-				TryRegisterContextVariable("rimtalk.expand.actions", "ea_json_format", EAVariableProvider.GetJsonFormat, "EA JSON format", checkPawnStatus: true);
-				TryRegisterContextVariable("rimtalk.expand.actions", "ea_actions", EAVariableProvider.GetActions, "EA enabled actions", checkPawnStatus: true);
-				TryRegisterContextVariable("rimtalk.expand.actions", "ea_summary", EAVariableProvider.GetSummary, "EA complete summary", checkPawnStatus: true);
-				TryRegisterContextVariable("rimtalk.expand.actions", "ea_act_effort", EAVariableProvider.GetActEffort, "EA action effort level guidance", checkPawnStatus: true);
+				TryRegisterContextVariable("rimtalk.expand.actions", "ea_keywords", () => EAVariableProvider.GetKeywords(), "Підтримувані ключові слова EA", checkPawnStatus: true);
+				TryRegisterContextVariable("rimtalk.expand.actions", "ea_json_format", EAVariableProvider.GetJsonFormat, "Формат JSON для EA", checkPawnStatus: true);
+				TryRegisterContextVariable("rimtalk.expand.actions", "ea_actions", EAVariableProvider.GetActions, "Увімкнені дії EA", checkPawnStatus: true);
+				TryRegisterContextVariable("rimtalk.expand.actions", "ea_summary", EAVariableProvider.GetSummary, "Повний опис EA", checkPawnStatus: true);
+				TryRegisterContextVariable("rimtalk.expand.actions", "ea_act_effort", EAVariableProvider.GetActEffort, "Вказівки щодо рівня зусиль для дій EA", checkPawnStatus: true);
 				EALogger.Info("EA template variables registered: {{ ea_keywords }}, {{ ea_json_format }}, {{ ea_actions }}, {{ ea_summary }}, {{ ea_act_effort }}");
 				EALogger.Info("EA variables are pawn-aware: will return empty if pawn is drafted or on Work schedule");
 			}

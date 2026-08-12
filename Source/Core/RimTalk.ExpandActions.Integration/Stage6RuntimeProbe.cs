@@ -29,14 +29,15 @@ public sealed class Stage6RuntimeProbe : GameComponent
 	private int deadlineTick;
 	private string correlationId;
 
-	public static void ScheduleDisposableSaveLoad()
+	public static bool TryLoadDisposableSave()
 	{
 		string marker = Path.Combine(GenFilePaths.SaveDataFolderPath, MarkerName);
 		if (!File.Exists(marker) || Current.ProgramState != ProgramState.Entry)
 		{
-			return;
+			return false;
 		}
-		LongEventHandler.ExecuteWhenFinished(() => SavedGameLoaderNow.LoadGameFromSaveFileNow(SaveName));
+		SavedGameLoaderNow.LoadGameFromSaveFileNow(SaveName);
+		return true;
 	}
 
 	public Stage6RuntimeProbe(Game game)

@@ -27,7 +27,6 @@ public class EAModMain : Verse.Mod
 		HarmonyInstance.PatchAll();
 		ActionRegistry.Initialize();
 		RimTalkIntegration.Initialize();
-		Stage6RuntimeProbe.ScheduleDisposableSaveLoad();
 		EALogger.Info("Expand Actions initialized.");
 	}
 

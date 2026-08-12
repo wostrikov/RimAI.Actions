@@ -20,6 +20,8 @@ class ActionLifecycleRegressionTests(unittest.TestCase):
         cls.take_inventory = read("RimTalk.ExpandActions.Actions.Item/TakeInventoryHandler.cs")
         cls.registry = read("RimTalk.ExpandActions.Core/ActionRegistry.cs")
         cls.lifecycle_patch = read("RimTalk.ExpandActions.Patches/Patch_JobLifecycle.cs")
+        cls.probe = read("RimTalk.ExpandActions.Integration/Stage6RuntimeProbe.cs")
+        cls.probe_menu = read("RimTalk.ExpandActions.Patches/Patch_Stage6ProbeMenuStart.cs")
 
     def test_normal_action_success_returns_result(self):
         self.assertIn("return executionResult;", self.executor)
@@ -66,6 +68,30 @@ class ActionLifecycleRegressionTests(unittest.TestCase):
     def test_runtime_trace_distinguishes_start_and_terminal_state(self):
         self.assertIn("state=STARTED", self.lifecycle_patch)
         self.assertIn("CompleteEntry", self.lifecycle_patch)
+
+    def test_wrong_save_does_not_run_probe(self):
+        self.assertIn("Find.World?.info?.FileNameNoExtension, SaveName", self.probe)
+
+    def test_correct_disposable_save_may_run_probe(self):
+        self.assertIn('SaveName = "Stage6_AI_E2E_Disposable"', self.probe)
+        self.assertIn("File.Delete(marker)", self.probe)
+
+    def test_original_save_is_never_modified(self):
+        self.assertNotIn('"001"', self.probe)
+        self.assertNotIn("SaveGame(", self.probe)
+
+    def test_missing_requested_save_fails_clearly(self):
+        self.assertIn("RequestedSaveMissing", self.probe)
+        self.assertIn("FilePathForSavedGame(SaveName)", self.probe)
+
+    def test_load_request_executes_only_once_from_native_menu_lifecycle(self):
+        self.assertIn("loadAttempted", self.probe)
+        self.assertIn("SavedGameLoaderNow.LoadGameFromSaveFileNow(SaveName)", self.probe)
+        self.assertIn("Root_Play.Start", self.probe_menu)
+        self.assertNotIn("stableFrames", self.probe_menu)
+
+    def test_probe_returns_to_production_main_thread_dispatcher(self):
+        self.assertIn("MainThreadDispatcher.Enqueue", self.probe)
 
 
 if __name__ == "__main__":

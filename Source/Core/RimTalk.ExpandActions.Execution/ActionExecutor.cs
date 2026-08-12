@@ -182,7 +182,9 @@ public static class ActionExecutor
 			ActionDefinition byId2 = ActionRegistry.GetById(action.Id);
 			if (byId2 == null)
 			{
-				return ExecutionResult.Failed(ErrorCode.ActionNotInWhitelist, "Unknown action: " + action.Id);
+				ExecutionResult rejected = ExecutionResult.Failed(ErrorCode.ActionNotInWhitelist, "Unknown action: " + action.Id);
+				rejected.ActionId = action.Id;
+				return rejected;
 			}
 			if (!EAModMain.Settings.IsActionEnabled(action.Id))
 			{

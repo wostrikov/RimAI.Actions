@@ -28,12 +28,20 @@ public sealed class Stage6RuntimeProbe : GameComponent
 	private int beforeSilver;
 	private int deadlineTick;
 	private string correlationId;
+	private static bool loadAttempted;
 
 	public static bool TryLoadDisposableSave()
 	{
 		string marker = Path.Combine(GenFilePaths.SaveDataFolderPath, MarkerName);
-		if (!File.Exists(marker) || Current.ProgramState != ProgramState.Entry)
+		if (loadAttempted || !File.Exists(marker) || Current.ProgramState != ProgramState.Entry)
 		{
+			return false;
+		}
+		loadAttempted = true;
+		string savePath = GenFilePaths.FilePathForSavedGame(SaveName);
+		if (!File.Exists(savePath))
+		{
+			EALogger.Error($"[EA_STAGE6] state=FAILED reason=RequestedSaveMissing save={SaveName}");
 			return false;
 		}
 		SavedGameLoaderNow.LoadGameFromSaveFileNow(SaveName);
@@ -84,7 +92,7 @@ public sealed class Stage6RuntimeProbe : GameComponent
 	private async System.Threading.Tasks.Task ResolveAndExecuteAsync(Map map, Pawn actor)
 	{
 		ToolcallResponse response = await SecondaryLLMCaller.ConvertBehaviorsAsync(new List<string> { Command }, actor.LabelShort);
-		LongEventHandler.ExecuteWhenFinished(() =>
+		MainThreadDispatcher.Enqueue(() =>
 		{
 			ActionCall action = response?.Actions?.FirstOrDefault();
 			if (action == null)

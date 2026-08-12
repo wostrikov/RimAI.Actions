@@ -83,6 +83,8 @@
     <EA_Action_give_inspiration_Desc>Grant inspiration to pawn</EA_Action_give_inspiration_Desc>
 
     <!-- Item Actions -->
+    <EA_Action_take_inventory>Take into Inventory</EA_Action_take_inventory>
+    <EA_Action_take_inventory_Desc>Pick up an item from the ground into personal inventory</EA_Action_take_inventory_Desc>
     <EA_Action_drop_item>Drop Item</EA_Action_drop_item>
     <EA_Action_drop_item_Desc>Drop held item</EA_Action_drop_item_Desc>
     <EA_Action_give_item>Give Item</EA_Action_give_item>

@@ -15,5 +15,6 @@ public enum ErrorCode
 	TargetUnreachable,
 	ExecutionException,
 	AlreadyExecuted,
-	OnCooldown
+	OnCooldown,
+	JobNotQueued
 }

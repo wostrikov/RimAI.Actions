@@ -73,9 +73,16 @@ public class ExecutionContext
 
 	public void StartOrQueueJob(Job job)
 	{
+		TryStartOrQueueJob(job, out _);
+	}
+
+	public bool TryStartOrQueueJob(Job job, out string failure)
+	{
+		failure = null;
 		if (ResolvedActor == null || job == null)
 		{
-			return;
+			failure = "Actor or job is null";
+			return false;
 		}
 		int thingIDNumber = ResolvedActor.thingIDNumber;
 		if (!EAJobTracker.IsSameConversation(thingIDNumber, ConversationId) && IsFirstActionForActor)
@@ -89,7 +96,7 @@ public class ExecutionContext
 			ResolvedActor.jobs.StartJob(job, JobCondition.InterruptForced);
 			EAJobTracker.ClearProtection(thingIDNumber);
 			EAJobTracker.RecordJob(thingIDNumber, ConversationId);
-			return;
+			return true;
 		}
 		bool flag = false;
 		if (IsFirstActionForActor && !EAJobTracker.IsSameConversation(thingIDNumber, ConversationId))
@@ -99,7 +106,8 @@ public class ExecutionContext
 				if (ActionPriority < 3)
 				{
 					EALogger.Debug($"[EA] {ResolvedActor.LabelShort}: new conv, priority {ActionPriority} (leisure), pawn busy -> skip");
-					return;
+					failure = "Pawn is protected by a current job; leisure action was not queued";
+					return false;
 				}
 			}
 			else
@@ -113,13 +121,14 @@ public class ExecutionContext
 			ResolvedActor.jobs?.jobQueue?.Clear(ResolvedActor, canReturnToPool: true);
 			ResolvedActor.jobs.StartJob(job, JobCondition.InterruptForced);
 			EAJobTracker.RecordJob(thingIDNumber, ConversationId);
-			return;
+			return true;
 		}
 		EAJobTracker.EvictIfFull(thingIDNumber, ResolvedActor);
 		if (EAJobTracker.IsQueueFull(ResolvedActor))
 		{
 			EALogger.Debug("[EA] " + ResolvedActor.LabelShort + ": queue full after eviction, skipping");
-			return;
+			failure = "EA action queue is full";
+			return false;
 		}
 		int num = EAJobTracker.FindInsertPositionInJobQueue(ResolvedActor, ActionPriority);
 		int count = ResolvedActor.jobs.jobQueue.Count;
@@ -145,5 +154,6 @@ public class ExecutionContext
 		EALogger.Info($"[EA] Priority insert: job {ActionCall?.Id}(P{ActionPriority}) at position {num} in queue of {count + 1}");
 		EAJobTracker.RecordJobWithPriority(thingIDNumber, job, ActionPriority, ConversationId, SentenceId);
 		EAJobTracker.RecordJob(thingIDNumber, ConversationId);
+		return true;
 	}
 }

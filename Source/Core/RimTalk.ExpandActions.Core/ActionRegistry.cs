@@ -420,6 +420,19 @@ public static class ActionRegistry
 		});
 		Register(new ActionDefinition
 		{
+			Id = "take_inventory",
+			Category = ActionCategory.Item,
+			DisplayName = "EA_Action_take_inventory",
+			Description = "EA_Action_take_inventory_Desc",
+			DefaultPromptDesc = "Pick up an item from the ground into personal inventory (thing; args.quantity, partial stacks are allowed)",
+			RequiredParams = new List<string> { "actor", "thing" },
+			OptionalParams = new List<string> { "target", "args.quantity" },
+			RiskLevel = RiskLevel.Low,
+			Handler = new TakeInventoryHandler(),
+			Keywords = new List<string> { "take inventory", "pick up", "pickup", "put in pocket", "візьми", "підійми", "підбери", "у кишеню", "інвентар", "捡起", "放进背包" }
+		});
+		Register(new ActionDefinition
+		{
 			Id = "drop_item",
 			Category = ActionCategory.Item,
 			DisplayName = "EA_Action_drop_item",

@@ -17,6 +17,8 @@ class ActionLifecycleRegressionTests(unittest.TestCase):
         cls.executor = read("RimTalk.ExpandActions.Execution/ActionExecutor.cs")
         cls.context = read("RimTalk.ExpandActions.Execution/ExecutionContext.cs")
         cls.stop = read("RimTalk.ExpandActions.Actions.Movement/StopHandler.cs")
+        cls.take_inventory = read("RimTalk.ExpandActions.Actions.Item/TakeInventoryHandler.cs")
+        cls.registry = read("RimTalk.ExpandActions.Core/ActionRegistry.cs")
 
     def test_normal_action_success_returns_result(self):
         self.assertIn("return executionResult;", self.executor)
@@ -47,6 +49,18 @@ class ActionLifecycleRegressionTests(unittest.TestCase):
     def test_no_queued_next_action_returns_without_path_lock(self):
         self.assertIn("return ExecutionResult.Succeeded(context);", self.stop)
         self.assertNotIn("StopDead", self.stop)
+
+    def test_personal_inventory_action_uses_canonical_take_inventory_job(self):
+        self.assertIn('Id = "take_inventory"', self.registry)
+        self.assertIn("JobDefOf.TakeInventory", self.take_inventory)
+        self.assertIn('GetArg("quantity", 1)', self.take_inventory)
+        self.assertIn("foreach (Thing item in items)", self.take_inventory)
+        self.assertIn("ExecutionResult.Partial", self.take_inventory)
+
+    def test_personal_inventory_action_does_not_claim_success_when_job_was_skipped(self):
+        self.assertIn("TryStartOrQueueJob(job, out string failure)", self.take_inventory)
+        self.assertIn("ErrorCode.JobNotQueued", self.take_inventory)
+        self.assertIn("ExecutionResult.Queued", self.take_inventory)
 
 
 if __name__ == "__main__":

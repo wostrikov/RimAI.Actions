@@ -77,6 +77,8 @@
   <EA_Action_give_inspiration>Надати натхнення</EA_Action_give_inspiration>
   <EA_Action_give_inspiration_Desc>Надати персонажу натхнення</EA_Action_give_inspiration_Desc>
   <!-- Item Actions -->
+  <EA_Action_take_inventory>Покласти в інвентар</EA_Action_take_inventory>
+  <EA_Action_take_inventory_Desc>Підібрати предмет із землі до особистого інвентарю</EA_Action_take_inventory_Desc>
   <EA_Action_drop_item>Викинути предмет</EA_Action_drop_item>
   <EA_Action_drop_item_Desc>Викинути предмет у руках</EA_Action_drop_item_Desc>
   <EA_Action_give_item>Дати предмет</EA_Action_give_item>

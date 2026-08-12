@@ -188,6 +188,10 @@ public static class Patch_GenerateAndProcessTalkAsync
 						List<ExecutionResult> list = ActionExecutor.ExecuteAll(conversationId, toolcallResponse.Actions, map);
 						int count = list.FindAll((ExecutionResult r) => r.Success).Count;
 						int num = list.Count - count;
+						foreach (ExecutionResult failed in list.FindAll((ExecutionResult r) => !r.Success))
+						{
+							EALogger.Warn($"[EA_TRACE] conv={conversationId} action={failed.ActionId ?? "unknown"} state=FAILED code={failed.ErrorCode}");
+						}
 						if (count > 0 || num > 0)
 						{
 							EALogger.Info($"Executed {count} actions, {num} failed");

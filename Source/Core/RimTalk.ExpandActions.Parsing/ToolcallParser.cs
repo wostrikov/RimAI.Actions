@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using RimTalk.ExpandActions.Util;
+using RimTalk.ExpandActions.CapabilityRuntime;
 
 namespace RimTalk.ExpandActions.Parsing;
 
@@ -48,6 +50,36 @@ public static class ToolcallParser
 			EALogger.Error("Toolcall parse exception", ex2);
 		}
 		return toolcallResponse;
+	}
+
+	public static ToolcallResponse ParseAndValidate(string json, ICapabilityCatalog catalog)
+	{
+		ToolcallResponse response = Parse(json);
+		List<ActionCall> accepted = new List<ActionCall>();
+		foreach (ActionCall action in response.Actions)
+		{
+			CapabilityDescriptor capability = catalog.Find(action.Id);
+			if (capability == null)
+			{
+				response.ValidationErrors.Add("UNSUPPORTED_ACTION_ID:" + action.Id);
+				continue;
+			}
+			List<string> supplied = new List<string> { "id", "actor" };
+			if (!string.IsNullOrWhiteSpace(action.Target)) supplied.Add("target");
+			if (!string.IsNullOrWhiteSpace(action.Cell)) supplied.Add("cell");
+			if (!string.IsNullOrWhiteSpace(action.Job)) supplied.Add("job");
+			if (!string.IsNullOrWhiteSpace(action.Thing)) supplied.Add("thing");
+			if (action.Args != null) supplied.AddRange(action.Args.Keys.Select(x => "args." + x));
+			List<string> missing = capability.Parameters.Where(x => x.Required && !supplied.Contains(x.Name)).Select(x => x.Name).ToList();
+			if (missing.Count > 0)
+			{
+				response.ValidationErrors.Add("MISSING_REQUIRED_PARAMETERS:" + action.Id + ":" + string.Join(",", missing));
+				continue;
+			}
+			accepted.Add(action);
+		}
+		response.Actions = accepted;
+		return response;
 	}
 
 	private static string ExtractJsonFromMarkdown(string text)

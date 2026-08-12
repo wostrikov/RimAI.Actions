@@ -9,6 +9,7 @@ public enum ErrorCode
 	TargetAmbiguous,
 	ActionDisabled,
 	ActionNotInWhitelist,
+	UnsupportedActionId,
 	JobNotInWhitelist,
 	InvalidParameters,
 	ActorIncapable,

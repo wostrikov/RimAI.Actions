@@ -94,7 +94,11 @@ public static class SecondaryLLMCaller
 				EALogger.Warn("Empty response from LLM, using fallback");
 				return FallbackConversion(behaviors, speakerName);
 			}
-			ToolcallResponse toolcallResponse = ToolcallParser.Parse(text);
+			ToolcallResponse toolcallResponse = ToolcallParser.ParseAndValidate(text, CapabilityCatalogBridge.BuildEnabledCatalog());
+			foreach (string validationError in toolcallResponse.ValidationErrors)
+			{
+				EALogger.Warn("Planner result rejected before executor: " + validationError);
+			}
 			EALogger.Info($"LLM returned {toolcallResponse.Actions.Count} actions");
 			return toolcallResponse;
 		}

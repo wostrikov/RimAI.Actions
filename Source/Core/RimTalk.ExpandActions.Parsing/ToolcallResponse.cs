@@ -12,6 +12,9 @@ public class ToolcallResponse
 	public List<string> ParseErrors { get; set; } = new List<string>();
 
 	[JsonIgnore]
+	public List<string> ValidationErrors { get; set; } = new List<string>();
+
+	[JsonIgnore]
 	public string RawJson { get; set; }
 
 	[JsonIgnore]

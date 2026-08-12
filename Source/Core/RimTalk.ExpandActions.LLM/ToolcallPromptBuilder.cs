@@ -15,6 +15,8 @@ public static class ToolcallPromptBuilder
 		stringBuilder.AppendLine("## Available Actions");
 		stringBuilder.AppendLine();
 		stringBuilder.AppendLine(ActionRegistry.GetEnabledActionsPrompt());
+		stringBuilder.AppendLine("Machine contract (authoritative):");
+		stringBuilder.AppendLine(CapabilityCatalogBridge.BuildMachineContract());
 		stringBuilder.AppendLine();
 		stringBuilder.AppendLine("## Output Format");
 		stringBuilder.AppendLine();

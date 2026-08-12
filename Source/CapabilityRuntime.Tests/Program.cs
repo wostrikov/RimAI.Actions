@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using RimTalk.ExpandActions.CapabilityRuntime;
+
+var tests=new List<(string,Action)>{("unknown ID",Unknown),("schema",Schema),("duplicate",Duplicate),("states",States),("replan",Replan),("silver",()=>Transfer("Silver")),("generic item",()=>Transfer("TestFiber")),("insufficient",Insufficient),("unreachable",Unreachable),("capacity",Capacity),("partial",Partial),("unavailable",Unavailable),("interrupted observer",Interrupted),("Ukrainian fixture",PlannerFixture),("discovery",Discovery)};
+var failed=0;foreach(var t in tests)try{t.Item2();Console.WriteLine("PASS "+t.Item1);}catch(Exception e){failed++;Console.Error.WriteLine("FAIL "+t.Item1+": "+e.Message);}Console.WriteLine($"TESTS total={tests.Count} failed={failed}");return failed;
+void A(bool v){if(!v)throw new Exception("assertion");}
+CapabilityDescriptor Cap(Availability a=Availability.Available)=>new(){CapabilityId="inventory.acquire",Kind=CapabilityKind.GenericAdapterCapability,Availability=a,Parameters=new[]{new CapabilityParameter{Name="actor",Required=true},new CapabilityParameter{Name="thing_def",Required=true},new CapabilityParameter{Name="quantity",Required=true},new CapabilityParameter{Name="destination",Required=true}}};
+Plan Plan(string id="inventory.acquire"){var s=new PlanStep{StepId="s",CapabilityId=id};s.Inputs["actor"]="Twiddle";s.Inputs["thing_def"]="Silver";s.Inputs["quantity"]=new QuantityConstraint{Mode=QuantityMode.Exact,Amount=2000};s.Inputs["destination"]=new DestinationRef{Kind=DestinationKind.PawnInventory};return new Plan{PlanId="p",Actor=new PawnRef{SemanticName="Twiddle"},Goal="Підійми 2000",Steps=new List<PlanStep>{s}};}
+void Unknown(){var parsed=CanonicalCallParser.Parse("{\"actions\":[{\"id\":\"some_unknown_action\",\"actor\":\"Twiddle\"}]}");A(parsed.Actions.Single().Id=="some_unknown_action");var e=new FakeCapabilityExecutor((p,s)=>throw new Exception("invoked"));var o=new RecordingObserver();var r=new PlanRunner(new UnifiedCapabilityCatalog(new[]{Cap()}),e,o).ValidateAndRun(Plan(parsed.Actions.Single().Id));A(!r.IsValid&&r.Issues.Single().Code=="UNSUPPORTED_CAPABILITY_ID"&&e.InvocationCount==0&&o.Observations.Count==0);}
+void Schema(){var s=CapabilitySchemaGenerator.Generate(new UnifiedCapabilityCatalog(new[]{Cap()})).Single();A(s.Required.SequenceEqual(new[]{"actor","destination","quantity","thing_def"}));}
+void Duplicate(){try{_=new UnifiedCapabilityCatalog(new[]{Cap(),Cap()});throw new Exception();}catch(InvalidOperationException){}}
+void States(){var s=new PlanStateMachine();s.Transition(PlanState.Parsed);s.Transition(PlanState.Validated);try{s.Transition(PlanState.Completed);throw new Exception();}catch(InvalidOperationException){}}
+void Replan(){var p=new ReplanPolicy(2,5);A(p.MayReplan(1,5)&&!p.MayReplan(2,1)&&!p.MayReplan(0,6));}
+FakeInventoryWorld World(string d){var w=new FakeInventoryWorld();w.GroundStacks.AddRange(new[]{new ItemStack{StackId="A",ThingDef=d,Count=500},new ItemStack{StackId="B",ThingDef=d,Count=1200},new ItemStack{StackId="C",ThingDef=d,Count=900}});return w;}
+ExecutionObservation Do(FakeInventoryWorld w,string d)=>w.Transfer("p","s",d,new QuantityConstraint{Mode=QuantityMode.Exact,Amount=2000},new DestinationRef{Kind=DestinationKind.PawnInventory});
+void Transfer(string d){var w=World(d);var r=Do(w,d);A(r.Status==ObservationStatus.Completed&&r.CompletedQuantity==2000&&w.Inventory[d]==2000);}
+void Insufficient(){var w=World("Silver");w.GroundStacks[2].Count=0;A(Do(w,"Silver").ErrorCode=="INSUFFICIENT_QUANTITY");}
+void Unreachable(){var w=World("Silver");foreach(var s in w.GroundStacks)s.Reachable=false;A(Do(w,"Silver").ErrorCode=="TARGET_UNREACHABLE");}
+void Capacity(){var w=World("Silver");w.Capacity=1500;A(Do(w,"Silver").ErrorCode=="INVENTORY_CAPACITY_INSUFFICIENT");}
+void Partial(){var w=World("Silver");w.FailAfterSlices=1;var r=Do(w,"Silver");A(r.Status==ObservationStatus.PartiallyCompleted&&r.CompletedQuantity==500);}
+void Unavailable(){var r=PlanValidator.Validate(Plan(),new UnifiedCapabilityCatalog(new[]{Cap(Availability.Unavailable)}));A(r.Issues.Any(x=>x.Code=="CAPABILITY_UNAVAILABLE"));}
+void Interrupted(){var o=new RecordingObserver();var e=new FakeCapabilityExecutor((p,s)=>new ExecutionObservation{PlanId=p.PlanId,StepId=s.StepId,Status=ObservationStatus.Interrupted,ErrorCode="JOB_INTERRUPTED"});var r=new PlanRunner(new UnifiedCapabilityCatalog(new[]{Cap()}),e,o).ValidateAndRun(Plan());A(r.IsValid&&e.InvocationCount==1&&o.Observations.Single().Status==ObservationStatus.Interrupted);}
+void PlannerFixture(){var p=Plan();p.Goal="Підійми 2000 срібла та поклади собі в кишеню";A(PlanValidator.Validate(p,new UnifiedCapabilityCatalog(new[]{Cap()})).IsValid&&p.Steps.Single().CapabilityId=="inventory.acquire");}
+void Discovery(){var r=new CapabilityDiscoveryEngine().Discover(new[]{new DiscoveryCandidate{StableId="work.mine",IsGameplayOperation=true,HasSafeGenericAdapter=true},new DiscoveryCandidate{StableId="host.shell",IsHostOrInternal=true}});A(r[0].CapabilityId=="host.shell"&&r[0].Availability==Availability.UnsafeOrInternal&&r[1].Kind==CapabilityKind.GenericAdapterCapability);}

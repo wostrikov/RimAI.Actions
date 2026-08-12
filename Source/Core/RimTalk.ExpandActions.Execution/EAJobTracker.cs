@@ -22,6 +22,8 @@ public static class EAJobTracker
 		public string ConversationId;
 
 		public string SentenceId;
+
+		public string ActionId;
 	}
 
 	private struct PawnJobState
@@ -101,7 +103,7 @@ public static class EAJobTracker
 		return new List<PawnActionQueueEntry>();
 	}
 
-	public static void RecordJobWithPriority(int pawnThingId, Job job, int priority, string conversationId, string sentenceId)
+	public static void RecordJobWithPriority(int pawnThingId, Job job, int priority, string conversationId, string sentenceId, string actionId = null)
 	{
 		if (!_pawnJobEntries.ContainsKey(pawnThingId))
 		{
@@ -116,6 +118,7 @@ public static class EAJobTracker
 			EnqueuedAt = (Find.TickManager?.TicksGame ?? 0),
 			ConversationId = conversationId,
 			SentenceId = sentenceId
+			,ActionId = actionId
 		};
 		int num = 0;
 		for (int num2 = list.Count - 1; num2 >= 0; num2--)
@@ -128,6 +131,21 @@ public static class EAJobTracker
 		}
 		list.Insert(num, item);
 		EALogger.Debug($"[EA] RecordJobWithPriority: pawn {pawnThingId}, P{priority}, pos {num}/{list.Count}");
+	}
+
+	public static PawnActionQueueEntry FindEntry(int pawnThingId, Job job)
+	{
+		return _pawnJobEntries.TryGetValue(pawnThingId, out var entries)
+			? entries.FirstOrDefault(e => e.Job == job)
+			: null;
+	}
+
+	public static void CompleteEntry(int pawnThingId, Job job, JobCondition condition)
+	{
+		PawnActionQueueEntry entry = FindEntry(pawnThingId, job);
+		if (entry == null) return;
+		EALogger.Info($"[EA_TRACE] conv={entry.ConversationId} action={entry.ActionId ?? job.def?.defName} pawn={pawnThingId} state={(condition == JobCondition.Succeeded ? "COMPLETED" : "FAILED")} condition={condition}");
+		_pawnJobEntries[pawnThingId].Remove(entry);
 	}
 
 	public static int FindInsertPositionInJobQueue(Pawn pawn, int priority)

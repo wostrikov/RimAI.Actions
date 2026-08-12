@@ -152,7 +152,7 @@ public class ExecutionContext
 			}
 		}
 		EALogger.Info($"[EA] Priority insert: job {ActionCall?.Id}(P{ActionPriority}) at position {num} in queue of {count + 1}");
-		EAJobTracker.RecordJobWithPriority(thingIDNumber, job, ActionPriority, ConversationId, SentenceId);
+		EAJobTracker.RecordJobWithPriority(thingIDNumber, job, ActionPriority, ConversationId, SentenceId, ActionCall?.Id);
 		EAJobTracker.RecordJob(thingIDNumber, ConversationId);
 		return true;
 	}

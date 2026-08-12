@@ -19,6 +19,7 @@ class ActionLifecycleRegressionTests(unittest.TestCase):
         cls.stop = read("RimTalk.ExpandActions.Actions.Movement/StopHandler.cs")
         cls.take_inventory = read("RimTalk.ExpandActions.Actions.Item/TakeInventoryHandler.cs")
         cls.registry = read("RimTalk.ExpandActions.Core/ActionRegistry.cs")
+        cls.lifecycle_patch = read("RimTalk.ExpandActions.Patches/Patch_JobLifecycle.cs")
 
     def test_normal_action_success_returns_result(self):
         self.assertIn("return executionResult;", self.executor)
@@ -61,6 +62,10 @@ class ActionLifecycleRegressionTests(unittest.TestCase):
         self.assertIn("TryStartOrQueueJob(job, out string failure)", self.take_inventory)
         self.assertIn("ErrorCode.JobNotQueued", self.take_inventory)
         self.assertIn("ExecutionResult.Queued", self.take_inventory)
+
+    def test_runtime_trace_distinguishes_start_and_terminal_state(self):
+        self.assertIn("state=STARTED", self.lifecycle_patch)
+        self.assertIn("CompleteEntry", self.lifecycle_patch)
 
 
 if __name__ == "__main__":

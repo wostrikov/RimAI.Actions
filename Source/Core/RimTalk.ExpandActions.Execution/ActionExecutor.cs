@@ -156,9 +156,10 @@ public static class ActionExecutor
 			if (byId != null)
 			{
 				int targetThingId = 0;
-				if (!string.IsNullOrEmpty(action.Target))
+				string semanticTarget = RimTalk.ExpandActions.CapabilityRuntime.SemanticTargetSelector.Select(action.Target, action.Thing);
+				if (!string.IsNullOrEmpty(semanticTarget))
 				{
-					Pawn pawn = PawnResolver.ResolvePawn(action.Target, map);
+					Pawn pawn = PawnResolver.ResolvePawn(semanticTarget, map);
 					if (pawn != null)
 					{
 						targetThingId = pawn.thingIDNumber;
@@ -166,7 +167,7 @@ public static class ActionExecutor
 					else
 					{
 						Pawn pawn2 = PawnResolver.ResolvePawn(action.Actor, map);
-						Thing thing = PawnResolver.ResolveThing(action.Target, map, pawn2?.Position);
+						Thing thing = PawnResolver.ResolveThing(semanticTarget, map, pawn2?.Position);
 						if (thing != null)
 						{
 							targetThingId = thing.thingIDNumber;
@@ -176,7 +177,9 @@ public static class ActionExecutor
 				Pawn pawn3 = PawnResolver.ResolvePawn(action.Actor, map);
 				if (pawn3 != null && CooldownTracker.IsOnCooldown(pawn3.thingIDNumber, action.Id, targetThingId, byId.Category))
 				{
-					return ExecutionResult.Failed(ErrorCode.OnCooldown, "Action on cooldown: " + action.Id);
+					ExecutionResult cooldown = ExecutionResult.Failed(ErrorCode.OnCooldown, "Action on cooldown: " + action.Id);
+					cooldown.ActionId = action.Id;
+					return cooldown;
 				}
 			}
 			ActionDefinition byId2 = ActionRegistry.GetById(action.Id);
@@ -318,10 +321,11 @@ public static class ActionExecutor
 			Map = map,
 			StartTick = (Find.TickManager?.TicksGame ?? 0)
 		};
-		if (!string.IsNullOrEmpty(action.Target))
+		string semanticTarget = RimTalk.ExpandActions.CapabilityRuntime.SemanticTargetSelector.Select(action.Target, action.Thing);
+		if (!string.IsNullOrEmpty(semanticTarget))
 		{
-			executionContext.ResolvedTarget = PawnResolver.ResolvePawn(action.Target, map) ?? PawnResolver.ResolveThing(action.Target, map, pawn.Position);
-			if (executionContext.ResolvedTarget == null && !executionContext.ResolvedCell.HasValue)
+			executionContext.ResolvedTarget = PawnResolver.ResolvePawn(semanticTarget, map) ?? PawnResolver.ResolveThing(semanticTarget, map, pawn.Position);
+			if (executionContext.ResolvedTarget == null && !executionContext.ResolvedCell.HasValue && !string.IsNullOrEmpty(action.Target))
 			{
 				executionContext.ResolvedCell = PawnResolver.ResolveRoom(action.Target, map, pawn.Position);
 			}

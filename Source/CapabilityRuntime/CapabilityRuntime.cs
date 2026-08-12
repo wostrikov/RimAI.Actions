@@ -8,6 +8,12 @@ using System.Text;
 
 namespace RimTalk.ExpandActions.CapabilityRuntime;
 
+public static class SemanticTargetSelector
+{
+    public static string Select(string target, string thing) =>
+        !string.IsNullOrWhiteSpace(target) ? target : thing;
+}
+
 public enum CapabilityKind { ExplicitCapability, DiscoveredCapability, GenericAdapterCapability, ExplicitIntegrationRequired }
 public enum Availability { Available, Unavailable, UnsafeOrInternal }
 public enum PlanState { Received, Parsed, Validated, Resolved, Queued, Started, Completed, Failed, Rejected, Unsupported, ReplanRequired }

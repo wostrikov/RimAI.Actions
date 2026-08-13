@@ -1,5 +1,4 @@
 using HarmonyLib;
-using RimAI.RimWorld.Runtime;
 using RimTalk.ExpandActions.Core;
 using RimTalk.ExpandActions.Integration;
 using RimTalk.ExpandActions.UI;
@@ -25,9 +24,6 @@ public class EAModMain : Verse.Mod
 		Settings.Validate();
 		HarmonyInstance = new Harmony("rimtalk.expand.actions");
 		EALogger.Info("Expand Actions initializing...");
-		// TEMPORARY_MIGRATION_BRIDGE: EA is still the active mod bootstrap.
-		// Remove when RimAI has its own package entry point.
-		RimAIRuntimeHost.Install();
 		HarmonyInstance.PatchAll();
 		ActionRegistry.Initialize();
 		RimTalkIntegration.Initialize();

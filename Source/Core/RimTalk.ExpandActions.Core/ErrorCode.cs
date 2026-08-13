@@ -17,5 +17,6 @@ public enum ErrorCode
 	ExecutionException,
 	AlreadyExecuted,
 	OnCooldown,
-	JobNotQueued
+	JobNotQueued,
+	PartialAvailability
 }

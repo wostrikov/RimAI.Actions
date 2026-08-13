@@ -13,6 +13,7 @@ using RimTalk.ExpandActions.Actions.Prisoner;
 using RimTalk.ExpandActions.Actions.Production;
 using RimTalk.ExpandActions.Actions.Recreation;
 using RimTalk.ExpandActions.Actions.Social;
+using RimTalk.ExpandActions.Integration;
 using RimTalk.ExpandActions.Mod;
 using RimTalk.ExpandActions.Util;
 
@@ -428,7 +429,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "thing" },
 			OptionalParams = new List<string> { "target", "args.quantity" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new TakeInventoryHandler(),
+			Handler = new RimAITakeInventoryBridgeHandler(),
 			Keywords = new List<string> { "take inventory", "pick up", "pickup", "put in pocket", "візьми", "підійми", "підбери", "у кишеню", "інвентар", "捡起", "放进背包" }
 		});
 		Register(new ActionDefinition
@@ -674,7 +675,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Haul item to stockpile",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new HaulHandler(),
+			Handler = new RimAIHaulBridgeHandler(),
 			Keywords = new List<string> { "haul", "carry", "搬运", "搬", "运输", "运", "扛" }
 		});
 		Register(new ActionDefinition

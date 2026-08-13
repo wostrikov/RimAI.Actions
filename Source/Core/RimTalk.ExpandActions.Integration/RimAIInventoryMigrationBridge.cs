@@ -1,4 +1,5 @@
 using RimAI.Core.Adapters;
+using RimAI.Core.Observation;
 using RimAI.RimWorld.Inventory;
 using RimAI.RimWorld.Jobs;
 using RimTalk.ExpandActions.Actions;
@@ -34,18 +35,26 @@ public sealed class RimAITakeInventoryBridgeHandler : IActionHandler
         return Map(context, result, thingName);
     }
 
-    internal static JobDispatchMetadata Metadata(ExecutionContext context) => new(
-        context.ConversationId,
-        context.SentenceId,
-        context.ActionCall?.Id,
-        context.IsFirstActionForActor,
-        context.ActionPriority,
-        RimTalk.ExpandActions.Mod.EAModMain.Settings.JobProtectionTicks);
+    internal static JobDispatchMetadata Metadata(ExecutionContext context)
+    {
+        var planId = $"ea:{context.ConversationId}";
+        var stepId = context.SentenceId ?? context.ActionCall?.Id ?? "action";
+        return new JobDispatchMetadata(
+            context.ConversationId,
+            context.SentenceId,
+            context.ActionCall?.Id,
+            context.IsFirstActionForActor,
+            context.ActionPriority,
+            RimTalk.ExpandActions.Mod.EAModMain.Settings.JobProtectionTicks,
+            PlanId: planId,
+            StepId: stepId,
+            AttemptId: ExecutionAttemptId.Create(planId, stepId, 1));
+    }
 
     internal static ExecutionResult Map(ExecutionContext context, AdapterResult result, string target)
     {
         var description = $"{result.Completed}/{result.Requested} {target}";
-        if (result.Code == FailureCodes.Completed)
+        if (result.Code is FailureCodes.Completed or FailureCodes.Queued)
             return ExecutionResult.Queued(context, description);
         if (result.Code == FailureCodes.PartialAvailability)
             return ExecutionResult.Failed(context, ErrorCode.PartialAvailability, description);

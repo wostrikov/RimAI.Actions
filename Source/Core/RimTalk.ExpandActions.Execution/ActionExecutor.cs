@@ -17,12 +17,10 @@ public static class ActionExecutor
 {
 	private static readonly Dictionary<string, int> ActionPriorityMap = new Dictionary<string, int>
 	{
-		{ "flee", 5 },
 		{ "arrest", 5 },
 		{ "mental_break_start", 5 },
 		{ "execute", 5 },
 		{ "play_music", 1 },
-		{ "spectate", 1 },
 		{ "lovin", 1 },
 		{ "social_fight", 1 },
 		{ "insult", 1 },

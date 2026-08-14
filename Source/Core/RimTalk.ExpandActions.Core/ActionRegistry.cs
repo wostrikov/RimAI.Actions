@@ -5,7 +5,6 @@ using RimTalk.ExpandActions.Actions.Animal;
 using RimTalk.ExpandActions.Actions.Combat;
 using RimTalk.ExpandActions.Actions.Facility;
 using RimTalk.ExpandActions.Actions.Job;
-using RimTalk.ExpandActions.Actions.Movement;
 using RimTalk.ExpandActions.Actions.Prisoner;
 using RimTalk.ExpandActions.Actions.Recreation;
 using RimTalk.ExpandActions.Actions.Social;
@@ -154,7 +153,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			OptionalParams = new List<string> { "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new FleeHandler(),
+			Handler = null,
 			Keywords = new List<string> { "flee", "run", "escape", "逃", "逃跑", "逃离" }
 		});
 		Register(new ActionDefinition
@@ -413,7 +412,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Watch spectacle or event",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new SpectateHandler(),
+			Handler = null,
 			Keywords = new List<string> { "spectate", "watch", "observe", "观看", "观赏" }
 		});
 		Register(new ActionDefinition

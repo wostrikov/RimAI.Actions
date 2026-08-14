@@ -7,7 +7,6 @@ using RimTalk.ExpandActions.Actions.Facility;
 using RimTalk.ExpandActions.Actions.Job;
 using RimTalk.ExpandActions.Actions.Movement;
 using RimTalk.ExpandActions.Actions.Prisoner;
-using RimTalk.ExpandActions.Actions.Production;
 using RimTalk.ExpandActions.Actions.Recreation;
 using RimTalk.ExpandActions.Actions.Social;
 using RimTalk.ExpandActions.Integration;
@@ -783,7 +782,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			OptionalParams = new List<string> { "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new CraftHandler(),
+			Handler = null,
 			Keywords = new List<string> { "craft", "make", "build", "制作", "制造", "打造" }
 		});
 		Register(new ActionDefinition

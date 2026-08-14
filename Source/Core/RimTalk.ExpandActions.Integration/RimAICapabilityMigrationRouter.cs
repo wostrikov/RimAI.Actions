@@ -20,6 +20,8 @@ using RimAI.RimWorld.Rest;
 using RimAI.RimWorld.Comms;
 using RimAI.RimWorld.Containment;
 using RimAI.RimWorld.Entity;
+using RimAI.RimWorld.Focus;
+using RimAI.RimWorld.Psycast;
 using RimAI.RimWorld.Craft;
 using RimAI.RimWorld.Ingest;
 using RimAI.RimWorld.Work;
@@ -164,6 +166,34 @@ public static class RimAICapabilityMigrationRouter
                     context.ResolvedTarget,
                     ownership.CapabilityId,
                     Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (FocusDutyCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIFocusDutyCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (GrantedAbilityCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIAbilityCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    context.ActionCall.GetArg<string>("ability"))
                     .ToAdapterResult(),
                 ownership.CapabilityId);
             return true;

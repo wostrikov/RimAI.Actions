@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using RimTalk.ExpandActions.Actions.DLC;
 using RimTalk.ExpandActions.Core;
 using Verse;
 
@@ -28,7 +27,7 @@ public class RoyaltyModule : IEAExtensionModule
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
 			DefaultEnabled = true,
-			Handler = new MeditateHandler(),
+			Handler = null,
 			Keywords = new List<string> { "meditate", "meditation", "psyfocus", "冥想", "灵能聚焦" }
 		};
 		yield return new ActionDefinition
@@ -41,7 +40,7 @@ public class RoyaltyModule : IEAExtensionModule
 			RequiredParams = new List<string> { "actor", "target", "args.ability" },
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
-			Handler = new PsycastHandler(),
+			Handler = null,
 			Keywords = new List<string> { "psycast", "ability", "psychic", "灵能", "超能力", "心灵" }
 		};
 		yield return new ActionDefinition
@@ -54,7 +53,7 @@ public class RoyaltyModule : IEAExtensionModule
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
 			DefaultEnabled = true,
-			Handler = new ReignHandler(),
+			Handler = null,
 			Keywords = new List<string> { "reign", "throne", "royal", "统治", "王座", "皇家" }
 		};
 	}

@@ -13,7 +13,6 @@
     <ReconstructionReferenceDir Condition="'$(ReconstructionReferenceDir)' == ''">$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimTalk-ExpandActions-Core\reconstruction-refs</ReconstructionReferenceDir>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapabilityRuntime\RimTalk.ExpandActions.CapabilityRuntime.csproj" />
     <ProjectReference Include="..\..\..\RimAI.Core\src\RimAI.Core\RimAI.Core.csproj" />
     <ProjectReference Include="..\..\..\RimAI.Core\src\RimAI.RimWorld\RimAI.RimWorld.csproj" />
     <Reference Include="Assembly-CSharp" HintPath="$(RimWorldDir)\RimWorldWin64_Data\Managed\Assembly-CSharp.dll" Private="false" />

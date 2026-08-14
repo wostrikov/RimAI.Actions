@@ -5,7 +5,6 @@ using RimTalk.ExpandActions.Actions.Animal;
 using RimTalk.ExpandActions.Actions.Combat;
 using RimTalk.ExpandActions.Actions.Facility;
 using RimTalk.ExpandActions.Actions.Job;
-using RimTalk.ExpandActions.Actions.Prisoner;
 using RimTalk.ExpandActions.Actions.Recreation;
 using RimTalk.ExpandActions.Actions.Social;
 using RimTalk.ExpandActions.Integration;
@@ -202,7 +201,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Attempt to arrest target pawn",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new ArrestHandler(),
+			Handler = null,
 			Keywords = new List<string> { "arrest", "逮捕", "抓捕" }
 		});
 		Register(new ActionDefinition
@@ -563,7 +562,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.High,
 			DefaultEnabled = false,
-			Handler = new ExecuteHandler(),
+			Handler = null,
 			Keywords = new List<string> { "execute", "kill prisoner", "处决", "处刑" }
 		});
 		Register(new ActionDefinition
@@ -587,7 +586,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Strip apparel from target",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new StripHandler(),
+			Handler = null,
 			Keywords = new List<string> { "strip", "undress", "剥取", "脱衣" }
 		});
 		Register(new ActionDefinition

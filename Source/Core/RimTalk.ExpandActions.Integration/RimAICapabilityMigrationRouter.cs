@@ -179,6 +179,20 @@ public static class RimAICapabilityMigrationRouter
             return true;
         }
 
+        if (PrisonerControlCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIPrisonerControlCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
         if (PrisonerSocialCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
         {
             result = Map(

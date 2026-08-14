@@ -481,7 +481,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			OptionalParams = new List<string> { "thing" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new ForceEatHandler(),
+			Handler = null,
 			Keywords = new List<string> { "eat", "food", "吃", "进食", "吃饭", "用餐" }
 		});
 		Register(new ActionDefinition
@@ -921,7 +921,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Use drug or consumable",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new UseDrugHandler(),
+			Handler = null,
 			Keywords = new List<string> { "drug", "smoke", "drink", "药物", "毒品", "嗑药" }
 		});
 		Register(new ActionDefinition

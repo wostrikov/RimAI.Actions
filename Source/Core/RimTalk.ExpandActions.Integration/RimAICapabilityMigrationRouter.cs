@@ -9,6 +9,7 @@ using RimAI.RimWorld.Medical;
 using RimAI.RimWorld.Movement;
 using RimAI.RimWorld.Prisoner;
 using RimAI.RimWorld.Combat;
+using RimAI.RimWorld.Ingest;
 using RimAI.RimWorld.Work;
 using RimTalk.ExpandActions.Core;
 using RimTalk.ExpandActions.Execution;
@@ -198,6 +199,21 @@ public static class RimAICapabilityMigrationRouter
                     ownership.CapabilityId,
                     Metadata(context, ownership.CapabilityId),
                     drafted)
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (IngestCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIIngestCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    context.ActionCall.Thing,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
                     .ToAdapterResult(),
                 ownership.CapabilityId);
             return true;

@@ -9,6 +9,7 @@ using RimAI.RimWorld.Medical;
 using RimAI.RimWorld.Movement;
 using RimAI.RimWorld.Prisoner;
 using RimAI.RimWorld.Combat;
+using RimAI.RimWorld.Construction;
 using RimAI.RimWorld.Ingest;
 using RimAI.RimWorld.Work;
 using RimTalk.ExpandActions.Core;
@@ -235,6 +236,26 @@ public static class RimAICapabilityMigrationRouter
             return true;
         }
 
+        if (ConstructionDesignationCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            var cell = context.ResolvedCell ?? context.ResolvedTarget?.Position;
+            if (!cell.HasValue)
+            {
+                result = ExecutionResult.Failed(context, ErrorCode.TargetNotFound, "Target location not found");
+                return true;
+            }
+            result = Map(
+                context,
+                RimAIConstructionDesignationCapabilities.Execute(
+                    context.Map,
+                    cell.Value,
+                    ownership.CapabilityId,
+                    context.ResolvedActor)
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
         result = ExecutionResult.Failed(
             context,
             ErrorCode.ExecutionException,
@@ -292,6 +313,9 @@ public static class RimAICapabilityMigrationRouter
             FailureCodes.NoValidFuel => ErrorCode.TargetNotFound,
             FailureCodes.NotRefuelable => ErrorCode.InvalidParameters,
             FailureCodes.NotSowable => ErrorCode.TargetNotFound,
+            FailureCodes.NotRoofable => ErrorCode.InvalidParameters,
+            FailureCodes.NoRoofPresent => ErrorCode.TargetNotFound,
+            FailureCodes.RoofNotRemovable => ErrorCode.InvalidParameters,
             FailureCodes.UnknownCapability => ErrorCode.ActionNotInWhitelist,
             _ => ErrorCode.ExecutionException
         };

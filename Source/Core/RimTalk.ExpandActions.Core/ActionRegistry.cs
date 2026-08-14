@@ -807,10 +807,10 @@ public static class ActionRegistry
 			DisplayName = "EA_Action_build_roof",
 			Description = "EA_Action_build_roof_Desc",
 			DefaultPromptDesc = "Build roof in area",
-			RequiredParams = new List<string> { "actor" },
-			OptionalParams = new List<string> { "target", "cell" },
+			RequiredParams = new List<string> { "cell" },
+			OptionalParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new BuildRoofHandler(),
+			Handler = null,
 			Keywords = new List<string> { "roof", "cover", "屋顶", "建造屋顶" }
 		});
 		Register(new ActionDefinition
@@ -820,10 +820,10 @@ public static class ActionRegistry
 			DisplayName = "EA_Action_remove_roof",
 			Description = "EA_Action_remove_roof_Desc",
 			DefaultPromptDesc = "Remove roof from area",
-			RequiredParams = new List<string> { "actor" },
-			OptionalParams = new List<string> { "target", "cell" },
+			RequiredParams = new List<string> { "cell" },
+			OptionalParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new RemoveRoofHandler(),
+			Handler = null,
 			Keywords = new List<string> { "remove roof", "拆除屋顶" }
 		});
 		Register(new ActionDefinition

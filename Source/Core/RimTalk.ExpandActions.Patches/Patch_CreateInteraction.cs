@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Threading.Tasks;
 using HarmonyLib;
 using RimTalk.ExpandActions.Execution;
+using RimTalk.ExpandActions.Frontend;
 using RimTalk.ExpandActions.LLM;
 using RimTalk.ExpandActions.Mod;
-using RimTalk.ExpandActions.Parsing;
 using RimTalk.ExpandActions.Util;
 using Verse;
 
@@ -99,30 +99,17 @@ public static class Patch_CreateInteraction
 		{
 			try
 			{
-				ToolcallResponse toolcallResponse = await SecondaryLLMCaller.ConvertBehaviorsAsync(behaviors, speakerName);
-				if (toolcallResponse.Actions.Count == 0)
+				var conversion = await SecondaryLLMCaller.ConvertBehaviorsAsync(behaviors, speakerName);
+				if (conversion.Actions.Count == 0)
 				{
-					EALogger.Debug("No actions converted from behaviors");
+					EALogger.Debug("No capabilities converted from behaviors");
+					return;
 				}
-				else
+				EALogger.Info($"Converted {behaviors.Count} behaviors to {conversion.Actions.Count} RimAI requests");
+				MainThreadDispatcher.Enqueue(delegate
 				{
-					EALogger.Info($"Converted {behaviors.Count} behaviors to {toolcallResponse.Actions.Count} actions");
-					Map map = pawn?.Map;
-					MainThreadDispatcher.Enqueue(delegate
-					{
-						List<ExecutionResult> list = ActionExecutor.ExecuteAll(conversationId, toolcallResponse.Actions, map);
-						int count = list.FindAll((ExecutionResult r) => r.Success).Count;
-						int num = list.Count - count;
-						foreach (ExecutionResult failed in list.FindAll((ExecutionResult r) => !r.Success))
-						{
-							EALogger.Warn($"[EA_TRACE] conv={conversationId} action={failed.ActionId ?? "unknown"} state=FAILED code={failed.ErrorCode}");
-						}
-						if (count > 0 || num > 0)
-						{
-							EALogger.Info($"Executed {count} actions, {num} failed");
-						}
-					});
-				}
+					RimTalkCapabilityFrontend.Execute(conversationId, pawn, conversion.Actions);
+				});
 			}
 			catch (Exception ex)
 			{

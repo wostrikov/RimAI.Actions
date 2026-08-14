@@ -1,0 +1,11 @@
+using System.Collections.Generic;
+using RimAI.Core.Application;
+
+namespace RimTalk.ExpandActions.Parsing;
+
+public sealed class FrontendStructuredConversion
+{
+	public List<LegacyStructuredAction> Actions { get; } = new List<LegacyStructuredAction>();
+
+	public List<string> Errors { get; } = new List<string>();
+}

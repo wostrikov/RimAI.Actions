@@ -4,6 +4,10 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using HarmonyLib;
+using RimAI.Core.Application;
+using RimAI.Core.Catalog;
+using RimAI.Core.Execution;
+using RimAI.RimWorld.Application;
 using RimTalk.ExpandActions.Core;
 using RimTalk.ExpandActions.Mod;
 using RimTalk.ExpandActions.Parsing;
@@ -71,11 +75,11 @@ public static class SecondaryLLMCaller
 		}
 	}
 
-	public static async Task<ToolcallResponse> ConvertBehaviorsAsync(List<string> behaviors, string speakerName)
+	public static async Task<FrontendStructuredConversion> ConvertBehaviorsAsync(List<string> behaviors, string speakerName)
 	{
 		if (behaviors == null || behaviors.Count == 0)
 		{
-			return new ToolcallResponse();
+			return new FrontendStructuredConversion();
 		}
 		Initialize();
 		if (_initFailed || !EAModMain.Settings.UseSecondaryLLM)
@@ -87,20 +91,20 @@ public static class SecondaryLLMCaller
 			string systemPrompt = ToolcallPromptBuilder.BuildSystemPrompt();
 			string userPrompt = ToolcallPromptBuilder.BuildUserPrompt(behaviors, speakerName);
 			TimeSpan timeout = TimeSpan.FromSeconds(EAModMain.Settings.SecondaryLLMTimeout);
-			EALogger.Debug($"Calling LLM for toolcall conversion: {behaviors.Count} behaviors");
+			EALogger.Debug($"Calling LLM for capability conversion: {behaviors.Count} behaviors");
 			string text = await CallAIClientAsync(systemPrompt, userPrompt, timeout);
 			if (string.IsNullOrEmpty(text))
 			{
 				EALogger.Warn("Empty response from LLM, using fallback");
 				return FallbackConversion(behaviors, speakerName);
 			}
-			ToolcallResponse toolcallResponse = ToolcallParser.ParseAndValidate(text, CapabilityCatalogBridge.BuildEnabledCatalog());
-			foreach (string validationError in toolcallResponse.ValidationErrors)
+			FrontendStructuredConversion conversion = StructuredCapabilityJsonParser.Parse(text);
+			foreach (string error in conversion.Errors)
 			{
-				EALogger.Warn("Planner result rejected before executor: " + validationError);
+				EALogger.Warn("Structured frontend result rejected before RimAI: " + error);
 			}
-			EALogger.Info($"LLM returned {toolcallResponse.Actions.Count} actions");
-			return toolcallResponse;
+			EALogger.Info($"LLM returned {conversion.Actions.Count} structured requests");
+			return conversion;
 		}
 		catch (TimeoutException)
 		{
@@ -189,21 +193,21 @@ public static class SecondaryLLMCaller
 		return obj;
 	}
 
-	private static ToolcallResponse FallbackConversion(List<string> behaviors, string speakerName)
+	private static FrontendStructuredConversion FallbackConversion(List<string> behaviors, string speakerName)
 	{
-		ToolcallResponse toolcallResponse = new ToolcallResponse();
-		List<ActionCall> list = new List<ActionCall>();
+		FrontendStructuredConversion conversion = new FrontendStructuredConversion();
+		List<LegacyStructuredAction> list = new List<LegacyStructuredAction>();
 		foreach (string behavior in behaviors)
 		{
-			ActionCall actionCall = PatternMatchBehavior(behavior, speakerName);
-			if (actionCall != null)
+			LegacyStructuredAction action = PatternMatchBehavior(behavior, speakerName);
+			if (action != null)
 			{
-				list.Add(actionCall);
-				EALogger.Debug("Pattern matched: " + behavior + " -> " + actionCall.Id);
+				list.Add(action);
+				EALogger.Debug("Pattern matched: " + behavior + " -> " + action.Id);
 			}
 		}
-		Dictionary<string, ActionCall> dictionary = new Dictionary<string, ActionCall>();
-		foreach (ActionCall item in list)
+		Dictionary<string, LegacyStructuredAction> dictionary = new Dictionary<string, LegacyStructuredAction>();
+		foreach (LegacyStructuredAction item in list)
 		{
 			string key = item.Actor?.ToLowerInvariant() + "|" + item.Id;
 			if (dictionary.ContainsKey(key))
@@ -212,97 +216,88 @@ public static class SecondaryLLMCaller
 			}
 			dictionary[key] = item;
 		}
-		toolcallResponse.Actions.AddRange(dictionary.Values);
-		return toolcallResponse;
+		conversion.Actions.AddRange(dictionary.Values);
+		return conversion;
 	}
 
-	private static ActionCall PatternMatchBehavior(string behavior, string defaultActor)
+	private static LegacyStructuredAction PatternMatchBehavior(string behavior, string defaultActor)
 	{
+		ICapabilityCatalog catalog = RimAIApplicationHost.Catalog;
 		string text = behavior.ToLowerInvariant();
 		string[] array = behavior.Split(new char[1] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 		string actor = ((array.Length > 1) ? array[0] : defaultActor);
 		string text2 = ((array.Length > 2) ? array[array.Length - 1] : null);
 		string text3 = ((array.Length > 2) ? string.Join(" ", array, 1, array.Length - 2) : ((array.Length > 1) ? array[1] : behavior));
 		string verbLower = text3.ToLowerInvariant();
-		ActionDefinition byId = ActionRegistry.GetById(verbLower);
-		if (byId != null && EAModMain.Settings.IsActionEnabled(byId.Id))
+		if (TryMatchId(verbLower, catalog, out var exactId))
 		{
-			EALogger.Debug("Exact ID match: " + verbLower + " -> " + byId.Id);
-			return new ActionCall
-			{
-				Id = byId.Id,
-				Actor = actor,
-				Target = text2,
-				Reason = behavior
-			};
+			EALogger.Debug("Exact ID match: " + verbLower + " -> " + exactId);
+			return new LegacyStructuredAction(exactId, actor, text2, Reason: behavior);
 		}
 		if (KeywordConfigManager.GetAllMovementVerbs().Any((string mv) => verbLower.Contains(mv.ToLowerInvariant())))
 		{
 			string text4 = text2 + " " + text;
 			foreach (KeyValuePair<string, string> allTargetNounKeyword in KeywordConfigManager.GetAllTargetNounKeywords())
 			{
-				if (text4.Contains(allTargetNounKeyword.Key.ToLowerInvariant()))
+				if (text4.Contains(allTargetNounKeyword.Key.ToLowerInvariant())
+				    && TryMatchId(allTargetNounKeyword.Value, catalog, out var compositeId))
 				{
-					ActionDefinition byId2 = ActionRegistry.GetById(allTargetNounKeyword.Value);
-					if (byId2 != null && EAModMain.Settings.IsActionEnabled(byId2.Id))
-					{
-						EALogger.Info("[EA] composite intent: " + text3 + "+" + allTargetNounKeyword.Key + " → " + allTargetNounKeyword.Value);
-						return new ActionCall
-						{
-							Id = byId2.Id,
-							Actor = actor,
-							Target = text2,
-							Reason = behavior
-						};
-					}
+					EALogger.Info("[EA] composite intent: " + text3 + "+" + allTargetNounKeyword.Key + " → " + compositeId);
+					return new LegacyStructuredAction(compositeId, actor, text2, Reason: behavior);
 				}
 			}
 		}
-		ActionDefinition actionDefinition = null;
+		string matchedId = null;
 		int num = 0;
-		foreach (ActionDefinition enabledAction in ActionRegistry.GetEnabledActions())
+		foreach (CapabilityOwnership ownership in CapabilityOwnershipRegistry.All)
 		{
-			List<string> allMatchKeywords = KeywordConfigManager.GetAllMatchKeywords(enabledAction.Id);
-			if (allMatchKeywords.Count == 0)
-			{
+			if (!TryMatchId(ownership.LegacyActionId, catalog, out var candidateId))
 				continue;
-			}
+			List<string> allMatchKeywords = KeywordConfigManager.GetAllMatchKeywords(ownership.LegacyActionId);
+			if (allMatchKeywords.Count == 0)
+				continue;
 			int num2 = 0;
 			foreach (string item in allMatchKeywords)
 			{
 				string text5 = item.ToLowerInvariant();
 				if (verbLower.Contains(text5) || text5.Contains(verbLower))
-				{
-					num2 = ((!(verbLower == text5)) ? (num2 + 10) : (num2 + 100));
-				}
+					num2 = verbLower == text5 ? num2 + 100 : num2 + 10;
 				else if (text.Contains(text5))
-				{
 					num2++;
-				}
 			}
-			if (num2 > num || (num2 == num && num2 > 0 && enabledAction.SourceModule != null && (actionDefinition == null || actionDefinition.SourceModule == null)))
+			if (num2 > num)
 			{
 				num = num2;
-				actionDefinition = enabledAction;
+				matchedId = candidateId;
 			}
 		}
-		if (actionDefinition != null)
+		if (matchedId != null)
 		{
-			if (num < 10)
+			if (num < MinScoreThreshold)
 			{
-				EALogger.Info($"[EA] Match below threshold: {behavior} → {actionDefinition.Id} (score={num}), rejected");
+				EALogger.Info($"[EA] Match below threshold: {behavior} → {matchedId} (score={num}), rejected");
 				return null;
 			}
-			EALogger.Debug($"Keyword match: {behavior} -> {actionDefinition.Id} (score={num})");
-			return new ActionCall
-			{
-				Id = actionDefinition.Id,
-				Actor = actor,
-				Target = text2,
-				Reason = behavior
-			};
+			EALogger.Debug($"Keyword match: {behavior} -> {matchedId} (score={num})");
+			return new LegacyStructuredAction(matchedId, actor, text2, Reason: behavior);
 		}
 		EALogger.Debug("No pattern matched for behavior: " + behavior);
 		return null;
+	}
+
+	private static bool TryMatchId(string requestedId, ICapabilityCatalog catalog, out string id)
+	{
+		id = null;
+		if (RetiredCapabilityAliases.IsRetired(requestedId))
+			return false;
+		var lookup = CapabilityLookup.Resolve(requestedId, catalog);
+		if (lookup.Status != CapabilityLookupStatus.Found || lookup.Capability == null || !lookup.Capability.IsExecutable)
+			return false;
+		if (CapabilityOwnershipRegistry.TryResolve(requestedId, out var ownership)
+		    && ownership != null
+		    && !EAModMain.Settings.IsActionEnabled(ownership.LegacyActionId))
+			return false;
+		id = lookup.RequestedId;
+		return true;
 	}
 }

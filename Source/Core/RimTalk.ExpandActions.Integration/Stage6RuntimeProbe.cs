@@ -91,21 +91,25 @@ public sealed class Stage6RuntimeProbe : GameComponent
 
 	private async System.Threading.Tasks.Task ResolveAndExecuteAsync(Map map, Pawn actor)
 	{
-		ToolcallResponse response = await SecondaryLLMCaller.ConvertBehaviorsAsync(new List<string> { Command }, actor.LabelShort);
+		var conversion = await SecondaryLLMCaller.ConvertBehaviorsAsync(new List<string> { Command }, actor.LabelShort);
 		MainThreadDispatcher.Enqueue(() =>
 		{
-			ActionCall action = response?.Actions?.FirstOrDefault();
+			var action = conversion?.Actions?.FirstOrDefault();
 			if (action == null)
 			{
 				EALogger.Error($"[EA_STAGE6] conv={correlationId} state=UNSUPPORTED reason=NoCanonicalAction");
 				return;
 			}
-			action.Actor = actor.LabelShort;
-			ExecutionResult result = ActionExecutor.ExecuteSingle(correlationId, action, map);
-			EALogger.Info($"[EA_STAGE6] conv={correlationId} state=RESOLVED action={action.Id} accepted={result.Success} lifecycle={result.State}");
-			if (!result.Success)
+			action = action with { Actor = actor.LabelShort };
+			var results = RimTalk.ExpandActions.Frontend.RimTalkCapabilityFrontend.Execute(
+				correlationId,
+				actor,
+				new List<RimAI.Core.Application.LegacyStructuredAction> { action });
+			var result = results.FirstOrDefault();
+			EALogger.Info($"[EA_STAGE6] conv={correlationId} state=RESOLVED action={action.Id} accepted={result?.Succeeded} code={result?.Code}");
+			if (result == null || !result.Succeeded)
 			{
-				EALogger.Error($"[EA_STAGE6] conv={correlationId} state=FAILED action={action.Id} code={result.ErrorCode}");
+				EALogger.Error($"[EA_STAGE6] conv={correlationId} state=FAILED action={action.Id} code={result?.Code}");
 				return;
 			}
 			waitingForCompletion = true;

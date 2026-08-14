@@ -59,6 +59,14 @@ public class ExecutionResult
 		return result;
 	}
 
+	public static ExecutionResult Completed(ExecutionContext ctx, string description = null)
+	{
+		ExecutionResult result = Succeeded(ctx, description);
+		result.State = LifecycleState.Completed;
+		result.Description = description;
+		return result;
+	}
+
 	public static ExecutionResult Failed(ErrorCode code, string message = null)
 	{
 		return new ExecutionResult

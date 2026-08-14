@@ -107,7 +107,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			OptionalParams = new List<string> { "target", "cell" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new MoveToHandler(),
+			Handler = null,
 			Keywords = new List<string> { "move", "go", "walk", "走", "移动", "前往", "过去" }
 		});
 		Register(new ActionDefinition
@@ -120,7 +120,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
 			DefaultEnabled = false,
-			Handler = new StopHandler(),
+			Handler = null,
 			Keywords = new List<string> { "stop", "halt", "cease", "停", "停止", "停下" }
 		});
 		Register(new ActionDefinition
@@ -133,7 +133,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			OptionalParams = new List<string> { "args.ticks" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new WaitHandler(),
+			Handler = null,
 			Keywords = new List<string> { "wait", "stay", "stand", "等", "等待", "待命", "站立", "站" }
 		});
 		Register(new ActionDefinition
@@ -145,7 +145,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Follow target pawn",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new FollowHandler(),
+			Handler = null,
 			Keywords = new List<string> { "follow", "跟随", "跟着", "跟上" }
 		});
 		Register(new ActionDefinition
@@ -518,7 +518,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "End current job",
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new JobEndHandler(),
+			Handler = null,
 			Keywords = new List<string> { "end job", "cancel", "结束任务", "取消" }
 		});
 		Register(new ActionDefinition

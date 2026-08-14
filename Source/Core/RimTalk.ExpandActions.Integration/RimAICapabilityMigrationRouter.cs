@@ -3,6 +3,7 @@ using RimAI.Core.Execution;
 using RimAI.Core.Observation;
 using RimAI.RimWorld.Inventory;
 using RimAI.RimWorld.Jobs;
+using RimAI.RimWorld.Movement;
 using RimAI.RimWorld.Work;
 using RimTalk.ExpandActions.Core;
 using RimTalk.ExpandActions.Execution;
@@ -80,6 +81,33 @@ public static class RimAICapabilityMigrationRouter
             return true;
         }
 
+        if (MovementCapabilityCatalog.TryResolve(ownership.CapabilityId, out var movement)
+            && movement is not null)
+        {
+            int? duration = movement.Operation switch
+            {
+                MovementOperation.Wait => context.ActionCall.GetArg(
+                    "ticks",
+                    MovementExecutionService.DefaultWaitTicks),
+                MovementOperation.Follow => context.ActionCall.GetArg(
+                    "duration",
+                    MovementExecutionService.DefaultFollowTicks),
+                _ => null
+            };
+            result = Map(
+                context,
+                RimAIMovementCapabilities.Execute(
+                    context.Map,
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    context.ResolvedCell,
+                    ownership.CapabilityId,
+                    duration,
+                    Metadata(context, ownership.CapabilityId)),
+                ownership.CapabilityId);
+            return true;
+        }
+
         result = ExecutionResult.Failed(
             context,
             ErrorCode.ExecutionException,
@@ -111,7 +139,9 @@ public static class RimAICapabilityMigrationRouter
     private static ExecutionResult Map(ExecutionContext context, AdapterResult adapter, string target)
     {
         var description = $"{adapter.Completed}/{adapter.Requested} {target}";
-        if (adapter.Code is FailureCodes.Completed or FailureCodes.Queued)
+        if (adapter.Code == FailureCodes.Completed)
+            return ExecutionResult.Completed(context, description);
+        if (adapter.Code == FailureCodes.Queued)
             return ExecutionResult.Queued(context, description);
         if (adapter.Code == FailureCodes.PartialAvailability)
             return ExecutionResult.Failed(context, ErrorCode.PartialAvailability, description);
@@ -123,6 +153,7 @@ public static class RimAICapabilityMigrationRouter
             FailureCodes.ActorIncapable => ErrorCode.ActorIncapable,
             FailureCodes.JobNotQueued => ErrorCode.JobNotQueued,
             FailureCodes.InvalidQuantity => ErrorCode.InvalidParameters,
+            FailureCodes.InvalidPlan => ErrorCode.InvalidParameters,
             FailureCodes.UnknownCapability => ErrorCode.ActionNotInWhitelist,
             _ => ErrorCode.ExecutionException
         };

@@ -882,7 +882,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Go stargazing outdoors",
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new StargazeHandler(),
+			Handler = null,
 			Keywords = new List<string> { "stargaze", "stars", "sky", "观星", "看星星" }
 		});
 		Register(new ActionDefinition
@@ -894,7 +894,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Take a leisurely walk",
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new GoForWalkHandler(),
+			Handler = null,
 			Keywords = new List<string> { "walk", "stroll", "wander", "散步", "闲逛", "逛", "溜达" }
 		});
 		Register(new ActionDefinition
@@ -932,7 +932,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			OptionalParams = new List<string> { "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new ViewArtHandler(),
+			Handler = null,
 			Keywords = new List<string> { "art", "sculpture", "painting", "艺术", "雕塑", "欣赏" }
 		});
 		Register(new ActionDefinition

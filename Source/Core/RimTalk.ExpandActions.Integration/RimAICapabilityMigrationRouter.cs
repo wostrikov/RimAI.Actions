@@ -11,6 +11,7 @@ using RimAI.RimWorld.Prisoner;
 using RimAI.RimWorld.Combat;
 using RimAI.RimWorld.Construction;
 using RimAI.RimWorld.Funeral;
+using RimAI.RimWorld.Recreation;
 using RimAI.RimWorld.Ingest;
 using RimAI.RimWorld.Work;
 using RimTalk.ExpandActions.Core;
@@ -271,6 +272,20 @@ public static class RimAICapabilityMigrationRouter
             return true;
         }
 
+        if (RecreationCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIRecreationCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
         result = ExecutionResult.Failed(
             context,
             ErrorCode.ExecutionException,
@@ -334,6 +349,7 @@ public static class RimAICapabilityMigrationRouter
             FailureCodes.CorpseInvalid => ErrorCode.InvalidParameters,
             FailureCodes.NoValidBurialContainer => ErrorCode.TargetNotFound,
             FailureCodes.NoValidCrematorium => ErrorCode.TargetNotFound,
+            FailureCodes.NoValidRecreationSpot => ErrorCode.TargetNotFound,
             FailureCodes.UnknownCapability => ErrorCode.ActionNotInWhitelist,
             _ => ErrorCode.ExecutionException
         };

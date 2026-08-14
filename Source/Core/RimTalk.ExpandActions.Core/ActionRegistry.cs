@@ -5,7 +5,6 @@ using RimTalk.ExpandActions.Actions.Animal;
 using RimTalk.ExpandActions.Actions.Combat;
 using RimTalk.ExpandActions.Actions.Facility;
 using RimTalk.ExpandActions.Actions.Job;
-using RimTalk.ExpandActions.Actions.Medical;
 using RimTalk.ExpandActions.Actions.Movement;
 using RimTalk.ExpandActions.Actions.Prisoner;
 using RimTalk.ExpandActions.Actions.Production;
@@ -278,7 +277,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Force pawn to rest",
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new ForceSleepHandler(),
+			Handler = null,
 			Keywords = new List<string> { "sleep", "nap", "rest", "睡觉", "睡", "躺下", "休息", "歇" }
 		});
 		Register(new ActionDefinition

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using RimTalk.ExpandActions.Actions.DLC;
 using RimTalk.ExpandActions.Core;
 using Verse;
 
@@ -27,8 +26,8 @@ public class IdeologyModule : IEAExtensionModule
 			DefaultPromptDesc = "Start a ritual (args.ritual_type: ritual name)",
 			RequiredParams = new List<string> { "actor", "args.ritual_type" },
 			RiskLevel = RiskLevel.Medium,
-			DefaultEnabled = true,
-			Handler = new RitualHandler(),
+			DefaultEnabled = false,
+			Handler = null,
 			Keywords = new List<string> { "ritual", "ceremony", "仪式", "典礼", "祭祀" }
 		};
 		yield return new ActionDefinition
@@ -41,14 +40,14 @@ public class IdeologyModule : IEAExtensionModule
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
-			Handler = new ConvertHandler(),
+			Handler = null,
 			Keywords = new List<string> { "convert", "ideology", "belief", "转化", "信仰", "思想" }
 		};
 	}
 
 	public IEnumerable<string> GetJobWhitelistEntries()
 	{
-		yield return "ConvertIdeo";
+		yield break;
 	}
 
 	public IEnumerable<IEAVariableContributor> GetVariableContributors()

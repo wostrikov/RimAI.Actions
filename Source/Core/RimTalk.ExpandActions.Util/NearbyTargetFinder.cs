@@ -114,17 +114,6 @@ public static class NearbyTargetFinder
 		});
 	}
 
-	public static Thing FindBrokenDown(Pawn pawn)
-	{
-		return (from t in pawn.Map.listerThings.AllThings.Where(delegate(Thing t)
-			{
-				CompBreakdownable compBreakdownable = t.TryGetComp<CompBreakdownable>();
-				return compBreakdownable != null && compBreakdownable.BrokenDown && t.Position.DistanceTo(pawn.Position) < 50f && pawn.CanReserveAndReach(t, PathEndMode.Touch, Danger.Some);
-			})
-			orderby t.Position.DistanceTo(pawn.Position)
-			select t).FirstOrDefault();
-	}
-
 	public static IntVec3? FindSowableCell(Pawn pawn)
 	{
 		foreach (Zone_Growing zone in pawn.Map.zoneManager.AllZones.OfType<Zone_Growing>())

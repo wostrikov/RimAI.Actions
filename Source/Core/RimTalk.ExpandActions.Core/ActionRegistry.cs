@@ -711,7 +711,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Clean area",
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new CleanHandler(),
+			Handler = null,
 			Keywords = new List<string> { "clean", "sweep", "清洁", "打扫", "扫地" }
 		});
 		Register(new ActionDefinition
@@ -835,7 +835,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Uninstall building or furniture",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new UninstallHandler(),
+			Handler = null,
 			Keywords = new List<string> { "uninstall", "remove", "卸载", "拆卸" }
 		});
 		Register(new ActionDefinition
@@ -847,7 +847,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Fix broken-down building",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new FixBrokenHandler(),
+			Handler = null,
 			Keywords = new List<string> { "fix", "broken", "修复", "故障" }
 		});
 		Register(new ActionDefinition
@@ -871,7 +871,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Toggle power switch on building",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new FlickHandler(),
+			Handler = null,
 			Keywords = new List<string> { "flick", "switch", "toggle", "开关", "切换" }
 		});
 		Register(new ActionDefinition

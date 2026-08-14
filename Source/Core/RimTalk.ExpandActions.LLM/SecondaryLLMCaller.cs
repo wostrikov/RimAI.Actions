@@ -118,6 +118,14 @@ public static class SecondaryLLMCaller
 		}
 	}
 
+	internal static Task<string> CompleteOnceAsync(string systemPrompt, string userPrompt, TimeSpan timeout)
+	{
+		Initialize();
+		if (_initFailed)
+			throw new InvalidOperationException("RimTalk AIClient is unavailable");
+		return CallAIClientAsync(systemPrompt, userPrompt, timeout);
+	}
+
 	private static async Task<string> CallAIClientAsync(string systemPrompt, string userPrompt, TimeSpan timeout)
 	{
 		_ = 3;

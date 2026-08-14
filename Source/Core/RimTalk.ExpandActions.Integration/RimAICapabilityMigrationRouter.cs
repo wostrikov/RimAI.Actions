@@ -7,6 +7,7 @@ using RimAI.RimWorld.Inventory;
 using RimAI.RimWorld.Jobs;
 using RimAI.RimWorld.Medical;
 using RimAI.RimWorld.Movement;
+using RimAI.RimWorld.Prisoner;
 using RimAI.RimWorld.Work;
 using RimTalk.ExpandActions.Core;
 using RimTalk.ExpandActions.Execution;
@@ -145,6 +146,20 @@ public static class RimAICapabilityMigrationRouter
             result = Map(
                 context,
                 RimAIMedicalCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (PrisonerTransportCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIPrisonerCapabilities.Execute(
                     context.ResolvedActor,
                     context.ResolvedTarget,
                     ownership.CapabilityId,

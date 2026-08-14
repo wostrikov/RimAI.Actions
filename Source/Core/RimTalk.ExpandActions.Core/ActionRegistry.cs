@@ -530,7 +530,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Capture downed pawn as prisoner",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new CaptureHandler(),
+			Handler = null,
 			Keywords = new List<string> { "capture", "prisoner", "抓住", "俘虏", "抓获" }
 		});
 		Register(new ActionDefinition
@@ -579,7 +579,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Escort prisoner to bed",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new EscortToBedHandler(),
+			Handler = null,
 			Keywords = new List<string> { "escort", "bed", "押送", "带回" }
 		});
 		Register(new ActionDefinition

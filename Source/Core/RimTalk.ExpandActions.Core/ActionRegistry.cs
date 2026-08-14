@@ -218,7 +218,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Drop currently equipped weapon",
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new DropWeaponHandler(),
+			Handler = null,
 			Keywords = new List<string> { "drop weapon", "disarm", "丢弃武器", "放下武器" }
 		});
 		Register(new ActionDefinition
@@ -442,7 +442,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			OptionalParams = new List<string> { "thing" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new DropItemHandler(),
+			Handler = null,
 			Keywords = new List<string> { "drop", "丢弃", "放下", "丢" }
 		});
 		Register(new ActionDefinition
@@ -467,7 +467,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Equip weapon or apparel",
 			RequiredParams = new List<string> { "actor", "thing" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new EquipHandler(),
+			Handler = null,
 			Keywords = new List<string> { "equip", "wear", "装备", "穿上", "武装" }
 		});
 		Register(new ActionDefinition

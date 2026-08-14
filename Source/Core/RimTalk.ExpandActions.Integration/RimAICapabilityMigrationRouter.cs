@@ -2,6 +2,7 @@ using RimAI.Core.Adapters;
 using RimAI.Core.Execution;
 using RimAI.Core.Observation;
 using RimAI.RimWorld.Animals;
+using RimAI.RimWorld.Equipment;
 using RimAI.RimWorld.Inventory;
 using RimAI.RimWorld.Jobs;
 using RimAI.RimWorld.Movement;
@@ -123,6 +124,21 @@ public static class RimAICapabilityMigrationRouter
             return true;
         }
 
+        if (EquipmentCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIEquipmentCapabilities.Execute(
+                    context.Map,
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    context.ActionCall.Thing ?? context.ActionCall.Target,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId)),
+                ownership.CapabilityId);
+            return true;
+        }
+
         result = ExecutionResult.Failed(
             context,
             ErrorCode.ExecutionException,
@@ -174,6 +190,7 @@ public static class RimAICapabilityMigrationRouter
             FailureCodes.InsufficientSkill => ErrorCode.ActorIncapable,
             FailureCodes.ReservationFailed => ErrorCode.TargetUnreachable,
             FailureCodes.CapabilityUnavailable => ErrorCode.ActionNotInWhitelist,
+            FailureCodes.EquipmentUnavailable => ErrorCode.InvalidParameters,
             FailureCodes.UnknownCapability => ErrorCode.ActionNotInWhitelist,
             _ => ErrorCode.ExecutionException
         };

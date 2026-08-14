@@ -968,7 +968,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Enter cryptosleep casket",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new EnterCryptosleepHandler(),
+			Handler = null,
 			Keywords = new List<string> { "cryptosleep", "casket", "hibernate", "低温休眠", "冬眠" }
 		});
 		Register(new ActionDefinition

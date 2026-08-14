@@ -8,6 +8,7 @@ using RimAI.RimWorld.Jobs;
 using RimAI.RimWorld.Medical;
 using RimAI.RimWorld.Movement;
 using RimAI.RimWorld.Prisoner;
+using RimAI.RimWorld.Combat;
 using RimAI.RimWorld.Work;
 using RimTalk.ExpandActions.Core;
 using RimTalk.ExpandActions.Execution;
@@ -178,6 +179,25 @@ public static class RimAICapabilityMigrationRouter
                     context.ResolvedTarget,
                     ownership.CapabilityId,
                     Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (CombatCapabilityCatalog.TryResolve(ownership.CapabilityId, out var combat)
+            && combat is not null)
+        {
+            bool? drafted = combat.Operation == CombatOperation.SetDrafted
+                ? context.ActionCall.GetArg("drafted", CombatExecutionService.DefaultDrafted)
+                : null;
+            result = Map(
+                context,
+                RimAICombatCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId),
+                    drafted)
                     .ToAdapterResult(),
                 ownership.CapabilityId);
             return true;

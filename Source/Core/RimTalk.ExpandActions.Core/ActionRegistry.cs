@@ -429,7 +429,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "thing" },
 			OptionalParams = new List<string> { "target", "args.quantity" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new RimAITakeInventoryBridgeHandler(),
+			Handler = null,
 			Keywords = new List<string> { "take inventory", "pick up", "pickup", "put in pocket", "візьми", "підійми", "підбери", "у кишеню", "інвентар", "捡起", "放进背包" }
 		});
 		Register(new ActionDefinition
@@ -675,7 +675,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Haul item to stockpile",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new RimAIHaulBridgeHandler(),
+			Handler = null,
 			Keywords = new List<string> { "haul", "carry", "搬运", "搬", "运输", "运", "扛" }
 		});
 		Register(new ActionDefinition
@@ -687,7 +687,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Mine rock or mineral",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new MineHandler(),
+			Handler = null,
 			Keywords = new List<string> { "mine", "dig", "采矿", "挖矿", "挖" }
 		});
 		Register(new ActionDefinition
@@ -699,7 +699,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Cut plant",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new CutPlantHandler(),
+			Handler = null,
 			Keywords = new List<string> { "cut", "chop", "plant", "砍", "砍伐", "植物" }
 		});
 		Register(new ActionDefinition
@@ -723,7 +723,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Repair building or structure",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new RepairHandler(),
+			Handler = null,
 			Keywords = new List<string> { "repair", "fix", "修理", "修复" }
 		});
 		Register(new ActionDefinition
@@ -735,7 +735,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Deconstruct building",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new DeconstructHandler(),
+			Handler = null,
 			Keywords = new List<string> { "deconstruct", "demolish", "拆除", "拆" }
 		});
 		Register(new ActionDefinition
@@ -760,7 +760,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Harvest mature plant",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new HarvestHandler(),
+			Handler = null,
 			Keywords = new List<string> { "harvest", "reap", "收割", "收获" }
 		});
 		Register(new ActionDefinition
@@ -797,7 +797,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Smooth rough floor",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new SmoothFloorHandler(),
+			Handler = null,
 			Keywords = new List<string> { "smooth", "floor", "抛光", "地面" }
 		});
 		Register(new ActionDefinition

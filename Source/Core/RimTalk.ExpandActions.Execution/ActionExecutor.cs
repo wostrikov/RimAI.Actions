@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using RimTalk.ExpandActions.Core;
+using RimTalk.ExpandActions.Integration;
 using RimTalk.ExpandActions.Mod;
 using RimTalk.ExpandActions.Parsing;
 using RimTalk.ExpandActions.Util;
@@ -152,7 +153,8 @@ public static class ActionExecutor
 			{
 				return ExecutionResult.Failed(ErrorCode.AlreadyExecuted, "Action already executed: " + action.GetSignature());
 			}
-			ActionDefinition byId = ActionRegistry.GetById(action.Id);
+			string definitionId = RimAICapabilityMigrationRouter.DefinitionId(action.Id);
+			ActionDefinition byId = ActionRegistry.GetById(definitionId);
 			if (byId != null)
 			{
 				int targetThingId = 0;
@@ -182,14 +184,14 @@ public static class ActionExecutor
 					return cooldown;
 				}
 			}
-			ActionDefinition byId2 = ActionRegistry.GetById(action.Id);
+			ActionDefinition byId2 = ActionRegistry.GetById(definitionId);
 			if (byId2 == null)
 			{
 				ExecutionResult rejected = ExecutionResult.Failed(ErrorCode.ActionNotInWhitelist, "Unknown action: " + action.Id);
 				rejected.ActionId = action.Id;
 				return rejected;
 			}
-			if (!EAModMain.Settings.IsActionEnabled(action.Id))
+			if (!EAModMain.Settings.IsActionEnabled(definitionId))
 			{
 				return ExecutionResult.Failed(ErrorCode.ActionDisabled, "Action disabled: " + action.Id);
 			}
@@ -208,21 +210,16 @@ public static class ActionExecutor
 			{
 				return ExecutionResult.Failed(executionContext, ErrorCode.ActorIncapable, "Actor cannot act (dead, downed, or in mental state)");
 			}
+			if (RimAICapabilityMigrationRouter.TryExecute(executionContext, out var migratedResult))
+			{
+				return CompleteExecution(stopwatch, executionContext, migratedResult, definitionId);
+			}
 			if (byId2.Handler == null)
 			{
 				return ExecutionResult.Failed(executionContext, ErrorCode.ExecutionException, "No handler for action: " + action.Id);
 			}
 			ExecutionResult executionResult = byId2.Handler.Execute(executionContext);
-			if (executionResult.Success && executionContext.ResolvedActor != null)
-			{
-				int targetThingId2 = executionContext.ResolvedTarget?.thingIDNumber ?? 0;
-				CooldownTracker.RecordExecution(executionContext.ResolvedActor.thingIDNumber, action.Id, targetThingId2);
-			}
-			stopwatch.Stop();
-			executionResult.ExecutionTimeMs = stopwatch.ElapsedMilliseconds;
-			ShowExecutionBubble(executionContext.ResolvedActor, action.Id, executionResult.Success);
-			EALogger.Debug(string.Format("Executed {0}: {1} in {2}ms", action.Id, executionResult.Success ? "SUCCESS" : "FAILED", executionResult.ExecutionTimeMs));
-			return executionResult;
+			return CompleteExecution(stopwatch, executionContext, executionResult, definitionId);
 		}
 		catch (Exception ex)
 		{
@@ -239,14 +236,37 @@ public static class ActionExecutor
 		}
 	}
 
+	private static ExecutionResult CompleteExecution(
+		Stopwatch stopwatch,
+		ExecutionContext context,
+		ExecutionResult result,
+		string definitionId)
+	{
+		if (result.Success && context.ResolvedActor != null)
+		{
+			int targetThingId = context.ResolvedTarget?.thingIDNumber ?? 0;
+			CooldownTracker.RecordExecution(context.ResolvedActor.thingIDNumber, definitionId, targetThingId);
+		}
+		stopwatch.Stop();
+		result.ExecutionTimeMs = stopwatch.ElapsedMilliseconds;
+		ShowExecutionBubble(context.ResolvedActor, definitionId, result.Success);
+		EALogger.Debug(string.Format(
+			"Executed {0}: {1} in {2}ms",
+			definitionId,
+			result.Success ? "SUCCESS" : "FAILED",
+			result.ExecutionTimeMs));
+		return result;
+	}
+
 	public static int GetActionPriority(string actionId)
 	{
-		ActionDefinition byId = ActionRegistry.GetById(actionId);
+		string definitionId = RimAICapabilityMigrationRouter.DefinitionId(actionId);
+		ActionDefinition byId = ActionRegistry.GetById(definitionId);
 		if (byId != null && byId.Priority.HasValue)
 		{
 			return byId.Priority.Value;
 		}
-		if (!ActionPriorityMap.TryGetValue(actionId, out var value))
+		if (!ActionPriorityMap.TryGetValue(definitionId, out var value))
 		{
 			return 3;
 		}

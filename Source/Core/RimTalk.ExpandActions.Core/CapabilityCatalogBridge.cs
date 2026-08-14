@@ -1,25 +1,60 @@
 using System.Collections.Generic;
 using System.Linq;
+using RimAI.Core.Catalog;
+using RimAI.Core.Execution;
 using RimTalk.ExpandActions.CapabilityRuntime;
 
 namespace RimTalk.ExpandActions.Core;
 
 public static class CapabilityCatalogBridge
 {
- public static ICapabilityCatalog BuildEnabledCatalog()
+ public static RimAI.Core.Catalog.ICapabilityCatalog BuildEnabledCatalog()
  {
-  return new UnifiedCapabilityCatalog(ActionRegistry.GetEnabledActions().Select(ToDescriptor));
+  return new CapabilityCatalogFacade(ActionRegistry.GetEnabledActions().Select(ToRimAIDescriptor));
  }
- public static CapabilityDescriptor ToDescriptor(ActionDefinition action)
+
+ public static RimAI.Core.Catalog.CapabilityDescriptor ToRimAIDescriptor(ActionDefinition action)
  {
-  var parameters=new List<CapabilityParameter>();
-  parameters.AddRange(action.RequiredParams.Select(x=>new CapabilityParameter{Name=x,Required=true}));
-  parameters.AddRange(action.OptionalParams.Select(x=>new CapabilityParameter{Name=x,Required=false}));
-  return new CapabilityDescriptor{CapabilityId=action.Id,Kind=CapabilityKind.ExplicitCapability,Source="ActionRegistry",SourceMod=action.SourceModule??"core",Category=action.Category.ToString(),Parameters=parameters,ExecutionAdapter=action.Handler?.GetType().FullName,MutatesGameState=true,Availability=Availability.Available,Confidence=1m,Provenance="ActionDefinition",Description=action.DefaultPromptDesc};
+  if (CapabilityOwnershipRegistry.TryResolve(action.Id, out var ownership)
+      && ownership is not null
+      && ownership.Owner == CapabilityExecutionOwner.RimAI)
+  {
+   return Stage61CapabilityBootstrap.CreateFoundationCatalog()
+    .GetCapability(ownership.CapabilityId);
+  }
+  return new RimAI.Core.Catalog.CapabilityDescriptor(
+   action.Id,
+   action.DisplayName,
+   "ExpandActions",
+   MapFamily(action.Category),
+   CapabilityAvailability.Executable,
+   ExecutionKind.ExpandActionsHandler,
+   new CapabilityParameterSchema(action.RequiredParams, action.OptionalParams),
+   adapterId: action.Handler?.GetType().FullName,
+   provenance: "ActionRegistry",
+   sourcePackageId: "zruic.expand.action");
  }
+
  public static string BuildMachineContract()
  {
-  var schema=CapabilitySchemaGenerator.Generate(BuildEnabledCatalog());
-  return Newtonsoft.Json.JsonConvert.SerializeObject(new{schema_version=1,capabilities=schema.Select(x=>new{id=x.Id,required=x.Required,optional=x.Optional,description=x.Description})});
+  var schema=BuildEnabledCatalog().ListCapabilities();
+  return Newtonsoft.Json.JsonConvert.SerializeObject(new
+  {
+   schema_version=2,
+   capabilities=schema.Select(x=>new
+   {
+    id=x.CapabilityId,
+    required=x.Parameters.Required,
+    optional=x.Parameters.Optional,
+    family=x.Family.ToString(),
+    owner=x.Source,
+    adapter=x.AdapterId
+   })
+  });
  }
+
+ private static CapabilityFamily MapFamily(ActionCategory category)
+  => System.Enum.TryParse<CapabilityFamily>(category.ToString(), out var family)
+   ? family
+   : CapabilityFamily.Unknown;
 }

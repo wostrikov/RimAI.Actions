@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using RimAI.Core.Catalog;
 using RimTalk.ExpandActions.Util;
-using RimTalk.ExpandActions.CapabilityRuntime;
 
 namespace RimTalk.ExpandActions.Parsing;
 
@@ -52,28 +52,34 @@ public static class ToolcallParser
 		return toolcallResponse;
 	}
 
-	public static ToolcallResponse ParseAndValidate(string json, ICapabilityCatalog catalog)
+	public static ToolcallResponse ParseAndValidate(string json, RimAI.Core.Catalog.ICapabilityCatalog catalog)
 	{
 		ToolcallResponse response = Parse(json);
 		List<ActionCall> accepted = new List<ActionCall>();
 		foreach (ActionCall action in response.Actions)
 		{
-			CapabilityDescriptor capability = catalog.Find(action.Id);
-			if (capability == null)
+			if (!catalog.TryGetCapability(action.Id, out var capability) || capability is null)
 			{
 				response.ValidationErrors.Add("UNSUPPORTED_ACTION_ID:" + action.Id);
 				continue;
 			}
-			List<string> supplied = new List<string> { "id", "actor" };
-			if (!string.IsNullOrWhiteSpace(action.Target)) supplied.Add("target");
-			if (!string.IsNullOrWhiteSpace(action.Cell)) supplied.Add("cell");
-			if (!string.IsNullOrWhiteSpace(action.Job)) supplied.Add("job");
-			if (!string.IsNullOrWhiteSpace(action.Thing)) supplied.Add("thing");
-			if (action.Args != null) supplied.AddRange(action.Args.Keys.Select(x => "args." + x));
-			List<string> missing = capability.Parameters.Where(x => x.Required && !supplied.Contains(x.Name)).Select(x => x.Name).ToList();
-			if (missing.Count > 0)
+			var supplied = new Dictionary<string, object>
 			{
-				response.ValidationErrors.Add("MISSING_REQUIRED_PARAMETERS:" + action.Id + ":" + string.Join(",", missing));
+				["id"] = action.Id,
+				["actor"] = action.Actor,
+				["target"] = action.Target,
+				["cell"] = action.Cell,
+				["job"] = action.Job,
+				["thing"] = action.Thing
+			};
+			if (action.Args != null)
+				foreach (var pair in action.Args)
+					supplied["args." + pair.Key] = pair.Value;
+			var validation = CapabilityInputValidator.Validate(capability, supplied);
+			if (!validation.IsValid)
+			{
+				response.ValidationErrors.Add(
+					validation.Code + ":" + action.Id + ":" + string.Join(",", validation.MissingParameters));
 				continue;
 			}
 			accepted.Add(action);

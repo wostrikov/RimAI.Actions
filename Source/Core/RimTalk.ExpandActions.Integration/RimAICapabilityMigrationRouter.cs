@@ -350,6 +350,8 @@ public static class RimAICapabilityMigrationRouter
             FailureCodes.NoValidBurialContainer => ErrorCode.TargetNotFound,
             FailureCodes.NoValidCrematorium => ErrorCode.TargetNotFound,
             FailureCodes.NoValidRecreationSpot => ErrorCode.TargetNotFound,
+            FailureCodes.NoActiveResearch => ErrorCode.InvalidParameters,
+            FailureCodes.NotOpenable => ErrorCode.InvalidParameters,
             FailureCodes.UnknownCapability => ErrorCode.ActionNotInWhitelist,
             _ => ErrorCode.ExecutionException
         };

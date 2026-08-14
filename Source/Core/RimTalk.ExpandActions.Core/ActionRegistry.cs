@@ -771,7 +771,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Research at research bench",
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new ResearchHandler(),
+			Handler = null,
 			Keywords = new List<string> { "research", "study", "研究", "科研" }
 		});
 		Register(new ActionDefinition
@@ -993,7 +993,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Open container or casket",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new OpenContainerHandler(),
+			Handler = null,
 			Keywords = new List<string> { "open", "container", "打开", "容器" }
 		});
 		Register(new ActionDefinition

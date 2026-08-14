@@ -243,7 +243,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Rescue downed pawn to bed",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new RescueHandler(),
+			Handler = null,
 			Keywords = new List<string> { "rescue", "save", "carry", "救援", "营救", "搬运" }
 		});
 		Register(new ActionDefinition
@@ -255,7 +255,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Tend to injured pawn",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new TendHandler(),
+			Handler = null,
 			Keywords = new List<string> { "tend", "heal", "treat", "治疗", "包扎", "医治" }
 		});
 		Register(new ActionDefinition
@@ -267,7 +267,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Feed bedridden patient",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new FeedPatientHandler(),
+			Handler = null,
 			Keywords = new List<string> { "feed", "food", "patient", "喂食", "喂饭", "病人" }
 		});
 		Register(new ActionDefinition

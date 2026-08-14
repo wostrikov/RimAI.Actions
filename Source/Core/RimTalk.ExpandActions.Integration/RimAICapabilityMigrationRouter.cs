@@ -5,6 +5,7 @@ using RimAI.RimWorld.Animals;
 using RimAI.RimWorld.Equipment;
 using RimAI.RimWorld.Inventory;
 using RimAI.RimWorld.Jobs;
+using RimAI.RimWorld.Medical;
 using RimAI.RimWorld.Movement;
 using RimAI.RimWorld.Work;
 using RimTalk.ExpandActions.Core;
@@ -139,6 +140,20 @@ public static class RimAICapabilityMigrationRouter
             return true;
         }
 
+        if (MedicalCareCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIMedicalCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
         result = ExecutionResult.Failed(
             context,
             ErrorCode.ExecutionException,
@@ -191,6 +206,8 @@ public static class RimAICapabilityMigrationRouter
             FailureCodes.ReservationFailed => ErrorCode.TargetUnreachable,
             FailureCodes.CapabilityUnavailable => ErrorCode.ActionNotInWhitelist,
             FailureCodes.EquipmentUnavailable => ErrorCode.InvalidParameters,
+            FailureCodes.DestinationUnavailable => ErrorCode.TargetNotFound,
+            FailureCodes.NoValidFood => ErrorCode.TargetNotFound,
             FailureCodes.UnknownCapability => ErrorCode.ActionNotInWhitelist,
             _ => ErrorCode.ExecutionException
         };

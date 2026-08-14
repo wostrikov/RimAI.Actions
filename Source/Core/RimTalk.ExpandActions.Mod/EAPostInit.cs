@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using RimAI.Core.Application;
+using RimAI.RimWorld.Application;
 using RimTalk.ExpandActions.Core;
 using RimTalk.ExpandActions.Util;
 using Verse;
@@ -14,6 +16,8 @@ public static class EAPostInit
 		ModuleRegistry.DiscoverAndRegisterModules();
 		KeywordConfigManager.Reload();
 		InjectFallbackTranslations("EA_");
+		int executable = CapabilityPromptContract.ListFrontendCapabilities(RimAIApplicationHost.Catalog).Count;
+		EALogger.Info($"[RIMAI_FRONTEND] catalog=canonical executable={executable} path=direct");
 		EALogger.Info($"EA post-init complete. Total actions: {ActionRegistry.GetAll().Count()}");
 	}
 

@@ -542,7 +542,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Release prisoner",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new ReleasePrisonerHandler(),
+			Handler = null,
 			Keywords = new List<string> { "release", "free", "释放", "放走" }
 		});
 		Register(new ActionDefinition
@@ -554,7 +554,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Attempt to recruit prisoner",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new RecruitPrisonerHandler(),
+			Handler = null,
 			Keywords = new List<string> { "recruit prisoner", "招募囚犯", "说服囚犯" }
 		});
 		Register(new ActionDefinition

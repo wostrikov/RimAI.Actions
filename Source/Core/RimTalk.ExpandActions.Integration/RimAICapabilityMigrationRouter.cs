@@ -219,6 +219,21 @@ public static class RimAICapabilityMigrationRouter
             return true;
         }
 
+        if (ItemTransferCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIItemTransferCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    context.ActionCall.Thing,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
         result = ExecutionResult.Failed(
             context,
             ErrorCode.ExecutionException,

@@ -5,7 +5,6 @@ using RimTalk.ExpandActions.Actions.Animal;
 using RimTalk.ExpandActions.Actions.Combat;
 using RimTalk.ExpandActions.Actions.Facility;
 using RimTalk.ExpandActions.Actions.Funeral;
-using RimTalk.ExpandActions.Actions.Item;
 using RimTalk.ExpandActions.Actions.Job;
 using RimTalk.ExpandActions.Actions.Medical;
 using RimTalk.ExpandActions.Actions.Movement;
@@ -456,7 +455,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "target" },
 			OptionalParams = new List<string> { "thing" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new GiveItemHandler(),
+			Handler = null,
 			Keywords = new List<string> { "give", "hand", "赠送", "给", "递给" }
 		});
 		Register(new ActionDefinition

@@ -4,7 +4,6 @@ using System.Text;
 using RimTalk.ExpandActions.Actions.Facility;
 using RimTalk.ExpandActions.Actions.Job;
 using RimTalk.ExpandActions.Actions.Recreation;
-using RimTalk.ExpandActions.Actions.Social;
 using RimTalk.ExpandActions.Integration;
 using RimTalk.ExpandActions.Mod;
 using RimTalk.ExpandActions.Util;
@@ -359,7 +358,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = false,
-			Handler = new SocialFightHandler(),
+			Handler = null,
 			Keywords = new List<string> { "fight", "brawl", "social fight", "打架", "吵架", "斗殴" }
 		});
 		Register(new ActionDefinition

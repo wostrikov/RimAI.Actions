@@ -15,10 +15,9 @@ namespace RimTalk.ExpandActions.Execution;
 
 public static class ActionExecutor
 {
-	private static readonly Dictionary<string, int> ActionPriorityMap = new Dictionary<string, int>
+		private static readonly Dictionary<string, int> ActionPriorityMap = new Dictionary<string, int>
 	{
-		{ "play_music", 1 },
-		{ "social_fight", 1 }
+		{ "play_music", 1 }
 	};
 
 	private const int DefaultPriority = 3;

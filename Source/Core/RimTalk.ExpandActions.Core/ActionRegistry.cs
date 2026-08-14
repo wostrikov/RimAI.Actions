@@ -944,7 +944,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			OptionalParams = new List<string> { "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new UseCommsHandler(),
+			Handler = null,
 			Keywords = new List<string> { "comms", "communicate", "radio", "通讯", "联络" }
 		});
 		Register(new ActionDefinition

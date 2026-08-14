@@ -13,6 +13,7 @@ using RimAI.RimWorld.Construction;
 using RimAI.RimWorld.Funeral;
 using RimAI.RimWorld.Recreation;
 using RimAI.RimWorld.Rest;
+using RimAI.RimWorld.Comms;
 using RimAI.RimWorld.Ingest;
 using RimAI.RimWorld.Work;
 using RimTalk.ExpandActions.Core;
@@ -292,6 +293,20 @@ public static class RimAICapabilityMigrationRouter
             result = Map(
                 context,
                 RimAIRestCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (CommsCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAICommsCapabilities.Execute(
                     context.ResolvedActor,
                     context.ResolvedTarget,
                     ownership.CapabilityId,

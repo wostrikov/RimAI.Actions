@@ -1,6 +1,7 @@
 using RimAI.Core.Adapters;
 using RimAI.Core.Execution;
 using RimAI.Core.Observation;
+using RimAI.RimWorld.Animals;
 using RimAI.RimWorld.Inventory;
 using RimAI.RimWorld.Jobs;
 using RimAI.RimWorld.Movement;
@@ -108,6 +109,20 @@ public static class RimAICapabilityMigrationRouter
             return true;
         }
 
+        if (AnimalWorkCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIAnimalWorkCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
         result = ExecutionResult.Failed(
             context,
             ErrorCode.ExecutionException,
@@ -154,9 +169,17 @@ public static class RimAICapabilityMigrationRouter
             FailureCodes.JobNotQueued => ErrorCode.JobNotQueued,
             FailureCodes.InvalidQuantity => ErrorCode.InvalidParameters,
             FailureCodes.InvalidPlan => ErrorCode.InvalidParameters,
+            FailureCodes.TargetNotReady => ErrorCode.InvalidParameters,
+            FailureCodes.InvalidTarget => ErrorCode.TargetNotFound,
+            FailureCodes.InsufficientSkill => ErrorCode.ActorIncapable,
+            FailureCodes.ReservationFailed => ErrorCode.TargetUnreachable,
+            FailureCodes.CapabilityUnavailable => ErrorCode.ActionNotInWhitelist,
             FailureCodes.UnknownCapability => ErrorCode.ActionNotInWhitelist,
             _ => ErrorCode.ExecutionException
         };
-        return ExecutionResult.Failed(context, code, adapter.Detail ?? adapter.Code);
+        return ExecutionResult.Failed(
+            context,
+            code,
+            adapter.Detail is null ? adapter.Code : $"{adapter.Code}: {adapter.Detail}");
     }
 }

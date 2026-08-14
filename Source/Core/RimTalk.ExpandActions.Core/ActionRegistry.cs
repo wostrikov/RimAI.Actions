@@ -603,7 +603,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Attempt to tame animal",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new TameHandler(),
+			Handler = null,
 			Keywords = new List<string> { "tame", "domesticate", "驯服", "驯化" }
 		});
 		Register(new ActionDefinition
@@ -615,7 +615,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Train animal",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new TrainHandler(),
+			Handler = null,
 			Keywords = new List<string> { "train", "训练", "教导" }
 		});
 		Register(new ActionDefinition
@@ -651,7 +651,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Milk animal",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new MilkHandler(),
+			Handler = null,
 			Keywords = new List<string> { "milk", "挤奶" }
 		});
 		Register(new ActionDefinition
@@ -663,7 +663,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Shear animal",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new ShearHandler(),
+			Handler = null,
 			Keywords = new List<string> { "shear", "wool", "剪毛" }
 		});
 		Register(new ActionDefinition

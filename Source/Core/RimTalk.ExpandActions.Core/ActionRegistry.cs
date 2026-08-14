@@ -4,7 +4,6 @@ using System.Text;
 using RimTalk.ExpandActions.Actions.Animal;
 using RimTalk.ExpandActions.Actions.Combat;
 using RimTalk.ExpandActions.Actions.Facility;
-using RimTalk.ExpandActions.Actions.Funeral;
 using RimTalk.ExpandActions.Actions.Job;
 using RimTalk.ExpandActions.Actions.Medical;
 using RimTalk.ExpandActions.Actions.Movement;
@@ -1006,7 +1005,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Bury corpse in grave",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new BuryHandler(),
+			Handler = null,
 			Keywords = new List<string> { "bury", "grave", "funeral", "埋葬", "坟墓", "葬礼" }
 		});
 		Register(new ActionDefinition
@@ -1018,7 +1017,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Cremate corpse at crematorium",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new CremateHandler(),
+			Handler = null,
 			Keywords = new List<string> { "cremate", "burn", "火化", "焚烧" }
 		});
 	}

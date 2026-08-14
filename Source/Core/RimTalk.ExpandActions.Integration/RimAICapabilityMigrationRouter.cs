@@ -10,6 +10,7 @@ using RimAI.RimWorld.Movement;
 using RimAI.RimWorld.Prisoner;
 using RimAI.RimWorld.Combat;
 using RimAI.RimWorld.Construction;
+using RimAI.RimWorld.Funeral;
 using RimAI.RimWorld.Ingest;
 using RimAI.RimWorld.Work;
 using RimTalk.ExpandActions.Core;
@@ -256,6 +257,20 @@ public static class RimAICapabilityMigrationRouter
             return true;
         }
 
+        if (FuneralCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIFuneralCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
         result = ExecutionResult.Failed(
             context,
             ErrorCode.ExecutionException,
@@ -316,6 +331,9 @@ public static class RimAICapabilityMigrationRouter
             FailureCodes.NotRoofable => ErrorCode.InvalidParameters,
             FailureCodes.NoRoofPresent => ErrorCode.TargetNotFound,
             FailureCodes.RoofNotRemovable => ErrorCode.InvalidParameters,
+            FailureCodes.CorpseInvalid => ErrorCode.InvalidParameters,
+            FailureCodes.NoValidBurialContainer => ErrorCode.TargetNotFound,
+            FailureCodes.NoValidCrematorium => ErrorCode.TargetNotFound,
             FailureCodes.UnknownCapability => ErrorCode.ActionNotInWhitelist,
             _ => ErrorCode.ExecutionException
         };

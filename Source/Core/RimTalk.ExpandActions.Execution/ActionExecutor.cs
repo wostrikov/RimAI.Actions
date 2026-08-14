@@ -19,16 +19,12 @@ public static class ActionExecutor
 	{
 		{ "mental_break_start", 5 },
 		{ "play_music", 1 },
-		{ "lovin", 1 },
 		{ "social_fight", 1 },
 		{ "insult", 1 },
-		{ "visit_sick", 1 },
 		{ "romance_set", 1 },
 		{ "thought_add", 1 },
 		{ "relation_set", 1 },
-		{ "give_inspiration", 1 },
-		{ "marry", 1 },
-		{ "recruit", 1 }
+		{ "give_inspiration", 1 }
 	};
 
 	private const int DefaultPriority = 3;

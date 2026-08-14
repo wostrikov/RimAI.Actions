@@ -286,7 +286,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Attempt to recruit prisoner",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new RecruitHandler(),
+			Handler = null,
 			Keywords = new List<string> { "recruit", "persuade", "招募", "说服" }
 		});
 		Register(new ActionDefinition
@@ -348,7 +348,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Visit sick or bedridden pawn",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new VisitSickHandler(),
+			Handler = null,
 			Keywords = new List<string> { "visit", "sick", "ill", "探病", "看望", "探望" }
 		});
 		Register(new ActionDefinition
@@ -373,7 +373,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Lovin' with partner in bed",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new LovinHandler(),
+			Handler = null,
 			Keywords = new List<string> { "lovin", "亲热", "恩爱" }
 		});
 		Register(new ActionDefinition
@@ -399,7 +399,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.High,
 			DefaultEnabled = false,
-			Handler = new MarryHandler(),
+			Handler = null,
 			Keywords = new List<string> { "marry", "wedding", "marriage", "结婚", "婚礼" }
 		});
 		Register(new ActionDefinition

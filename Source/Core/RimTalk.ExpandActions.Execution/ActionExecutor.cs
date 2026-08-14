@@ -17,14 +17,8 @@ public static class ActionExecutor
 {
 	private static readonly Dictionary<string, int> ActionPriorityMap = new Dictionary<string, int>
 	{
-		{ "mental_break_start", 5 },
 		{ "play_music", 1 },
-		{ "social_fight", 1 },
-		{ "insult", 1 },
-		{ "romance_set", 1 },
-		{ "thought_add", 1 },
-		{ "relation_set", 1 },
-		{ "give_inspiration", 1 }
+		{ "social_fight", 1 }
 	};
 
 	private const int DefaultPriority = 3;

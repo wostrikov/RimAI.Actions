@@ -8,7 +8,10 @@ using RimAI.RimWorld.Jobs;
 using RimAI.RimWorld.Medical;
 using RimAI.RimWorld.Movement;
 using RimAI.RimWorld.Prisoner;
+using RimAI.RimWorld.Inspiration;
+using RimAI.RimWorld.Mental;
 using RimAI.RimWorld.Social;
+using RimAI.RimWorld.Thought;
 using RimAI.RimWorld.Combat;
 using RimAI.RimWorld.Construction;
 using RimAI.RimWorld.Funeral;
@@ -189,6 +192,62 @@ public static class RimAICapabilityMigrationRouter
                     context.ResolvedTarget,
                     ownership.CapabilityId,
                     Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (SocialStateCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAISocialStateCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    context.ActionCall.GetArg<string>("mode"),
+                    context.ActionCall.GetArg<string>("relation"),
+                    context.ActionCall.GetArg<string>("mode"))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (MentalStateCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIMentalStateCapabilities.Execute(
+                    context.ResolvedActor,
+                    ownership.CapabilityId,
+                    context.ActionCall.GetArg<string>("state"))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (ThoughtCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIThoughtCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    context.ActionCall.GetArg<string>("thought"))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (InspirationCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIInspirationCapabilities.Execute(
+                    context.ResolvedActor,
+                    ownership.CapabilityId,
+                    context.ActionCall.GetArg<string>("type"))
                     .ToAdapterResult(),
                 ownership.CapabilityId);
             return true;

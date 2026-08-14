@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimTalk.ExpandActions.Actions.Animal;
-using RimTalk.ExpandActions.Actions.Combat;
 using RimTalk.ExpandActions.Actions.Facility;
 using RimTalk.ExpandActions.Actions.Job;
 using RimTalk.ExpandActions.Actions.Recreation;
@@ -226,7 +225,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "args.state" },
 			RiskLevel = RiskLevel.High,
 			DefaultEnabled = false,
-			Handler = new MentalBreakStartHandler(),
+			Handler = null,
 			Keywords = new List<string> { "mental", "break", "berserk", "精神崩溃", "发狂" }
 		});
 		Register(new ActionDefinition
@@ -299,7 +298,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "target", "args.mode" },
 			RiskLevel = RiskLevel.High,
 			DefaultEnabled = false,
-			Handler = new RomanceSetHandler(),
+			Handler = null,
 			Keywords = new List<string> { "romance", "lover", "breakup", "恋爱", "分手", "告白" }
 		});
 		Register(new ActionDefinition
@@ -311,7 +310,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Add memory thought (args.thought: ThoughtDef name)",
 			RequiredParams = new List<string> { "actor", "args.thought" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new ThoughtAddHandler(),
+			Handler = null,
 			Keywords = new List<string> { "thought", "memory", "mood", "思绪", "心情", "记忆" }
 		});
 		Register(new ActionDefinition
@@ -324,7 +323,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "target", "args.relation", "args.mode" },
 			RiskLevel = RiskLevel.High,
 			DefaultEnabled = false,
-			Handler = new RelationSetHandler(),
+			Handler = null,
 			Keywords = new List<string> { "relation", "friend", "enemy", "关系", "朋友", "敌人" }
 		});
 		Register(new ActionDefinition
@@ -336,7 +335,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Grant inspiration (args.type: InspirationDef name)",
 			RequiredParams = new List<string> { "actor", "args.type" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new GiveInspirationHandler(),
+			Handler = null,
 			Keywords = new List<string> { "inspiration", "inspire", "灵感", "激励" }
 		});
 		Register(new ActionDefinition
@@ -386,7 +385,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = false,
-			Handler = new InsultHandler(),
+			Handler = null,
 			Keywords = new List<string> { "insult", "mock", "侮辱", "嘲笑", "骂" }
 		});
 		Register(new ActionDefinition

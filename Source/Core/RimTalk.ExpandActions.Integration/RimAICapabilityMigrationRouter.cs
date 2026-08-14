@@ -82,7 +82,8 @@ public static class RimAICapabilityMigrationRouter
                     context.ResolvedTarget,
                     ownership.CapabilityId,
                     Metadata(context, ownership.CapabilityId),
-                    RimTalk.ExpandActions.Mod.EAModMain.Settings.AllowUndesignatedTargets),
+                    RimTalk.ExpandActions.Mod.EAModMain.Settings.AllowUndesignatedTargets,
+                    context.ResolvedCell),
                 ownership.CapabilityId);
             return true;
         }
@@ -288,6 +289,9 @@ public static class RimAICapabilityMigrationRouter
             FailureCodes.EquipmentUnavailable => ErrorCode.InvalidParameters,
             FailureCodes.DestinationUnavailable => ErrorCode.TargetNotFound,
             FailureCodes.NoValidFood => ErrorCode.TargetNotFound,
+            FailureCodes.NoValidFuel => ErrorCode.TargetNotFound,
+            FailureCodes.NotRefuelable => ErrorCode.InvalidParameters,
+            FailureCodes.NotSowable => ErrorCode.TargetNotFound,
             FailureCodes.UnknownCapability => ErrorCode.ActionNotInWhitelist,
             _ => ErrorCode.ExecutionException
         };

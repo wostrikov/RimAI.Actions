@@ -748,7 +748,7 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			OptionalParams = new List<string> { "target", "cell" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new SowHandler(),
+			Handler = null,
 			Keywords = new List<string> { "sow", "plant", "seed", "播种", "种植" }
 		});
 		Register(new ActionDefinition
@@ -859,7 +859,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Refuel building",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new RefuelHandler(),
+			Handler = null,
 			Keywords = new List<string> { "refuel", "fuel", "加油", "燃料" }
 		});
 		Register(new ActionDefinition

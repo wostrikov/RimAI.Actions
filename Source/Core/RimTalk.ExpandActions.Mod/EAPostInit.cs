@@ -18,6 +18,8 @@ public static class EAPostInit
 		InjectFallbackTranslations("EA_");
 		int executable = CapabilityPromptContract.ListFrontendCapabilities(RimAIApplicationHost.Catalog).Count;
 		EALogger.Info($"[RIMAI_FRONTEND] catalog=canonical executable={executable} path=direct");
+		var language = LanguageRuntime.Current;
+		EALogger.Info($"[RIMAI_LANGUAGE] game={language.GameLanguage.Code} input={language.InputLanguage.Code} output={language.OutputLanguage.Code} locale={language.Locale} source={language.OutputLanguageSource}");
 		EALogger.Info($"EA post-init complete. Total actions: {ActionRegistry.GetAll().Count()}");
 	}
 

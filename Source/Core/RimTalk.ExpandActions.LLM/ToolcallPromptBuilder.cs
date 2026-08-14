@@ -14,9 +14,12 @@ public static class ToolcallPromptBuilder
 	{
 		var catalog = RimAIApplicationHost.Catalog;
 		var settings = EAModMain.Settings;
+		var language = LanguageRuntime.Current;
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.AppendLine("You are a behavior-to-action converter for a RimWorld game mod.");
 		stringBuilder.AppendLine("Your task is to convert natural language behavior descriptions into structured capability requests.");
+		stringBuilder.AppendLine(LanguagePromptContract.BuildHumanOutputInstruction(language));
+		stringBuilder.AppendLine("Human-facing reason text, if any, must use that output language. JSON keys and capability IDs stay canonical.");
 		stringBuilder.AppendLine();
 		stringBuilder.AppendLine("## Available Capabilities");
 		stringBuilder.AppendLine();

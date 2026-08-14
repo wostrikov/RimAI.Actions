@@ -33,12 +33,16 @@ public static class RimTalkCapabilityFrontend
 			return results;
 		}
 
+		var language = LanguageRuntime.Current;
 		var context = new FrontendContext(
 			FrontendKind.RimTalk,
 			conversationId,
 			conversationId,
 			speaker == null ? null : new RimAI.Core.World.PawnRef(SemanticName: speaker.LabelShort),
-			MapId: map.uniqueID.ToString());
+			MapId: map.uniqueID.ToString())
+		{
+			Language = language
+		};
 
 		var requests = new List<SemanticCapabilityRequest>();
 		foreach (var action in actions.Take(EAModMain.Settings.MaxActionsPerConversation))

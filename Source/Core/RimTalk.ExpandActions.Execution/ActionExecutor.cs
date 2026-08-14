@@ -15,10 +15,7 @@ namespace RimTalk.ExpandActions.Execution;
 
 public static class ActionExecutor
 {
-		private static readonly Dictionary<string, int> ActionPriorityMap = new Dictionary<string, int>
-	{
-		{ "play_music", 1 }
-	};
+		private static readonly Dictionary<string, int> ActionPriorityMap = new Dictionary<string, int>();
 
 	private const int DefaultPriority = 3;
 
@@ -169,10 +166,6 @@ public static class ActionExecutor
 			if (!EAModMain.Settings.IsActionEnabled(definitionId))
 			{
 				return ExecutionResult.Failed(ErrorCode.ActionDisabled, "Action disabled: " + action.Id);
-			}
-			if (action.Id.StartsWith("job_") && !string.IsNullOrEmpty(action.Job) && !IsJobWhitelisted(action.Job))
-			{
-				return ExecutionResult.Failed(ErrorCode.JobNotInWhitelist, "Job not whitelisted: " + action.Job);
 			}
 			ExecutionContext executionContext = BuildContext(conversationId, action, map);
 			if (executionContext == null)

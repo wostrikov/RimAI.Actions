@@ -1,9 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RimTalk.ExpandActions.Actions.Facility;
-using RimTalk.ExpandActions.Actions.Job;
-using RimTalk.ExpandActions.Actions.Recreation;
 using RimTalk.ExpandActions.Integration;
 using RimTalk.ExpandActions.Mod;
 using RimTalk.ExpandActions.Util;
@@ -485,7 +482,8 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "job" },
 			OptionalParams = new List<string> { "target", "cell" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new JobStartHandler(),
+			DefaultEnabled = false,
+			Handler = null,
 			Keywords = new List<string> { "job", "work", "task", "任务", "工作" }
 		});
 		Register(new ActionDefinition
@@ -498,7 +496,8 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor", "job" },
 			OptionalParams = new List<string> { "target", "cell" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new JobQueueFrontHandler(),
+			DefaultEnabled = false,
+			Handler = null,
 			Keywords = new List<string> { "queue", "排队", "队列" }
 		});
 		Register(new ActionDefinition
@@ -900,7 +899,8 @@ public static class ActionRegistry
 			RequiredParams = new List<string> { "actor" },
 			OptionalParams = new List<string> { "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new PlayMusicHandler(),
+			DefaultEnabled = false,
+			Handler = null,
 			Keywords = new List<string> { "music", "play", "instrument", "音乐", "演奏", "乐器" }
 		});
 		Register(new ActionDefinition
@@ -950,7 +950,8 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Trade with visitor or caravan",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new TradeHandler(),
+			DefaultEnabled = false,
+			Handler = null,
 			Keywords = new List<string> { "trade", "buy", "sell", "交易", "买卖", "贸易" }
 		});
 		Register(new ActionDefinition
@@ -974,7 +975,8 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Reload weapon or turret",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
-			Handler = new ReloadHandler(),
+			DefaultEnabled = false,
+			Handler = null,
 			Keywords = new List<string> { "reload", "ammo", "装填", "弹药" }
 		});
 		Register(new ActionDefinition

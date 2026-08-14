@@ -19,6 +19,7 @@ using RimAI.RimWorld.Recreation;
 using RimAI.RimWorld.Rest;
 using RimAI.RimWorld.Comms;
 using RimAI.RimWorld.Containment;
+using RimAI.RimWorld.Entity;
 using RimAI.RimWorld.Craft;
 using RimAI.RimWorld.Ingest;
 using RimAI.RimWorld.Work;
@@ -145,6 +146,20 @@ public static class RimAICapabilityMigrationRouter
             result = Map(
                 context,
                 RimAIAnimalLethalCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
+        if (EntityWorkCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIEntityWorkCapabilities.Execute(
                     context.ResolvedActor,
                     context.ResolvedTarget,
                     ownership.CapabilityId,

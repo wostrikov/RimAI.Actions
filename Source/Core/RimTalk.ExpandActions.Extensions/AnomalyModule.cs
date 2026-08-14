@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using RimTalk.ExpandActions.Actions.DLC;
 using RimTalk.ExpandActions.Core;
 using Verse;
 
@@ -28,7 +27,7 @@ public class AnomalyModule : IEAExtensionModule
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
-			Handler = new StudyEntityHandler(),
+			Handler = null,
 			Keywords = new List<string> { "study", "anomaly", "entity", "research", "研究", "异常", "实体" }
 		};
 		yield return new ActionDefinition
@@ -41,15 +40,15 @@ public class AnomalyModule : IEAExtensionModule
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
-			Handler = new SuppressEntityHandler(),
+			Handler = null,
 			Keywords = new List<string> { "suppress", "contain", "anomaly", "压制", "抑制", "遏制" }
 		};
 	}
 
 	public IEnumerable<string> GetJobWhitelistEntries()
 	{
-		yield return "StudyThing";
-		yield return "Suppress";
+		yield return "StudyInteract";
+		yield return "ActivitySuppression";
 	}
 
 	public IEnumerable<IEAVariableContributor> GetVariableContributors()

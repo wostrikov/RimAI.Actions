@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using RimTalk.ExpandActions.Actions.DLC;
 using RimTalk.ExpandActions.Core;
 using Verse;
 
@@ -27,8 +26,8 @@ public class BiotechModule : IEAExtensionModule
 			DefaultPromptDesc = "Command mechanoid to perform action (args.command: go_to/attack/follow)",
 			RequiredParams = new List<string> { "actor", "target", "args.command" },
 			RiskLevel = RiskLevel.Medium,
-			DefaultEnabled = true,
-			Handler = new CommandMechanoidHandler(),
+			DefaultEnabled = false,
+			Handler = null,
 			Keywords = new List<string> { "mechanoid", "mech", "command", "机械体", "机械族", "命令" }
 		};
 		yield return new ActionDefinition
@@ -41,14 +40,13 @@ public class BiotechModule : IEAExtensionModule
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			DefaultEnabled = true,
-			Handler = new EnterBiosculpterHandler(),
+			Handler = null,
 			Keywords = new List<string> { "biosculpter", "pod", "sculpt", "生物塑型", "塑型舱" }
 		};
 	}
 
 	public IEnumerable<string> GetJobWhitelistEntries()
 	{
-		yield return "MechCommand";
 		yield return "EnterBiosculpterPod";
 	}
 

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RimTalk.ExpandActions.Actions.Animal;
 using RimTalk.ExpandActions.Actions.Facility;
 using RimTalk.ExpandActions.Actions.Job;
 using RimTalk.ExpandActions.Actions.Recreation;
@@ -621,7 +620,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Hunt animal",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new HuntHandler(),
+			Handler = null,
 			Keywords = new List<string> { "hunt", "狩猎", "猎杀", "打猎" }
 		});
 		Register(new ActionDefinition
@@ -633,7 +632,7 @@ public static class ActionRegistry
 			DefaultPromptDesc = "Slaughter animal",
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
-			Handler = new SlaughterHandler(),
+			Handler = null,
 			Keywords = new List<string> { "slaughter", "butcher", "屠宰", "宰杀" }
 		});
 		Register(new ActionDefinition

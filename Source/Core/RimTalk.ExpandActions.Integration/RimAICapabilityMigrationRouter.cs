@@ -140,6 +140,20 @@ public static class RimAICapabilityMigrationRouter
             return true;
         }
 
+        if (AnimalLethalCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
+        {
+            result = Map(
+                context,
+                RimAIAnimalLethalCapabilities.Execute(
+                    context.ResolvedActor,
+                    context.ResolvedTarget,
+                    ownership.CapabilityId,
+                    Metadata(context, ownership.CapabilityId))
+                    .ToAdapterResult(),
+                ownership.CapabilityId);
+            return true;
+        }
+
         if (EquipmentCapabilityCatalog.TryResolve(ownership.CapabilityId, out _))
         {
             result = Map(

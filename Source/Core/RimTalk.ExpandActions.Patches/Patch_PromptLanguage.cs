@@ -35,10 +35,10 @@ public static class Patch_DecoratePromptLanguage
 		if (promptProperty is null)
 			return;
 		var prompt = promptProperty.GetValue(__0) as string ?? string.Empty;
-		var language = LanguageRuntime.Resolve(new LanguageSignals(Frontend: FrontendKind.RimTalk));
-		var instruction = LanguagePromptContract.BuildHumanOutputInstruction(language);
+		var language = LanguageRuntime.Current;
+		var instruction = LanguagePromptContract.BuildPawnDialogueInstruction(language);
 		prompt = CompetingReminder.Replace(prompt, string.Empty);
-		if (prompt.IndexOf("Keep capability IDs", StringComparison.Ordinal) < 0)
+		if (prompt.IndexOf("All spoken pawn dialogue must be written in", StringComparison.Ordinal) < 0)
 			prompt = prompt.TrimEnd() + "\n" + instruction;
 		promptProperty.SetValue(__0, prompt);
 	}
@@ -60,6 +60,6 @@ public static class Patch_ConstantLangDisplay
 	public static void Postfix(ref string __result)
 	{
 		var language = LanguageRuntime.Current;
-		__result = LanguagePromptContract.DisplayName(language.OutputLanguage.Code);
+		__result = LanguagePromptContract.NativePromptName(language.OutputLanguage.Code);
 	}
 }

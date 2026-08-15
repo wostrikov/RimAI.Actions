@@ -33,7 +33,7 @@ public static class Patch_TalkPresentationLanguage
 	[HarmonyPostfix]
 	public static void Postfix(object __0)
 	{
-		if (!EAModMain.Settings.Enabled || __0 is null)
+		if (__0 is null)
 			return;
 		var textProperty = __0.GetType().GetProperty("Text");
 		if (textProperty is null)

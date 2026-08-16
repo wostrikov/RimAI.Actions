@@ -1,10 +1,10 @@
-# Stage 3 runtime validation: pawn action lifecycle
+# Етап 3: перевірка життєвого циклу дій піша в середовищі виконання
 
-Do not activate the original Workshop implementation and a local build together.
+Не активуйте одночасно оригінальну реалізацію Workshop і локальну збірку.
 
-Test dialogue with no action, movement, work, successful action, and failed/cancelled
-action. For every case verify that the pawn resumes normal AI, has no permanent busy
-flag or job lock, the EA queue drains correctly, draft/undraft recovery is unnecessary,
-and `Player.log` contains no new errors. Include a `stop` action followed by a queued
-movement/work job to specifically confirm that ending the current job does not stop the
-replacement job's pather.
+Перевірте діалог без дії, з переміщенням, роботою, успішною дією та невдалою/скасованою
+дією. У кожному випадку перевірте, що піш відновлює нормальну роботу ШІ, не має постійного прапорця зайнятості
+чи блокування роботи, черга EA спорожнюється належним чином, відновлення режиму призову/скасування призову не потрібне,
+і `Player.log` не містить нових помилок. Додайте дію `stop`, після якої в чергу поставлено завдання
+завдання руху/роботи, щоб спеціально підтвердити, що завершення поточного завдання не зупиняє
+виконання завдання-замінника.

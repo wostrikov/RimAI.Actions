@@ -101,7 +101,7 @@ public sealed class Stage6RuntimeProbe : GameComponent
 				return;
 			}
 			action = action with { Actor = actor.LabelShort };
-			var results = Ustas.RimAI.Actions.Frontend.RimTalkCapabilityFrontend.Execute(
+			var results = Ustas.RimAI.Actions.Frontend.ActionsCapabilityFrontend.Execute(
 				correlationId,
 				actor,
 				new List<global::RimAI.Core.Application.LegacyStructuredAction> { action });

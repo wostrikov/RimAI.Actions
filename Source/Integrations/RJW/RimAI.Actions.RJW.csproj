@@ -1,17 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <AssemblyName>RimAI.Actions.XXX</AssemblyName>
+    <AssemblyName>RimAI.Actions.RJW</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <LangVersion>12.0</LangVersion>
     <Deterministic>true</Deterministic>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimAI.Actions-Core\bin\Release\</OutputPath>
-    <RimWorldDir Condition="'$(RimWorldDir)' == ''">D:\Strg\Steam\steamapps\common\RimWorld</RimWorldDir>
+    <OutputPath>$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimAI.Actions\bin\Release\</OutputPath>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">$(RIMWORLD_DIR)</RimWorldDir>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\RimTalk-ExpandActions.csproj" />
+    <ProjectReference Include="..\..\RimAI.Actions.csproj" />
     <Reference Include="Assembly-CSharp" HintPath="$(RimWorldDir)\RimWorldWin64_Data\Managed\Assembly-CSharp.dll" Private="false" />
   </ItemGroup>
 </Project>

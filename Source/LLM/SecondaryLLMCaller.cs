@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
-using HarmonyLib;
 using RimAI.Core.Application;
 using RimAI.Core.Catalog;
 using RimAI.Core.Execution;
@@ -12,67 +10,20 @@ using Ustas.RimAI.Actions.Core;
 using Ustas.RimAI.Actions.Mod;
 using Ustas.RimAI.Actions.Parsing;
 using Ustas.RimAI.Actions.Util;
+using Ustas.RimAI.Core.AI;
 
 namespace Ustas.RimAI.Actions.LLM;
 
+/// <summary>
+/// Converts observed pawn behaviors into structured capability requests
+/// using the shared Core text-AI orchestrator.
+/// </summary>
 public static class SecondaryLLMCaller
 {
 	private const int MinScoreThreshold = 10;
 
-	private static Type _aiClientFactoryType;
-
-	private static MethodInfo _getAIClientAsyncMethod;
-
-	private static Type _roleType;
-
-	private static object _roleSystem;
-
-	private static object _roleUser;
-
-	private static bool _initialized;
-
-	private static bool _initFailed;
-
 	public static void Initialize()
 	{
-		if (_initialized || _initFailed)
-		{
-			return;
-		}
-		try
-		{
-			_aiClientFactoryType = AccessTools.TypeByName("Ustas.RimAI.Communication.Client.AIClientFactory");
-			if (_aiClientFactoryType == null)
-			{
-				EALogger.Warn("AIClientFactory not found - using fallback pattern matching");
-				_initFailed = true;
-				return;
-			}
-			_getAIClientAsyncMethod = AccessTools.Method(_aiClientFactoryType, "GetAIClientAsync");
-			if (_getAIClientAsyncMethod == null)
-			{
-				EALogger.Warn("GetAIClientAsync not found - using fallback pattern matching");
-				_initFailed = true;
-				return;
-			}
-			_roleType = AccessTools.TypeByName("Ustas.RimAI.Communication.Data.Role");
-			if (_roleType == null)
-			{
-				_roleType = AccessTools.TypeByName("Ustas.RimAI.Communication.Data.Role");
-			}
-			if (_roleType != null)
-			{
-				_roleSystem = Enum.Parse(_roleType, "System");
-				_roleUser = Enum.Parse(_roleType, "User");
-			}
-			_initialized = true;
-			EALogger.Info("SecondaryLLMCaller initialized with RimTalk AIClient");
-		}
-		catch (Exception ex)
-		{
-			EALogger.Error("Failed to initialize SecondaryLLMCaller", ex);
-			_initFailed = true;
-		}
 	}
 
 	public static async Task<FrontendStructuredConversion> ConvertBehaviorsAsync(List<string> behaviors, string speakerName)
@@ -81,28 +32,31 @@ public static class SecondaryLLMCaller
 		{
 			return new FrontendStructuredConversion();
 		}
-		Initialize();
-		if (_initFailed || !EAModMain.Settings.UseSecondaryLLM)
+
+		if (!EAModMain.Settings.UseSecondaryLLM)
 		{
 			return FallbackConversion(behaviors, speakerName);
 		}
+
 		try
 		{
 			string systemPrompt = ToolcallPromptBuilder.BuildSystemPrompt();
 			string userPrompt = ToolcallPromptBuilder.BuildUserPrompt(behaviors, speakerName);
 			TimeSpan timeout = TimeSpan.FromSeconds(EAModMain.Settings.SecondaryLLMTimeout);
-			EALogger.Debug($"Calling LLM for capability conversion: {behaviors.Count} behaviors");
-			string text = await CallAIClientAsync(systemPrompt, userPrompt, timeout);
+			EALogger.Debug($"Calling shared text AI for capability conversion: {behaviors.Count} behaviors");
+			string text = await CompleteOnceAsync(systemPrompt, userPrompt, timeout);
 			if (string.IsNullOrEmpty(text))
 			{
-				EALogger.Warn("Empty response from LLM, using fallback");
+				EALogger.Warn("Empty response from shared text AI, using fallback");
 				return FallbackConversion(behaviors, speakerName);
 			}
+
 			FrontendStructuredConversion conversion = StructuredCapabilityJsonParser.Parse(text);
 			foreach (string error in conversion.Errors)
 			{
 				EALogger.Warn("Structured frontend result rejected before RimAI: " + error);
 			}
+
 			EALogger.Info($"LLM returned {conversion.Actions.Count} structured requests");
 			return conversion;
 		}
@@ -120,85 +74,28 @@ public static class SecondaryLLMCaller
 
 	internal static Task<string> CompleteOnceAsync(string systemPrompt, string userPrompt, TimeSpan timeout)
 	{
-		Initialize();
-		if (_initFailed)
-			throw new InvalidOperationException("RimTalk AIClient is unavailable");
-		return CallAIClientAsync(systemPrompt, userPrompt, timeout);
+		return Task.Run(() => CompleteShared(systemPrompt, userPrompt, timeout));
 	}
 
-	private static async Task<string> CallAIClientAsync(string systemPrompt, string userPrompt, TimeSpan timeout)
+	private static string CompleteShared(string systemPrompt, string userPrompt, TimeSpan timeout)
 	{
-		_ = 3;
-		try
+		var request = new TextAiRequest
 		{
-			if (!(_getAIClientAsyncMethod.Invoke(null, null) is Task getClientTask))
+			Messages = new[]
 			{
-				throw new InvalidOperationException("GetAIClientAsync returned null");
-			}
-			Task timeoutTask = Task.Delay(timeout);
-			if (await Task.WhenAny(getClientTask, timeoutTask) == timeoutTask)
-			{
-				throw new TimeoutException("Timeout waiting for AIClient");
-			}
-			await getClientTask;
-			object obj = getClientTask.GetType().GetProperty("Result")?.GetValue(getClientTask);
-			if (obj == null)
-			{
-				throw new InvalidOperationException("AIClient is null");
-			}
-			object obj2 = CreateMessageList(new(object, string)[1] { (_roleSystem, systemPrompt) });
-			object obj3 = CreateMessageList(new(object, string)[1] { (_roleUser, userPrompt) });
-			MethodInfo method = obj.GetType().GetMethod("GetChatCompletionAsync");
-			if (method == null)
-			{
-				Type type = AccessTools.TypeByName("Ustas.RimAI.Communication.Client.IAIClient");
-				if (type != null)
-				{
-					method = type.GetMethod("GetChatCompletionAsync");
-				}
-			}
-			if (method == null)
-			{
-				throw new InvalidOperationException("GetChatCompletionAsync not found");
-			}
-			if (!(method.Invoke(obj, new object[3] { obj2, obj3, null }) is Task chatTask))
-			{
-				throw new InvalidOperationException("GetChatCompletionAsync returned null");
-			}
-			if (await Task.WhenAny(chatTask, Task.Delay(timeout)) != chatTask)
-			{
-				throw new TimeoutException("LLM call timed out");
-			}
-			await chatTask;
-			object obj4 = chatTask.GetType().GetProperty("Result")?.GetValue(chatTask);
-			if (obj4 == null)
-			{
-				return null;
-			}
-			return obj4.GetType().GetProperty("Response")?.GetValue(obj4) as string;
-		}
-		catch (Exception ex)
+				new TextAiMessage("system", systemPrompt ?? string.Empty),
+				new TextAiMessage("user", userPrompt ?? string.Empty)
+			},
+			TimeoutMs = timeout.TotalMilliseconds > 0 ? (int)timeout.TotalMilliseconds : 30000,
+			Caller = "actions.capability"
+		};
+		var response = SharedTextAiOrchestrator.Complete(request);
+		if (!response.Succeeded)
 		{
-			EALogger.Error("AIClient call failed", ex);
-			throw;
+			throw new InvalidOperationException(response.Error ?? "shared text AI failed");
 		}
-	}
 
-	private static object CreateMessageList((object role, string content)[] items)
-	{
-		Type type = typeof(ValueTuple<, >).MakeGenericType(_roleType, typeof(string));
-		Type type2 = typeof(List<>).MakeGenericType(type);
-		object obj = Activator.CreateInstance(type2);
-		MethodInfo method = type2.GetMethod("Add");
-		for (int i = 0; i < items.Length; i++)
-		{
-			(object role, string content) tuple = items[i];
-			object item = tuple.role;
-			string item2 = tuple.content;
-			object obj2 = Activator.CreateInstance(type, item, item2);
-			method.Invoke(obj, new object[1] { obj2 });
-		}
-		return obj;
+		return response.Text;
 	}
 
 	private static FrontendStructuredConversion FallbackConversion(List<string> behaviors, string speakerName)
@@ -214,6 +111,7 @@ public static class SecondaryLLMCaller
 				EALogger.Debug("Pattern matched: " + behavior + " -> " + action.Id);
 			}
 		}
+
 		Dictionary<string, LegacyStructuredAction> dictionary = new Dictionary<string, LegacyStructuredAction>();
 		foreach (LegacyStructuredAction item in list)
 		{
@@ -222,8 +120,10 @@ public static class SecondaryLLMCaller
 			{
 				EALogger.Debug("Dedup: " + item.Actor + " " + item.Id + " (overriding previous)");
 			}
+
 			dictionary[key] = item;
 		}
+
 		conversion.Actions.AddRange(dictionary.Values);
 		return conversion;
 	}
@@ -242,6 +142,7 @@ public static class SecondaryLLMCaller
 			EALogger.Debug("Exact ID match: " + verbLower + " -> " + exactId);
 			return new LegacyStructuredAction(exactId, actor, text2, Reason: behavior);
 		}
+
 		if (KeywordConfigManager.GetAllMovementVerbs().Any((string mv) => verbLower.Contains(mv.ToLowerInvariant())))
 		{
 			string text4 = text2 + " " + text;
@@ -255,6 +156,7 @@ public static class SecondaryLLMCaller
 				}
 			}
 		}
+
 		string matchedId = null;
 		int num = 0;
 		foreach (CapabilityOwnership ownership in CapabilityOwnershipRegistry.All)
@@ -273,12 +175,14 @@ public static class SecondaryLLMCaller
 				else if (text.Contains(text5))
 					num2++;
 			}
+
 			if (num2 > num)
 			{
 				num = num2;
 				matchedId = candidateId;
 			}
 		}
+
 		if (matchedId != null)
 		{
 			if (num < MinScoreThreshold)
@@ -286,9 +190,11 @@ public static class SecondaryLLMCaller
 				EALogger.Info($"[EA] Match below threshold: {behavior} → {matchedId} (score={num}), rejected");
 				return null;
 			}
+
 			EALogger.Debug($"Keyword match: {behavior} -> {matchedId} (score={num})");
 			return new LegacyStructuredAction(matchedId, actor, text2, Reason: behavior);
 		}
+
 		EALogger.Debug("No pattern matched for behavior: " + behavior);
 		return null;
 	}

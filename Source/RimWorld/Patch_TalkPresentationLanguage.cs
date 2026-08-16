@@ -68,7 +68,7 @@ public static class Patch_TalkPresentationLanguage
 				var result = await Guard.EnsureHumanTextAsync(
 					original,
 					language,
-					new RimTalkHumanTextRewriter()).ConfigureAwait(false);
+					new ActionsHumanTextRewriter()).ConfigureAwait(false);
 				textProperty.SetValue(__0, result.Text);
 				lock (Allowed)
 					Allowed.Add(key);

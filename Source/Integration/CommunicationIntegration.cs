@@ -10,7 +10,7 @@ using Verse;
 
 namespace Ustas.RimAI.Actions.Integration;
 
-public static class RimTalkIntegration
+public static class CommunicationIntegration
 {
 	private static bool _initialized;
 
@@ -213,7 +213,7 @@ public static class RimTalkIntegration
 				return;
 			}
 			Type type = genericArguments[0];
-			object obj = typeof(RimTalkIntegration).GetMethod("CreateContextFuncWrapper", BindingFlags.Static | BindingFlags.NonPublic).MakeGenericMethod(type).Invoke(null, new object[2] { valueFunc, checkPawnStatus });
+			object obj = typeof(CommunicationIntegration).GetMethod("CreateContextFuncWrapper", BindingFlags.Static | BindingFlags.NonPublic).MakeGenericMethod(type).Invoke(null, new object[2] { valueFunc, checkPawnStatus });
 			_registerContextVariableMethod.Invoke(null, new object[5] { modId, name, obj, description, 50 });
 			EALogger.Debug("Registered { " + name + " }" + (checkPawnStatus ? " (pawn-aware)" : ""));
 		}

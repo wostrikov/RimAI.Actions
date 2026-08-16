@@ -108,7 +108,7 @@ public static class Patch_CreateInteraction
 				EALogger.Info($"Converted {behaviors.Count} behaviors to {conversion.Actions.Count} RimAI requests");
 				MainThreadDispatcher.Enqueue(delegate
 				{
-					RimTalkCapabilityFrontend.Execute(conversationId, pawn, conversion.Actions);
+					ActionsCapabilityFrontend.Execute(conversationId, pawn, conversion.Actions);
 				});
 			}
 			catch (Exception ex)

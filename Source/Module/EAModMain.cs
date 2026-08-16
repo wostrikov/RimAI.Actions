@@ -26,7 +26,7 @@ public class EAModMain : Verse.Mod
 		EALogger.Info("Expand Actions initializing...");
 		HarmonyInstance.PatchAll();
 		ActionRegistry.Initialize();
-		RimTalkIntegration.Initialize();
+		CommunicationIntegration.Initialize();
 		Ustas.RimAI.Core.Modules.RimAIModuleRegistry.Current.Register(
 			new Ustas.RimAI.Core.Modules.RimAIModuleDescriptor(
 				"actions",

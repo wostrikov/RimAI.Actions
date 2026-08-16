@@ -12,10 +12,10 @@ using Verse;
 namespace Ustas.RimAI.Actions.Frontend;
 
 /// <summary>
-/// RimTalk interaction adapter. Supplies conversation context and presentation.
+/// Communication interaction adapter. Supplies conversation context and presentation.
 /// Gameplay execution is owned by RimAIApplicationHost.
 /// </summary>
-public static class RimTalkCapabilityFrontend
+public static class ActionsCapabilityFrontend
 {
 	public static IReadOnlyList<CapabilityExecutionResult> Execute(
 		string conversationId,

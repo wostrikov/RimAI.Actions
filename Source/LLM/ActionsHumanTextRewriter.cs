@@ -10,7 +10,7 @@ namespace Ustas.RimAI.Actions.LLM;
 /// <summary>
 /// Rewrites human-facing talk text only. Does not convert or execute capabilities.
 /// </summary>
-public sealed class RimTalkHumanTextRewriter : IHumanTextRewriter
+public sealed class ActionsHumanTextRewriter : IHumanTextRewriter
 {
 	public async Task<string?> RewriteAsync(
 		string humanText,

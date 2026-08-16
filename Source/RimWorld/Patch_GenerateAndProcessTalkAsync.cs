@@ -9,7 +9,7 @@ namespace Ustas.RimAI.Actions.Patches;
 
 /// <summary>
 /// Historical RimTalk async postfix. Live capability execution is
-/// Patch_CreateInteraction -> RimTalkCapabilityFrontend -> RimAIApplicationHost.
+/// Patch_CreateInteraction -> ActionsCapabilityFrontend -> RimAIApplicationHost.
 /// </summary>
 public static class Patch_GenerateAndProcessTalkAsync
 {

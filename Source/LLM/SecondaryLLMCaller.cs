@@ -87,7 +87,8 @@ public static class SecondaryLLMCaller
 				new TextAiMessage("user", userPrompt ?? string.Empty)
 			},
 			TimeoutMs = timeout.TotalMilliseconds > 0 ? (int)timeout.TotalMilliseconds : 30000,
-			Caller = "actions.capability"
+			Caller = "actions.capability",
+			Arbitration = AiRequestMetadata.FromCaller("actions.capability")
 		};
 		var response = SharedTextAiOrchestrator.Complete(request);
 		if (!response.Succeeded)

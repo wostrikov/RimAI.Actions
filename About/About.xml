@@ -14,7 +14,7 @@
         </li>
         <li>
             <packageId>cj.RimTalk</packageId>
-            <displayName>RimTalk</displayName>
+            <displayName>RimAI.Communication</displayName>
         </li>
     </modDependencies>
     <loadAfter>

@@ -27,6 +27,12 @@ public class EAModMain : Verse.Mod
 		HarmonyInstance.PatchAll();
 		ActionRegistry.Initialize();
 		RimTalkIntegration.Initialize();
+		Ustas.RimAI.Core.Modules.RimAIModuleRegistry.Current.Register(
+			new Ustas.RimAI.Core.Modules.RimAIModuleDescriptor(
+				"actions",
+				"RimAI.Actions",
+				"RimAI.Actions",
+				"Actions"));
 		EALogger.Info("Expand Actions initialized.");
 	}
 
@@ -37,6 +43,7 @@ public class EAModMain : Verse.Mod
 
 	public override void DoSettingsWindowContents(Rect inRect)
 	{
+		Ustas.RimAI.Core.Modules.RimAISettingsNavigation.Open("actions");
 		EASettingsWindow.DoWindowContents(inRect, Settings);
 	}
 }

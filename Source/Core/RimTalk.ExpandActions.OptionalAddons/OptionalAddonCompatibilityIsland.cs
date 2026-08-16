@@ -1,6 +1,6 @@
-using RimTalk.ExpandActions.Core;
+using Ustas.RimAI.Actions.Core;
 
-namespace RimTalk.ExpandActions.OptionalAddons;
+namespace Ustas.RimAI.Actions.OptionalAddons;
 
 /// <summary>
 /// OPTIONAL_ADDON_COMPATIBILITY_ISLAND.

@@ -1,6 +1,6 @@
-using RimTalk.ExpandActions.Core;
+using Ustas.RimAI.Actions.Core;
 
-namespace RimTalk.ExpandActions.Integration;
+namespace Ustas.RimAI.Actions.Integration;
 
 public static class RJWIntegration
 {

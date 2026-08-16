@@ -1,6 +1,6 @@
-using RimTalk.ExpandActions.Execution;
+using Ustas.RimAI.Actions.Execution;
 
-namespace RimTalk.ExpandActions.Actions;
+namespace Ustas.RimAI.Actions.Actions;
 
 public interface IActionHandler
 {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Util;
 
-namespace RimTalk.ExpandActions.Core;
+namespace Ustas.RimAI.Actions.Core;
 
 public static class ModuleRegistry
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using RimTalk.ExpandActions.CapabilityRuntime;
+using Ustas.RimAI.Actions.CapabilityRuntime;
 
 var tests=new List<(string,Action)>{("unknown ID",Unknown),("schema",Schema),("duplicate",Duplicate),("states",States),("replan",Replan),("semantic item target",SemanticItemTarget),("silver",()=>Transfer("Silver")),("generic item",()=>Transfer("TestFiber")),("insufficient",Insufficient),("unreachable",Unreachable),("capacity",Capacity),("partial",Partial),("unavailable",Unavailable),("interrupted observer",Interrupted),("Ukrainian fixture",PlannerFixture),("discovery",Discovery)};
 var failed=0;foreach(var t in tests)try{t.Item2();Console.WriteLine("PASS "+t.Item1);}catch(Exception e){failed++;Console.Error.WriteLine("FAIL "+t.Item1+": "+e.Message);}Console.WriteLine($"TESTS total={tests.Count} failed={failed}");return failed;

@@ -1,12 +1,12 @@
 using HarmonyLib;
-using RimTalk.ExpandActions.Core;
-using RimTalk.ExpandActions.Integration;
-using RimTalk.ExpandActions.UI;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Core;
+using Ustas.RimAI.Actions.Integration;
+using Ustas.RimAI.Actions.UI;
+using Ustas.RimAI.Actions.Util;
 using UnityEngine;
 using Verse;
 
-namespace RimTalk.ExpandActions.Mod;
+namespace Ustas.RimAI.Actions.Mod;
 
 public class EAModMain : Verse.Mod
 {
@@ -22,7 +22,7 @@ public class EAModMain : Verse.Mod
 		Instance = this;
 		Settings = GetSettings<EASettings>();
 		Settings.Validate();
-		HarmonyInstance = new Harmony("rimtalk.expand.actions");
+		HarmonyInstance = new Harmony("ustas.rimai.actions");
 		EALogger.Info("Expand Actions initializing...");
 		HarmonyInstance.PatchAll();
 		ActionRegistry.Initialize();

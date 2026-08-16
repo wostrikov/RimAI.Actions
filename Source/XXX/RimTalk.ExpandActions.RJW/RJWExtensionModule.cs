@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using RimTalk.ExpandActions.Core;
-using RimTalk.ExpandActions.RJW.Handlers;
-using RimTalk.ExpandActions.RJW.Handlers.RJWHighRisk;
-using RimTalk.ExpandActions.RJW.State;
+using Ustas.RimAI.Actions.Core;
+using Ustas.RimAI.Actions.RJW.Handlers;
+using Ustas.RimAI.Actions.RJW.Handlers.RJWHighRisk;
+using Ustas.RimAI.Actions.RJW.State;
 using Verse;
 
-namespace RimTalk.ExpandActions.RJW;
+namespace Ustas.RimAI.Actions.RJW;
 
 public class RJWExtensionModule : IEAExtensionModule
 {

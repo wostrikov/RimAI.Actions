@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Text;
-using RimTalk.ExpandActions.Core;
-using RimTalk.ExpandActions.Mod;
+using Ustas.RimAI.Actions.Core;
+using Ustas.RimAI.Actions.Mod;
 
-namespace RimTalk.ExpandActions.Integration;
+namespace Ustas.RimAI.Actions.Integration;
 
 public static class EAVariableProvider
 {

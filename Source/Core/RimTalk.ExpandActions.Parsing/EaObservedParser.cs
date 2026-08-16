@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Util;
 
-namespace RimTalk.ExpandActions.Parsing;
+namespace Ustas.RimAI.Actions.Parsing;
 
 public static class EaObservedParser
 {

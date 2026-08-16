@@ -1,8 +1,8 @@
 using HarmonyLib;
-using RimTalk.ExpandActions.Integration;
+using Ustas.RimAI.Actions.Integration;
 using Verse;
 
-namespace RimTalk.ExpandActions.Patches;
+namespace Ustas.RimAI.Actions.Patches;
 
 /// <summary>
 /// Root_Play.Start is RimWorld's native transition into a ready main menu.

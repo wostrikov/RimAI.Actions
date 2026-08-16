@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using System.Reflection;
 using HarmonyLib;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Util;
 using Verse;
 
-namespace RimTalk.ExpandActions.Patches;
+namespace Ustas.RimAI.Actions.Patches;
 
 /// <summary>
 /// Historical RimTalk async postfix. Live capability execution is
@@ -16,10 +16,10 @@ public static class Patch_GenerateAndProcessTalkAsync
 	[HarmonyTargetMethod]
 	public static MethodBase TargetMethod()
 	{
-		Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault((Assembly a) => a.GetName().Name == "RimTalk");
+		Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault((Assembly a) => a.GetName().Name == "Ustas.RimAI.Communication");
 		if (assembly == null)
 			return null;
-		Type type = assembly.GetType("RimTalk.Service.TalkService");
+		Type type = assembly.GetType("Ustas.RimAI.Communication.Service.TalkService");
 		if (type == null)
 			return null;
 		return type.GetMethod("GenerateAndProcessTalkAsync", BindingFlags.Static | BindingFlags.NonPublic)

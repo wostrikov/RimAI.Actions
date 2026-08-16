@@ -1,8 +1,8 @@
 using System;
-using RimTalk.ExpandActions.Mod;
+using Ustas.RimAI.Actions.Mod;
 using Verse;
 
-namespace RimTalk.ExpandActions.Util;
+namespace Ustas.RimAI.Actions.Util;
 
 public static class EALogger
 {

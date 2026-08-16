@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Util;
 using Verse;
 
-namespace RimTalk.ExpandActions.Execution;
+namespace Ustas.RimAI.Actions.Execution;
 
 public static class PawnResolver
 {

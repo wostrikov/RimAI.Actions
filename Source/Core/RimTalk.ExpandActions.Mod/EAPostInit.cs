@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using RimAI.Core.Application;
 using RimAI.RimWorld.Application;
-using RimTalk.ExpandActions.Core;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Core;
+using Ustas.RimAI.Actions.Util;
 using Verse;
 
-namespace RimTalk.ExpandActions.Mod;
+namespace Ustas.RimAI.Actions.Mod;
 
 [StaticConstructorOnStartup]
 public static class EAPostInit

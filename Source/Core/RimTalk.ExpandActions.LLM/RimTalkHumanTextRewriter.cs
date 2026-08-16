@@ -3,9 +3,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using RimAI.Core.Application;
-using RimTalk.ExpandActions.Mod;
+using Ustas.RimAI.Actions.Mod;
 
-namespace RimTalk.ExpandActions.LLM;
+namespace Ustas.RimAI.Actions.LLM;
 
 /// <summary>
 /// Rewrites human-facing talk text only. Does not convert or execute capabilities.

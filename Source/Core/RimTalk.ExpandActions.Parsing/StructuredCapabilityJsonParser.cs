@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RimAI.Core.Application;
 
-namespace RimTalk.ExpandActions.Parsing;
+namespace Ustas.RimAI.Actions.Parsing;
 
 /// <summary>
 /// Frontend JSON decode into RimAI-owned LegacyStructuredAction.

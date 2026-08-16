@@ -1,6 +1,6 @@
-using RimTalk.ExpandActions.Core;
+using Ustas.RimAI.Actions.Core;
 
-namespace RimTalk.ExpandActions.Execution;
+namespace Ustas.RimAI.Actions.Execution;
 
 public class ExecutionResult
 {

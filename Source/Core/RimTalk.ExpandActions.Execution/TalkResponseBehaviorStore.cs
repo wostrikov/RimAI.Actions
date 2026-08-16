@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Util;
 
-namespace RimTalk.ExpandActions.Execution;
+namespace Ustas.RimAI.Actions.Execution;
 
 public static class TalkResponseBehaviorStore
 {

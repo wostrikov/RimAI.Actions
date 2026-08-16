@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using RimTalk.ExpandActions.Execution;
-using RimTalk.ExpandActions.LLM;
-using RimTalk.ExpandActions.Parsing;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Execution;
+using Ustas.RimAI.Actions.LLM;
+using Ustas.RimAI.Actions.Parsing;
+using Ustas.RimAI.Actions.Util;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
 
-namespace RimTalk.ExpandActions.Integration;
+namespace Ustas.RimAI.Actions.Integration;
 
 /// <summary>
 /// One-shot, marker-gated integration probe for the disposable Stage 6 save.
@@ -101,10 +101,10 @@ public sealed class Stage6RuntimeProbe : GameComponent
 				return;
 			}
 			action = action with { Actor = actor.LabelShort };
-			var results = RimTalk.ExpandActions.Frontend.RimTalkCapabilityFrontend.Execute(
+			var results = Ustas.RimAI.Actions.Frontend.RimTalkCapabilityFrontend.Execute(
 				correlationId,
 				actor,
-				new List<RimAI.Core.Application.LegacyStructuredAction> { action });
+				new List<global::RimAI.Core.Application.LegacyStructuredAction> { action });
 			var result = results.FirstOrDefault();
 			EALogger.Info($"[EA_STAGE6] conv={correlationId} state=RESOLVED action={action.Id} accepted={result?.Succeeded} code={result?.Code}");
 			if (result == null || !result.Succeeded)

@@ -6,7 +6,7 @@ using HarmonyLib;
 using RimAI.Core.Application;
 using RimAI.RimWorld.Application;
 
-namespace RimTalk.ExpandActions.Patches;
+namespace Ustas.RimAI.Actions.Patches;
 
 [HarmonyPatch]
 public static class Patch_DecoratePromptLanguage
@@ -19,8 +19,8 @@ public static class Patch_DecoratePromptLanguage
 	public static MethodBase TargetMethod()
 	{
 		var assembly = AppDomain.CurrentDomain.GetAssemblies()
-			.FirstOrDefault(item => item.GetName().Name == "RimTalk");
-		var type = assembly?.GetType("RimTalk.Service.PromptService");
+			.FirstOrDefault(item => item.GetName().Name == "Ustas.RimAI.Communication");
+		var type = assembly?.GetType("Ustas.RimAI.Communication.Service.PromptService");
 		return type?.GetMethod(
 			"DecoratePrompt",
 			BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic);
@@ -51,8 +51,8 @@ public static class Patch_ConstantLangDisplay
 	public static MethodBase TargetMethod()
 	{
 		var assembly = AppDomain.CurrentDomain.GetAssemblies()
-			.FirstOrDefault(item => item.GetName().Name == "RimTalk");
-		var type = assembly?.GetType("RimTalk.Data.Constant");
+			.FirstOrDefault(item => item.GetName().Name == "Ustas.RimAI.Communication");
+		var type = assembly?.GetType("Ustas.RimAI.Communication.Data.Constant");
 		return type?.GetProperty("Lang", BindingFlags.Public | BindingFlags.Static)?.GetGetMethod();
 	}
 

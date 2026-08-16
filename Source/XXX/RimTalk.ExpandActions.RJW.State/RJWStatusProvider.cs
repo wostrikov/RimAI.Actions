@@ -1,11 +1,11 @@
 using System;
 using System.Text;
-using RimTalk.ExpandActions.Core;
-using RimTalk.ExpandActions.RJW.Util;
+using Ustas.RimAI.Actions.Core;
+using Ustas.RimAI.Actions.RJW.Util;
 using RimWorld;
 using Verse;
 
-namespace RimTalk.ExpandActions.RJW.State;
+namespace Ustas.RimAI.Actions.RJW.State;
 
 public class RJWStatusProvider : IEAVariableContributor
 {

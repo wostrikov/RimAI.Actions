@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace RimTalk.ExpandActions.CapabilityRuntime;
+namespace Ustas.RimAI.Actions.CapabilityRuntime;
 
 public static class SemanticTargetSelector
 {

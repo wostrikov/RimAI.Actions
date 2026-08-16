@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Util;
 using Verse;
 
-namespace RimTalk.ExpandActions.RJW.Util;
+namespace Ustas.RimAI.Actions.RJW.Util;
 
 public static class RJWReflectionCache
 {

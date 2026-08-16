@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using RimTalk.ExpandActions.Core;
+using Ustas.RimAI.Actions.Core;
 using Verse;
 
-namespace RimTalk.ExpandActions.Extensions;
+namespace Ustas.RimAI.Actions.Extensions;
 
 public class BiotechModule : IEAExtensionModule
 {

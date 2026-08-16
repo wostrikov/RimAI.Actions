@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace RimTalk.ExpandActions.Mod;
+namespace Ustas.RimAI.Actions.Mod;
 
 public class ActionConfig : IExposable
 {

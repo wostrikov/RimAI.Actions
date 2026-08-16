@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <AssemblyName>RimTalk-ExpandActions</AssemblyName>
+    <AssemblyName>RimAI.Actions</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <LangVersion>12.0</LangVersion>
     <Deterministic>true</Deterministic>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimTalk-ExpandActions-Core\bin\Release\</OutputPath>
+    <OutputPath>$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimAI.Actions-Core\bin\Release\</OutputPath>
     <RimWorldDir Condition="'$(RimWorldDir)' == ''">D:\Strg\Steam\steamapps\common\RimWorld</RimWorldDir>
     <RimWorldWorkshopDir Condition="'$(RimWorldWorkshopDir)' == ''">D:\Strg\Steam\steamapps\workshop\content\294100</RimWorldWorkshopDir>
     <ReconstructionReferenceDir Condition="'$(ReconstructionReferenceDir)' == ''">$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimTalk-ExpandActions-Core\reconstruction-refs</ReconstructionReferenceDir>

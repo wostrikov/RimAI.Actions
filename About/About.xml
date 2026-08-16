@@ -3,7 +3,7 @@
     <name>RimAI.Actions</name>
     <author>ZRui-C</author>
     <url>https://discord.gg/9pGD8Ayx</url>
-    <packageId>zruic.expand.action</packageId>
+    <packageId>ustas.rimai.actions</packageId>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -13,14 +13,14 @@
             <displayName>Harmony</displayName>
         </li>
         <li>
-            <packageId>cj.RimTalk</packageId>
+            <packageId>ustas.rimai.communication</packageId>
             <displayName>RimAI.Communication</displayName>
         </li>
     </modDependencies>
     <loadAfter>
         <li>brrainz.harmony</li>
-        <li>cj.RimTalk</li>
-        <li>rimtalk.expand.memory</li>
+        <li>ustas.rimai.communication</li>
+        <li>ustas.rimai.communication.memory</li>
     </loadAfter>
     <description>[h1]RimTalk - Expand Actions Core / 行为扩展[/h1]
 [i]让对话驱动行为——小人说什么就做什么 / Let dialogue drive behavior - when pawns say it, they do it.[/i]

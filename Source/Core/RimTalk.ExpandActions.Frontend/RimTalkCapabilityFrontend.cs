@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using RimAI.Core.Application;
 using RimAI.RimWorld.Application;
-using RimTalk.ExpandActions.Mod;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Mod;
+using Ustas.RimAI.Actions.Util;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace RimTalk.ExpandActions.Frontend;
+namespace Ustas.RimAI.Actions.Frontend;
 
 /// <summary>
 /// RimTalk interaction adapter. Supplies conversation context and presentation.
@@ -38,7 +38,7 @@ public static class RimTalkCapabilityFrontend
 			FrontendKind.RimTalk,
 			conversationId,
 			conversationId,
-			speaker == null ? null : new RimAI.Core.World.PawnRef(SemanticName: speaker.LabelShort),
+			speaker == null ? null : new global::RimAI.Core.World.PawnRef(SemanticName: speaker.LabelShort),
 			MapId: map.uniqueID.ToString())
 		{
 			Language = language

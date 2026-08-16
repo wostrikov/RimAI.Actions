@@ -4,14 +4,14 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using HarmonyLib;
-using RimTalk.ExpandActions.Execution;
-using RimTalk.ExpandActions.Frontend;
-using RimTalk.ExpandActions.LLM;
-using RimTalk.ExpandActions.Mod;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Execution;
+using Ustas.RimAI.Actions.Frontend;
+using Ustas.RimAI.Actions.LLM;
+using Ustas.RimAI.Actions.Mod;
+using Ustas.RimAI.Actions.Util;
 using Verse;
 
-namespace RimTalk.ExpandActions.Patches;
+namespace Ustas.RimAI.Actions.Patches;
 
 [HarmonyPatch]
 public static class Patch_CreateInteraction
@@ -25,13 +25,13 @@ public static class Patch_CreateInteraction
 	[HarmonyTargetMethod]
 	public static MethodBase TargetMethod()
 	{
-		Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault((Assembly a) => a.GetName().Name == "RimTalk");
+		Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault((Assembly a) => a.GetName().Name == "Ustas.RimAI.Communication");
 		if (assembly == null)
 		{
 			EALogger.Warn("RimTalk assembly not found for CreateInteraction patch");
 			return null;
 		}
-		Type type = assembly.GetType("RimTalk.Service.TalkService");
+		Type type = assembly.GetType("Ustas.RimAI.Communication.Service.TalkService");
 		if (type == null)
 		{
 			EALogger.Warn("TalkService type not found");
@@ -40,7 +40,7 @@ public static class Patch_CreateInteraction
 		MethodInfo methodInfo = type.GetMethod("CreateInteraction", BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
 		if (methodInfo == null)
 		{
-			Type talkResponseType = assembly.GetType("RimTalk.Data.TalkResponse");
+			Type talkResponseType = assembly.GetType("Ustas.RimAI.Communication.Data.TalkResponse");
 			if (talkResponseType != null)
 			{
 				methodInfo = type.GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic).FirstOrDefault((MethodInfo m) => m.Name == "CreateInteraction" && m.GetParameters().Any((ParameterInfo p) => p.ParameterType == talkResponseType));

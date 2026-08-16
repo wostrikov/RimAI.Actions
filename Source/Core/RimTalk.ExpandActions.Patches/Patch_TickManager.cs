@@ -1,8 +1,8 @@
 using HarmonyLib;
-using RimTalk.ExpandActions.Execution;
+using Ustas.RimAI.Actions.Execution;
 using Verse;
 
-namespace RimTalk.ExpandActions.Patches;
+namespace Ustas.RimAI.Actions.Patches;
 
 [HarmonyPatch(typeof(TickManager), "DoSingleTick")]
 public static class Patch_TickManager

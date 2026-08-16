@@ -1,11 +1,11 @@
 using RimAI.RimWorld.Jobs;
-using RimTalk.ExpandActions.Parsing;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Parsing;
+using Ustas.RimAI.Actions.Util;
 using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace RimTalk.ExpandActions.Execution;
+namespace Ustas.RimAI.Actions.Execution;
 
 public class ExecutionContext
 {
@@ -87,7 +87,7 @@ public class ExecutionContext
 				ActionCall?.Id,
 				IsFirstActionForActor,
 				ActionPriority,
-				RimTalk.ExpandActions.Mod.EAModMain.Settings.JobProtectionTicks),
+				Ustas.RimAI.Actions.Mod.EAModMain.Settings.JobProtectionTicks),
 			out failure);
 	}
 }

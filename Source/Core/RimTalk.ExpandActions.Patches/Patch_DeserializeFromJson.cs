@@ -4,11 +4,11 @@ using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using Newtonsoft.Json.Linq;
-using RimTalk.ExpandActions.Execution;
-using RimTalk.ExpandActions.Mod;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Execution;
+using Ustas.RimAI.Actions.Mod;
+using Ustas.RimAI.Actions.Util;
 
-namespace RimTalk.ExpandActions.Patches;
+namespace Ustas.RimAI.Actions.Patches;
 
 [HarmonyPatch]
 public static class Patch_DeserializeFromJson
@@ -18,19 +18,19 @@ public static class Patch_DeserializeFromJson
 	[HarmonyTargetMethod]
 	public static MethodBase TargetMethod()
 	{
-		Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault((Assembly a) => a.GetName().Name == "RimTalk");
+		Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault((Assembly a) => a.GetName().Name == "Ustas.RimAI.Communication");
 		if (assembly == null)
 		{
 			EALogger.Warn("RimTalk assembly not found for Sanitize patch");
 			return null;
 		}
-		Type type = assembly.GetType("RimTalk.Util.JsonUtil");
+		Type type = assembly.GetType("Ustas.RimAI.Communication.Util.JsonUtil");
 		if (type == null)
 		{
 			EALogger.Warn("JsonUtil type not found");
 			return null;
 		}
-		_talkResponseType = assembly.GetType("RimTalk.Data.TalkResponse");
+		_talkResponseType = assembly.GetType("Ustas.RimAI.Communication.Data.TalkResponse");
 		if (_talkResponseType == null)
 		{
 			EALogger.Warn("TalkResponse type not found — cannot patch Sanitize");

@@ -1,13 +1,13 @@
-using RimTalk.ExpandActions.Actions;
-using RimTalk.ExpandActions.Core;
-using RimTalk.ExpandActions.Execution;
-using RimTalk.ExpandActions.RJW.Util;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Actions;
+using Ustas.RimAI.Actions.Core;
+using Ustas.RimAI.Actions.Execution;
+using Ustas.RimAI.Actions.RJW.Util;
+using Ustas.RimAI.Actions.Util;
 using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace RimTalk.ExpandActions.RJW.Handlers;
+namespace Ustas.RimAI.Actions.RJW.Handlers;
 
 public class RJWSexHandler : IActionHandler
 {

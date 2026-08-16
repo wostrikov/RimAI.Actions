@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using HarmonyLib;
 using RimAI.Core.Application;
 using RimAI.RimWorld.Application;
-using RimTalk.ExpandActions.Execution;
-using RimTalk.ExpandActions.LLM;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Execution;
+using Ustas.RimAI.Actions.LLM;
+using Ustas.RimAI.Actions.Util;
 
-namespace RimTalk.ExpandActions.Patches;
+namespace Ustas.RimAI.Actions.Patches;
 
 [HarmonyPatch]
 public static class Patch_TalkPresentationLanguage
@@ -25,8 +25,8 @@ public static class Patch_TalkPresentationLanguage
 	public static MethodBase TargetMethod()
 	{
 		var assembly = AppDomain.CurrentDomain.GetAssemblies()
-			.FirstOrDefault(item => item.GetName().Name == "RimTalk");
-		var type = assembly?.GetType("RimTalk.Data.PawnState");
+			.FirstOrDefault(item => item.GetName().Name == "Ustas.RimAI.Communication");
+		var type = assembly?.GetType("Ustas.RimAI.Communication.Data.PawnState");
 		_queueMethod = type?.GetMethod(
 			"QueueIncomingResponse",
 			BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);

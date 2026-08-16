@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using RimTalk.ExpandActions.Actions;
+using Ustas.RimAI.Actions.Actions;
 
-namespace RimTalk.ExpandActions.Core;
+namespace Ustas.RimAI.Actions.Core;
 
 public class ActionDefinition
 {

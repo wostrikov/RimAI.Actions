@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RimTalk.ExpandActions.Integration;
-using RimTalk.ExpandActions.Mod;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Integration;
+using Ustas.RimAI.Actions.Mod;
+using Ustas.RimAI.Actions.Util;
 
-namespace RimTalk.ExpandActions.Core;
+namespace Ustas.RimAI.Actions.Core;
 
 public static class ActionRegistry
 {

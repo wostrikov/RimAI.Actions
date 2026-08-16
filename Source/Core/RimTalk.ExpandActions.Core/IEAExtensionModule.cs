@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RimTalk.ExpandActions.Core;
+namespace Ustas.RimAI.Actions.Core;
 
 public interface IEAExtensionModule
 {

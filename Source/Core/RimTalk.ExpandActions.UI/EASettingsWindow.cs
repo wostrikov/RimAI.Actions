@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using RimTalk.ExpandActions.Core;
-using RimTalk.ExpandActions.Mod;
+using Ustas.RimAI.Actions.Core;
+using Ustas.RimAI.Actions.Mod;
 using UnityEngine;
 using Verse;
 
-namespace RimTalk.ExpandActions.UI;
+namespace Ustas.RimAI.Actions.UI;
 
 public static class EASettingsWindow
 {

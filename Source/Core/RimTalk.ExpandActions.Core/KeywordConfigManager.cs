@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using RimTalk.ExpandActions.Mod;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Mod;
+using Ustas.RimAI.Actions.Util;
 using Verse;
 
-namespace RimTalk.ExpandActions.Core;
+namespace Ustas.RimAI.Actions.Core;
 
 public static class KeywordConfigManager
 {

@@ -4,9 +4,9 @@ using RimAI.Core.Application;
 using RimAI.Core.Catalog;
 using RimAI.Core.Execution;
 using RimAI.RimWorld.Application;
-using RimTalk.ExpandActions.Mod;
+using Ustas.RimAI.Actions.Mod;
 
-namespace RimTalk.ExpandActions.LLM;
+namespace Ustas.RimAI.Actions.LLM;
 
 public static class ToolcallPromptBuilder
 {

@@ -3,12 +3,12 @@ using System.Collections;
 using System.Linq;
 using System.Reflection;
 using HarmonyLib;
-using RimTalk.ExpandActions.Mod;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Mod;
+using Ustas.RimAI.Actions.Util;
 using RimWorld;
 using Verse;
 
-namespace RimTalk.ExpandActions.Integration;
+namespace Ustas.RimAI.Actions.Integration;
 
 public static class RimTalkIntegration
 {
@@ -35,7 +35,7 @@ public static class RimTalkIntegration
 		}
 		try
 		{
-			_rimTalkPromptAPIType = AccessTools.TypeByName("RimTalk.API.RimTalkPromptAPI");
+			_rimTalkPromptAPIType = AccessTools.TypeByName("Ustas.RimAI.Communication.API.RimTalkPromptAPI");
 			if (_rimTalkPromptAPIType == null)
 			{
 				EALogger.Warn("RimTalkPromptAPI not found - prompt injection disabled");
@@ -64,18 +64,18 @@ public static class RimTalkIntegration
 	{
 		try
 		{
-			Type type = AccessTools.TypeByName("RimTalk.Prompt.PromptEntry");
+			Type type = AccessTools.TypeByName("Ustas.RimAI.Communication.Prompt.PromptEntry");
 			if (type == null)
 			{
 				EALogger.Warn("PromptEntry type not found");
 				return;
 			}
-			Type type2 = AccessTools.TypeByName("RimTalk.Prompt.PromptRole");
+			Type type2 = AccessTools.TypeByName("Ustas.RimAI.Communication.Prompt.PromptRole");
 			object obj = ((type2 != null) ? Enum.Parse(type2, "User") : null);
 			RemoveLegacyEntryFromList("EA Action Schema");
 			RemoveLegacyEntryFromList("Схема дій EA");
 			object obj2 = Activator.CreateInstance(type);
-			SetProperty(obj2, "SourceModId", "rimtalk.expand.actions");
+			SetProperty(obj2, "SourceModId", "ustas.rimai.actions");
 			SetProperty(obj2, "Name", "Схема дій EA");
 			SetField(obj2, "Content", BuildEaObservedSchema());
 			SetField(obj2, "Enabled", true);
@@ -112,7 +112,7 @@ public static class RimTalkIntegration
 	{
 		try
 		{
-			Type type = AccessTools.TypeByName("RimTalk.Prompt.PromptManager");
+			Type type = AccessTools.TypeByName("Ustas.RimAI.Communication.Prompt.PromptManager");
 			if (type == null)
 			{
 				return;
@@ -171,11 +171,11 @@ public static class RimTalkIntegration
 		{
 			if (_registerContextVariableMethod != null)
 			{
-				TryRegisterContextVariable("rimtalk.expand.actions", "ea_keywords", () => EAVariableProvider.GetKeywords(), "Підтримувані ключові слова EA", checkPawnStatus: true);
-				TryRegisterContextVariable("rimtalk.expand.actions", "ea_json_format", EAVariableProvider.GetJsonFormat, "Формат JSON для EA", checkPawnStatus: true);
-				TryRegisterContextVariable("rimtalk.expand.actions", "ea_actions", EAVariableProvider.GetActions, "Увімкнені дії EA", checkPawnStatus: true);
-				TryRegisterContextVariable("rimtalk.expand.actions", "ea_summary", EAVariableProvider.GetSummary, "Повний опис EA", checkPawnStatus: true);
-				TryRegisterContextVariable("rimtalk.expand.actions", "ea_act_effort", EAVariableProvider.GetActEffort, "Вказівки щодо рівня зусиль для дій EA", checkPawnStatus: true);
+				TryRegisterContextVariable("ustas.rimai.actions", "ea_keywords", () => EAVariableProvider.GetKeywords(), "Підтримувані ключові слова EA", checkPawnStatus: true);
+				TryRegisterContextVariable("ustas.rimai.actions", "ea_json_format", EAVariableProvider.GetJsonFormat, "Формат JSON для EA", checkPawnStatus: true);
+				TryRegisterContextVariable("ustas.rimai.actions", "ea_actions", EAVariableProvider.GetActions, "Увімкнені дії EA", checkPawnStatus: true);
+				TryRegisterContextVariable("ustas.rimai.actions", "ea_summary", EAVariableProvider.GetSummary, "Повний опис EA", checkPawnStatus: true);
+				TryRegisterContextVariable("ustas.rimai.actions", "ea_act_effort", EAVariableProvider.GetActEffort, "Вказівки щодо рівня зусиль для дій EA", checkPawnStatus: true);
 				EALogger.Info("EA template variables registered: {{ ea_keywords }}, {{ ea_json_format }}, {{ ea_actions }}, {{ ea_summary }}, {{ ea_act_effort }}");
 				EALogger.Info("EA variables are pawn-aware: will return empty if pawn is drafted or on Work schedule");
 			}

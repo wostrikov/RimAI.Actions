@@ -8,12 +8,12 @@ using RimAI.Core.Application;
 using RimAI.Core.Catalog;
 using RimAI.Core.Execution;
 using RimAI.RimWorld.Application;
-using RimTalk.ExpandActions.Core;
-using RimTalk.ExpandActions.Mod;
-using RimTalk.ExpandActions.Parsing;
-using RimTalk.ExpandActions.Util;
+using Ustas.RimAI.Actions.Core;
+using Ustas.RimAI.Actions.Mod;
+using Ustas.RimAI.Actions.Parsing;
+using Ustas.RimAI.Actions.Util;
 
-namespace RimTalk.ExpandActions.LLM;
+namespace Ustas.RimAI.Actions.LLM;
 
 public static class SecondaryLLMCaller
 {
@@ -41,7 +41,7 @@ public static class SecondaryLLMCaller
 		}
 		try
 		{
-			_aiClientFactoryType = AccessTools.TypeByName("RimTalk.Client.AIClientFactory");
+			_aiClientFactoryType = AccessTools.TypeByName("Ustas.RimAI.Communication.Client.AIClientFactory");
 			if (_aiClientFactoryType == null)
 			{
 				EALogger.Warn("AIClientFactory not found - using fallback pattern matching");
@@ -55,10 +55,10 @@ public static class SecondaryLLMCaller
 				_initFailed = true;
 				return;
 			}
-			_roleType = AccessTools.TypeByName("RimTalk.Data.Role");
+			_roleType = AccessTools.TypeByName("Ustas.RimAI.Communication.Data.Role");
 			if (_roleType == null)
 			{
-				_roleType = AccessTools.TypeByName("RimTalk.Source.Data.Role");
+				_roleType = AccessTools.TypeByName("Ustas.RimAI.Communication.Data.Role");
 			}
 			if (_roleType != null)
 			{
@@ -151,7 +151,7 @@ public static class SecondaryLLMCaller
 			MethodInfo method = obj.GetType().GetMethod("GetChatCompletionAsync");
 			if (method == null)
 			{
-				Type type = AccessTools.TypeByName("RimTalk.Client.IAIClient");
+				Type type = AccessTools.TypeByName("Ustas.RimAI.Communication.Client.IAIClient");
 				if (type != null)
 				{
 					method = type.GetMethod("GetChatCompletionAsync");

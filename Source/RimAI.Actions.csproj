@@ -16,10 +16,13 @@
     <Compile Remove="CapabilityRuntime\**" />
     <Compile Remove="CapabilityRuntime.Tests\**" />
     <Compile Remove="Integrations\**" />
+    <Compile Remove="Core\**" />
+    <Compile Remove="XXX\**" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\RimAI.Core\src\RimAI.Core\RimAI.Core.csproj" />
     <ProjectReference Include="..\..\RimAI.Core\src\RimAI.RimWorld\RimAI.RimWorld.csproj" />
+    <ProjectReference Include="..\..\RimAI.Communication\RimAI.Communication.csproj" />
     <Reference Include="Assembly-CSharp" HintPath="$(RimWorldDir)\RimWorldWin64_Data\Managed\Assembly-CSharp.dll" Private="false" />
     <Reference Include="UnityEngine.CoreModule" HintPath="$(RimWorldDir)\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll" Private="false" />
     <Reference Include="UnityEngine.IMGUIModule" HintPath="$(RimWorldDir)\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll" Private="false" />

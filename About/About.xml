@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-    <name>RimTalk - Expand Actions Core</name>
+    <name>RimAI.Actions</name>
     <author>ZRui-C</author>
     <url>https://discord.gg/9pGD8Ayx</url>
     <packageId>zruic.expand.action</packageId>

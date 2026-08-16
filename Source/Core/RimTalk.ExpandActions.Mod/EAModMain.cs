@@ -32,7 +32,7 @@ public class EAModMain : Verse.Mod
 
 	public override string SettingsCategory()
 	{
-		return Content?.Name ?? "RimTalk - Expand Actions Core";
+		return Content?.Name ?? "RimAI.Actions";
 	}
 
 	public override void DoSettingsWindowContents(Rect inRect)

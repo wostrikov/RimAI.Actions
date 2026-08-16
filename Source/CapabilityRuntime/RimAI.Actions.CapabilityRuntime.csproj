@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>12.0</LangVersion>
+    <Deterministic>true</Deterministic>
+    <AssemblyName>RimAI.Actions.CapabilityRuntime</AssemblyName>
+    <RootNamespace>Ustas.RimAI.Actions.CapabilityRuntime</RootNamespace>
+  </PropertyGroup>
+</Project>

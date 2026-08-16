@@ -1,0 +1,21 @@
+name: portable-verify
+
+on:
+  push:
+    branches: [ustas]
+  pull_request:
+
+jobs:
+  portable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - name: CapabilityRuntime
+        run: dotnet build Source/CapabilityRuntime/RimAI.Actions.CapabilityRuntime.csproj -c Release --nologo
+      - name: CapabilityRuntime.Tests
+        run: dotnet run --project Source/CapabilityRuntime.Tests/RimAI.Actions.CapabilityRuntime.Tests.csproj -c Release --no-launch-profile
+        # RimAI.Actions gameplay assembly requires proprietary RimWorld assemblies.
+        # That build is local-only via tools/verify-all.ps1.

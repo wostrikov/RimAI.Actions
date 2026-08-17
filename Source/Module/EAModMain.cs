@@ -3,6 +3,7 @@ using Ustas.RimAI.Actions.Core;
 using Ustas.RimAI.Actions.Integration;
 using Ustas.RimAI.Actions.UI;
 using Ustas.RimAI.Actions.Util;
+using Ustas.RimAI.Core.Handshake;
 using UnityEngine;
 using Verse;
 
@@ -10,6 +11,7 @@ namespace Ustas.RimAI.Actions.Mod;
 
 public class EAModMain : Verse.Mod
 {
+	public const string HandshakeModuleVersion = "0.3.0-beta.2";
 	public static EAModMain Instance { get; private set; }
 
 	public static EASettings Settings { get; private set; }
@@ -22,6 +24,13 @@ public class EAModMain : Verse.Mod
 		Instance = this;
 		Settings = GetSettings<EASettings>();
 		Settings.Validate();
+		RimAiHandshake.TryActivate(
+			RimAiHandshakeDescriptor.Current(RimAiModuleIds.Actions, HandshakeModuleVersion, isOptional: true),
+			Activate);
+	}
+
+	static void Activate()
+	{
 		HarmonyInstance = new Harmony("ustas.rimai.actions");
 		EALogger.Info("Expand Actions initializing...");
 		HarmonyInstance.PatchAll();

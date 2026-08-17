@@ -4,6 +4,7 @@ using RimAI.Core.Application;
 using RimAI.RimWorld.Application;
 using Ustas.RimAI.Actions.Core;
 using Ustas.RimAI.Actions.Util;
+using Ustas.RimAI.Core.Handshake;
 using Verse;
 
 namespace Ustas.RimAI.Actions.Mod;
@@ -13,6 +14,11 @@ public static class EAPostInit
 {
 	static EAPostInit()
 	{
+		if (!RimAiHandshake.IsApproved(RimAiModuleIds.Actions))
+		{
+			return;
+		}
+
 		ModuleRegistry.DiscoverAndRegisterModules();
 		KeywordConfigManager.Reload();
 		InjectFallbackTranslations("EA_");

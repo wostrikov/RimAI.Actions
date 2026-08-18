@@ -9,6 +9,7 @@ using Ustas.RimAI.Actions.Util;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
+using Ustas.RimAI.Core.Storage;
 
 namespace Ustas.RimAI.Actions.Integration;
 
@@ -33,13 +34,13 @@ public sealed class Stage6RuntimeProbe : GameComponent
 	public static bool TryLoadDisposableSave()
 	{
 		string marker = Path.Combine(GenFilePaths.SaveDataFolderPath, MarkerName);
-		if (loadAttempted || !File.Exists(marker) || Current.ProgramState != ProgramState.Entry)
+		if (loadAttempted || !LocalStorage.Current.FileExists(marker) || Current.ProgramState != ProgramState.Entry)
 		{
 			return false;
 		}
 		loadAttempted = true;
 		string savePath = GenFilePaths.FilePathForSavedGame(SaveName);
-		if (!File.Exists(savePath))
+		if (!LocalStorage.Current.FileExists(savePath))
 		{
 			EALogger.Error($"[EA_STAGE6] state=FAILED reason=RequestedSaveMissing save={SaveName}");
 			return false;
@@ -67,12 +68,12 @@ public sealed class Stage6RuntimeProbe : GameComponent
 	private void TryStart()
 	{
 		string marker = Path.Combine(GenFilePaths.SaveDataFolderPath, MarkerName);
-		if (!File.Exists(marker) || !string.Equals(Find.World?.info?.FileNameNoExtension, SaveName, StringComparison.Ordinal))
+		if (!LocalStorage.Current.FileExists(marker) || !string.Equals(Find.World?.info?.FileNameNoExtension, SaveName, StringComparison.Ordinal))
 		{
 			return;
 		}
 		started = true;
-		File.Delete(marker);
+		LocalStorage.Current.DeleteFile(marker);
 		Map map = Find.CurrentMap;
 		Pawn actor = map?.mapPawns.FreeColonistsSpawned.FirstOrDefault(p => !p.Dead && !p.Downed);
 		if (actor == null)

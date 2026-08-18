@@ -1,53 +1,37 @@
 using System;
 using Ustas.RimAI.Actions.Mod;
-using Verse;
+using Ustas.RimAI.Core.Diagnostics;
 
 namespace Ustas.RimAI.Actions.Util;
 
 public static class EALogger
 {
-	private const string Prefix = "[EA] ";
+    public static void Info(string message) =>
+        RimAiLog.Info(RimAiLogCategory.Actions, message);
 
-	public static void Info(string message)
-	{
-		Log.Message("[EA] " + message);
-	}
+    public static void Warn(string message) =>
+        RimAiLog.Warning(RimAiLogCategory.Actions, message);
 
-	public static void Warn(string message)
-	{
-		Log.Warning("[EA] " + message);
-	}
+    public static void Error(string message) =>
+        RimAiLog.Error(RimAiLogCategory.Actions, message);
 
-	public static void Error(string message)
-	{
-		Log.Error("[EA] " + message);
-	}
+    public static void Error(Exception ex) =>
+        RimAiLog.Error(RimAiLogCategory.Actions, "Actions failure", ex);
 
-	public static void Error(Exception ex)
-	{
-		Log.Error("[EA] " + ex.ToString());
-	}
+    public static void Error(string message, Exception ex) =>
+        RimAiLog.Error(RimAiLogCategory.Actions, message, ex);
 
-	public static void Error(string message, Exception ex)
-	{
-		Log.Error("[EA] " + message + "\n" + ex.ToString());
-	}
+    public static void Debug(string message)
+    {
+        EASettings settings = EAModMain.Settings;
+        if (settings != null && settings.DebugMode)
+            RimAiLog.Debug(RimAiLogCategory.Actions, message);
+    }
 
-	public static void Debug(string message)
-	{
-		EASettings settings = EAModMain.Settings;
-		if (settings != null && settings.DebugMode)
-		{
-			Log.Message("[EA] [DEBUG] " + message);
-		}
-	}
-
-	public static void DebugFormat(string format, params object[] args)
-	{
-		EASettings settings = EAModMain.Settings;
-		if (settings != null && settings.DebugMode)
-		{
-			Log.Message("[EA] [DEBUG] " + string.Format(format, args));
-		}
-	}
+    public static void DebugFormat(string format, params object[] args)
+    {
+        EASettings settings = EAModMain.Settings;
+        if (settings != null && settings.DebugMode)
+            RimAiLog.Debug(RimAiLogCategory.Actions, string.Format(format, args));
+    }
 }

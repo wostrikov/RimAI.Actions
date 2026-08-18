@@ -5,6 +5,7 @@ using Ustas.RimAI.Actions.Core;
 using Ustas.RimAI.Actions.RJW.Handlers;
 using Ustas.RimAI.Actions.RJW.Handlers.RJWHighRisk;
 using Ustas.RimAI.Actions.RJW.State;
+using Ustas.RimAI.Core.Diagnostics;
 using Verse;
 
 namespace Ustas.RimAI.Actions.RJW;
@@ -35,13 +36,13 @@ public class RJWExtensionModule : IEAExtensionModule
 				}
 				catch (Exception ex)
 				{
-					Log.Warning("[EA-RJW] IsAvailable skipped assembly " + assembly.GetName().Name + ": " + ex.Message);
+					RimAiLog.Warning(RimAiLogCategory.Actions, "[EA-RJW] IsAvailable skipped assembly " + assembly.GetName().Name, ex);
 				}
 			}
 		}
 		catch (Exception ex2)
 		{
-			Log.Error("[EA-RJW] IsAvailable check failed: " + ex2.Message);
+			RimAiLog.Error(RimAiLogCategory.Actions, "[EA-RJW] IsAvailable check failed", ex2);
 		}
 		return false;
 	}

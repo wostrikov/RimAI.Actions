@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RimAI.Core.Application;
 using RimAI.RimWorld.Application;
@@ -141,7 +142,7 @@ public static class TalkLifecycleBridge
 		{
 			jObject = JObject.Parse(json);
 		}
-		catch
+		catch (JsonException)
 		{
 			return;
 		}

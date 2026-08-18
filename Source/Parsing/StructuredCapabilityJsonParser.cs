@@ -112,7 +112,15 @@ public static class StructuredCapabilityJsonParser
 		{
 			return Convert.ToInt32(value.Value);
 		}
-		catch
+		catch (FormatException)
+		{
+			return null;
+		}
+		catch (InvalidCastException)
+		{
+			return null;
+		}
+		catch (OverflowException)
 		{
 			return null;
 		}
@@ -126,7 +134,11 @@ public static class StructuredCapabilityJsonParser
 		{
 			return Convert.ToBoolean(value.Value);
 		}
-		catch
+		catch (FormatException)
+		{
+			return null;
+		}
+		catch (InvalidCastException)
 		{
 			return null;
 		}

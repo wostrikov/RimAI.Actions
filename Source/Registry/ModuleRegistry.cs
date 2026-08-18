@@ -34,8 +34,9 @@ public static class ModuleRegistry
 				{
 					types = assembly.GetTypes();
 				}
-				catch (Exception)
+				catch (ReflectionTypeLoadException ex)
 				{
+					EALogger.Warn("Skipping assembly during module discovery: " + ex);
 					continue;
 				}
 				Type[] array = types;

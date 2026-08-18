@@ -20,6 +20,7 @@ public static class EAVariableProvider
 		public string act_effort => GetActEffort();
 	}
 
+	// RimAI.composition: TEMPORARY_EXPLICIT_COMPOSITION_EXCEPTION — prompt-variable bag still located globally
 	public static readonly EATemplateObject Instance = new EATemplateObject();
 
 	public static string GetKeywords(string dialogueContext = null)

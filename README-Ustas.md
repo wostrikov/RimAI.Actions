@@ -15,4 +15,4 @@ No build is deployed by these projects.
 
 Build both projects with the current RimWorld and Workshop roots supplied as MSBuild
 properties. Provenance and original assembly hashes are maintained in the integration
-repository under `reports/source-mods/expand-actions-core/`.
+repository under `docs/reports/source-mods/expand-actions-core/`.

@@ -44,49 +44,7 @@ public static class SecondaryLLMCaller
 			TimeSpan timeout = TimeSpan.FromSeconds(EAModMain.Settings.SecondaryLLMTimeout);
 			EALogger.Debug($"Calling shared text AI for capability conversion: {behaviors.Count} behaviors");
 			string text = await CompleteOnceAsync(systemPrompt, userPrompt, timeout);
-			if (string.IsNullOrEmpty(text))
-			{
-				var empty = RimAiRuntimeGateway.ValidateActionsResponse(new ActionsResponseValidationRequest(
-					ResponseReceived: false,
-					RawLength: 0,
-					ParsedActionCount: 0,
-					ParseErrorCount: 0));
-				EALogger.Warn(
-					$"[RIMAI_ACTIONS_RESPONSE] class={empty.Classification} disposition={empty.Disposition} " +
-					$"mayExecute={empty.MayExecute} policy={empty.DiagnosticMarker}");
-				if (empty.Disposition != ActionsResponseDisposition.RetryFallback)
-					return new FrontendStructuredConversion();
-				return FallbackConversion(behaviors, speakerName);
-			}
-
-			FrontendStructuredConversion conversion = StructuredCapabilityJsonParser.Parse(text);
-			foreach (string error in conversion.Errors)
-			{
-				EALogger.Warn("Structured frontend result rejected before RimAI: " + error);
-			}
-
-			var verdict = RimAiRuntimeGateway.ValidateActionsResponse(new ActionsResponseValidationRequest(
-				ResponseReceived: true,
-				RawLength: text.Length,
-				ParsedActionCount: conversion.Actions.Count,
-				ParseErrorCount: conversion.Errors.Count));
-			EALogger.Info(
-				$"[RIMAI_ACTIONS_RESPONSE] class={verdict.Classification} disposition={verdict.Disposition} " +
-				$"mayExecute={verdict.MayExecute} parsed={conversion.Actions.Count} " +
-				$"errors={conversion.Errors.Count} policy={verdict.DiagnosticMarker}");
-
-			if (verdict.MayExecute)
-				return conversion;
-
-			// Whatever partially decoded is discarded rather than executed: the
-			// rows that survived a malformed payload are an accident of parsing,
-			// not an instruction the provider successfully gave.
-			if (verdict.Disposition == ActionsResponseDisposition.RetryFallback)
-				return FallbackConversion(behaviors, speakerName);
-
-			var rejected = new FrontendStructuredConversion();
-			rejected.Errors.Add(verdict.Classification + ": " + verdict.Reason);
-			return rejected;
+			return ProcessProviderResponse(text, behaviors, speakerName).Conversion;
 		}
 		catch (TimeoutException)
 		{
@@ -98,6 +56,99 @@ public static class SecondaryLLMCaller
 			EALogger.Error("Secondary LLM call failed, using fallback", ex2);
 			return FallbackConversion(behaviors, speakerName);
 		}
+	}
+
+	/// <summary>
+	/// The post-provider Actions pipeline. The host has already obtained a
+	/// raw payload (or failed to); this method is the only place that payload
+	/// is parsed, classified and either accepted or discarded. A TestDriver
+	/// fixture calls the same method so a malformed live proof never has to
+	/// corrupt a paid response.
+	/// </summary>
+	public static ActionsProviderResponseResult ProcessProviderResponse(
+		string text,
+		List<string> fallbackBehaviors = null,
+		string speakerName = null)
+	{
+		if (string.IsNullOrEmpty(text))
+		{
+			var empty = RimAiRuntimeGateway.ValidateActionsResponse(new ActionsResponseValidationRequest(
+				ResponseReceived: false,
+				RawLength: 0,
+				ParsedActionCount: 0,
+				ParseErrorCount: 0));
+			LogResponse(empty, parsed: 0, errors: 0);
+			return new ActionsProviderResponseResult(
+				empty.Disposition == ActionsResponseDisposition.RetryFallback
+					? FallbackOrEmpty(fallbackBehaviors, speakerName)
+					: new FrontendStructuredConversion(),
+				empty,
+				0,
+				0,
+				Array.Empty<string>());
+		}
+
+		FrontendStructuredConversion conversion = StructuredCapabilityJsonParser.Parse(text);
+		foreach (string error in conversion.Errors)
+		{
+			EALogger.Warn("Structured frontend result rejected before RimAI: " + error);
+		}
+
+		var parseErrors = conversion.Errors.ToArray();
+		var verdict = RimAiRuntimeGateway.ValidateActionsResponse(new ActionsResponseValidationRequest(
+			ResponseReceived: true,
+			RawLength: text.Length,
+			ParsedActionCount: conversion.Actions.Count,
+			ParseErrorCount: conversion.Errors.Count));
+		LogResponse(verdict, conversion.Actions.Count, conversion.Errors.Count);
+
+		if (verdict.MayExecute)
+			return new ActionsProviderResponseResult(conversion, verdict, conversion.Actions.Count, parseErrors.Length, parseErrors);
+
+		// Whatever partially decoded is discarded rather than executed: the
+		// rows that survived a malformed payload are an accident of parsing,
+		// not an instruction the provider successfully gave.
+		var discarded = verdict.Disposition == ActionsResponseDisposition.RetryFallback
+			? FallbackOrEmpty(fallbackBehaviors, speakerName)
+			: new FrontendStructuredConversion();
+		if (discarded.Errors.Count == 0)
+			discarded.Errors.Add(verdict.Classification + ": " + verdict.Reason);
+		return new ActionsProviderResponseResult(
+			discarded,
+			verdict,
+			conversion.Actions.Count,
+			parseErrors.Length,
+			parseErrors);
+	}
+
+	/// <summary>
+	/// Runs the recognition tiers and lets the Runtime pick between them.
+	/// The same method the conversation fallback uses, so a live fixture
+	/// exercises the real tier path rather than a parallel one.
+	/// </summary>
+	public static ActionsIntentRecognition RecognizeIntent(string behavior, string speakerName)
+	{
+		if (string.IsNullOrWhiteSpace(behavior))
+		{
+			var empty = RimAiRuntimeGateway.ResolveActionsIntent(new ActionsIntentRequest(behavior ?? string.Empty));
+			return new ActionsIntentRecognition(empty, null);
+		}
+
+		return PatternMatchBehavior(behavior, speakerName ?? string.Empty);
+	}
+
+	private static FrontendStructuredConversion FallbackOrEmpty(List<string> fallbackBehaviors, string speakerName)
+	{
+		if (fallbackBehaviors == null || fallbackBehaviors.Count == 0)
+			return new FrontendStructuredConversion();
+		return FallbackConversion(fallbackBehaviors, speakerName);
+	}
+
+	private static void LogResponse(ActionsResponseVerdict verdict, int parsed, int errors)
+	{
+		EALogger.Info(
+			$"[RIMAI_ACTIONS_RESPONSE] class={verdict.Classification} disposition={verdict.Disposition} " +
+			$"mayExecute={verdict.MayExecute} parsed={parsed} errors={errors} policy={verdict.DiagnosticMarker}");
 	}
 
 	internal static Task<string> CompleteOnceAsync(string systemPrompt, string userPrompt, TimeSpan timeout)
@@ -133,7 +184,7 @@ public static class SecondaryLLMCaller
 		List<LegacyStructuredAction> list = new List<LegacyStructuredAction>();
 		foreach (string behavior in behaviors)
 		{
-			LegacyStructuredAction action = PatternMatchBehavior(behavior, speakerName);
+			LegacyStructuredAction action = PatternMatchBehavior(behavior, speakerName).Action;
 			if (action != null)
 			{
 				list.Add(action);
@@ -162,7 +213,7 @@ public static class SecondaryLLMCaller
 	/// The tiers gather candidates; they no longer decide, so tier ordering and
 	/// the score threshold are reloadable policy rather than compiled constants.
 	/// </summary>
-	private static LegacyStructuredAction PatternMatchBehavior(string behavior, string defaultActor)
+	private static ActionsIntentRecognition PatternMatchBehavior(string behavior, string defaultActor)
 	{
 		ICapabilityCatalog catalog = RimAIApplicationHost.Catalog;
 		string text = behavior.ToLowerInvariant();
@@ -189,9 +240,12 @@ public static class SecondaryLLMCaller
 			$"reason={verdict.Reason} policy={verdict.DiagnosticMarker}");
 
 		if (!verdict.Accepted || string.IsNullOrEmpty(verdict.CapabilityId))
-			return null;
+			return new ActionsIntentRecognition(verdict, null, score);
 
-		return new LegacyStructuredAction(verdict.CapabilityId, actor, text2, Reason: behavior);
+		return new ActionsIntentRecognition(
+			verdict,
+			new LegacyStructuredAction(verdict.CapabilityId, actor, text2, Reason: behavior),
+			score);
 	}
 
 	private static string MatchComposite(ICapabilityCatalog catalog, string verbLower, string text, string target)

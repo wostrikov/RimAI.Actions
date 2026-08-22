@@ -32,6 +32,7 @@ public sealed class ActionsComposition : IRimAiModuleComposition
         Harmony.PatchAll();
         ActionRegistry.Initialize();
         CommunicationIntegration.Initialize();
+        ActionsPipelineProbe.Register();
         RimAIModuleRegistry.Current.Register(
             new RimAIModuleDescriptor(
                 "actions",

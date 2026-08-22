@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using RimAI.Core.Application;
 using RimAI.Core.Catalog;
 using RimAI.Core.Execution;
+using RimAI.Core.Runtime;
 using RimAI.RimWorld.Application;
 using Ustas.RimAI.Actions.Core;
 using Ustas.RimAI.Actions.Mod;
@@ -20,8 +21,6 @@ namespace Ustas.RimAI.Actions.LLM;
 /// </summary>
 public static class SecondaryLLMCaller
 {
-	private const int MinScoreThreshold = 10;
-
 	public static void Initialize()
 	{
 	}
@@ -47,7 +46,16 @@ public static class SecondaryLLMCaller
 			string text = await CompleteOnceAsync(systemPrompt, userPrompt, timeout);
 			if (string.IsNullOrEmpty(text))
 			{
-				EALogger.Warn("Empty response from shared text AI, using fallback");
+				var empty = RimAiRuntimeGateway.ValidateActionsResponse(new ActionsResponseValidationRequest(
+					ResponseReceived: false,
+					RawLength: 0,
+					ParsedActionCount: 0,
+					ParseErrorCount: 0));
+				EALogger.Warn(
+					$"[RIMAI_ACTIONS_RESPONSE] class={empty.Classification} disposition={empty.Disposition} " +
+					$"mayExecute={empty.MayExecute} policy={empty.DiagnosticMarker}");
+				if (empty.Disposition != ActionsResponseDisposition.RetryFallback)
+					return new FrontendStructuredConversion();
 				return FallbackConversion(behaviors, speakerName);
 			}
 
@@ -57,8 +65,28 @@ public static class SecondaryLLMCaller
 				EALogger.Warn("Structured frontend result rejected before RimAI: " + error);
 			}
 
-			EALogger.Info($"LLM returned {conversion.Actions.Count} structured requests");
-			return conversion;
+			var verdict = RimAiRuntimeGateway.ValidateActionsResponse(new ActionsResponseValidationRequest(
+				ResponseReceived: true,
+				RawLength: text.Length,
+				ParsedActionCount: conversion.Actions.Count,
+				ParseErrorCount: conversion.Errors.Count));
+			EALogger.Info(
+				$"[RIMAI_ACTIONS_RESPONSE] class={verdict.Classification} disposition={verdict.Disposition} " +
+				$"mayExecute={verdict.MayExecute} parsed={conversion.Actions.Count} " +
+				$"errors={conversion.Errors.Count} policy={verdict.DiagnosticMarker}");
+
+			if (verdict.MayExecute)
+				return conversion;
+
+			// Whatever partially decoded is discarded rather than executed: the
+			// rows that survived a malformed payload are an accident of parsing,
+			// not an instruction the provider successfully gave.
+			if (verdict.Disposition == ActionsResponseDisposition.RetryFallback)
+				return FallbackConversion(behaviors, speakerName);
+
+			var rejected = new FrontendStructuredConversion();
+			rejected.Errors.Add(verdict.Classification + ": " + verdict.Reason);
+			return rejected;
 		}
 		catch (TimeoutException)
 		{
@@ -129,6 +157,11 @@ public static class SecondaryLLMCaller
 		return conversion;
 	}
 
+	/// <summary>
+	/// Runs every recognition tier and lets the Runtime pick between them.
+	/// The tiers gather candidates; they no longer decide, so tier ordering and
+	/// the score threshold are reloadable policy rather than compiled constants.
+	/// </summary>
 	private static LegacyStructuredAction PatternMatchBehavior(string behavior, string defaultActor)
 	{
 		ICapabilityCatalog catalog = RimAIApplicationHost.Catalog;
@@ -138,28 +171,49 @@ public static class SecondaryLLMCaller
 		string text2 = ((array.Length > 2) ? array[array.Length - 1] : null);
 		string text3 = ((array.Length > 2) ? string.Join(" ", array, 1, array.Length - 2) : ((array.Length > 1) ? array[1] : behavior));
 		string verbLower = text3.ToLowerInvariant();
-		if (TryMatchId(verbLower, catalog, out var exactId))
-		{
-			EALogger.Debug("Exact ID match: " + verbLower + " -> " + exactId);
-			return new LegacyStructuredAction(exactId, actor, text2, Reason: behavior);
-		}
 
-		if (KeywordConfigManager.GetAllMovementVerbs().Any((string mv) => verbLower.Contains(mv.ToLowerInvariant())))
+		TryMatchId(verbLower, catalog, out var directId);
+		string compositeId = MatchComposite(catalog, verbLower, text, text2);
+		string scoredId = MatchByKeywordScore(catalog, verbLower, text, out int score);
+
+		var verdict = RimAiRuntimeGateway.ResolveActionsIntent(new ActionsIntentRequest(
+			behavior,
+			directId,
+			compositeId,
+			scoredId,
+			score));
+
+		EALogger.Info(
+			$"[RIMAI_ACTIONS_INTENT] tier={verdict.Tier} accepted={verdict.Accepted} " +
+			$"capability={verdict.CapabilityId ?? "none"} score={score} " +
+			$"reason={verdict.Reason} policy={verdict.DiagnosticMarker}");
+
+		if (!verdict.Accepted || string.IsNullOrEmpty(verdict.CapabilityId))
+			return null;
+
+		return new LegacyStructuredAction(verdict.CapabilityId, actor, text2, Reason: behavior);
+	}
+
+	private static string MatchComposite(ICapabilityCatalog catalog, string verbLower, string text, string target)
+	{
+		if (!KeywordConfigManager.GetAllMovementVerbs().Any((string mv) => verbLower.Contains(mv.ToLowerInvariant())))
+			return null;
+		string haystack = target + " " + text;
+		foreach (KeyValuePair<string, string> noun in KeywordConfigManager.GetAllTargetNounKeywords())
 		{
-			string text4 = text2 + " " + text;
-			foreach (KeyValuePair<string, string> allTargetNounKeyword in KeywordConfigManager.GetAllTargetNounKeywords())
+			if (haystack.Contains(noun.Key.ToLowerInvariant())
+			    && TryMatchId(noun.Value, catalog, out var compositeId))
 			{
-				if (text4.Contains(allTargetNounKeyword.Key.ToLowerInvariant())
-				    && TryMatchId(allTargetNounKeyword.Value, catalog, out var compositeId))
-				{
-					EALogger.Info("[EA] composite intent: " + text3 + "+" + allTargetNounKeyword.Key + " → " + compositeId);
-					return new LegacyStructuredAction(compositeId, actor, text2, Reason: behavior);
-				}
+				return compositeId;
 			}
 		}
+		return null;
+	}
 
+	private static string MatchByKeywordScore(ICapabilityCatalog catalog, string verbLower, string text, out int best)
+	{
 		string matchedId = null;
-		int num = 0;
+		best = 0;
 		foreach (CapabilityOwnership ownership in CapabilityOwnershipRegistry.All)
 		{
 			if (!TryMatchId(ownership.LegacyActionId, catalog, out var candidateId))
@@ -167,37 +221,23 @@ public static class SecondaryLLMCaller
 			List<string> allMatchKeywords = KeywordConfigManager.GetAllMatchKeywords(ownership.LegacyActionId);
 			if (allMatchKeywords.Count == 0)
 				continue;
-			int num2 = 0;
+			int score = 0;
 			foreach (string item in allMatchKeywords)
 			{
-				string text5 = item.ToLowerInvariant();
-				if (verbLower.Contains(text5) || text5.Contains(verbLower))
-					num2 = verbLower == text5 ? num2 + 100 : num2 + 10;
-				else if (text.Contains(text5))
-					num2++;
+				string keyword = item.ToLowerInvariant();
+				if (verbLower.Contains(keyword) || keyword.Contains(verbLower))
+					score = verbLower == keyword ? score + 100 : score + 10;
+				else if (text.Contains(keyword))
+					score++;
 			}
 
-			if (num2 > num)
+			if (score > best)
 			{
-				num = num2;
+				best = score;
 				matchedId = candidateId;
 			}
 		}
-
-		if (matchedId != null)
-		{
-			if (num < MinScoreThreshold)
-			{
-				EALogger.Info($"[EA] Match below threshold: {behavior} → {matchedId} (score={num}), rejected");
-				return null;
-			}
-
-			EALogger.Debug($"Keyword match: {behavior} -> {matchedId} (score={num})");
-			return new LegacyStructuredAction(matchedId, actor, text2, Reason: behavior);
-		}
-
-		EALogger.Debug("No pattern matched for behavior: " + behavior);
-		return null;
+		return matchedId;
 	}
 
 	private static bool TryMatchId(string requestedId, ICapabilityCatalog catalog, out string id)

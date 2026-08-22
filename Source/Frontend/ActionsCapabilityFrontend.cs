@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimAI.Core.Application;
+using RimAI.Core.Execution;
+using RimAI.Core.Runtime;
 using RimAI.RimWorld.Application;
 using Ustas.RimAI.Actions.Mod;
 using Ustas.RimAI.Actions.Util;
@@ -64,14 +66,21 @@ public static class ActionsCapabilityFrontend
 		foreach (var result in executed)
 		{
 			results.Add(result);
-			if (!result.Succeeded)
-				EALogger.Warn($"[RIMAI_FRONTEND] conv={conversationId} capability={result.CapabilityId} state=FAILED code={result.Code}");
+			EALogger.Info(
+				$"[RIMAI_ACTIONS_OUTCOME] conv={conversationId} capability={result.CapabilityId} " +
+				$"outcome={result.Outcome} completed={result.IsCompleted} code={result.Code}");
 			ShowBubble(speaker, result);
 		}
 
-		int ok = results.FindAll(item => item.Succeeded).Count;
-		if (ok > 0 || results.Count > 0)
-			EALogger.Info($"Executed {ok} capabilities, {results.Count - ok} failed via direct RimAI path");
+		// Accepted and completed are counted apart. A queued job is a submitted
+		// intention, and reporting it as a completion is what made the old log
+		// line unusable as evidence.
+		int completed = results.FindAll(item => item.IsCompleted).Count;
+		int queued = results.FindAll(item => item.IsQueued).Count;
+		if (results.Count > 0)
+			EALogger.Info(
+				$"Actions batch: {completed} completed, {queued} queued, " +
+				$"{results.Count - completed - queued} not executed");
 		return results;
 	}
 
@@ -85,7 +94,26 @@ public static class ActionsCapabilityFrontend
 			settings.CombatCooldownTicks,
 			settings.SocialCooldownTicks,
 			settings.JobProtectionTicks,
-			settings.AllowUndesignatedTargets);
+			settings.AllowUndesignatedTargets,
+			settings.CustomJobWhitelist,
+			DisabledActions(settings));
+	}
+
+	/// <summary>
+	/// The per-action toggles the settings window already exposes. They used to
+	/// affect only prompt text and keyword fallback, so a model that named a
+	/// disabled action anyway still executed it; carrying them to the guard is
+	/// what makes the toggle authoritative.
+	/// </summary>
+	private static IReadOnlyCollection<string> DisabledActions(EASettings settings)
+	{
+		var disabled = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+		foreach (var ownership in CapabilityOwnershipRegistry.All)
+		{
+			if (!settings.IsActionEnabled(ownership.LegacyActionId))
+				disabled.Add(ownership.LegacyActionId);
+		}
+		return disabled;
 	}
 
 	private static bool ShouldSkipActor(SemanticCapabilityRequest request, Map map)
@@ -113,9 +141,29 @@ public static class ActionsCapabilityFrontend
 			return;
 		try
 		{
-			string text = (result.Succeeded ? "✓ " : "✗ ") + result.CapabilityId;
-			Color color = result.Succeeded ? Color.green : Color.red;
-			MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, text, color, 2f);
+			string glyph;
+			Color color;
+			switch (result.Outcome)
+			{
+				case ActionsOutcome.Completed:
+					glyph = "✓ ";
+					color = Color.green;
+					break;
+				case ActionsOutcome.Queued:
+				case ActionsOutcome.Started:
+					glyph = "→ ";
+					color = Color.cyan;
+					break;
+				case ActionsOutcome.Partial:
+					glyph = "~ ";
+					color = Color.yellow;
+					break;
+				default:
+					glyph = "✗ ";
+					color = Color.red;
+					break;
+			}
+			MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, glyph + result.CapabilityId, color, 2f);
 		}
 		catch (Exception ex)
 		{

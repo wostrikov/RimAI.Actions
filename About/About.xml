@@ -22,16 +22,13 @@
         <li>ustas.rimai.communication</li>
         <li>ustas.rimai.communication.memory</li>
     </loadAfter>
-    <description>RimAI.Actions turns RimAI dialogue into in-game pawn work.
+    <description>RimAI.Actions перетворює репліки RimAI на реальну роботу пішаків.
 
-Features:
-• Dialogue-to-action matching for movement, combat, medical, social, items, production, animals, and DLC jobs
-• Per-pawn serial queues and cross-pawn parallel dispatch
-• Safety toggles, job whitelist, and mental-state gates
-• Prompt schema injection into the shared RimAI communication pipeline
+Основні можливості:
+• рух, бій, медицина, спілкування, речі, виробництво, тварини та роботи з DLC
+• черга на одного пішака й паралель між пішаками
+• запобіжники, білий список робіт і блокування під час психічних зривів
 
-Gameplay text AI uses the shared RimAI configuration.
-
-Requirements: Harmony and RimAI.Communication. Optional: RimAI.Communication.Memory for behavior recording.</description>
+Потрібні Harmony та RimAI.Communication. RimAI.Communication.Memory необов’язковий для запису поведінки. Текстовий ШІ — зі спільних налаштувань RimAI.</description>
     <modVersion>0.3.0-beta.2</modVersion>
 </ModMetaData>

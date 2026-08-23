@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using RimAI.Core.Execution;
 using Ustas.RimAI.Actions.Util;
 
 namespace Ustas.RimAI.Actions.Execution;
@@ -8,8 +9,6 @@ namespace Ustas.RimAI.Actions.Execution;
 public static class MainThreadDispatcher
 {
 	private static readonly ConcurrentQueue<Action> _actions = new ConcurrentQueue<Action>();
-
-	private const int MaxActionsPerTick = 5;
 
 	public static int PendingCount => _actions.Count;
 
@@ -24,8 +23,9 @@ public static class MainThreadDispatcher
 	public static void ProcessQueue()
 	{
 		List<Action> list = new List<Action>();
+		int take = MainThreadDispatchPolicy.TakeCount(_actions.Count);
 		Action result;
-		while (list.Count < 5 && _actions.TryDequeue(out result))
+		while (list.Count < take && _actions.TryDequeue(out result))
 		{
 			list.Add(result);
 		}

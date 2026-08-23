@@ -30,8 +30,8 @@ Features:
 • Safety toggles, job whitelist, and mental-state gates
 • Prompt schema injection into the shared RimAI communication pipeline
 
-Gameplay text AI uses the shared RimAI configuration. PackageId is unchanged for save compatibility.
+Gameplay text AI uses the shared RimAI configuration.
 
-Requirements: Harmony, RimAI.Communication. Optional: RimAI.Communication.Memory for behavior recording.</description>
+Requirements: Harmony and RimAI.Communication. Optional: RimAI.Communication.Memory for behavior recording.</description>
     <modVersion>0.3.0-beta.2</modVersion>
 </ModMetaData>

@@ -20,6 +20,9 @@
     <Compile Remove="XXX\**" />
   </ItemGroup>
   <ItemGroup>
+    <!-- The mod ships two assemblies. Nothing here references the second one,
+         so it is built for its side of the package rather than for the compiler. -->
+    <ProjectReference Include="CapabilityRuntime\RimAI.Actions.CapabilityRuntime.csproj" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\..\RimAI.Core\src\RimAI.Core\RimAI.Core.csproj" />
     <ProjectReference Include="..\..\RimAI.Core\src\RimAI.RimWorld\RimAI.RimWorld.csproj" />
     <ProjectReference Include="..\..\RimAI.Communication\Source\RimAI.Communication.csproj" />

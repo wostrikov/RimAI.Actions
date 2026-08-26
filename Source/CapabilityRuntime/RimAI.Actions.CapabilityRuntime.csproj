@@ -5,5 +5,7 @@
     <Deterministic>true</Deterministic>
     <AssemblyName>RimAI.Actions.CapabilityRuntime</AssemblyName>
     <RootNamespace>Ustas.RimAI.Actions.CapabilityRuntime</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimAI.Actions\bin\Release\</OutputPath>
   </PropertyGroup>
 </Project>

@@ -10,7 +10,7 @@
     <OutputPath>$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimAI.Actions\bin\Release\</OutputPath>
     <RimWorldDir Condition="'$(RimWorldDir)' == ''">$(RIMWORLD_DIR)</RimWorldDir>
     <RimWorldWorkshopDir Condition="'$(RimWorldWorkshopDir)' == ''">$(RIMWORLD_WORKSHOP_DIR)</RimWorldWorkshopDir>
-    <ReconstructionReferenceDir Condition="'$(ReconstructionReferenceDir)' == ''">$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimTalk-ExpandActions-Core\reconstruction-refs</ReconstructionReferenceDir>
+    <ReconstructionReferenceDir Condition="'$(ReconstructionReferenceDir)' == ''">$(LOCALAPPDATA)\Ustas\RimWorldSourceBuilds\RimAI.Actions\reconstruction-refs</ReconstructionReferenceDir>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="CapabilityRuntime\**" />

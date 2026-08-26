@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimAI.Core.Application;
+using RimAI.Core.Catalog;
 using RimAI.Core.Execution;
 using RimAI.Core.Runtime;
 using RimAI.RimWorld.Application;
@@ -53,6 +54,8 @@ public static class ActionsCapabilityFrontend
 			{
 				var request = LegacyStructuredActionAdapter.ToRequest(action, context);
 				if (ShouldSkipActor(request, map))
+					continue;
+				if (ShouldSkipUnsatisfiable(request, map))
 					continue;
 				requests.Add(request);
 			}
@@ -114,6 +117,55 @@ public static class ActionsCapabilityFrontend
 				disabled.Add(ownership.LegacyActionId);
 		}
 		return disabled;
+	}
+
+	/// <summary>
+	/// Behaviors reach this frontend as free prose, and the recognition tiers
+	/// score them on verbs alone: "Nadia walks off" matches move_to at full
+	/// confidence while naming nowhere to walk to, and "iol chops the tree"
+	/// gives attack_melee a target the map has never heard of. Submitting those
+	/// produced a Rejected outcome per behavior — seven capabilities' worth of
+	/// red text in one playtest, none of it describing anything the colony could
+	/// have done or anything that malfunctioned.
+	///
+	/// Both predicates are the executor's own, so nothing that used to run stops
+	/// running; only the doomed submission and its misleading outcome line go.
+	/// A refusal the executor decides for itself — a cooldown, a reservation, a
+	/// pawn that became incapable — still travels the whole way and is still
+	/// reported, because only the executor can know it.
+	/// </summary>
+	private static bool ShouldSkipUnsatisfiable(SemanticCapabilityRequest request, Map map)
+	{
+		var lookup = CapabilityLookup.Resolve(request.CapabilityId, RimAIApplicationHost.Catalog);
+		if (lookup.Status != CapabilityLookupStatus.Found || lookup.Capability == null)
+			return false;
+		var capability = lookup.Capability;
+
+		var validation = CapabilityApplication.ValidateInputs(request, capability);
+		if (!validation.IsValid)
+			return SkipIntent(
+				capability.CapabilityId,
+				"absent=" + string.Join(",", validation.MissingParameters),
+				"observed behavior supplied no such input");
+
+		if (VerseCapabilityFamilyDispatcher.TargetRequired(capability)
+			&& !VerseCapabilityFamilyDispatcher.TargetResolves(request, map))
+		{
+			return SkipIntent(
+				capability.CapabilityId,
+				"absent=target",
+				"named target is not on the map");
+		}
+
+		return false;
+	}
+
+	private static bool SkipIntent(string capabilityId, string absent, string reason)
+	{
+		EALogger.Info(
+			$"[RIMAI_ACTIONS_INTENT] tier=Unsatisfiable accepted=False " +
+			$"capability={capabilityId} {absent} reason={reason}");
+		return true;
 	}
 
 	private static bool ShouldSkipActor(SemanticCapabilityRequest request, Map map)

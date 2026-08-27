@@ -34,6 +34,9 @@ public static class EASettingsWindow
 		Rect viewRect = new Rect(0f, 0f, inRect.width - 16f, height);
 		Widgets.BeginScrollView(inRect, ref _scrollPosition, viewRect);
 		Listing_Standard listing_Standard = new Listing_Standard();
+		// The height above is an estimate; if it ever comes up short, Verse would
+		// wrap into an invisible second column rather than overflow the scroll view.
+		listing_Standard.maxOneColumn = true;
 		listing_Standard.Begin(new Rect(0f, 0f, viewRect.width, height));
 		Text.Font = GameFont.Medium;
 		listing_Standard.Label("EA_Settings_Title".Translate());

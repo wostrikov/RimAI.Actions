@@ -12,8 +12,6 @@ public class EASettings : ModSettings
 
 	public List<string> CustomJobWhitelist = new List<string>();
 
-	public bool DebugMode;
-
 	public bool ShowExecutionBubbles = true;
 
 	public bool SkipWorkTimePawns;
@@ -48,7 +46,6 @@ public class EASettings : ModSettings
 	{
 		base.ExposeData();
 		Scribe_Values.Look(ref Enabled, "enabled", defaultValue: true);
-		Scribe_Values.Look(ref DebugMode, "debugMode", defaultValue: false);
 		Scribe_Values.Look(ref ShowExecutionBubbles, "showExecutionBubbles", defaultValue: true);
 		Scribe_Values.Look(ref SkipWorkTimePawns, "skipWorkTimePawns", defaultValue: false);
 		Scribe_Values.Look(ref SkipDraftedPawns, "skipDraftedPawns", defaultValue: true);

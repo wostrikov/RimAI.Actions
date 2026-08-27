@@ -44,7 +44,6 @@ public static class EASettingsWindow
 		listing_Standard.Gap();
 		listing_Standard.CheckboxLabeled("EA_Settings_Enabled".Translate(), ref settings.Enabled, "EA_Settings_Enabled_Desc".Translate());
 		listing_Standard.Gap();
-		listing_Standard.CheckboxLabeled("EA_Settings_DebugMode".Translate(), ref settings.DebugMode, "EA_Settings_DebugMode_Desc".Translate());
 		listing_Standard.CheckboxLabeled("EA_Settings_ShowBubbles".Translate(), ref settings.ShowExecutionBubbles, "EA_Settings_ShowBubbles_Desc".Translate());
 		listing_Standard.Gap();
 		listing_Standard.GapLine();

@@ -21,17 +21,11 @@ public static class EALogger
     public static void Error(string message, Exception ex) =>
         RimAiLog.Error(RimAiLogCategory.Actions, message, ex);
 
-    public static void Debug(string message)
-    {
-        EASettings settings = EAModMain.Settings;
-        if (settings != null && settings.DebugMode)
-            RimAiLog.Debug(RimAiLogCategory.Actions, message);
-    }
+    // Developer mode is the whole switch, family-wide. RimAiLog.Debug already
+    // gates on it, so there is nothing left for this class to decide.
+    public static void Debug(string message) =>
+        RimAiLog.Debug(RimAiLogCategory.Actions, message);
 
-    public static void DebugFormat(string format, params object[] args)
-    {
-        EASettings settings = EAModMain.Settings;
-        if (settings != null && settings.DebugMode)
-            RimAiLog.Debug(RimAiLogCategory.Actions, string.Format(format, args));
-    }
+    public static void DebugFormat(string format, params object[] args) =>
+        RimAiLog.Debug(RimAiLogCategory.Actions, string.Format(format, args));
 }

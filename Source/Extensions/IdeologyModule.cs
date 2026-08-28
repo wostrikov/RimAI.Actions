@@ -28,7 +28,7 @@ public class IdeologyModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "ritual", "ceremony", "仪式", "典礼", "祭祀" }
+			Keywords = new List<string> { "ritual", "ceremony", "ритуал", "церемонія", "обряд" }
 		};
 		yield return new ActionDefinition
 		{
@@ -41,7 +41,7 @@ public class IdeologyModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
 			Handler = null,
-			Keywords = new List<string> { "convert", "ideology", "belief", "转化", "信仰", "思想" }
+			Keywords = new List<string> { "convert", "ideology", "belief", "навернути", "віра", "переконання" }
 		};
 	}
 

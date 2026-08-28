@@ -17,7 +17,7 @@ internal static class ActionRegistryCatalogCombat
 			OptionalParams = new List<string> { "args.drafted" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "draft", "undraft", "征召", "解除征召", "备战" }
+			Keywords = new List<string> { "draft", "undraft", "мобілізувати", "Демобілізувати", "до бою" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -29,7 +29,7 @@ internal static class ActionRegistryCatalogCombat
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "attack", "melee", "hit", "punch", "近战", "攻击", "打" }
+			Keywords = new List<string> { "attack", "melee", "hit", "punch", "ближній бій", "атакувати", "бити" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -41,7 +41,7 @@ internal static class ActionRegistryCatalogCombat
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "shoot", "ranged", "fire", "射击", "远程", "开枪", "射" }
+			Keywords = new List<string> { "shoot", "ranged", "fire", "стріляти", "дальній бій", "вогонь", "стріл" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -53,7 +53,7 @@ internal static class ActionRegistryCatalogCombat
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "arrest", "逮捕", "抓捕" }
+			Keywords = new List<string> { "arrest", "заарештувати", "схопити" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -65,7 +65,7 @@ internal static class ActionRegistryCatalogCombat
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "drop weapon", "disarm", "丢弃武器", "放下武器" }
+			Keywords = new List<string> { "drop weapon", "disarm", "Кинути зброю", "Скласти зброю" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -78,7 +78,7 @@ internal static class ActionRegistryCatalogCombat
 			RiskLevel = RiskLevel.High,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "mental", "break", "berserk", "精神崩溃", "发狂" }
+			Keywords = new List<string> { "mental", "break", "berserk", "Психічний зрив", "сказ" }
 		});
 	}
 }

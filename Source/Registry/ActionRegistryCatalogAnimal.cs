@@ -16,7 +16,7 @@ internal static class ActionRegistryCatalogAnimal
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "tame", "domesticate", "驯服", "驯化" }
+			Keywords = new List<string> { "tame", "domesticate", "приручити", "одомашнити" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -28,7 +28,7 @@ internal static class ActionRegistryCatalogAnimal
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "train", "训练", "教导" }
+			Keywords = new List<string> { "train", "тренувати", "навчати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -40,7 +40,7 @@ internal static class ActionRegistryCatalogAnimal
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "hunt", "狩猎", "猎杀", "打猎" }
+			Keywords = new List<string> { "hunt", "полювання", "вполювати", "полювати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -52,7 +52,7 @@ internal static class ActionRegistryCatalogAnimal
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "slaughter", "butcher", "屠宰", "宰杀" }
+			Keywords = new List<string> { "slaughter", "butcher", "забій", "зарізати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -64,7 +64,7 @@ internal static class ActionRegistryCatalogAnimal
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "milk", "挤奶" }
+			Keywords = new List<string> { "milk", "доїти" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -76,7 +76,7 @@ internal static class ActionRegistryCatalogAnimal
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "shear", "wool", "剪毛" }
+			Keywords = new List<string> { "shear", "wool", "стригти" }
 		});
 	}
 }

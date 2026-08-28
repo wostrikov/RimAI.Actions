@@ -28,7 +28,7 @@ public class RoyaltyModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Low,
 			DefaultEnabled = true,
 			Handler = null,
-			Keywords = new List<string> { "meditate", "meditation", "psyfocus", "冥想", "灵能聚焦" }
+			Keywords = new List<string> { "meditate", "meditation", "psyfocus", "медитація", "Псіфокус" }
 		};
 		yield return new ActionDefinition
 		{
@@ -41,7 +41,7 @@ public class RoyaltyModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
 			Handler = null,
-			Keywords = new List<string> { "psycast", "ability", "psychic", "灵能", "超能力", "心灵" }
+			Keywords = new List<string> { "psycast", "ability", "psychic", "псіоніка", "надздібності", "розум" }
 		};
 		yield return new ActionDefinition
 		{
@@ -54,7 +54,7 @@ public class RoyaltyModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Low,
 			DefaultEnabled = true,
 			Handler = null,
-			Keywords = new List<string> { "reign", "throne", "royal", "统治", "王座", "皇家" }
+			Keywords = new List<string> { "reign", "throne", "royal", "правління", "трон", "королівський" }
 		};
 	}
 

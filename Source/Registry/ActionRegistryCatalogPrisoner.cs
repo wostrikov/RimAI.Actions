@@ -16,7 +16,7 @@ internal static class ActionRegistryCatalogPrisoner
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "capture", "prisoner", "抓住", "俘虏", "抓获" }
+			Keywords = new List<string> { "capture", "prisoner", "вхопити", "полонений", "захопити" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -28,7 +28,7 @@ internal static class ActionRegistryCatalogPrisoner
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "release", "free", "释放", "放走" }
+			Keywords = new List<string> { "release", "free", "звільнити", "відпустити" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -40,7 +40,7 @@ internal static class ActionRegistryCatalogPrisoner
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "recruit prisoner", "招募囚犯", "说服囚犯" }
+			Keywords = new List<string> { "recruit prisoner", "Завербувати бранця", "Переконати бранця" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -53,7 +53,7 @@ internal static class ActionRegistryCatalogPrisoner
 			RiskLevel = RiskLevel.High,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "execute", "kill prisoner", "处决", "处刑" }
+			Keywords = new List<string> { "execute", "kill prisoner", "стратити", "страта" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -65,7 +65,7 @@ internal static class ActionRegistryCatalogPrisoner
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "escort", "bed", "押送", "带回" }
+			Keywords = new List<string> { "escort", "bed", "конвоювати", "привести" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -77,7 +77,7 @@ internal static class ActionRegistryCatalogPrisoner
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "strip", "undress", "剥取", "脱衣" }
+			Keywords = new List<string> { "strip", "undress", "зняти", "роздягти" }
 		});
 	}
 }

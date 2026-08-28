@@ -60,7 +60,7 @@ public class RJWExtensionModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
 			Handler = new RJWSexHandler(),
-			Keywords = new List<string> { "sex", "lovin", "bed", "intimacy", "性", "做爱", "亲密", "上床" }
+			Keywords = new List<string> { "sex", "lovin", "bed", "intimacy", "стать", "секс", "близькість", "переспати" }
 		};
 		yield return new ActionDefinition
 		{
@@ -73,7 +73,7 @@ public class RJWExtensionModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
 			Handler = new RJWQuickieHandler(),
-			Keywords = new List<string> { "quickie", "quick sex", "快速", "性", "做爱" }
+			Keywords = new List<string> { "quickie", "quick sex", "швидко", "стать", "секс" }
 		};
 		yield return new ActionDefinition
 		{
@@ -86,7 +86,7 @@ public class RJWExtensionModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
 			Handler = new RJWMasturbateHandler(),
-			Keywords = new List<string> { "masturbate", "自慰", "手淫" }
+			Keywords = new List<string> { "masturbate", "самозадоволення", "мастурбація" }
 		};
 		yield return new ActionDefinition
 		{
@@ -99,7 +99,7 @@ public class RJWExtensionModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = false,
 			Handler = new RJWBondageGiveHandler(),
-			Keywords = new List<string> { "bondage", "束缚", "绑缚" }
+			Keywords = new List<string> { "bondage", "звʼязати", "пута" }
 		};
 		yield return new ActionDefinition
 		{
@@ -112,7 +112,7 @@ public class RJWExtensionModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = false,
 			Handler = new RJWBondageUnlockHandler(),
-			Keywords = new List<string> { "bondage", "unlock", "束缚", "解锁" }
+			Keywords = new List<string> { "bondage", "unlock", "звʼязати", "розблокувати" }
 		};
 		yield return new ActionDefinition
 		{
@@ -125,7 +125,7 @@ public class RJWExtensionModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Critical,
 			DefaultEnabled = false,
 			Handler = new RJWRapeHandler(),
-			Keywords = new List<string> { "rape", "force", "强制", "强奸" }
+			Keywords = new List<string> { "rape", "force", "примус", "зґвалтування" }
 		};
 		yield return new ActionDefinition
 		{
@@ -138,7 +138,7 @@ public class RJWExtensionModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Critical,
 			DefaultEnabled = false,
 			Handler = new RJWBestialityHandler(),
-			Keywords = new List<string> { "bestiality", "animal", "兽交" }
+			Keywords = new List<string> { "bestiality", "animal", "зоофілія" }
 		};
 		yield return new ActionDefinition
 		{
@@ -151,7 +151,7 @@ public class RJWExtensionModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Critical,
 			DefaultEnabled = false,
 			Handler = new RJWNecroHandler(),
-			Keywords = new List<string> { "necro", "corpse", "恋尸", "尸体" }
+			Keywords = new List<string> { "necro", "corpse", "некрофілія", "труп" }
 		};
 	}
 

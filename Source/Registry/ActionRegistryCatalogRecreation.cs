@@ -16,7 +16,7 @@ internal static class ActionRegistryCatalogRecreation
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "stargaze", "stars", "sky", "观星", "看星星" }
+			Keywords = new List<string> { "stargaze", "stars", "sky", "дивитися на зорі", "дивитися на зорі" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -28,7 +28,7 @@ internal static class ActionRegistryCatalogRecreation
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "walk", "stroll", "wander", "散步", "闲逛", "逛", "溜达" }
+			Keywords = new List<string> { "walk", "stroll", "wander", "прогулянка", "тинятися", "гуляй", "блукати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -42,7 +42,7 @@ internal static class ActionRegistryCatalogRecreation
 			RiskLevel = RiskLevel.Low,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "music", "play", "instrument", "音乐", "演奏", "乐器" }
+			Keywords = new List<string> { "music", "play", "instrument", "музика", "грати", "інструмент" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -54,7 +54,7 @@ internal static class ActionRegistryCatalogRecreation
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "drug", "smoke", "drink", "药物", "毒品", "嗑药" }
+			Keywords = new List<string> { "drug", "smoke", "drink", "ліки", "наркотик", "вживати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -67,7 +67,7 @@ internal static class ActionRegistryCatalogRecreation
 			OptionalParams = new List<string> { "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "art", "sculpture", "painting", "艺术", "雕塑", "欣赏" }
+			Keywords = new List<string> { "art", "sculpture", "painting", "мистецтво", "скульптура", "милуватися" }
 		});
 	}
 }

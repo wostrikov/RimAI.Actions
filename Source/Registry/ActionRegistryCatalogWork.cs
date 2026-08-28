@@ -18,7 +18,7 @@ internal static class ActionRegistryCatalogWork
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "job", "work", "task", "任务", "工作" }
+			Keywords = new List<string> { "job", "work", "task", "завдання", "робота" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -32,7 +32,7 @@ internal static class ActionRegistryCatalogWork
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "queue", "排队", "队列" }
+			Keywords = new List<string> { "queue", "черга", "послідовність" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -44,7 +44,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "end job", "cancel", "结束任务", "取消" }
+			Keywords = new List<string> { "end job", "cancel", "Завершити завдання", "скасувати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -56,7 +56,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "haul", "carry", "搬运", "搬", "运输", "运", "扛" }
+			Keywords = new List<string> { "haul", "carry", "переносити", "неси", "перевезення", "вези", "тягни" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -68,7 +68,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "mine", "dig", "采矿", "挖矿", "挖" }
+			Keywords = new List<string> { "mine", "dig", "видобуток", "копати", "копай" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -80,7 +80,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "cut", "chop", "plant", "砍", "砍伐", "植物" }
+			Keywords = new List<string> { "cut", "chop", "plant", "рубай", "рубати", "рослини" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -92,7 +92,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "clean", "sweep", "清洁", "打扫", "扫地" }
+			Keywords = new List<string> { "clean", "sweep", "прибирання", "прибрати", "підмести" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -104,7 +104,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "repair", "fix", "修理", "修复" }
+			Keywords = new List<string> { "repair", "fix", "ремонт", "полагодити" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -116,7 +116,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "deconstruct", "demolish", "拆除", "拆" }
+			Keywords = new List<string> { "deconstruct", "demolish", "розібрати", "ламай" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -129,7 +129,7 @@ internal static class ActionRegistryCatalogWork
 			OptionalParams = new List<string> { "target", "cell" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "sow", "plant", "seed", "播种", "种植" }
+			Keywords = new List<string> { "sow", "plant", "seed", "сіяти", "садити" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -141,7 +141,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "harvest", "reap", "收割", "收获" }
+			Keywords = new List<string> { "harvest", "reap", "жнива", "збирати врожай" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -153,7 +153,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "research", "study", "研究", "科研" }
+			Keywords = new List<string> { "research", "study", "дослідження", "наука" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -166,7 +166,7 @@ internal static class ActionRegistryCatalogWork
 			OptionalParams = new List<string> { "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "craft", "make", "build", "制作", "制造", "打造" }
+			Keywords = new List<string> { "craft", "make", "build", "виготовити", "виробництво", "скувати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -178,7 +178,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "smooth", "floor", "抛光", "地面" }
+			Keywords = new List<string> { "smooth", "floor", "полірувати", "підлога" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -191,7 +191,7 @@ internal static class ActionRegistryCatalogWork
 			OptionalParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "roof", "cover", "屋顶", "建造屋顶" }
+			Keywords = new List<string> { "roof", "cover", "дах", "Збудувати дах" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -204,7 +204,7 @@ internal static class ActionRegistryCatalogWork
 			OptionalParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "remove roof", "拆除屋顶" }
+			Keywords = new List<string> { "remove roof", "Розібрати дах" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -216,7 +216,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "uninstall", "remove", "卸载", "拆卸" }
+			Keywords = new List<string> { "uninstall", "remove", "розвантажити", "демонтаж" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -228,7 +228,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "fix", "broken", "修复", "故障" }
+			Keywords = new List<string> { "fix", "broken", "полагодити", "несправність" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -240,7 +240,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "refuel", "fuel", "加油", "燃料" }
+			Keywords = new List<string> { "refuel", "fuel", "заправити", "паливо" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -252,7 +252,7 @@ internal static class ActionRegistryCatalogWork
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "flick", "switch", "toggle", "开关", "切换" }
+			Keywords = new List<string> { "flick", "switch", "toggle", "вимикач", "перемкнути" }
 		});
 	}
 }

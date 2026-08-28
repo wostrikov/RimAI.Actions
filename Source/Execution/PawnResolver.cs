@@ -12,59 +12,59 @@ public static class PawnResolver
 	{
 		{
 			"DiningRoom",
-			new string[4] { "食堂", "餐厅", "饭厅", "dining" }
+			new string[4] { "їдальня", "ресторан", "обідня", "dining" }
 		},
 		{
 			"Bedroom",
-			new string[4] { "卧室", "房间", "寝室", "bedroom" }
+			new string[4] { "спальня", "кімната", "опочивальня", "bedroom" }
 		},
 		{
 			"Barracks",
-			new string[4] { "营房", "兵营", "宿舍", "barracks" }
+			new string[4] { "казарма", "барак", "гуртожиток", "barracks" }
 		},
 		{
 			"Hospital",
-			new string[4] { "医院", "医疗室", "病房", "hospital" }
+			new string[4] { "лікарня", "медпункт", "палата", "hospital" }
 		},
 		{
 			"PrisonCell",
-			new string[4] { "牢房", "监狱", "囚室", "prison" }
+			new string[4] { "камера", "вʼязниця", "буцегарня", "prison" }
 		},
 		{
 			"PrisonBarracks",
-			new string[2] { "囚犯营房", "prison barracks" }
+			new string[2] { "Барак для бранців", "prison barracks" }
 		},
 		{
 			"Laboratory",
-			new string[3] { "实验室", "研究室", "lab" }
+			new string[3] { "лабораторія", "дослідна", "lab" }
 		},
 		{
 			"RecRoom",
-			new string[4] { "娱乐室", "休息室", "rec room", "recreation" }
+			new string[4] { "кімната відпочинку", "вітальня", "rec room", "recreation" }
 		},
 		{
 			"Tomb",
-			new string[3] { "墓室", "陵墓", "tomb" }
+			new string[3] { "склеп", "усипальня", "tomb" }
 		},
 		{
 			"Kitchen",
-			new string[3] { "厨房", "灶房", "kitchen" }
+			new string[3] { "кухня", "куховарня", "kitchen" }
 		},
 		{
 			"Workshop",
-			new string[4] { "工坊", "工作间", "作坊", "workshop" }
+			new string[4] { "цех", "майстерня", "робітня", "workshop" }
 		},
 		{
 			"Barn",
-			new string[3] { "畜棚", "牲口棚", "barn" }
+			new string[3] { "загін", "хлів", "barn" }
 		},
 		{
 			"ThroneRoom",
-			new string[3] { "王座室", "觐见厅", "throne" }
+			new string[3] { "тронна зала", "зала прийомів", "throne" }
 		},
 		{
 			"WorshipRoom",
-			new string[5] { "礼拜堂", "神殿", "寺庙", "temple", "worship" }
+			new string[5] { "каплиця", "святилище", "храм", "temple", "worship" }
 		}
 	};
 

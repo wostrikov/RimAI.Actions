@@ -16,7 +16,7 @@ internal static class ActionRegistryCatalogFuneral
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "bury", "grave", "funeral", "埋葬", "坟墓", "葬礼" }
+			Keywords = new List<string> { "bury", "grave", "funeral", "поховати", "могила", "похорон" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -28,7 +28,7 @@ internal static class ActionRegistryCatalogFuneral
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "cremate", "burn", "火化", "焚烧" }
+			Keywords = new List<string> { "cremate", "burn", "кремація", "спалити" }
 		});
 	}
 }

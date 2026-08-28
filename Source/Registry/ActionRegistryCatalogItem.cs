@@ -17,7 +17,7 @@ internal static class ActionRegistryCatalogItem
 			OptionalParams = new List<string> { "target", "args.quantity" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "take inventory", "pick up", "pickup", "put in pocket", "візьми", "підійми", "підбери", "у кишеню", "інвентар", "捡起", "放进背包" }
+			Keywords = new List<string> { "take inventory", "pick up", "pickup", "put in pocket", "візьми", "підійми", "підбери", "у кишеню", "інвентар", "підняти", "Покласти в рюкзак" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -30,7 +30,7 @@ internal static class ActionRegistryCatalogItem
 			OptionalParams = new List<string> { "thing" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "drop", "丢弃", "放下", "丢" }
+			Keywords = new List<string> { "drop", "викинути", "покласти", "кинь" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -43,7 +43,7 @@ internal static class ActionRegistryCatalogItem
 			OptionalParams = new List<string> { "thing" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "give", "hand", "赠送", "给", "递给" }
+			Keywords = new List<string> { "give", "hand", "подарувати", "дай", "передати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -55,7 +55,7 @@ internal static class ActionRegistryCatalogItem
 			RequiredParams = new List<string> { "actor", "thing" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "equip", "wear", "装备", "穿上", "武装" }
+			Keywords = new List<string> { "equip", "wear", "спорядження", "вдягнути", "озброїти" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -68,7 +68,7 @@ internal static class ActionRegistryCatalogItem
 			OptionalParams = new List<string> { "thing" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "eat", "food", "吃", "进食", "吃饭", "用餐" }
+			Keywords = new List<string> { "eat", "food", "їж", "їсти", "поїсти", "трапеза" }
 		});
 	}
 }

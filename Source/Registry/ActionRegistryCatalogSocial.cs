@@ -16,7 +16,7 @@ internal static class ActionRegistryCatalogSocial
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "recruit", "persuade", "招募", "说服" }
+			Keywords = new List<string> { "recruit", "persuade", "вербувати", "переконати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -29,7 +29,7 @@ internal static class ActionRegistryCatalogSocial
 			RiskLevel = RiskLevel.High,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "romance", "lover", "breakup", "恋爱", "分手", "告白" }
+			Keywords = new List<string> { "romance", "lover", "breakup", "кохання", "розрив", "освідчення" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -41,7 +41,7 @@ internal static class ActionRegistryCatalogSocial
 			RequiredParams = new List<string> { "actor", "args.thought" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "thought", "memory", "mood", "思绪", "心情", "记忆" }
+			Keywords = new List<string> { "thought", "memory", "mood", "думки", "настрій", "памʼять" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -54,7 +54,7 @@ internal static class ActionRegistryCatalogSocial
 			RiskLevel = RiskLevel.High,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "relation", "friend", "enemy", "关系", "朋友", "敌人" }
+			Keywords = new List<string> { "relation", "friend", "enemy", "стосунки", "друг", "ворог" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -66,7 +66,7 @@ internal static class ActionRegistryCatalogSocial
 			RequiredParams = new List<string> { "actor", "args.type" },
 			RiskLevel = RiskLevel.Medium,
 			Handler = null,
-			Keywords = new List<string> { "inspiration", "inspire", "灵感", "激励" }
+			Keywords = new List<string> { "inspiration", "inspire", "натхнення", "надихнути" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -78,7 +78,7 @@ internal static class ActionRegistryCatalogSocial
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "visit", "sick", "ill", "探病", "看望", "探望" }
+			Keywords = new List<string> { "visit", "sick", "ill", "провідати хворого", "навідатися", "відвідати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -91,7 +91,7 @@ internal static class ActionRegistryCatalogSocial
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "fight", "brawl", "social fight", "打架", "吵架", "斗殴" }
+			Keywords = new List<string> { "fight", "brawl", "social fight", "бійка", "сварка", "побоїще" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -103,7 +103,7 @@ internal static class ActionRegistryCatalogSocial
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "lovin", "亲热", "恩爱" }
+			Keywords = new List<string> { "lovin", "пестощі", "ніжність" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -116,7 +116,7 @@ internal static class ActionRegistryCatalogSocial
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "insult", "mock", "侮辱", "嘲笑", "骂" }
+			Keywords = new List<string> { "insult", "mock", "образа", "глузування", "лай" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -129,7 +129,7 @@ internal static class ActionRegistryCatalogSocial
 			RiskLevel = RiskLevel.High,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "marry", "wedding", "marriage", "结婚", "婚礼" }
+			Keywords = new List<string> { "marry", "wedding", "marriage", "одруження", "весілля" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -141,7 +141,7 @@ internal static class ActionRegistryCatalogSocial
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "spectate", "watch", "observe", "观看", "观赏" }
+			Keywords = new List<string> { "spectate", "watch", "observe", "дивитися", "споглядати" }
 		});
 	}
 }

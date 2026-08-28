@@ -17,7 +17,7 @@ internal static class ActionRegistryCatalogMovement
 			OptionalParams = new List<string> { "target", "cell" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "move", "go", "walk", "走", "移动", "前往", "过去" }
+			Keywords = new List<string> { "move", "go", "walk", "іди", "рух", "іти до", "підійти" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -30,7 +30,7 @@ internal static class ActionRegistryCatalogMovement
 			RiskLevel = RiskLevel.Low,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "stop", "halt", "cease", "停", "停止", "停下" }
+			Keywords = new List<string> { "stop", "halt", "cease", "стій", "зупинити", "стій" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -43,7 +43,7 @@ internal static class ActionRegistryCatalogMovement
 			OptionalParams = new List<string> { "args.ticks" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "wait", "stay", "stand", "等", "等待", "待命", "站立", "站" }
+			Keywords = new List<string> { "wait", "stay", "stand", "чекай", "чекати", "напоготові", "стояти", "встань" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -55,7 +55,7 @@ internal static class ActionRegistryCatalogMovement
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "follow", "跟随", "跟着", "跟上" }
+			Keywords = new List<string> { "follow", "іти за", "слідом", "не відставати" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -68,7 +68,7 @@ internal static class ActionRegistryCatalogMovement
 			OptionalParams = new List<string> { "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "flee", "run", "escape", "逃", "逃跑", "逃离" }
+			Keywords = new List<string> { "flee", "run", "escape", "тікай", "тікати", "втекти" }
 		});
 	}
 }

@@ -28,7 +28,7 @@ public class AnomalyModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
 			Handler = null,
-			Keywords = new List<string> { "study", "anomaly", "entity", "research", "研究", "异常", "实体" }
+			Keywords = new List<string> { "study", "anomaly", "entity", "research", "дослідження", "аномалія", "сутність" }
 		};
 		yield return new ActionDefinition
 		{
@@ -41,7 +41,7 @@ public class AnomalyModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = true,
 			Handler = null,
-			Keywords = new List<string> { "suppress", "contain", "anomaly", "压制", "抑制", "遏制" }
+			Keywords = new List<string> { "suppress", "contain", "anomaly", "придушити", "стримати", "локалізувати" }
 		};
 	}
 

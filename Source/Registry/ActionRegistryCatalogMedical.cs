@@ -16,7 +16,7 @@ internal static class ActionRegistryCatalogMedical
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "rescue", "save", "carry", "救援", "营救", "搬运" }
+			Keywords = new List<string> { "rescue", "save", "carry", "рятувати", "порятунок", "переносити" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -28,7 +28,7 @@ internal static class ActionRegistryCatalogMedical
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "tend", "heal", "treat", "治疗", "包扎", "医治" }
+			Keywords = new List<string> { "tend", "heal", "treat", "лікувати", "перевʼязати", "зцілити" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -40,7 +40,7 @@ internal static class ActionRegistryCatalogMedical
 			RequiredParams = new List<string> { "actor", "target" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "feed", "food", "patient", "喂食", "喂饭", "病人" }
+			Keywords = new List<string> { "feed", "food", "patient", "годувати", "нагодувати", "пацієнт" }
 		});
 		ActionRegistry.Register(new ActionDefinition
 		{
@@ -52,7 +52,7 @@ internal static class ActionRegistryCatalogMedical
 			RequiredParams = new List<string> { "actor" },
 			RiskLevel = RiskLevel.Low,
 			Handler = null,
-			Keywords = new List<string> { "sleep", "nap", "rest", "睡觉", "睡", "躺下", "休息", "歇" }
+			Keywords = new List<string> { "sleep", "nap", "rest", "спати", "спи", "лягти", "відпочинок", "спочинь" }
 		});
 	}
 }

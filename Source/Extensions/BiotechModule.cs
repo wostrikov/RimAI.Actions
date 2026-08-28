@@ -28,7 +28,7 @@ public class BiotechModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Medium,
 			DefaultEnabled = false,
 			Handler = null,
-			Keywords = new List<string> { "mechanoid", "mech", "command", "机械体", "机械族", "命令" }
+			Keywords = new List<string> { "mechanoid", "mech", "command", "механоїд", "механіти", "команда" }
 		};
 		yield return new ActionDefinition
 		{
@@ -41,7 +41,7 @@ public class BiotechModule : IEAExtensionModule
 			RiskLevel = RiskLevel.Low,
 			DefaultEnabled = true,
 			Handler = null,
-			Keywords = new List<string> { "biosculpter", "pod", "sculpt", "生物塑型", "塑型舱" }
+			Keywords = new List<string> { "biosculpter", "pod", "sculpt", "Біоскульптор", "капсула" }
 		};
 	}
 

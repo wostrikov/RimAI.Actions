@@ -153,7 +153,7 @@ public static class SecondaryLLMCaller
 
 	internal static Task<string> CompleteOnceAsync(string systemPrompt, string userPrompt, TimeSpan timeout)
 	{
-		return Task.Run(() => CompleteShared(systemPrompt, userPrompt, timeout));
+		return RimAiBackground.Run(() => CompleteShared(systemPrompt, userPrompt, timeout));
 	}
 
 	private static string CompleteShared(string systemPrompt, string userPrompt, TimeSpan timeout)

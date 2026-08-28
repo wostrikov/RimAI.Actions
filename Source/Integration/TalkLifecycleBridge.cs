@@ -15,6 +15,7 @@ using Ustas.RimAI.Actions.Util;
 using Ustas.RimAI.Communication.Data;
 using Ustas.RimAI.Core.Communication;
 using Verse;
+using RimAI.Core.Runtime;
 
 namespace Ustas.RimAI.Actions.Integration;
 
@@ -85,7 +86,7 @@ public static class TalkLifecycleBridge
 				return false;
 		}
 
-		_ = Task.Run(async () =>
+		_ = RimAiBackground.Run(async () =>
 		{
 			try
 			{
@@ -179,7 +180,7 @@ public static class TalkLifecycleBridge
 
 	static void ProcessBehaviors(List<string> behaviors, Pawn pawn, string speakerName, string conversationId)
 	{
-		Task.Run(async delegate
+		RimAiBackground.Run(async delegate
 		{
 			try
 			{

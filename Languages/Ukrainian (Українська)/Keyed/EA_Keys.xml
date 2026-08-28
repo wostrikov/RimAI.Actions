@@ -276,4 +276,47 @@
   <EA_Error_TargetNotFound>Ціль не знайдено: {0}</EA_Error_TargetNotFound>
   <EA_Error_ActionDisabled>Дію вимкнено: {0}</EA_Error_ActionDisabled>
   <EA_Error_JobNotWhitelisted>Завдання не в білому списку: {0}</EA_Error_JobNotWhitelisted>
+
+    <!-- Reasons a capability refused, shown in the pawn bubble -->
+    <RimAI_ActionCode_Ok>готово</RimAI_ActionCode_Ok>
+    <RimAI_ActionCode_Completed>готово</RimAI_ActionCode_Completed>
+    <RimAI_ActionCode_Queued>у черзі</RimAI_ActionCode_Queued>
+    <RimAI_ActionCode_Partial>частково</RimAI_ActionCode_Partial>
+    <RimAI_ActionCode_UnknownCapability>невідома дія</RimAI_ActionCode_UnknownCapability>
+    <RimAI_ActionCode_TargetNotFound>нема над чим це робити</RimAI_ActionCode_TargetNotFound>
+    <RimAI_ActionCode_InsufficientQuantity>замало цього</RimAI_ActionCode_InsufficientQuantity>
+    <RimAI_ActionCode_DestinationUnavailable>нема куди подіти</RimAI_ActionCode_DestinationUnavailable>
+    <RimAI_ActionCode_Unreachable>туди не дістатися</RimAI_ActionCode_Unreachable>
+    <RimAI_ActionCode_InvalidPlan>план не тримається купи</RimAI_ActionCode_InvalidPlan>
+    <RimAI_ActionCode_DependencyFailed>попередній крок не вдався</RimAI_ActionCode_DependencyFailed>
+    <RimAI_ActionCode_RefrigerationUnavailable>нема вільного холодильника</RimAI_ActionCode_RefrigerationUnavailable>
+    <RimAI_ActionCode_RefrigerationImpossible>це не тримають у холоді</RimAI_ActionCode_RefrigerationImpossible>
+    <RimAI_ActionCode_PartialAvailability>було лише частину</RimAI_ActionCode_PartialAvailability>
+    <RimAI_ActionCode_StorageRejected>той склад цього не бере</RimAI_ActionCode_StorageRejected>
+    <RimAI_ActionCode_StorageFull>склад повний</RimAI_ActionCode_StorageFull>
+    <RimAI_ActionCode_InventoryCapacityInsufficient>стільки не донести</RimAI_ActionCode_InventoryCapacityInsufficient>
+    <RimAI_ActionCode_InvalidQuantity>така кількість не має сенсу</RimAI_ActionCode_InvalidQuantity>
+    <RimAI_ActionCode_ActorIncapable>не здатен на це</RimAI_ActionCode_ActorIncapable>
+    <RimAI_ActionCode_JobNotQueued>робота не почалася</RimAI_ActionCode_JobNotQueued>
+    <RimAI_ActionCode_TargetNotReady>ціль ще не готова</RimAI_ActionCode_TargetNotReady>
+    <RimAI_ActionCode_InvalidTarget>не та ціль</RimAI_ActionCode_InvalidTarget>
+    <RimAI_ActionCode_InsufficientSkill>бракує вміння</RimAI_ActionCode_InsufficientSkill>
+    <RimAI_ActionCode_ReservationFailed>це вже зайняв інший</RimAI_ActionCode_ReservationFailed>
+    <RimAI_ActionCode_CapabilityUnavailable>зараз недоступно</RimAI_ActionCode_CapabilityUnavailable>
+    <RimAI_ActionCode_EquipmentUnavailable>обладнання зайняте</RimAI_ActionCode_EquipmentUnavailable>
+    <RimAI_ActionCode_NoValidFood>нема чого їсти</RimAI_ActionCode_NoValidFood>
+    <RimAI_ActionCode_NoValidFuel>нема пального</RimAI_ActionCode_NoValidFuel>
+    <RimAI_ActionCode_NotRefuelable>воно не потребує пального</RimAI_ActionCode_NotRefuelable>
+    <RimAI_ActionCode_NotSowable>там нічого не посієш</RimAI_ActionCode_NotSowable>
+    <RimAI_ActionCode_NotRoofable>дах туди не покласти</RimAI_ActionCode_NotRoofable>
+    <RimAI_ActionCode_NoRoofPresent>даху нема</RimAI_ActionCode_NoRoofPresent>
+    <RimAI_ActionCode_RoofNotRemovable>цей дах не зняти</RimAI_ActionCode_RoofNotRemovable>
+    <RimAI_ActionCode_CorpseInvalid>тіло не годиться</RimAI_ActionCode_CorpseInvalid>
+    <RimAI_ActionCode_NoValidBurialContainer>нема вільної могили</RimAI_ActionCode_NoValidBurialContainer>
+    <RimAI_ActionCode_NoValidCrematorium>нема вільного крематорію</RimAI_ActionCode_NoValidCrematorium>
+    <RimAI_ActionCode_NoValidRecreationSpot>нема де відпочити</RimAI_ActionCode_NoValidRecreationSpot>
+    <RimAI_ActionCode_NoActiveResearch>не обрано дослідження</RimAI_ActionCode_NoActiveResearch>
+    <RimAI_ActionCode_NotOpenable>воно не відчиняється</RimAI_ActionCode_NotOpenable>
+    <RimAI_ActionCode_AlreadyExecuted>вже зроблено</RimAI_ActionCode_AlreadyExecuted>
+    <RimAI_ActionCode_OnCooldown>ще перезаряджається</RimAI_ActionCode_OnCooldown>
 </LanguageData>

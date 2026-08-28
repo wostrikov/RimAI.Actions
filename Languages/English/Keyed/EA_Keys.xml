@@ -305,4 +305,47 @@
     <EA_Error_TargetNotFound>Target not found: {0}</EA_Error_TargetNotFound>
     <EA_Error_ActionDisabled>Action disabled: {0}</EA_Error_ActionDisabled>
     <EA_Error_JobNotWhitelisted>Job not in whitelist: {0}</EA_Error_JobNotWhitelisted>
+
+    <!-- Reasons a capability refused, shown in the pawn bubble -->
+    <RimAI_ActionCode_Ok>done</RimAI_ActionCode_Ok>
+    <RimAI_ActionCode_Completed>done</RimAI_ActionCode_Completed>
+    <RimAI_ActionCode_Queued>queued</RimAI_ActionCode_Queued>
+    <RimAI_ActionCode_Partial>partly done</RimAI_ActionCode_Partial>
+    <RimAI_ActionCode_UnknownCapability>unknown action</RimAI_ActionCode_UnknownCapability>
+    <RimAI_ActionCode_TargetNotFound>nothing to do it to</RimAI_ActionCode_TargetNotFound>
+    <RimAI_ActionCode_InsufficientQuantity>not enough of it</RimAI_ActionCode_InsufficientQuantity>
+    <RimAI_ActionCode_DestinationUnavailable>nowhere to put it</RimAI_ActionCode_DestinationUnavailable>
+    <RimAI_ActionCode_Unreachable>cannot get there</RimAI_ActionCode_Unreachable>
+    <RimAI_ActionCode_InvalidPlan>the plan does not hold together</RimAI_ActionCode_InvalidPlan>
+    <RimAI_ActionCode_DependencyFailed>an earlier step failed</RimAI_ActionCode_DependencyFailed>
+    <RimAI_ActionCode_RefrigerationUnavailable>no cold storage free</RimAI_ActionCode_RefrigerationUnavailable>
+    <RimAI_ActionCode_RefrigerationImpossible>cannot be kept cold</RimAI_ActionCode_RefrigerationImpossible>
+    <RimAI_ActionCode_PartialAvailability>only part of it was available</RimAI_ActionCode_PartialAvailability>
+    <RimAI_ActionCode_StorageRejected>that store will not take it</RimAI_ActionCode_StorageRejected>
+    <RimAI_ActionCode_StorageFull>the store is full</RimAI_ActionCode_StorageFull>
+    <RimAI_ActionCode_InventoryCapacityInsufficient>cannot carry that much</RimAI_ActionCode_InventoryCapacityInsufficient>
+    <RimAI_ActionCode_InvalidQuantity>that amount makes no sense</RimAI_ActionCode_InvalidQuantity>
+    <RimAI_ActionCode_ActorIncapable>incapable of this</RimAI_ActionCode_ActorIncapable>
+    <RimAI_ActionCode_JobNotQueued>the job would not start</RimAI_ActionCode_JobNotQueued>
+    <RimAI_ActionCode_TargetNotReady>the target is not ready</RimAI_ActionCode_TargetNotReady>
+    <RimAI_ActionCode_InvalidTarget>wrong kind of target</RimAI_ActionCode_InvalidTarget>
+    <RimAI_ActionCode_InsufficientSkill>not skilled enough</RimAI_ActionCode_InsufficientSkill>
+    <RimAI_ActionCode_ReservationFailed>someone else claimed it</RimAI_ActionCode_ReservationFailed>
+    <RimAI_ActionCode_CapabilityUnavailable>not available right now</RimAI_ActionCode_CapabilityUnavailable>
+    <RimAI_ActionCode_EquipmentUnavailable>the equipment is not free</RimAI_ActionCode_EquipmentUnavailable>
+    <RimAI_ActionCode_NoValidFood>no food worth eating</RimAI_ActionCode_NoValidFood>
+    <RimAI_ActionCode_NoValidFuel>no fuel for it</RimAI_ActionCode_NoValidFuel>
+    <RimAI_ActionCode_NotRefuelable>it takes no fuel</RimAI_ActionCode_NotRefuelable>
+    <RimAI_ActionCode_NotSowable>nothing can be sown there</RimAI_ActionCode_NotSowable>
+    <RimAI_ActionCode_NotRoofable>cannot be roofed</RimAI_ActionCode_NotRoofable>
+    <RimAI_ActionCode_NoRoofPresent>there is no roof</RimAI_ActionCode_NoRoofPresent>
+    <RimAI_ActionCode_RoofNotRemovable>that roof will not come off</RimAI_ActionCode_RoofNotRemovable>
+    <RimAI_ActionCode_CorpseInvalid>the body cannot be used</RimAI_ActionCode_CorpseInvalid>
+    <RimAI_ActionCode_NoValidBurialContainer>no grave free</RimAI_ActionCode_NoValidBurialContainer>
+    <RimAI_ActionCode_NoValidCrematorium>no crematorium free</RimAI_ActionCode_NoValidCrematorium>
+    <RimAI_ActionCode_NoValidRecreationSpot>nowhere to relax</RimAI_ActionCode_NoValidRecreationSpot>
+    <RimAI_ActionCode_NoActiveResearch>no research chosen</RimAI_ActionCode_NoActiveResearch>
+    <RimAI_ActionCode_NotOpenable>it does not open</RimAI_ActionCode_NotOpenable>
+    <RimAI_ActionCode_AlreadyExecuted>already done</RimAI_ActionCode_AlreadyExecuted>
+    <RimAI_ActionCode_OnCooldown>still on cooldown</RimAI_ActionCode_OnCooldown>
 </LanguageData>

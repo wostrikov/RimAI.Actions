@@ -215,7 +215,18 @@ public static class ActionsCapabilityFrontend
 					color = Color.red;
 					break;
 			}
-			MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, glyph + result.CapabilityId, color, 2f);
+			string text = glyph + CapabilityBubbleText.Describe(result.CapabilityId);
+			bool wentWrong = result.Outcome != ActionsOutcome.Completed
+				&& result.Outcome != ActionsOutcome.Queued
+				&& result.Outcome != ActionsOutcome.Started;
+			if (wentWrong)
+			{
+				// The player can see the glyph; what they could never see was why.
+				string reason = CapabilityBubbleText.Reason(result.Code, result.Detail);
+				if (!string.IsNullOrEmpty(reason))
+					text = text + ": " + reason;
+			}
+			MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, text, color, 2f);
 		}
 		catch (Exception ex)
 		{

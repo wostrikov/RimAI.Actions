@@ -25,11 +25,11 @@
         <li>ustas.rimai.communication</li>
         <li>ustas.rimai.communication.memory</li>
     </loadAfter>
-    <description>RimAI.Actions перетворює репліки RimAI на реальну роботу пішаків.
+    <description>RimAI.Actions перетворює репліки RimAI на реальну роботу персонажів.
 
 Основні можливості:
 • рух, бій, медицина, спілкування, речі, виробництво, тварини та роботи з DLC
-• черга на одного пішака й паралель між пішаками
+• черга на одного персонажа й паралель між персонажами
 • запобіжники, білий список робіт і блокування під час психічних зривів
 
 Потрібні Harmony та RimAI.Communication. RimAI.Communication.Memory необов’язковий для запису поведінки. Текстовий ШІ — зі спільних налаштувань RimAI.</description>

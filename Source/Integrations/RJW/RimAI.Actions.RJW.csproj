@@ -1,6 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    RimWorld 1.7 and nothing older. 1.7 is not a Unity player: it runs on
+    .NET 10, its assemblies sit in the game folder itself, and one assembly -
+    UnityStubs - stands in for everything that was UnityEngine.*Module.dll.
+    So this is net10.0 and compiles against that stand-in, which turns a
+    Unity member 1.7 does not have into a compile error here instead of a
+    type that fails to load there. The 1.6 build is the tag
+    rimworld-1.6-final.
+  -->
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
+    <!-- The game loads a mod assembly from the mod's own folder: no deps
+         file beside it. A package this mod ships has to reach the output. -->
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AssemblyName>RimAI.Actions.RJW</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <LangVersion>12.0</LangVersion>
@@ -12,6 +26,8 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\RimAI.Actions.csproj" />
-    <Reference Include="Assembly-CSharp" HintPath="$(RimWorldDir)\RimWorldWin64_Data\Managed\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="Assembly-CSharp" HintPath="$(RimWorldDir)\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="UnityStubs"><HintPath>$(RimWorldDir)\UnityStubs.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Waylith"><HintPath>$(RimWorldDir)\Waylith.dll</HintPath><Private>false</Private></Reference>
   </ItemGroup>
 </Project>
